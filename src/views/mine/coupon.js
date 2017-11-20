@@ -1,5 +1,6 @@
 'use strict';
 
+import Utils from '@/directives/utils'
 import Toast from '@/directives/toast'
 import MineAPI from "@/services/mine-service";
 
@@ -10,10 +11,15 @@ var _default = (function(){
         mounted: function(){
 	        
 	        var self = this;
+	        
 	        MineAPI.coupon(function( data ){
 	        	
+	        	var coupons;
+	        	
 	        	if (data.code == 0){
-	        	var coupons = (data.data || {}).data || [];
+	        		
+	        		coupons = (data.data || {}).data || [];
+	        		
 	        		for(var i = 0; i<coupons.length; i++){
 	        			self.couponItems.push(coupons[i]);
 	        		}
@@ -36,6 +42,16 @@ var _default = (function(){
         
                 this.$router.push( "/index" );
             }
+        },
+        filters: {
+        	surplus: function (value) {
+        		
+        		return Math.floor((Utils.dateFromTicks(value) - new Date()) / 24 / 3600 / 1000);
+        	},
+        	expire: function (value) {
+        		
+        		return Utils.dateFormat(Utils.dateFromTicks(value), 'yyyy-MM-dd');
+        	}
         }
     }
 })();

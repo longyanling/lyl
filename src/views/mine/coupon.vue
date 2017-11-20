@@ -12,8 +12,8 @@
         	    <span class="use" v-touch:tap="{ event : goToToy , params:[ ]}">立即使用</span>
         	</span>
         	<span class="validity">
-        	    <em>天后过期</em>
-                <dfn>有效期至：{{item.expireTime}}</dfn>
+        	    <em> {{item.expireTime | surplus}} 天后过期</em>
+                <dfn>有效期至： {{item.expireTime | expire}} </dfn>
         	</span>
         </div>
     </div>

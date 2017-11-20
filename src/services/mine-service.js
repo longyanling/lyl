@@ -96,7 +96,8 @@ var _default = (function(){
 				callback);
 		},
 		coupon: function( callback ){
-			httpGet('/coupon/list', callback);
+			
+			httpGet('/coupon/list', {}, callback);
 		},
 		orderList : function( data, callback ){
             
