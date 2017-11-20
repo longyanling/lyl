@@ -1,6 +1,6 @@
 'use strict';
 import Vue from "vue";
-import Axios from 'axios';
+import mineAPI from "@/services/mine-service";
 
 var _default = (function(){
 
@@ -9,19 +9,17 @@ var _default = (function(){
         mounted: function(){
             var that = this;
         
-            Axios.get('/order/express/list', {
-                params : {
-                    orderId : 86985573038,
-                }
-            })
-            .then(function (response) {
-                var data = response.data;
-                
+          mineAPI.logistics( 
+            {
+                orderId : 86985573038,
+            },
+            function (data) {
                 if (data.code == 0) {
                     var logistics = data.data.expressList;
                     logistics.forEach(function(item){
                         if(item.expressType == 200){
                             that.expressMail.push(item);
+                            console.log(that.expressMail)
                         }else {
                             that.expressReturn.push(item);
                         }
@@ -31,10 +29,6 @@ var _default = (function(){
                     console.log(results);
                 }
             })
-            .catch(function (error) {
-                console.log(error);
-            }); 
-            
         },
         destoryed: function(){
 
@@ -45,9 +39,17 @@ var _default = (function(){
                 expressMail : [],
                 expressReturn : [],
             	tabIndex: 0,
+            	expressMailIndex : 0,
+            	expressReturnIndex : 0,
             };
         },
         methods: {
+            tabExpressMail : function (e,index) {
+                this.expressMailIndex = index;
+            },
+            tabExpressReturn : function (e,index) {
+                this.expressReturnIndex = index;;
+            },
             cellHref: function( e, url ){
         
                 this.$router.push( url );

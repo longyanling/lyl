@@ -1,3 +1,6 @@
+'use strict';
+import mineAPI from "@/services/mine-service";
+
 var _default = (function(){
     
     return {
