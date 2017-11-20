@@ -7,44 +7,25 @@
                 <span class="confirm" v-touch:tap="{ event: cellHref, params: ['/mine/order/confirm'] }">确定</span>
             </div>
             <div class="choice">
-            	<div class="years">
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-            	    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-                    <div class="each">2017</div>
-            	    
-            	    <span class="word">年</span>
+            	<div class="cell years">
+            		<em class="label">年</em>
+            		<span id="pop_date_year" class="list" v-on:scroll=" onDateScroll(1, $event)">
+            			<dfn class="item" v-for="(item,index) in yearItems" v-bind:class="item==yearSelected ? 'selected':''">{{item}}</dfn>
+            		</span>
             	</div>
-            	<div class="months">
-            		月
+            	<div class="cell months">
+            		<em class="label">月</em>
+            		<span id="pop_date_month" class="list" v-on:scroll=" onDateScroll(2, $event)">
+            			<dfn class="item" v-for="(item,index) in monthItems" v-bind:class="item==monthSelected ? 'selected':''">{{item}}</dfn>
+            		</span>
             	</div>
-            	<div class="days">
-            		日
+            	<div class="cell days">
+            		<em class="label">日</em>
+            		<span id="pop_date_day" class="list" v-on:scroll=" onDateScroll(3, $event)">
+            			<dfn class="item" v-for="(item,index) in dayItems" v-bind:class="item==daySelected ? 'selected':''">{{item}}</dfn>
+            		</span>
             	</div>
+            	<div class="middle"></div>
             </div>
     	</div>
     </div>

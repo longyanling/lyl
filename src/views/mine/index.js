@@ -1,31 +1,32 @@
 'use strict';
-import Axios from 'axios';
+
+import mineAPI from "@/services/mine-service";
+
 var _default = (function(){
 
 	return {
 		name: 'mine-index',
 		mounted: function(){
+			
 			var self = this;
         
-            Axios.get('/user/profile/jdv2', {
-                params : {
-                    uid : 73486241289,
-                }
-            })
-            .then(function (response) {
-                var data = response.data;
-                if (data.code == 0) {
-                    self.userInfoItem = data.data.user;
-                    self.babyInfoItem = data.data.babys[0];     
-                } else {
-                    console.log(results);
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-
+        	mineAPI.profile(
+        		{ 
+        			uid : 73486241289 
+        		}, 
+        		function( data ){
+	        		
+	        		console.log( data );
+	                if (data.code == 0) {
+	                    self.userInfoItem = data.data.user;
+	                    self.babyInfoItem = data.data.babys[0];
+	                    
+	                    console.log(self.babyInfoItem)
+	                     
+	                } else {
+	                    console.log(results);
+	                }
+	        	});
 		},
 		destoryed: function(){
 			
