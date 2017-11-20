@@ -1,6 +1,7 @@
 'use strict';
 
-import mineAPI from "@/services/mine-service";
+import Toast from '@/directives/toast'
+import MineAPI from "@/services/mine-service";
 
 var _default = (function(){
 
@@ -8,9 +9,17 @@ var _default = (function(){
         name: 'mine-coupon',
         mounted: function(){
 	        
-	        mineAPI.coupon(function( data ){
+	        var self = this;
+	        MineAPI.coupon(function( data ){
 	        	
-	        	console.log(data);
+	        	if (data.code == 0){
+	        	var coupons = (data.data || {}).data || [];
+	        		for(var i = 0; i<coupons.length; i++){
+	        			self.couponItems.push(coupons[i]);
+	        		}
+	        	} else {
+	        		Toast.show(data.msg);
+	        	}
 	        });
         },
         destoryed: function(){
@@ -19,7 +28,7 @@ var _default = (function(){
         data: function(){
             
             return {
-                
+                 couponItems: []
             };
         },
         methods: {

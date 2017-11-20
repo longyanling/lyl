@@ -1,6 +1,8 @@
 'use strict';
 
-import Axios from 'axios';
+import Utils from '@/directives/utils'
+import Toast from '@/directives/toast'
+import MineAPI from "@/services/mine-service";
 
 var _default = (function(){
 
@@ -8,15 +10,22 @@ var _default = (function(){
         name: 'cart-index',
         mounted: function(){
 
-			console.log(2222);
-            Axios.get('/user/profile/jdv2', { })
-            .then(function (response) {
-                var data = response.data;
-                console.log(data.data);
-            }.bind(this))
-            .catch(function (error) {
-                console.log(error);
-            });
+			var self = this;
+
+			console.log( this.$route.query );
+		
+			MineAPI.profile({
+				uid : 73486241289
+			}, function( data ){
+				
+				if (data.code == 0 ){
+					var babyInfo = data.data ? (data.data.babys ? (data.data.babys.length ? data.data.babys[0] : {}) : {} ) : {};
+					self.sex = babyInfo.babySex;
+					self.birthDate = Utils.dateFormat( Utils.dateFromTicks(babyInfo.birthDate), 'yyyy-MM-dd');
+				} else {
+            		Toast.show( data.msg );
+				}
+			});
         },
         destoryed: function(){
 
@@ -24,29 +33,25 @@ var _default = (function(){
         data: function(){
             
             return {
-            	sex: 0
+            	sex: 0,
+            	birthDate: '' 
             };
         },
         methods: {
             cellHref: function( e, url ){
-                this.$router.push( url );
+            	
+                this.$router.push( url + '?birthdate=' + this.birthDate );
             },
             selectSex: function( sex ){
+            	
             	this.sex = sex;
             },
             saveChange: function(){
            
-                this.setCookie('ZL_UEC', 'Np0WxpPXx/U8Px8Tqbu+DZRXWlAdzCojtI5w/PGvu7I=', 10)
+                //	this.setCookie('ZL_UEC', 'Np0WxpPXx/U8Px8Tqbu+DZRXWlAdzCojtI5w/PGvu7I=', 10)
                 this.$router.push( '/mine' );
-            },
-            setCookie: function (cname, cvalue, exdays) {
-                var d = new Date();
-                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-                var expires = "expires=" + d.toUTCString();
-                console.info(cname + "=" + cvalue + "; " + expires);
-                document.cookie = cname + "=" + cvalue + "; " + expires;
-                console.info(document.cookie);
-            },
+                MineAPI.login();
+            }
         }
     }
 })();
