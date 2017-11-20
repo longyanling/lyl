@@ -13,12 +13,12 @@
         </div>
         <div class="leftMain" v-show="tabIndex == 0">
             <div class="list">
-                <div class="item" v-for="item in expressMail">
+                <div class="item" v-for="(item, index) in expressMail" v-touch:tap="{event: tabExpressMail , params : [ index ]}">
                     <em class="name">{{item.company}}</em>
                     <var class="number">{{item.code}}</var>
                 </div>
             </div>
-            <div class="details" v-for="item in expressMail">
+            <div class="details" v-for="(item, index) in expressMail" v-show="index == expressMailIndex">
                 <div class="detail" v-for="seed in item.detail" >
                     <div class="time">
                         <var class="timemin">12:34</var>
@@ -37,12 +37,12 @@
         </div>
         <div class="rightMain" v-show="tabIndex == 1">
             <div class="list">
-                <div class="item" v-for="item in expressReturn">
+                <div class="item" v-for="(item , index) in expressReturn" v-touch:tap="{event: tabExpressReturn , params : [ index ]}">
                     <em class="name">{{item.company}}</em>
                     <var class="number">{{item.code}}</var>
                 </div>
             </div>
-            <div class="details" v-for="item in expressReturn">
+            <div class="details" v-for="(item, index) in expressReturn" v-show="index == expressReturnIndex">
                 <div class="detail" v-for="seed in item.detail" >
                     <div class="time">
                         <var class="timemin">23:22</var>

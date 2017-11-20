@@ -1,5 +1,5 @@
 'use strict';
-import Axios from 'axios';
+import mineAPI from "@/services/mine-service";
 
 var _default = (function(){
 
@@ -8,24 +8,19 @@ var _default = (function(){
         mounted: function(){
             var that = this;
             
-            Axios.get('/order/detail', {
-                params : {
-                    orderId : 88424999173,
-                }
-            })
-            .then(function (response) {
-                var data = response.data;
-                if (data.code == 0) {
-                    that.detailsItem = data.data;
-                    
-                } else {
-                    console.log(results);
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            mineAPI.orderDetail( 
+                {
+                   orderId : 88424999173 
+                },
+                function (data) {
 
+                    if (data.code == 0) {
+                        that.detailsItem = data.data;
+                        
+                    } else {
+                        console.log(results);
+                    }
+                })
         },
         destoryed: function(){
 

@@ -15,13 +15,11 @@ var _default = (function(){
         			uid : 73486241289 
         		}, 
         		function( data ){
-	        		
-	        		console.log( data );
+
 	                if (data.code == 0) {
 	                    self.userInfoItem = data.data.user;
 	                    self.babyInfoItem = data.data.babys[0];
 	                    
-	                    console.log(self.babyInfoItem)
 	                     
 	                } else {
 	                    console.log(results);
