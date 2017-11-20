@@ -26,6 +26,10 @@
                 } 
                 .con {
                     font-size: 15px;
+                    
+                    &.actived {
+                        color: #fed130;
+                    }
                 }
                 .selected {
                     width: 18px;
@@ -66,7 +70,7 @@
         font-size: 15px;
         color: #575757;
         position: fixed;
-        bottom: 5px;
+        bottom: 15px;
         left: 5%;
         width: 90%;
         background-color: #fed130;

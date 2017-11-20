@@ -3,20 +3,20 @@
     	<div class="content">
     	    <em class="title">宝宝信息</em>
     	    <div class="box">
-    	    	<div class="boy all">
+    	    	<div class="boy all" v-on:click="selectSex(0);">
     	    		<img class="sex" src="https://ts.zlimg.com/v2/h5/jd/mine_sex_boy.png"/>
-    	    		<span class="con">男宝宝</span>
-    	    		<img class="selected" src="https://ts.zlimg.com/v2/h5/jd/base_selected.png"/>
+    	    		<span class="con" v-bind:class="sex == 0 ? 'actived' : '' ">男宝宝</span>
+    	    		<img class="selected" v-show="sex == 0" src="https://ts.zlimg.com/v2/h5/jd/base_selected.png"/>
     	    	</div>
-    	    	<div class="girl all">
+    	    	<div class="girl all" v-on:click="selectSex(1);">
     	    		<img class="sex" src="https://ts.zlimg.com/v2/h5/jd/mine_sex_girl.png"/>
-    	    		<span class="con">女宝宝</span>
-    	    		<img class="selected" src="https://ts.zlimg.com/v2/h5/jd/base_selected.png"/>
+    	    		<span class="con" v-bind:class="sex == 0 ? '' : 'actived' ">女宝宝</span>
+    	    		<img class="selected" v-show="sex != 0" src="https://ts.zlimg.com/v2/h5/jd/base_selected.png"/>
     	    	</div>
     	    </div>
     	    <div class="date" v-touch:tap="{event : cellHref,params : ['/mine/profile/date']}"><span>2017-10-01</span> <img src="https://ts.zlimg.com/v2/h5/jd/mine_icon_date.png"/></div>
     	</div>
-    	<div class="submit">确定</div>
+    	<div class="submit" v-on:click="saveChange();">确定</div>
     	<router-view></router-view>
     </div>
 </template>
