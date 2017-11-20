@@ -18,7 +18,7 @@
 			    <var>我的优惠券</var>
 			    <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png"/>
 			</span>
-			<span class="item margin_top_10" v-touch:tap="{ event : goToCoupon, params : [ ]}">
+			<span class="item margin_top_10" v-touch:tap="{ event : goToAddressList, params : [ ]}">
                 <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/mine_address.png"/>
                 <var>常用地址</var>
                 <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png"/>

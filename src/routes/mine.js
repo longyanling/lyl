@@ -4,6 +4,8 @@ import MineProfileDate from "@/views/mine/pop_date.vue";
 import MineOrder from "@/views/mine/order.vue";
 import MineCoupon from "@/views/mine/coupon.vue";
 import MineOrderConfirm from "@/views/mine/confirm.vue";
+import MineAddressAdd from "@/views/mine/addressAdd.vue";
+import MineAddressList from "@/views/mine/addressList.vue";
 import MineOrderConfirmAddressAdd from "@/views/mine/pop_addressAdd.vue";
 import MineOrderConfirmAddressList from "@/views/mine/pop_addressList.vue";
 import MineOrderConfirmDistribution from "@/views/mine/pop_distribution.vue";
@@ -18,6 +20,8 @@ export default {
 	routes: [
 		{ path: '/mine', name: 'Mine', component: Mine },
 		{ path: '/mine/coupon', name: 'MineCoupon', component: MineCoupon },
+		{ path: '/mine/addressAdd', name: 'MineAddressAdd', component: MineAddressAdd },
+        { path: '/mine/addressList', name: 'MineAddressList', component: MineAddressList },
 		{ path: '/mine/profile', name: 'MineProfile', component: MineProfile ,
 		    children: [
                 { path: '/mine/profile/date', component: MineProfileDate }

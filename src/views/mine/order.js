@@ -1,3 +1,6 @@
+'use strict';
+import Axios from 'axios';
+
 var _default = (function(){
     var navs = [
         {
@@ -215,7 +218,30 @@ var _default = (function(){
     return {
         name: 'order-return',
         mounted: function(){
-
+            var that = this;
+        
+            Axios.get('/order/list/v2', {
+                params : {
+                    av : '3.0.0',
+                    client : 'alipay-ios',
+                    cv : '2.0.0',
+                    uid : 73486241289,
+                }
+            })
+            .then(function (response) {
+                var data = response.data;
+                console.log(data.data)
+                if (data.code == 0) {
+                   
+                    console.log()
+                     
+                } else {
+                    console.log(results);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         },
         destoryed: function(){
 

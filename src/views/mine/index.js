@@ -14,17 +14,13 @@ var _default = (function(){
             })
             .then(function (response) {
                 var data = response.data;
-                console.log(data.data)
                 if (data.code == 0) {
                     self.userInfoItem = data.data.user;
-                    self.babyInfoItem = data.data.babys[0];
-                    
-                    console.log(self.babyInfoItem)
-                     
+                    self.babyInfoItem = data.data.babys[0];     
                 } else {
                     console.log(results);
                 }
-            }.bind(this))
+            })
             .catch(function (error) {
                 console.log(error);
             });
@@ -50,7 +46,10 @@ var _default = (function(){
 		    },
 		    goToCoupon : function (){
 		        this.$router.push('/mine/coupon');
-		    }
+		    },
+		    goToAddressList : function (){
+                this.$router.push('/mine/AddressList');
+            }
 			
 		}
 	}

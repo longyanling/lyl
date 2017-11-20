@@ -1,184 +1,58 @@
+'use strict';
+import Vue from "vue";
+import Axios from 'axios';
+import Sort from "@/directives/sort";
+
 var _default = (function(){
-    
-    var companyList = [
-        {
-            "name": "百世快递",
-            "hot": 0,
-            "pinyin": "bs"
-        },
-        {
-            "name": "邮政EMS",
-            "hot": 7,
-            "pinyin": "ems"
-        },
-        {
-            "name": "国通快递",
-            "hot": 0,
-            "pinyin": "gt"
-        },
-        {
-            "name": "如风达",
-            "hot": 0,
-            "pinyin": "rfd"
-        },
-        {
-            "name": "顺丰速递",
-            "hot": 4,
-            "pinyin": "sf"
-        },
-        {
-            "name": "申通快递",
-            "hot": 3,
-            "pinyin": "st"
-        },
-        {
-            "name": "天天快递",
-            "hot": 5,
-            "pinyin": "tt"
-        },
-        {
-            "name": "优速快递",
-            "hot": 0,
-            "pinyin": "uc"
-        },
-        {
-            "name": "万象物流",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "德邦快递",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "佳怡物流",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "跨越速运",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "快捷速运",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "联邦快递",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "龙邦速运",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "联昊通",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "全峰快递",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "全一快递",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "盛辉物流",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "天地华宇",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "信丰物流",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "新邦物流",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "远成物流",
-            "hot": 0,
-            "pinyin": "wx"
-        },
-        {
-            "name": "韵达快递",
-            "hot": 6,
-            "pinyin": "yd"
-        },
-        {
-            "name": "圆通快递",
-            "hot": 1,
-            "pinyin": "yt"
-        },
-        {
-            "name": "宅急送",
-            "hot": 0,
-            "pinyin": "zjs"
-        },
-        {
-            "name": "中通快递",
-            "hot": 2,
-            "pinyin": "zt"
-        }
-    ];
-    var companyHot = [
-        {
-            "name": "圆通快递",
-            "hot": 1,
-            "pinyin": "yt"
-        },
-        {
-            "name": "中通快递",
-            "hot": 2,
-            "pinyin": "zt"
-        },
-        {
-            "name": "申通快递",
-            "hot": 3,
-            "pinyin": "st"
-        },
-        {
-            "name": "顺丰速递",
-            "hot": 4,
-            "pinyin": "sf"
-        },
-        {
-            "name": "天天快递",
-            "hot": 5,
-            "pinyin": "tt"
-        },
-        {
-            "name": "韵达快递",
-            "hot": 6,
-            "pinyin": "yd"
-        },
-        {
-            "name": "邮政EMS",
-            "hot": 7,
-            "pinyin": "ems"
-        }
-    ];
+
     return {
         name: 'order-express',
         mounted: function(){
+            var that = this;
             
-
+            function pySort(arr,empty){
+                var $this = this;
+                if(!String.prototype.localeCompare)return null;
+                var letters ="ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
+                var zh ="啊把差大额发噶哈*级卡啦吗那哦爬器然撒他**哇西呀咋".split('');
+                var result = [];
+                var curr;
+                for( var i = 0;i < letters.length ; i++ ){
+                    curr = {letter: letters[i], data:[]};
+                    if(i!=26){
+                        for(var j = 0;j <arr.length;j++){
+                            var initial = Sort(arr[j].name.charAt(0));
+                            if(initial == letters[i] || initial == letters[i].toLowerCase()){
+                                curr.data.push(arr[j]);
+                            }
+                        }
+                    }
+                    if(empty || curr.data.length) {
+                        result.push(curr);
+                        curr.data.sort(function(a,b){
+                            return b.name.localeCompare(a);
+                        });
+                    }
+                }
+                return result;
+            };
+            
+            Axios.get('order/express/companies', {
+                
+            })
+            .then(function (response) {
+                var data = response.data;
+                if (data.code == 0) {
+                    that.companyHotItem = data.data.companyHot;
+                    var express = data.data.companyList;
+                    that.companyListItem = pySort(express);
+                } else {
+                    console.log(results);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });             
         },
         destoryed: function(){
 
@@ -186,8 +60,8 @@ var _default = (function(){
         data: function(){
             
             return {
-                companyListItem : companyList,
-                companyHotItem : companyHot,
+                companyListItem : [],
+                companyHotItem : [],
             };
         },
         methods: {

@@ -42,7 +42,7 @@
         margin-top: 10px;
         background-color: #ffffff;
         .address {
-            overflow: auto;
+            overflow: hidden;
             .sign {
                 float: left;
                 width: 16px;
@@ -164,7 +164,7 @@
     }
     .deposit {
         margin-top: 10px;
-        overflow: auto;
+        overflow: hidden;
         background-color: #ffffff;
         .title{
             float: left;
@@ -192,7 +192,7 @@
         margin-top: 10px;
         .title {
             background-color: #ffffff;
-            overflow: auto;
+            overflow: hidden;
             ins {
                 float: left;
                 display: inline-block;
@@ -219,10 +219,10 @@
         .list {
             width: 100%;
             background-color: #f9f9f9;
-            position: relative;
-            overflow: auto; zoom: 1;
-            border-bottom: 1px solid #f0f0f0;
-            .content {
+            .box {
+                position: relative;
+                overflow: hidden;
+                border-bottom: 1px solid #f0f0f0;
                 .toyImg {
                     float: left;
                     width: 30%;

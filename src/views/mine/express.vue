@@ -10,10 +10,10 @@
         			<span class="each" v-for="item in companyHotItem">{{item.name}}</span>
         		</div>
         	</div>
-        	<div class="hot">
-                <em class="title">B</em>
+        	<div class="hot" v-for="item in companyListItem">
+                <em class="title">{{item.letter}}</em>
                 <div class="seed">
-                    <span class="each"  v-for="item in companyListItem">{{item.name}}</span>
+                    <span class="each"  v-for="seed in item.data">{{seed.name}}</span>
                 </div>
             </div>
         </div>
