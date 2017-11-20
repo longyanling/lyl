@@ -26,7 +26,7 @@ var toast = (function( ) {
 	}
 	
 	return {
-		show: function( message, delay ){
+		show: function( message, delay, callback ){
 			
 			toast.style.display = 'block';
 			toast.innerText = message;
@@ -35,6 +35,7 @@ var toast = (function( ) {
 			timer = setTimeout(function(){
 				
 				toast.style.display = 'none';	
+				callback && callback();
 			}, delay || 1500);
 		}
 	};

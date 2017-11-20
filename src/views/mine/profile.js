@@ -11,7 +11,7 @@ var _default = (function(){
         mounted: function(){
 
 			var self = this;
-
+			
 			MineAPI.profile({
 				uid : 73486241289
 			}, function( data ){
@@ -50,12 +50,24 @@ var _default = (function(){
             },
             saveChange: function(){
            
+           		var self = this;
+           		
                 //	this.setCookie('ZL_UEC', 'Np0WxpPXx/U8Px8Tqbu+DZRXWlAdzCojtI5w/PGvu7I=', 10)
-                //	MineAPI.login();
                 MineAPI.updateProfile( this.avatar, this.name, this.sex, Utils.dateFromString(this.birthDate).getTime(), function( data ){
                 	
-                	console.log( data );
+                	if (data.code == 0 ){
+                		Toast.show( '修改宝宝资料成功', 1800, function(){
+                			
+			    			self.$router.push('/mine');
+                		} );
+                	} else {
+                		Toast.show( data.msg );
+                	}
                 } );
+            },
+            login: function(){
+
+				MineAPI.login();
             }
         }
     }

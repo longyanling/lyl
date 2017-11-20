@@ -1,7 +1,7 @@
 <template>
     <div id="profile" class="tm-mine-profile">
     	<div class="content">
-    	    <em class="title">宝宝信息</em>
+    	    <em class="title" v-on:click="login()">宝宝信息</em>
     	    <div class="box">
     	    	<div class="boy all" v-on:click="selectSex(0);">
     	    		<img class="sex" src="https://ts.zlimg.com/v2/h5/jd/mine_sex_boy.png"/>
