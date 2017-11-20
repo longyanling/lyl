@@ -16,6 +16,11 @@ var server = new WebpackDevServer(compiler, {
             secure: false,
             changeOrigin: true
         },
+        '/coupon/**': {
+            target: 'http://dev.toysuperman.com/',
+            secure: false,
+            changeOrigin: true
+        },
         '/home/**': {
             target: 'http://dev.toysuperman.com/',
             secure: false,
