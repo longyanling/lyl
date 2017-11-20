@@ -18,7 +18,7 @@ var _default = (function(){
                         that.detailsItem = data.data;
                         
                     } else {
-                        console.log(results);
+                        Toast.show(data.msg);
                     }
                 })
         },

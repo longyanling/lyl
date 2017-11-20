@@ -18,7 +18,7 @@ var _default = (function(){
                         that.addressItem = data.data;
                          
                     } else {
-                        console.log(results);
+                        Toast.show(data.msg);
                     }
                 })
             

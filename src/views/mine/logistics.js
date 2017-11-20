@@ -26,7 +26,7 @@ var _default = (function(){
                     });
                      
                 } else {
-                    console.log(results);
+                    Toast.show(data.msg);
                 }
             })
         },

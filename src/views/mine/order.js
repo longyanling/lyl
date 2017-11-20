@@ -4,7 +4,7 @@ import mineAPI from "@/services/mine-service";
 var _default = (function(){
     var navs = [
         {
-            'text': '全部订单', 
+            'text': '全部', 
         },
         {
             'text': '待付款',
@@ -75,7 +75,7 @@ var _default = (function(){
                         that.orderAllItem = [ orders, paymentsItem, receiptsItem, returnsItem, completesItem];
                          
                     } else {
-                        console.log(results);
+                        Toast.show(data.msg);
                     }
                 });
         },

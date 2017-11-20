@@ -34,7 +34,7 @@ var _default = (function(){
         methods: {
             goToToy: function(){
         
-                this.$router.push( "/toy" );
+                this.$router.push( "/index" );
             }
         }
     }

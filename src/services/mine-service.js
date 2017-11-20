@@ -96,23 +96,23 @@ var _default = (function(){
 				callback);
 		},
 		coupon: function( callback ){
-			request('/coupon/list', callback);
+			httpGet('/coupon/list', callback);
 		},
 		orderList : function( data, callback ){
             
-            request('/order/list/v2', data, callback);
+            httpGet('/order/list/v2', data, callback);
         },
         orderDetail : function( data, callback ){
             
-            request('/order/detail', data, callback);
+            httpGet('/order/detail', data, callback);
         },
         logistics : function( data, callback ){
             
-            request('/order/express/list', data, callback);
+            httpGet('/order/express/list', data, callback);
         },
         addressList : function( data, callback ){
             
-            request('/address/list', data, callback);
+            httpGet('/address/list', data, callback);
         }
 			
 	};
