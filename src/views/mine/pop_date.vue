@@ -4,7 +4,7 @@
     	<div class="time">
     	    <div class="title">
                 <span class="name">选择宝宝生日</span>
-                <span class="confirm" v-touch:tap="{ event: cellHref, params: ['/mine/order/confirm'] }">确定</span>
+                <span class="confirm" v-touch:tap="{ event: cellHref, params: ['/mine/profile'] }">确定</span>
             </div>
             <div class="choice">
             	<div class="cell years">

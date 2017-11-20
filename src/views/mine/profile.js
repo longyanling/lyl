@@ -12,14 +12,14 @@ var _default = (function(){
 
 			var self = this;
 
-			console.log( this.$route.query );
-		
 			MineAPI.profile({
 				uid : 73486241289
 			}, function( data ){
 				
 				if (data.code == 0 ){
 					var babyInfo = data.data ? (data.data.babys ? (data.data.babys.length ? data.data.babys[0] : {}) : {} ) : {};
+					self.avatar = (data.user ? data.user.avatar : '');
+					self.name = (data.user ? data.user.nickName : '');
 					self.sex = babyInfo.babySex;
 					self.birthDate = Utils.dateFormat( Utils.dateFromTicks(babyInfo.birthDate), 'yyyy-MM-dd');
 				} else {
@@ -33,6 +33,8 @@ var _default = (function(){
         data: function(){
             
             return {
+            	avatar: '',
+            	name: '',
             	sex: 0,
             	birthDate: '' 
             };
@@ -49,8 +51,11 @@ var _default = (function(){
             saveChange: function(){
            
                 //	this.setCookie('ZL_UEC', 'Np0WxpPXx/U8Px8Tqbu+DZRXWlAdzCojtI5w/PGvu7I=', 10)
-                this.$router.push( '/mine' );
-                MineAPI.login();
+                //	MineAPI.login();
+                MineAPI.updateProfile( this.avatar, this.name, this.sex, Utils.dateFromString(this.birthDate).getTime(), function( data ){
+                	
+                	console.log( data );
+                } );
             }
         }
     }

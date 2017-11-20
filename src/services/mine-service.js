@@ -71,7 +71,8 @@ var _default = (function(){
 		login: function( callback ){
 			
 			httpPost(
-				'/user/login',{
+				'/user/login',
+				{
 					'phone': '15901135082',
 					'pwd': MD5('shenxu'),
 					'cityCode': '010'
@@ -82,11 +83,16 @@ var _default = (function(){
 			
 			httpGet('/user/profile/jdv2' , data, callback);
 		},
-		updateProfile: function( babySex, babyBirthDate, callback ){
+		updateProfile: function( avatar, name, babySex, babyBirthDate, callback ){
 			
 			httpPost(
 				'/user/profile/update',
-				'babySex='+babySex+'&babyBD='+babyBirthDate, 
+				{
+					'avatar':avatar,
+					'name':name,
+					'babySex': babySex,
+					'babyBD': babyBirthDate
+				}, 
 				callback);
 		},
 		coupon: function( callback ){

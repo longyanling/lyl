@@ -94,7 +94,7 @@ var _default = (function(){
         methods: {
             cellHref: function( e, url ){
         
-                this.$router.push( '/mine/profile?birthdate=' + this.birthDate );
+                this.$router.push( url +'?birthdate=' + this.birthDate );
             },
             onDateScroll: function( type, e ){
             	
