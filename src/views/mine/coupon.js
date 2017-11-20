@@ -1,6 +1,7 @@
 'use strict';
 
-import mineAPI from "@/services/mine-service";
+import Toast from '@/directives/toast'
+import MineAPI from "@/services/mine-service";
 
 var _default = (function(){
 
@@ -8,9 +9,13 @@ var _default = (function(){
         name: 'mine-coupon',
         mounted: function(){
 	        
-	        mineAPI.coupon(function( data ){
+	        MineAPI.coupon(function( data ){
 	        	
-	        	console.log(data);
+	        	if (data.code == 0){
+	        		
+	        	} else {
+	        		Toast.show(data.msg);
+	        	}
 	        });
         },
         destoryed: function(){

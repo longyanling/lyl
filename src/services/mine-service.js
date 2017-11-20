@@ -1,20 +1,27 @@
 'use strict';
 
 import Axios from 'axios';
+import Toast from '@/directives/toast'
 
 var _default = (function(){
 
 	var request = function( url, data, callback ){
 	
-        Axios.get(url, { 
-        	params: data 
-        }).then(function (response) {
-            var data = response.data;
-            callback && callback(data);
-        }.bind(this))
-        .catch(function (error) {
-            console.log(error);
-        });
+		var self = this;
+		
+		setTimeout(function(){
+				
+	        Axios.get(url, { 
+	        	params: data 
+	        }).then(function (response) {
+	        	
+	            callback && callback(response.data);
+	        }.bind(self))
+	        .catch(function (error) {
+	        	
+	        	Toast.show(error);
+	        });
+		}, 10);
 	};
 
 	return {
@@ -24,7 +31,7 @@ var _default = (function(){
 		},
 		coupon: function( callback ){
 			
-			request('/coupon/list', callback);
+			request('/coupon/list', { }, callback);
 		}
 	};
 })();

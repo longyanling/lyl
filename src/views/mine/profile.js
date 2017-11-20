@@ -1,6 +1,7 @@
 'use strict';
 
-import Axios from 'axios';
+import Toast from '@/directives/toast'
+import MineAPI from "@/services/mine-service";
 
 var _default = (function(){
 
@@ -8,15 +9,18 @@ var _default = (function(){
         name: 'cart-index',
         mounted: function(){
 
-			console.log(2222);
-            Axios.get('/user/profile/jdv2', { })
-            .then(function (response) {
-                var data = response.data;
-                console.log(data.data);
-            }.bind(this))
-            .catch(function (error) {
-                console.log(error);
-            });
+			MineAPI.profile({
+				uid : 73486241289
+			}, function( data ){
+				
+				if (data.code == 0 ){
+					
+				} else {
+            		Toast.show('12341234');
+				}
+			});
+			
+			Toast.show('12341234');
         },
         destoryed: function(){
 
