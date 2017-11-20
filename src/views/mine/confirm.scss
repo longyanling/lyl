@@ -1,0 +1,294 @@
+.tm-order-confirm {
+    font-size: 14px;
+    background-color: #f0f0f0;
+    height: calc(100vh - 42px);
+    overflow: auto;
+    .location {
+        width: 100%;
+        height: 75px;
+        overflow: auto;
+        margin-top: 10px;
+        color: #575757;
+        background-color: #f5f5f5;
+        .clickable {
+            float: left;
+            width: 16px;
+            margin: 27px 10px 0 10px;
+        }
+        .main {
+            float: left;
+            width: 80%;
+            .content {
+                display: block;
+                width: 100%;
+                font-size: 14px;
+                padding-top: 14px;
+                .name {
+                    margin-right: 5px;
+                }
+                .sex {
+                    margin-right: 15px;
+                }
+            }
+            .detail {
+                padding-top: 12px;
+                line-height: 16px;
+                font-size: 14px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+        }
+        .entry {
+            float: right;
+            width: 8px;
+            margin: 30px 10px 0 0;
+        }
+    }
+    .select {
+        margin-top: 10px;
+        background-color: #ffffff;
+        overflow: hidden;
+        .sign {
+            float: left;
+            width: 16px;
+            margin: 16px 10px 0 10px;
+        }
+        .text {
+            float: left;
+            font-size: 14px;
+            padding: 15.5px 0;
+        }
+        .arrow {
+            float: right;
+            width: 8px;
+            margin: 15.5px 10px 0 10px;
+        }
+        .opt {
+            float: right;
+            text-align: right;
+            .frist {
+                display: block;
+                padding-top: 6px;
+                font-size: 14px;
+                color: #ed6f37;
+            }
+            .last {
+                display: block;
+                padding-top: 5px;
+                font-size: 13px;
+                color: #b3b3b3;
+            }
+            .color57 {
+                color: #575757;
+            }
+        }
+        .delivery {
+            height: 45px;
+            border-bottom: 1px solid #f0f0f0;
+            overflow: auto;
+        }
+        .coupon {
+            height: 45px;
+            border-bottom: 1px solid #f0f0f0;
+            overflow: auto;
+            .last {
+                float: right;
+                display: block;
+                padding-top: 16px;
+                font-size: 13px;
+                color: #b3b3b3;
+            }
+        }
+    }
+    .money {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #575757;
+        background-color: #ffffff;
+        .title{
+            float: left;
+            font-size: 13px;
+            padding: 10.5px 0 10.5px 10px;
+        }
+        .prompt {
+            float: left;
+            color: #b3b3b3;
+            font-size: 12px;
+            padding: 11.5px 0 11.5px 5px;
+        }
+        .sum {
+            float: right;
+            font-size: 13px;
+            padding: 10.5px 0;
+        }
+        .ho {
+            overflow: auto;
+            padding-right: 10px;
+            border-top: 1px solid #f0f0f0
+        }
+        .colorb3 {
+            color: #ed6f37;
+        }
+    }
+    .deposit {
+        margin-top: 10px;
+        overflow: hidden;
+        color: #575757;
+        background-color: #ffffff;
+        .title{
+            float: left;
+            padding: 15.5px 0 15.5px 10px;
+        }
+        .prompt {
+            float: left;
+            color: #b3b3b3;
+            font-size: 12px;
+            padding: 16.5px 0 16.5px 5px;
+        }
+        .sum {
+            float: right;
+            margin-right: 10px;
+            padding: 15.5px 0;
+        }
+        .ho {
+            overflow: auto;
+            margin-right: 10px;
+        }
+    }
+    .toys {
+        margin-top: 10px;
+        .title {
+            background-color: #ffffff;
+            overflow: auto;
+            ins {
+                float: left;
+                display: inline-block;
+                width: 4px;
+                height: 35px;
+                vertical-align: middle;
+                background: #fed130;
+            }
+            .con {
+                color: #575757;
+                font-size: 13px;
+                float: left;
+                padding: 10.5px 0 10.5px 10px;
+            }
+            .price {
+                float: right;
+                color: #ed6f37;
+                padding: 10.5px 10px 10.5px 0;
+                .day {
+                    font-size: 12px;
+                }
+            }
+        }
+        .list {
+            width: 100%;
+            background-color: #f9f9f9;
+            .content {
+                overflow: hidden;
+                position: relative;
+                border-bottom: 1px solid #f0f0f0;
+                .toyImg {
+                    float: left;
+                    width: 30%;
+                    margin: 20px 2% 20px 10px;
+                }
+                .remind {
+                    height: 14px;
+                }
+                .texts {
+                    float: left;
+                    .toyName {
+                        color: #575757;
+                        padding-top: 21%;
+                        font-size: 14px;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 1;
+                        overflow: hidden;
+                    }
+                    .toyAge {
+                        display: block;
+                        margin-top: 10%;
+                        font-size: 12px;
+                        color: #888888;
+                    }
+                    .labels {
+                        margin-top: 12%;
+                        dfn {
+                            display: inline-block;
+                            line-height: 16px;
+                            padding: 0px 2px;
+                            border-radius: 3px;
+                            
+                            &.size {
+                                color: #aaaaaa;
+                                border: 1px solid #dfdfdf;
+                            }
+                            &.recommend {
+                                
+                            }
+                            &.hot {
+                                color: #ffffff;
+                                border: 1px solid #ED6F37;
+                                background:#ED6F37;
+                            }
+                            
+                            &.post {
+                                color: #ffffff;
+                                border: 1px solid #ceaff1;
+                                background: #ceaff1;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            .price {
+                color: #575757;
+                position: absolute;
+                top: 18%;
+                right: 5px;
+                font-size: 13px;
+                .unit {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .submit {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 14px;
+        background-color: #ffffff;
+        overflow: hidden;
+        color: #575757;
+        .price {
+            float: left;
+            width: calc(100% - 120px);
+            padding: 14px 0;
+            font-size: 14px;
+            text-indent: 10px;
+            span {
+                color: #ed6f37;
+                font-size: 16px;
+            }
+        }
+        .apply {
+            float: right;
+            width: 120px;
+            font-size: 14px;
+            padding: 15px 0;
+            background-color: #fed130;
+            text-align: center;
+        }
+    }
+}

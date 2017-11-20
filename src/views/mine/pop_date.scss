@@ -1,0 +1,68 @@
+.tm-mine-pop_date{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    .null {
+        background-color: rgba(0, 0, 0, 0.0);
+        height: 65%;
+    }
+    .time {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 35%;
+        background-color: #ffffff;
+        overflow-y: scroll;
+        .title {
+            overflow: hidden;
+            border-bottom: 1px solid #f0f0f0;
+            .name {
+                display: block;
+                font-size: 14px;
+                float: left;
+                color: #575757;
+                padding: 13px 0 13px 10px;
+            }
+            .confirm {
+                display: block;
+                font-size: 14px;
+                float: right;
+                color: #ed6f37;
+                padding: 13px 10px;
+            }
+        }
+         
+    }
+    .choice {
+        height: calc(100% - 41px);
+        overflow: hidden;
+        padding: 0 5%;
+        .years {
+            overflow: auto;
+            background-color: pink;
+            width: 30%;
+            float: left;
+            .each {
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+            }
+            .word {
+                 
+            }
+        }
+        .months {
+            background-color: aquamarine;
+            width: 30%;
+            float: left;
+        }
+        .days {
+            background-color: azure;
+            width: 30%;
+            float: left;
+        }
+    }
+}

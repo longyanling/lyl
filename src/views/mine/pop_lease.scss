@@ -1,0 +1,37 @@
+.tm-order-pop_lease {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    .null {
+        background-color: rgba(0, 0, 0, 0.0);
+        height: 30%;
+    }
+    .content {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 70%;
+        background-color: #fff;
+        overflow-y: scroll;
+        .title {
+            display: block;
+            color: #575757;
+            font-size: 14px;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 13px 0 13px 10px;
+        }
+        .time{
+            height: calc(100% - 41px);
+            overflow: auto;
+            .day{
+                text-align: center;
+                font-size: 13px;
+                border-bottom: 1px solid #f9f9f9;
+                padding: 11px 0;
+            }
+        }
+    }
+}

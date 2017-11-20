@@ -1,0 +1,71 @@
+$fontColorTitle: #333333;
+$fontColorContent: #5d5d5d;
+$fontColorToolbar: #333333;
+$fontColorActived: #fed030;
+
+$fontSizeCell: 16px;
+
+$imageCDNUrl: './';
+
+html, body {
+    background:#f0f0f0;
+}
+
+.tm-frame {
+    
+}
+
+.tm-page {
+    background:#f9f9f9;
+    z-index:10;
+}
+
+
+.tm-space {
+    display: block;
+    height: 48px;
+}
+.tm-loading {
+    display: block;
+    height:48px;
+    color:#969696;
+    margin-bottom:-48px;
+    background:#dcdcdc;
+}
+.tm-carticon {
+    display: none;
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.5);
+    z-index: 25;
+}
+
+@media only screen and ( -webkit-min-device-pixel-ratio: 2 ){
+    .tm-tabs {
+        border-top:0.5px solid #dfdfdf;
+    }
+}
+@-webkit-keyframes twinkling{  
+    0%{  
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.2);
+    }
+    100%{  
+        transform: scale(1);
+    }  
+}  
+@-webkit-keyframes blink{  
+    0%{  
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.5);
+    }
+    100%{  
+        transform: scale(1);
+    }  
+}  

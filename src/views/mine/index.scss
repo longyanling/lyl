@@ -1,0 +1,90 @@
+$fontColorCaption: #5d5d5d;
+$colorActived: #fed030;
+$imageCDNUrl: 'https://ts.zlimg.com/v2/h5/jd/';
+
+.tm-mine-index {
+    width: 100%;
+    height: calc(100vh);
+    background-color: #f0f0f0;
+    .heading {
+        height: 96px;
+        padding: 32px; 
+        background-image: url($imageCDNUrl + 'mine_back_user.png');
+        background-size: 100%;
+        
+        .header {
+            float: left;
+            display: block;
+            width: 96px;
+            height: 96px;
+            border-radius: 48px;
+            background-color: #ffffff;
+            background-image: url($imageCDNUrl + 'header_none.png');
+            background-size: 96px;
+            .img {
+                width: 96px;
+                height: 96px;
+                border-radius: 50%;
+            }
+        }
+        .nicksex {
+            display: block;
+            margin-top: 24px;
+            margin-left: 128px;
+            background-image: url($imageCDNUrl + 'icon_more_arrow.png');
+            background-position: right center;
+            background-size: 9px 15px;
+            background-repeat: no-repeat;
+            
+            em {
+                display: block;
+                height: 36px;
+                color: $fontColorCaption;
+                font-size: 18px;
+            }
+            
+            span {
+                display: block;
+                font-size: 14px;
+                
+                dfn {
+                    display: inline-block;
+                    color: #969696;
+                    padding-right: 6px;    
+                }
+            }
+        }
+    }
+    .main {
+        margin-top: 10px;
+        .sign {
+            width: 18px;
+            position: absolute;
+            top: 16px;
+            left: 10px;
+        }
+        .arrow {
+            width: 8px;
+            position: absolute;
+            top: 16px;
+            right: 10px;
+        }
+        var {
+            
+            font-size: 14px;
+            color: #575757;
+        }
+        .item {
+            height: 50px;
+            line-height: 50px;
+            text-indent: 33px;
+            background-color: #ffffff;
+            display: block;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+    }
+    .margin_top_10 {
+        margin-top: 10px;
+    }
+}

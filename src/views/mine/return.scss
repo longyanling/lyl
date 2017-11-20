@@ -1,0 +1,94 @@
+.tm-order-return {
+    width: 100%;
+    height: calc(100vh);
+    background-color: #ffffff;
+    .prompt {
+        padding: 13px 0;
+        text-indent: 10px;
+        background-color: #fdf1d2;
+        font-size: 13px;
+        color: #fd7846;
+        border-bottom: 1px solid #fd7846;
+    }
+    .main {
+        height: 80px;
+        border-bottom: 1px solid #b3b3b3;
+        .content {
+            display: block;
+            text-indent: 10px;
+            line-height: 22px;
+            font-size: 13px;
+            color: #888888;
+        }
+        .content:first-child{
+            padding-top: 7px;
+        }
+    }
+    .express{
+        overflow: hidden;
+        position: relative;
+        border-bottom: 1px solid #f0f0f0;
+        .company {
+            font-size: 15px;
+            float: left;
+            padding: 14px 0 14px 18px;
+        }
+        .name {
+            font-size: 15px;
+            float: right;
+            color: #b3b3b3;
+            padding: 14px 27px 14px 0;
+        }
+        .arrow {
+            font-size: 15px;
+            width: 7px;
+            position: absolute;
+            top: 15px;
+            right: 10px;
+        }
+    }
+    .numbers{
+        overflow: hidden;
+        font-size: 15px;
+        border-bottom: 1px solid #f0f0f0;
+        ::-webkit-input-placeholder {
+            color: #b3b3b3;
+        }
+        :-moz-placeholder {
+            color: #b3b3b3;
+        }
+        ::-moz-placeholder {
+            color: #b3b3b3;
+        }
+        :-ms-input-placeholder {
+            color: #b3b3b3;
+        }
+        .num {
+            font-size: 15px;
+            float: left;
+            padding: 14px 0 14px 18px;
+        }
+        .text {
+            float: right;
+            color: #b3b3b3;
+            font-size: 15px;
+            width: 50%;
+            height: 42px;
+            text-align: right;
+            margin-right: 27px;
+            border: none;
+        }
+    }
+    .submit {
+        font-size: 15px;
+        color: #575757;
+        position: fixed;
+        bottom: 5px;
+        left: 5%;
+        width: 90%;
+        background-color: #fed130;
+        border-radius: 5px;
+        padding: 12.5px 0 ;
+        text-align: center;
+    }
+}

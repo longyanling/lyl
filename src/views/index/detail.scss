@@ -1,0 +1,328 @@
+$fontColorCaption: #5d5d5d;
+$colorActived: #fed030;
+$imageCDNUrl: 'https://ts.zlimg.com/v2/h5/jd/';
+
+.tm-toy-detail {
+    
+    .infos {
+        display: block;
+        padding: 5px 0px;
+        background: #ffffff;
+        
+        .title {
+            display: block;
+            color: $fontColorCaption;
+            font-size: 18px;
+            line-height: 24px;
+            padding: 12px;
+        }
+        .price {
+            display: block;
+            color: #ff3300;
+            font-size: 14px;
+            padding: 0px 12px;
+            
+            dfn {
+                font-size: 18px;
+                font-family: tahoma;
+            }
+        }
+        .saleprice {
+            display: block;
+            color: #aaaaaa;
+            line-height: 18px;
+            padding: 12px;
+        }
+        .tags {
+            display: block;
+            padding:0px 12px 7px 12px;
+            
+            dfn {
+                display: inline-block;
+                line-height: 16px;
+                padding: 0px 2px;
+                border-radius: 3px;
+                
+                &.size {
+                    color: #aaaaaa;
+                    border: 1px solid #dfdfdf;
+                }
+                &.hot {
+                    color: #ffffff;
+                    border: 1px solid #ED6F37;
+                    background:#ED6F37;
+                }
+                
+                &.post {
+                    color: #ffffff;
+                    border: 1px solid #ceaff1;
+                    background: #ceaff1;
+                }
+                &.age {
+                    color: #aaaaaa;
+                }
+            }
+        }
+    }
+    .tabs {
+        display: block;
+        height: 38px;
+        padding: 5px 0;
+        margin-top: 10px;
+        border-top: 1px solid #f3f3f3;
+        border-bottom: 1px dotted #f3f3f3;
+        background: #ffffff;
+        
+        span {
+            width: calc(25% - 1px);
+            float: left;
+            display: block;
+            color: #5d5d5d;
+            font-size: 15px;
+            line-height: 38px;
+            text-align: center;
+            border-right: 1px solid #f3f3f3;
+        }
+        
+        .dock {
+            display: block;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 38px;
+            padding: 5px 0;
+            border-top: 1px solid #f3f3f3;
+            border-bottom: 1px dotted #f3f3f3;
+            background: #ffffff;
+            
+            &.hide {
+                display: none;
+            }
+        }
+    }
+    .content {
+        display: block;
+        padding: 0px;
+        background: #ffffff;
+        
+        .caption {
+            display: block;
+            height: 29px;
+            font-size: 14px;
+            line-height: 29px;
+            padding: 16px 16px 16px 36px;
+            background-image: url($imageCDNUrl + 'toy_para_icon.png');
+            background-size: 100px 29px;
+            background-position: 0px center;
+            background-repeat: no-repeat;
+        }
+        .box {
+            .child {
+                display: block;
+                font-size: 14px;
+                line-height: 17px;
+                padding: 0px 10px 0px 36px;
+                background-image: url($imageCDNUrl + 'toy_detail_icon.png');
+                background-size: 14px 13px;
+                background-position: 10px 2px;
+                background-repeat: no-repeat;
+                margin-bottom: 6px;
+            }
+            .child:last-child {
+                margin-bottom: 0px;
+            }
+        }
+        .main {
+            display: block;
+            
+            img {
+                width:100%;
+            }
+        }
+        
+        .detail {
+            display: block;
+            
+            img {
+                width:100%;
+            }
+        }
+    }
+    .params {
+        width: 100%;
+        background-color: #ffffff;
+        .parameter {
+            display: block;
+            padding: 9px 10px;
+            font-size: 14px;
+            color: #6e6e6e;
+            background-color: #f0f0f0;
+        }
+        .Explain {
+            display: block;
+            margin: 10px;
+            overflow: hidden;
+            .seed {
+                font-size: 14px;
+                color: #333333;
+                overflow: hidden;
+                em {
+                    float: left;
+                    width: 80px;
+                    display: block;
+                    padding: 7px 0;
+                    text-align: center;
+                    background-color: #fed030;
+                    border-right: 1px solid #ffffff;
+                    border-bottom: 1px solid #ffffff;
+                }
+                dfn {
+                    width: calc(100% - 81px);
+                    float: left;
+                    text-align: left;
+                    padding: 7px 0;
+                    text-indent: 10px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    background-color: rgba(254, 208, 48, 0.15);
+                    border-bottom: 1px solid #ffffff;
+                }
+            }
+        }
+    }
+    .ensure {
+        width: 100%;
+    }
+    .video {
+        width: 100%;
+    }
+    .desc {
+        width: 100%;
+        display: block;
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+        padding-top: 9px;
+        padding-bottom: 40px;
+    }
+    .guess {
+        margin-bottom: 45px;
+        overflow: hidden;
+        .header {
+            width: 100%;
+        }
+        .item {
+            float: left;
+            display: block;
+            position: relative;
+            width: 50%;
+            min-height: 1px;
+            background-color: #f0f0f0;
+            line-height: 1;
+            .shell {
+                float: left;
+                display: block;
+                margin-bottom: 5px;
+                background-color: #ffffff;
+                .thumb {
+                    display: block;
+                    background-color: #f0f0f0;
+                    margin: 5px;    
+                    img {
+                        width: 100%;
+                    }
+                }  
+                .title {
+                    display: block;
+                    height: 32px;
+                    font-size: 12px;
+                    color: #333333;
+                    text-align: left;
+                    line-height:16px;
+                    padding: 6px 6px 0px 6px;
+                } 
+                .cart {
+                    float: right;
+                    display: block;
+                    width: 52px;
+                    height: 52px;
+                    border: 0px;
+                    background-color: transparent;
+                    background-image: url($imageCDNUrl + 'home_joincart.png');
+                    background-size: 26px 26px;
+                    background-repeat:no-repeat;
+                    background-position: center center;
+                }
+                .price {
+                    display: block;
+                    height: 42px;
+                    color: #969696;
+                    text-align: left;
+                    padding: 5px 9px;
+                    margin-right: 56px;
+                                    
+                    dfn {
+                        display: block;
+                        color: #fed030;
+                        font-size: 16px;
+                        font-weight: bold;
+                        
+                        small {
+                            font-size: 12px;
+                            font-weight: normal;
+                        }
+                    }
+                    var {
+                        display: inline-block;
+                        height: 18px;
+                        color: #ffffff;
+                        font-size: 12px;
+                        line-height: 18px;
+                        padding: 0px 3px;
+                        margin-top:5px;
+                        border-radius: 3px;
+                        background: #ceaff1;
+                    }
+                }
+            }
+        }
+        .item:nth-of-type(odd) .shell{
+            margin-right: 2.5px;
+            margin-left: 5px;
+        }
+        .item:nth-of-type(even) .shell{
+            margin-left: 2.5px;
+            margin-right: 5px;
+        }
+    }
+    .button {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 45px;
+        .plusCart {
+            float:left;
+            display: block;
+            padding: 14.5px 0;
+            width: 50%;
+            color: #575757;
+            font-size: 16px;
+            text-align: center;
+            background-color: #fed030;
+        }
+        .robRent {
+            float: left;
+            display: block;
+            padding: 14.5px 0;
+            font-size: 16px;
+            width: 50%;
+            color: #ffffff;
+            text-align: center;
+            background-color: #fc7522;
+        }
+    }
+}
