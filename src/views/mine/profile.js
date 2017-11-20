@@ -9,18 +9,20 @@ var _default = (function(){
         name: 'cart-index',
         mounted: function(){
 
+			var self = this;
+			
 			MineAPI.profile({
 				uid : 73486241289
 			}, function( data ){
 				
 				if (data.code == 0 ){
-					
+					var babyInfo = data.data ? (data.data.babys ? (data.data.babys.length ? data.data.babys[0] : {}) : {} ) : {};
+					self.sex = babyInfo.babySex;
+					self.birthDate = babyInfo.birthDate;
 				} else {
-            		Toast.show('12341234');
+            		Toast.show( data.msg );
 				}
 			});
-			
-			Toast.show('12341234');
         },
         destoryed: function(){
 
@@ -28,7 +30,8 @@ var _default = (function(){
         data: function(){
             
             return {
-            	sex: 0
+            	sex: 0,
+            	birthDate: '' 
             };
         },
         methods: {
@@ -40,17 +43,10 @@ var _default = (function(){
             },
             saveChange: function(){
            
-                this.setCookie('ZL_UEC', 'Np0WxpPXx/U8Px8Tqbu+DZRXWlAdzCojtI5w/PGvu7I=', 10)
+                //	this.setCookie('ZL_UEC', 'Np0WxpPXx/U8Px8Tqbu+DZRXWlAdzCojtI5w/PGvu7I=', 10)
                 this.$router.push( '/mine' );
-            },
-            setCookie: function (cname, cvalue, exdays) {
-                var d = new Date();
-                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-                var expires = "expires=" + d.toUTCString();
-                console.info(cname + "=" + cvalue + "; " + expires);
-                document.cookie = cname + "=" + cvalue + "; " + expires;
-                console.info(document.cookie);
-            },
+                MineAPI.login();
+            }
         }
     }
 })();

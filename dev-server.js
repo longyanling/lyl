@@ -11,8 +11,23 @@ var server = new WebpackDevServer(compiler, {
     publicPath: config.output.publicPath,
     hot: true, 
     proxy: {
-        '/user/**' : {
+        '/user/profile/jdv2' : {
             target: 'http://192.168.199.80:8080/',
+            secure: false,
+            changeOrigin: true
+        },
+        '/user/profile' : {
+            target: 'http://dev.toysuperman.com/',
+            secure: false,
+            changeOrigin: true
+        },
+        '/user/profile/update' : {
+            target: 'http://dev.toysuperman.com/',
+            secure: false,
+            changeOrigin: true
+        },
+        '/user/login' : {
+            target: 'http://dev.toysuperman.com/',
             secure: false,
             changeOrigin: true
         },

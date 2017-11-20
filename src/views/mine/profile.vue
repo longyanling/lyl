@@ -14,7 +14,7 @@
     	    		<img class="selected" v-show="sex != 0" src="https://ts.zlimg.com/v2/h5/jd/base_selected.png"/>
     	    	</div>
     	    </div>
-    	    <div class="date" v-touch:tap="{event : cellHref,params : ['/mine/profile/date']}"><span>2017-10-01</span> <img src="https://ts.zlimg.com/v2/h5/jd/mine_icon_date.png"/></div>
+    	    <div class="date" v-touch:tap="{event : cellHref,params : ['/mine/profile/date']}"><span>{{birthDate}}</span> <img src="https://ts.zlimg.com/v2/h5/jd/mine_icon_date.png"/></div>
     	</div>
     	<div class="submit" v-on:click="saveChange();">确定</div>
     	<router-view></router-view>
