@@ -1,5 +1,6 @@
 'use strict';
 
+import Utils from '@/directives/utils'
 import Toast from '@/directives/toast'
 import MineAPI from "@/services/mine-service";
 
@@ -10,7 +11,9 @@ var _default = (function(){
         mounted: function(){
 
 			var self = this;
-			
+
+			console.log( this.$route.query );
+		
 			MineAPI.profile({
 				uid : 73486241289
 			}, function( data ){
@@ -18,7 +21,7 @@ var _default = (function(){
 				if (data.code == 0 ){
 					var babyInfo = data.data ? (data.data.babys ? (data.data.babys.length ? data.data.babys[0] : {}) : {} ) : {};
 					self.sex = babyInfo.babySex;
-					self.birthDate = babyInfo.birthDate;
+					self.birthDate = Utils.dateFormat( Utils.dateFromTicks(babyInfo.birthDate), 'yyyy-MM-dd');
 				} else {
             		Toast.show( data.msg );
 				}
@@ -36,9 +39,11 @@ var _default = (function(){
         },
         methods: {
             cellHref: function( e, url ){
-                this.$router.push( url );
+            	
+                this.$router.push( url + '?birthdate=' + this.birthDate );
             },
             selectSex: function( sex ){
+            	
             	this.sex = sex;
             },
             saveChange: function(){

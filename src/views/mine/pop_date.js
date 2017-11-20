@@ -1,3 +1,7 @@
+'use strict';
+
+import Utils from '@/directives/utils'
+
 var _default = (function(){
 
 	//	初始化日历选择器
@@ -64,6 +68,9 @@ var _default = (function(){
 			for (var i = 0; i < 12; i ++){
 				this.monthItems.push( i + 1 );
 			}
+        	
+        	this.birthDate = Utils.dateFromString( this.$route.query.birthdate );
+        	
         	yearList = document.getElementById('pop_date_year');
         	monthList = document.getElementById('pop_date_month');
         	dayList = document.getElementById('pop_date_day');
@@ -87,7 +94,7 @@ var _default = (function(){
         methods: {
             cellHref: function( e, url ){
         
-                this.$router.push( '/mine/profile' );
+                this.$router.push( '/mine/profile?birthdate=' + this.birthDate );
             },
             onDateScroll: function( type, e ){
             	
