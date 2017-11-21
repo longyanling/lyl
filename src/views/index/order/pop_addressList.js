@@ -2,10 +2,11 @@
 import Toast from '@/directives/toast';
 import mineAPI from "@/services/mine-service";
 
+
 var _default = (function(){
-    
+     
     return {
-        name: 'mine-addressList',
+        name: 'order-addressList',
         mounted: function(){
             var that = this;
         
@@ -22,7 +23,6 @@ var _default = (function(){
                         Toast.show(data.msg);
                     }
                 })
-            
         },
         destoryed: function(){
 
@@ -30,13 +30,16 @@ var _default = (function(){
         data: function(){
             
             return {
-                addressItem : [],
+                addressItem : [ ],
             };
         },
         methods: {
-            goToAddressAdd: function(){
+            deleteAddress : function () {
+                alert('亲确定要删除该地址吗？')
+            },
+            cellHref: function( e, url ){
         
-                this.$router.push( '/mine/addressAdd' );
+                this.$router.push( url );
             }
         }
     }

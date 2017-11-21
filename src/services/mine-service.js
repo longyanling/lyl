@@ -1,7 +1,7 @@
 'use strict';
 
 import Axios from 'axios';
-import Toast from '@/directives/toast'
+import Toast from '@/directives/toast';
 import MD5 from '@/directives/md5'
 
 var _default = (function(){
@@ -73,8 +73,8 @@ var _default = (function(){
 			httpPost(
 				'/user/login',
 				{
-					'phone': '15901135082',
-					'pwd': MD5('shenxu'),
+					'phone': '17610007876',
+					'pwd': MD5('a123456'),
 					'cityCode': '010'
 				}, 
 				callback);
@@ -111,10 +111,22 @@ var _default = (function(){
             
             httpGet('/order/express/list', data, callback);
         },
+        express : function( data, callback ){
+            
+            httpGet('order/express/companies', data, callback);
+        },
         addressList : function( data, callback ){
             
             httpGet('/address/list', data, callback);
-        }
+        },
+        buyCheck : function( data, callback ){
+            
+            httpPost('/order/buy/check', data, callback);
+        },
+        presubmit : function( data, callback ){
+            
+            httpPost('/order/presubmit', data, callback);
+        },
 			
 	};
 })();

@@ -1,5 +1,6 @@
 'use strict';
 import Vue from "vue";
+import Toast from '@/directives/toast';
 import mineAPI from "@/services/mine-service";
 
 var _default = (function(){

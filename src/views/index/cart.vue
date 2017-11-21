@@ -8,7 +8,7 @@
                     <em class="empty">清空</em>
                 </div>
                 <div class="list">
-                    <div class="content" v-for="item in shoppingItem.cart" v-touch:tap="{ event: goToToyDetail, params: ['/toy/detail'] }">
+                    <div class="content" v-for="item in shoppingItem.cart" v-touch:tap="{ event: goToToyDetail, params: [ ] }">
                         <div class="right">
                             <img class="toyImg" :src="item.image"/>
                             <img class="remind" v-show="item.sw" src="https://ts.zlimg.com/jd/toy_storage_warning.png"/>

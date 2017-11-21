@@ -1,20 +1,26 @@
 var _default = (function(){
-    var days = new Array();
-    for (var i = 9; i <= 60; i++) {
-        days.push(i);
-    };
     return {
         name: 'pop_lease',
         mounted: function(){
-
+            var that = this;
+            that.daysDefault = that.lease;
+            that.daysItem = new Array();
+            for (var i = that.lease.min; i <= that.lease.max; i++) {
+                that.daysItem.push(i);
+            };
+            console.log(that.lease)
         },
         destoryed: function(){
 
         },
+        props: [
+            'lease'
+        ], 
         data: function(){
             
             return {
-                daysItem : days,
+                daysDefault : [],
+                daysItem : [],
             };
         },
         methods: {

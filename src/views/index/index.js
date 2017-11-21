@@ -304,7 +304,6 @@ var _default = (function(){
 			    this.$router.push('/mine');
 			},
 			goToCart : function(){
-//			    console.log(1111);
                 this.$router.push('/index/cart');
             },
             goToLocation : function() {

@@ -13,7 +13,7 @@ var _default = (function(){
 			var self = this;
 			
 			MineAPI.profile({
-				uid : 73486241289
+				
 			}, function( data ){
 				
 				if (data.code == 0 ){

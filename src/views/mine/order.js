@@ -1,4 +1,5 @@
 'use strict';
+import Toast from '@/directives/toast';
 import mineAPI from "@/services/mine-service";
 
 var _default = (function(){

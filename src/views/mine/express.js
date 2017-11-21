@@ -1,7 +1,8 @@
 'use strict';
 import Vue from "vue";
-import Axios from 'axios';
 import Sort from "@/directives/sort";
+import Toast from '@/directives/toast';
+import mineAPI from "@/services/mine-service";
 
 var _default = (function(){
 
@@ -37,22 +38,20 @@ var _default = (function(){
                 return result;
             };
             
-            Axios.get('order/express/companies', {
+            mineAPI.express(
+                {
                 
-            })
-            .then(function (response) {
-                var data = response.data;
-                if (data.code == 0) {
-                    that.companyHotItem = data.data.companyHot;
-                    var express = data.data.companyList;
-                    that.companyListItem = pySort(express);
-                } else {
-                    console.log(results);
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });             
+                },
+                function (data) {
+                    if (data.code == 0) {
+                        that.companyHotItem = data.data.companyHot;
+                        var express = data.data.companyList;
+                        that.companyListItem = pySort(express);
+                    } else {
+                        Toast.show(data.msg);;
+                    }
+                })
+                  
         },
         destoryed: function(){
 

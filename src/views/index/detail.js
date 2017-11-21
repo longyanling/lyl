@@ -62,7 +62,7 @@ var _default = (function(){
 		    },
 		    goToConfirm : function (e,toyId) {
 		        
-		        this.$router.push('/mine/order/confirm');
+		        this.$router.push('/index/confirm');
 		    },
 			tabsScroll: function( e, docked ){
 				

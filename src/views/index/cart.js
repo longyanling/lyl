@@ -40,15 +40,15 @@ var _default = (function(){
         
                 this.$router.push( url );
             },
-            goToToyDetail : function(e, url){
-                this.$router.push( url );
+            goToToyDetail : function(){
+                this.$router.push('/index/detail' );
             },
 
             goToToy : function() {
                 this.$router.push('/index');
             },
             goToOrder : function() {
-                this.$router.push('/mine/order/confirm');
+                this.$router.push('/index/confirm');
             }
             
             

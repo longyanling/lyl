@@ -3,7 +3,7 @@
         <div class="coupons" v-for="item in couponItems">
         	<span class="main">
         	    <span class="money">
-        	    	<dfn>￥</dfn><em>{{item.couponMoney}}</em>
+        	    	<dfn>￥</dfn><em>{{item.couponMoney / 1000}}</em>
         	    </span>
         	    <span class="title">
         	        <em>{{item.couponContent}}</em>

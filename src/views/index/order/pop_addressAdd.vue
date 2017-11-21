@@ -1,6 +1,6 @@
 <template>
     <div id="order-addressAdd" class="tm-order-addressAdd">
-        <div class="null" v-touch:tap="{ event: cellHref, params: ['/mine/order/confirm'] }"></div>
+        <div class="null" v-touch:tap="{ event: cellHref, params: ['/index/confirm'] }"></div>
         <div class="main">
         	<div class="content">
                 <div class="name">
@@ -30,8 +30,8 @@
 </template>
 
 <script>
-    import  AddressAdd from '@/views/mine/pop_addressAdd.js';
-    import '@/views/mine/pop_addressAdd.scss';
+    import  POP_AddressAdd from '@/views/index/order/pop_addressAdd.js';
+    import '@/views/index/order/pop_addressAdd.scss';
     
-    export default AddressAdd;
+    export default POP_AddressAdd;
 </script>
