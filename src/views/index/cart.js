@@ -1,6 +1,8 @@
 'use strict';
 import Vue from 'vue';
-import Axios from 'axios';
+import Toast from '@/directives/toast';
+import Store from '@/directives/store';
+import indexAPI from "@/services/index-service";
 
 var _default = (function(){
      
@@ -9,20 +11,24 @@ var _default = (function(){
         mounted: function(){
             var self = this;
             
-            Axios.get('/cart/list', {
-                
-            })
-            .then(function (response) {
-                var data = response.data;
-                if (data.code == 0) {
-                    self.shoppingItem = data.data;
-                } else {
-                    console.log(results);
+            indexAPI.cartList(
+                {
+                    
+                },
+                function (data) {
+                    if (data.code == 0) {
+                        self.shoppingItem = data.data;
+                        self.cartToysItem = data.data.cart;
+                        var toysQueue = data.data.cart;
+                        toysQueue.forEach(function(toys){
+                            self.tidsItem.push(toys.toyId);
+                        })
+                    } else {
+                        Toast.show(data.msg);
+                    }
                 }
-            }.bind(this))
-            .catch(function (error) {
-                console.log(error);
-            });
+            );
+           
 
         },
         destoryed: function(){
@@ -31,8 +37,9 @@ var _default = (function(){
         data: function(){
            
             return {
-                shoppingItem : [ ],
-                          
+                shoppingItem : [],
+                cartToysItem : [],
+                tidsItem : []       
             };
         },
         methods: {
@@ -40,14 +47,59 @@ var _default = (function(){
         
                 this.$router.push( url );
             },
-            goToToyDetail : function(){
-                this.$router.push('/index/detail' );
+            goToToyDetail : function(e, toyId){
+                this.$router.push('/index/detail?toyid=' + toyId);
             },
-
+            deleteAllToys : function() {
+                this.shoppingItem = [];
+                var tidsJson = this.tidsItem.join(';');
+                indexAPI.cartClear(
+                    {
+                        tids : tidsJson
+                    },
+                    function (data) {
+                        if (data.code == 0) {
+                            this.shoppingItem = data.data;
+                            this.cartToysItem = data.data.cart;
+                            var toysCart = data.data.cart;
+                            toysCart.forEach(function(toys){
+                                this.tidsItem.push(toys.toyId);
+                            })
+                        } else {
+                            Toast.show(data.msg);
+                        }
+                    }
+                )
+                
+            },
+            deleteSoloToys : function(e, toyId) {
+                var that = this;
+                that.shoppingItem = [];
+                var tids = String(toyId);
+                indexAPI.cartClear(
+                    {
+                        tids : tids
+                    },
+                    function (data) {
+                        if (data.code == 0) {
+                            that.shoppingItem = data.data;
+                            that.cartToysItem = data.data.cart;
+                            var toyCart = data.data.cart;
+                            toyCart.forEach(function(toys){
+                                that.tidsItem.push(toys.toyId);
+                            })
+                        } else {
+                            Toast.show(data.msg);
+                        }
+                    }
+                )
+            },
             goToToy : function() {
                 this.$router.push('/index');
             },
             goToOrder : function() {
+                //在数据仓库中写入数据，在下单页面进行接收
+                Store.data = this.cartToysItem;
                 this.$router.push('/index/confirm');
             }
             

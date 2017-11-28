@@ -83,11 +83,11 @@
 	   
 	    <div class="guess">
 	    	<img class="header" src="https://ts.zlimg.com/v2/h5/jd/toy_detail_guessYouLike.png"/>
-	    	<span class="item" v-for="(item, index) in toysItem" v-touch:tap="{ event: goToyToyDetail, params: [] }">
-                <span class="shell">
+	    	<span class="item" v-for="(item, index) in toysItem">
+                <span class="shell" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
                     <span class="thumb"><img :src="item.image" /></span>
                     <span class="title"> {{item.toyName}} </span>
-                    <span class="cart" v-touch:tap=" { event: addCart, params: [] } "></span>
+                    <span class="cart" v-touch:tap=" { event: addCart, params: [ item.toyId ] } "></span>
                     <span class="price">
                         <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
                         <var v-show="item.canPostal">可邮寄 </var>
@@ -96,7 +96,7 @@
             </span>
 	    </div>
 	    <div class="button">
-	    	<span class="plusCart" v-touch:tap=" { event: addCart, params: [] } ">加入购物车</span>
+	    	<span class="plusCart" v-touch:tap=" { event: addCart, params: [ ] } ">加入购物车</span>
 	    	<span class="robRent" v-touch:tap=" { event: goToConfirm, params: [detailItem.toyId] } ">立即抢租</span>
 	    </div>
 	</div>

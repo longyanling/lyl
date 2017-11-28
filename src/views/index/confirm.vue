@@ -4,8 +4,8 @@
         	<div class="location" v-touch:tap="{event:cellHref,params:['/index/confirm/addressList']}">
                 <img class="clickable" src="https://ts.zlimg.com/v2/h5/jd/order_address_clickable.png"/>
                 <div class="main">
-                    <span class="content"><dfn class="name">{{addressItem.addressConsignee}}</dfn><dfn class="sex">{{addressItem.consigneeSex == 0 ? '先生' : '女士'}}</dfn><dfn>{{addressItem.consigneePhone}}</dfn></span>
-                    <span class="detail">{{addressItem.addressTotal}}</span>
+                    <span class="content"><dfn class="name">{{addressName}}</dfn><dfn class="sex">{{addressSex}}</dfn><dfn>{{addressPhone}}</dfn></span>
+                    <span class="detail">{{addressDetail}}</span>
                 </div>
                 <img class="entry" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
             </div>
@@ -16,7 +16,7 @@
                     <img class="arrow" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
                     <div class="opt">
                         <span class="frist">{{defaultTime}}</span>
-                        <span class="last color57">育儿师上门</span>
+                        <span class="last color57">{{defauitName}}</span>
                     </div>
                 </div>
                 <div class="delivery" v-touch:tap="{event:cellHref, params: ['/index/confirm/lease']}">
@@ -32,7 +32,7 @@
                     <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/order_coupon_clickable.png"/>
                     <span class="text">优惠券</span>
                     <img class="arrow" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
-                    <!--<span class="last" v-show="confirmItem.coupon && confirmItem.coupon.couponId != -1">{{confirmItem.coupon.displayName}}</span>-->
+                    <span class="last" v-show="confirmItem.coupon && confirmItem.coupon.couponId != -1">{{couponName}}</span>
                     <span class="last" v-show="confirmItem.coupon && confirmItem.coupon.couponId == -1">不使用优惠券</span>
                     <span class="last" v-show="!confirmItem.coupon">{{confirmItem.couponList && confirmItem.couponList.length ? '提高总租金以使用优惠' : '没有可用优惠券'}}</span>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="freight ho">
                     <em class="title">优惠</em>
-                    <var class="sum">￥{{confirmItem.rentDiscount ? confirmItem.rentDiscount/1000 : '0'}}</var>
+                    <var class="sum">-￥{{confirmItem.rentDiscount ? confirmItem.rentDiscount/1000 : '0'}}</var>
                 </div>
                 <div class="total ho">
                     <em class="title">合计</em>
@@ -90,10 +90,10 @@
                 </div>
                 <div class="submit">
                     <span class="price">物品总价值：<span>￥{{confirmItem.payMoney / 1000}}</span></span>
-                    <span class="apply" v-touch:tap="{event:cellHref, params: ['/mine/order']}">去支付</span>
+                    <span class="apply" v-touch:tap="{event:cellHref, params: ['/mine/order']}">京东支付</span>
                 </div>
             </div>
-            <router-view :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
+            <router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
         </div>
     </div>
 </template>

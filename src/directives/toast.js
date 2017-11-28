@@ -9,6 +9,7 @@ var toast = (function( ) {
 		toast.id = 'toast';
 		toast.style.display = 'none';
 		toast.style.position = 'fixed';
+		toast.style.zIndex = 9999;
 		toast.style.top = '50%';
 		toast.style.left = '50%';
 		toast.style.width = '160px';

@@ -1,6 +1,6 @@
 'use strict';
 import Toast from '@/directives/toast';
-import mineAPI from "@/services/mine-service";
+import indexAPI from "@/services/index-service";
 
 
 var _default = (function(){
@@ -10,19 +10,20 @@ var _default = (function(){
         mounted: function(){
             var that = this;
         
-            mineAPI.addressList(
+            indexAPI.addressList(
                 {
                     
                 },
                 function (data) {
-                    
                     if (data.code == 0) {
                         that.addressItem = data.data;
+                        console.log(that.addressItem)
                          
                     } else {
                         Toast.show(data.msg);
                     }
-                })
+                }
+            )
         },
         destoryed: function(){
 
@@ -34,8 +35,35 @@ var _default = (function(){
             };
         },
         methods: {
-            deleteAddress : function () {
-                alert('亲确定要删除该地址吗？')
+            addressIdSubmit : function(e, address){
+                this.$emit('resetAddressId', address);
+                this.$router.push( '/index/confirm' );
+            },
+            deleteAddress : function (e, addressId) {
+                var self = this;
+                indexAPI.addressDelete(
+                    {
+                        aid : addressId
+                    },
+                    function(data) {
+                        if(data.code == 0){
+                            indexAPI.addressList(
+                                {
+                                    
+                                },
+                                function (data) {
+                                    if (data.code == 0) {
+                                        self.addressItem = data.data;
+                                    } else {
+                                        Toast.show(data.msg);
+                                    }
+                                })
+                            Toast.show('删除地址成功');
+                        }else {
+                            Toast.show(data.msg);
+                        }
+                    }
+                )
             },
             cellHref: function( e, url ){
         

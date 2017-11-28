@@ -4,12 +4,12 @@
     	<div class="content">
     		<div class="title">
     		    <span class="name">配送信息</span>
-    		    <span class="confirm" v-touch:tap="{ event: cellHref, params: ['/index/confirm'] }">确定</span>
+    		    <span class="confirm" v-touch:tap="{ event: InfoDetermine, params: [] }">确定</span>
     		</div>
     	    <div class="mode">
     	    	<div class="bar"><div class="ins"></div>配送方式</div>
     	    	<div class="methods">
-                    <div class="method" v-for="item in methodsItem"  v-touch:tap="{ event: selectMode, params: [ item.value ]}" v-bind:class="item.value == modeIndex ? 'selected' : 'unselected'">
+                    <div class="method" v-for="(item, index) in methodsItem"  v-touch:tap="{ event: selectMode, params: [  item.value, item ]}" v-bind:class="item.value == modeIndex ? 'selected' : 'unselected'">
                         <em class="name">{{item.title}}</em>
                         <span class="price">运费：<var class="value">{{item.money / 1000}}元</var></span>
                         <span class="desc">{{item.desc}}</span>
@@ -21,7 +21,7 @@
     	    <div class="time">
     	    	<div class="bar"><div class="ins"></div>配送时间</div>
     	    	<div class="details">
-                    <div class="detail" v-for="(item, index) in daysItem" v-touch:tap="{ event: selectDay, params: [ index ]}" v-bind:class="index == dayIndex ? 'selected' : 'unselected'">
+                    <div class="detail" v-for="(item, index) in daysItem" v-touch:tap="{ event: selectDay, params: [ index, item ]}" v-bind:class="index == dayIndex ? 'selected' : 'unselected'">
                         <var class="month">{{item.year}}/{{item.month}}</var>
                         <var class="day">{{item.day}}</var>
                         <var class="week">{{item.week}}</var>

@@ -118,16 +118,7 @@ var _default = (function(){
         addressList : function( data, callback ){
             
             httpGet('/address/list', data, callback);
-        },
-        buyCheck : function( data, callback ){
-            
-            httpPost('/order/buy/check', data, callback);
-        },
-        presubmit : function( data, callback ){
-            
-            httpPost('/order/presubmit', data, callback);
-        },
-			
+        }
 	};
 })();
 

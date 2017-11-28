@@ -2,7 +2,7 @@
 	<div id="slide" class="tm-slide">
 		<table class="images" v-touch:drag="{ start: slideDragStart, move: slideDragMove, end: slideDragEnd }" :style="'width:'+(slideItems.length*100)+'%;margin-left:' + slideMarginLeft">
 			<tr>
-				<td v-for="(item, index) in slideItems"><img :src="item.url" /></td>
+				<td v-for="(item, index) in slideItems"><img :src="item.src" /></td>
 			</tr>
 		</table>
 		<span class="dots">

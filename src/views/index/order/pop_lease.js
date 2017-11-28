@@ -24,6 +24,11 @@ var _default = (function(){
             };
         },
         methods: {
+            SelectedDate : function( e, item ){
+                console.log(item);
+                this.$emit('resetDate', item);
+                this.$router.push( '/index/confirm' );
+            },
             cellHref: function( e, url ){
 
                 this.$router.push( url );

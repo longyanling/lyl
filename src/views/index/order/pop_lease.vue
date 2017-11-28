@@ -4,7 +4,7 @@
         <div class="content">
             <em class="title">租期</em>
             <div class="time">
-                <div class="day" v-for="item in daysItem" v-bind:class=" item == daysDefault.default ? 'selected' : 'unselected'">{{item}}天</div>
+                <div class="day" v-for="(item, index) in daysItem" v-touch:tap="{ event: SelectedDate, params: [ item ]}" v-bind:class=" item == daysDefault.default ? 'selected' : 'unselected'">{{item}}天</div>
             </div>
         </div>
     </div>
