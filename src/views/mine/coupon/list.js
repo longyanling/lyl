@@ -1,8 +1,7 @@
 'use strict';
 
-import Utils from '@/directives/utils'
-import Toast from '@/directives/toast'
-import MineAPI from "@/services/mine-service";
+import Utils from '@/directives/utils';
+import API from "@/services/api";
 
 var _default = (function(){
 
@@ -10,26 +9,12 @@ var _default = (function(){
         name: 'mine-coupon',
         mounted: function(){
 	        
-	        var self = this;
+	        var vm = this;
 	        
-	        MineAPI.coupon(function( data ){
+	        API.Mine.coupons(function(data){
 	        	
-	        	var coupons;
-	        	
-	        	if (data.code == 0){
-	        		
-	        		coupons = (data.data || {}).data || [];
-	        		
-	        		for(var i = 0; i<coupons.length; i++){
-	        			self.couponItems.push(coupons[i]);
-	        		}
-	        	} else {
-	        		Toast.show(data.msg);
-	        	}
+	        	vm.couponItems = (data.data || {}).data || [];
 	        });
-        },
-        destoryed: function(){
-
         },
         data: function(){
             
@@ -38,12 +23,16 @@ var _default = (function(){
             };
         },
         methods: {
-            goToToy: function(){
-        
-                this.$router.push( "/index" );
-            }
+        	go: function(e, url){
+        		
+        		this.$router.push(url);
+        	}
         },
         filters: {
+        	money: function(value){
+        		
+        		return Math.floor(value / 1000);
+        	},
         	surplus: function (value) {
         		
         		return Math.floor((Utils.dateFromTicks(value) - new Date()) / 24 / 3600 / 1000);

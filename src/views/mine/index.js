@@ -1,6 +1,7 @@
 'use strict';
+
 import Toast from '@/directives/toast';
-import mineAPI from "@/services/mine-service";
+import API from "@/services/api";
 
 var _default = (function(){
 
@@ -8,48 +9,62 @@ var _default = (function(){
 		name: 'mine-index',
 		mounted: function(){
 			
-			var self = this;
-        
-        	mineAPI.profile(
-        		{ 
-        			uid : 73486241289 
-        		}, 
-        		function( data ){
-
-	                if (data.code == 0) {
-	                    self.userInfoItem = data.data.user;
-	                    self.babyInfoItem = data.data.babys[0];
-	                    
-	                     
-	                } else {
-	                    Toast.show(data.msg);
-	                }
-	        	});
-		},
-		destoryed: function(){
+			var vm = this;
 			
+			API.Mine.profile(function(data){
+				
+				vm.userInfo = data.data.user || {};
+				vm.babyInfo = data.data.babys && data.data.babys.length ? data.data.babys[0] : {};
+			});
 		},
 		data: function(){
 
             return {
-                userInfoItem : [],
-                babyInfoItem : [],
+                userInfo: {},
+                babyInfo: {},
+                userMenus: [
+                	{
+                		text: '我的订单',
+                		url: '/mine/order/list',
+                		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_order.png'
+                	},
+                	{
+                		text: '我的优惠券',
+                		url: '/mine/coupon/list',
+                		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_coupon.png'
+                	}
+                ],
+                systemMenus: [
+                	{
+                		text: '常用地址',
+                		url: '/mine/address/list',
+                		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_address.png'
+                	},
+                	{
+                		text: '常见问题',
+                		url: '/mine/faq',
+                		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_problem.png'
+                	},
+                	{
+                		text: '关于我们',
+                		url: '/mine/about',
+                		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_omine.png'
+                	}
+                ]
             };
 		},
 		methods: {
-		    goToProfile : function (){
-		        this.$router.push('/mine/profile');
-		    },
-		    goToOrder : function (){
-		        this.$router.push('/mine/order');
-		    },
-		    goToCoupon : function (){
-		        this.$router.push('/mine/coupon');
-		    },
-		    goToAddressList : function (){
-                this.$router.push('/mine/AddressList');
-            }
-			
+			go: function(e, url){
+				
+				this.$router.push(url);
+			},
+			login: function(){
+				
+				API.Mine.login(function(data){
+					
+					console.log(data);
+				});
+			}
 		}
 	}
 })();

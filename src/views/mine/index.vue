@@ -1,39 +1,33 @@
 <template>
 	<div id="mine-index" class="tm-mine-index">
 		<div class="heading">
-			<span class="header"><img class="img" :src="userInfoItem.avatar"/></span>
-			<span class="nicksex" v-touch:tap="{ event : goToProfile, params : [ ]}">
-				<em>{{userInfoItem.nickName}}</em>
-				<span><dfn>{{babyInfoItem.ageStr}}</dfn> <dfn>{{babyInfoItem.sexStr}}</dfn></span>
+			<span class="avatar"><img :src="userInfo.avatar" class="image" /></span>
+			<span class="info" v-touch:tap="{ event : go, params : [ '/mine/profile' ]}">
+				<em class="nick">{{userInfo.nickName}}</em>
+				<var class="age-sex">
+					<dfn>{{babyInfo.ageStr}}</dfn>
+					<dfn>{{babyInfo.sexStr}}</dfn>
+				</var>
 			</span>
 		</div>
-		<div class="main">
-		    <span class="item" v-touch:tap="{ event : goToOrder, params : [ ]}">
-                <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/mine_order.png"/>
-                <var>我的订单</var>
-                <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png"/>
-            </span>
-			<span class="item" v-touch:tap="{ event : goToCoupon, params : [ ]}">
-			    <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/mine_coupon.png"/>
-			    <var>我的优惠券</var>
-			    <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png"/>
-			</span>
-			<span class="item margin_top_10" v-touch:tap="{ event : goToAddressList, params : [ ]}">
-                <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/mine_address.png"/>
-                <var>常用地址</var>
-                <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png"/>
-            </span>
-            <span class="item" v-touch:tap="{ event : goToCoupon, params : [ ]}">
-                <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/mine_problem.png"/>
-                <var>常见问题</var>
-                <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png"/>
-            </span>
-            <span class="item" v-touch:tap="{ event : goToCoupon, params : [ ]}">
-                <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/mine_omine.png"/>
-                <var>关于我们</var>
-                <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png"/>
-            </span>
+		<div class="cells">
+			<div class="group">
+			    <span class="item" v-for="item in userMenus" v-touch:tap="{ event : go, params : [ item.url ]}">
+	                <img class="icon" :src="item.icon"/>
+	                <var class="text">{{item.text}}</var>
+	                <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png" />
+	            </span>
+            </div>
+			<div class="group">
+			    <span class="item" v-for="item in systemMenus" v-touch:tap="{ event : go, params : [ item.url ]}">
+	                <img class="icon" :src="item.icon"/>
+	                <var class="text">{{item.text}}</var>
+	                <img class="arrow" src="https://ts.zlimg.com/ap/home_button_entry.png" />
+	            </span>
+            </div>
 		</div>
+		
+		<a v-touch:tap="{ event : login, params : [ ]}" style="display:block; line-height:36px; text-align:center; ">登录</a>
 	</div>
 </template>
 

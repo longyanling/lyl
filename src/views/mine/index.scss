@@ -1,49 +1,47 @@
-$fontColorCaption: #5d5d5d;
-$colorActived: #fed030;
-$imageCDNUrl: 'https://ts.zlimg.com/v2/h5/jd/';
+$cdnImageUrl: 'https://ts.zlimg.com/v2/h5/jd/';
 
 .tm-mine-index {
     width: 100%;
-    height: calc(100vh);
-    background-color: #f0f0f0;
+    
     .heading {
         height: 96px;
         padding: 32px; 
-        background-image: url($imageCDNUrl + 'mine_back_user.png');
+        background-image: url($cdnImageUrl + 'mine_back_user.png');
         background-size: 100%;
         
-        .header {
+        .avatar {
             float: left;
             display: block;
             width: 96px;
             height: 96px;
             border-radius: 48px;
             background-color: #ffffff;
-            background-image: url($imageCDNUrl + 'header_none.png');
+            background-image: url($cdnImageUrl + 'header_none.png');
             background-size: 96px;
-            .img {
+            
+            .image {
                 width: 96px;
                 height: 96px;
                 border-radius: 50%;
             }
         }
-        .nicksex {
+        .info {
             display: block;
             margin-top: 24px;
             margin-left: 128px;
-            background-image: url($imageCDNUrl + 'icon_more_arrow.png');
+            background-image: url($cdnImageUrl + 'icon_more_arrow.png');
             background-position: right center;
             background-size: 9px 15px;
             background-repeat: no-repeat;
             
-            em {
+            .nick {
                 display: block;
                 height: 36px;
-                color: $fontColorCaption;
+                color: #5d5d5d;
                 font-size: 18px;
             }
             
-            span {
+            .age-sex {
                 display: block;
                 font-size: 14px;
                 
@@ -55,36 +53,49 @@ $imageCDNUrl: 'https://ts.zlimg.com/v2/h5/jd/';
             }
         }
     }
-    .main {
-        margin-top: 10px;
-        .sign {
-            width: 18px;
-            position: absolute;
-            top: 16px;
-            left: 10px;
-        }
-        .arrow {
-            width: 8px;
-            position: absolute;
-            top: 16px;
-            right: 10px;
-        }
-        var {
-            
-            font-size: 14px;
-            color: #575757;
-        }
-        .item {
-            height: 50px;
-            line-height: 50px;
-            text-indent: 33px;
+    .cells {
+        
+        .group {
+            padding:0px 5px 0px 12px;
+            margin-top: 10px;
+            border: 1px solid #e5e5e5;
+            border-left: 0px;
+            border-right: 0px;
             background-color: #ffffff;
-            display: block;
-            position: relative;
-            border-bottom: 1px solid #f0f0f0;
+         
+            .item {
+                display: block;
+                height:44px;
+                border-bottom: 1px solid #f0f0f0;
+            
+                .icon {
+                    float: left; 
+                    display: block;
+                    width:20px;
+                    height:20px;
+                    margin:12px 12px 12px 0px;
+                }
+                
+                .text {
+                    float: left;
+                    display: block;
+                    color: #575757;
+                    font-size: 14px;
+                    line-height:44px;
+                }
+                
+                .arrow {
+                    float:right;
+                    display:block;
+                    width:7px;
+                    height:12.5px;
+                    margin: 14px 7px 14px 14px;
+                }
+                
+                &:last-child {
+                    border-bottom:0px;
+                }
+            }
         }
-    }
-    .margin_top_10 {
-        margin-top: 10px;
     }
 }

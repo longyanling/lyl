@@ -1,0 +1,28 @@
+.controls {
+    display:block;
+    
+    &.fixed {
+        position:fixed;
+        left:0px;
+        right:0px;
+        bottom:0px;
+        padding:15px;        
+    }
+    
+    .button {
+        display: block;
+        height: 42px;
+        color: #fed030;    
+        font-size:15px;
+        text-align:center;
+        line-height: 42px; 
+        border-radius: 5px;
+        border: 1px solid #fed030;
+        background: #ffffff;
+        
+        &.submit {
+            color: #575757;
+            background:#fed030;
+        }   
+    }
+}
