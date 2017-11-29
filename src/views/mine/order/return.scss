@@ -1,0 +1,86 @@
+.tm-mine-order-return {
+    
+    .form {
+        margin-top:10px;
+        border-top:1px solid #f0f0f0;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .cell {
+            display:block;
+            height:44px;
+            color:#575757;
+            font-size:14px;
+            line-height:44px;
+            margin:0px 5px 0px 12px;
+            border-bottom:1px solid #f0f0f0;
+            
+            em {
+                float: left;
+                display: block;
+                width:80px;
+                height: 44px;
+            }
+            
+            dfn {
+                display:block;
+                text-align:right;
+                padding-right:12px;
+                margin-left: 80px; 
+                
+                input {
+                    width:100%;
+                    height:42px;
+                    font-size:14px;
+                    text-align:right;
+                    border:0px;
+                }
+                
+                &.arrow {
+                    padding-right: 16px;
+                    margin-right:7px;
+                    background-image:url('https://ts.zlimg.com/v2/h5/jd/icon_cell_arrow.png');
+                    background-repeat: no-repeat;
+                    background-position: right center;
+                    background-size: 6.5px 11.5px;
+                }
+            }
+            
+            &:last-child {
+                border-bottom:0px;
+            }
+        }
+    }
+    .tips {
+        display:block;
+        height:36px;
+        color:#b3b3b3;
+        line-height:36px;
+        padding:0px 12px;
+    }
+    .address {
+        display: block;
+        padding:5px 9px;
+        margin: 0px 12px;
+        border: 1px solid #ecd18c;
+        border-radius:5px;
+        background:#fdf1d2;
+        
+        em {
+            display:block;
+            line-height:24px;
+            
+            var {
+                float:left;
+                display:block;
+                width:64px;
+                height:24px;
+                color: #d6ae47;
+            }
+        }
+    }
+    .controls {
+        display:block;
+        padding:15px;
+    }
+}

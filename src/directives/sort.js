@@ -56,4 +56,33 @@ function formatSpell(str) {
     return mkRslt(arrResult);
 };
 
+formatSpell.pinyin = function(arr,empty){
+	
+	if(!String.prototype.localeCompare) {
+		return null;
+	}
+	var zh ="啊把差大额发噶哈*级卡啦吗那哦爬器然撒他**哇西呀咋".split('');
+	var letters ="ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
+	var curr, result = [];
+	
+	for ( var i = 0;i < letters.length ; i++ ){
+		curr = {letter: letters[i], data:[]};
+		if (i!=26){
+			for (var j = 0;j <arr.length;j++){
+				var initial = formatSpell(arr[j].name.charAt(0));
+				if (initial == letters[i] || initial == letters[i].toLowerCase()){
+					curr.data.push(arr[j]);
+				}
+			}
+		}
+		if(empty || curr.data.length) {
+			result.push(curr);
+			curr.data.sort(function(a,b){
+				return b.name.localeCompare(a);
+			});
+		}
+	}
+	return result;
+};
+
 export default formatSpell;

@@ -30,10 +30,6 @@
 
 <style lang="scss">
 	
-	$fontColorCaption: #5d5d5d;
-	$colorActived: #fed030;
-	$imageCDNUrl: 'https://ts.zlimg.com/v2/h5/jd/';
-	
     .tm-search {
         position: fixed;
         top:0px;
@@ -52,7 +48,7 @@
             white-space: nowrap;
             border:0px;
             border-radius: 5px;
-            background-color:$colorActived;
+            background-color: #fed030;
             transition: width 240ms ease-in;
         }
         
@@ -66,7 +62,7 @@
             border: 0px solid #ffffff;
             border-radius: 5px;
             background: #ffffff;
-            background-image: url($imageCDNUrl + 'icon_search_text.png');
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/icon_search_text.png');
             background-size: 12px 12px;
             background-position: 12px center;
             background-repeat: no-repeat;

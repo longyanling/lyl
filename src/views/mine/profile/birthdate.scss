@@ -1,0 +1,44 @@
+.tm-mine-profile-birthdate { 
+    position: fixed;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+   
+    .titlebar {
+        position: fixed;
+        left:0px;
+        right:0px;
+        bottom:196px;
+        height:44px;
+        border-bottom: 1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .text {
+            float: left;
+            display: block;
+            color: #575757;
+            font-size: 14px;
+            line-height:41px;
+            padding:0px 10px;
+        }
+        .submit {
+            float: right;
+            display: block;
+            color: #ed6f37;
+            font-size: 14px;
+            line-height:41px;
+            padding:0px 10px;
+        }
+    }
+    .picker {
+        position:fixed;
+        left:0px;
+        right:0px;
+        bottom:0px;
+        height:196px;
+        background:#ffffff;
+    }
+}

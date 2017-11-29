@@ -1,0 +1,214 @@
+.tm-mine-order-details {
+    
+    .heading {
+        display:block;
+        height: 90px;
+        margin-top: 10px;
+        border-top:1px solid #f0f0f0;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .icon {
+            float: left;
+            display: block;
+            height: 20px;
+            padding: 35px 9px 35px 15px;
+        }
+        .info {
+            display: block;
+            height: 78px;
+            color: #B3B3B3;
+            font-size: 14px;
+            line-height:26px;
+            padding: 6px 0px;
+            margin-left: 54px;
+        
+            em {
+                display: block;
+                height:26px;
+                
+                var {
+                    float:left;
+                    display:block;
+                    width:80px;
+                    height:26px;
+                }
+                dfn {
+                    float:left;
+                    display:block;
+                    height:26px;
+                    color: #575757;
+                }
+                strong {
+                    float:left;
+                    display:block;
+                    height:26px;
+                    color: #ED6F37;
+                }
+            }
+        }
+    }
+    .group {
+        display:block;
+        padding:0px 5px 0px 12px;
+        margin-top: 10px;
+        border-top:1px solid #f0f0f0;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .multi {
+            display:block;
+            border-bottom:1px solid #f0f0f0;
+            
+            .icon {
+                float:left;
+                display: block;
+                height: 20px;
+                padding: 22px 12px 22px 0px;
+            }
+            .text {
+                display: block;
+                min-height: 48px;
+                font-size:14px;
+                line-height:24px;
+                padding:8px 0px;
+                margin-left:42px;
+                
+                em {
+                    display: block;
+                    color: #575757;
+                    
+                    ins {
+                        color:#b3b3b3;
+                        text-decoration: none;
+                    }
+                    
+                    small {
+                        color: #B3B3B3;
+                    }
+                }
+            }
+            
+            &:last-child {
+                border-bottom: 0px;;
+            }
+        }
+        
+        .single {
+            display:block;
+            height: 44px;
+            font-size:14px;
+            line-height:44px;
+            border-bottom:1px solid #f0f0f0;
+            
+            em {
+                float:left;
+                display:block;
+                height:44px;
+                
+                small{
+                    color:#b3b3b3;
+                }
+            }
+            
+            dfn {
+                float:right;
+                display:block;
+                height:44px;
+                padding-right:7px;
+                
+                &.total {
+                    color: #ed6f37;
+                }
+            }
+            
+            &:last-child {
+                border-bottom: 0px;;
+            }
+        }
+    }
+    .toys{
+        display:block;
+        margin-top: 10px;
+        margin-bottom: 56px;
+        border-top:1px solid #f0f0f0;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .caption {
+            display:block;
+            height: 44px;
+            font-size: 14px;
+            line-height:44px;
+            background-color: #ffffff;
+            
+            ins {
+                float: left;
+                display:block;
+                width: 4px;
+                height: 32px;
+                margin:6px 0px;
+                background: #fed130;
+            }
+            em{
+                float: left;
+                display:block;
+                padding: 0px 10px;
+            }
+            dfn{
+                float: right;
+                display:block;
+                color: #ed6f37;
+                padding: 0px 12px;
+                
+                small {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    
+    .toolbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 44px;
+        text-align:right;
+        padding:0px 6px;
+        border-top:1px solid #f0f0f0;
+        background-color: #ffffff;
+
+        .link {
+            display: inline-block;
+            height:32px;
+            color:#969696;
+            line-height: 32px;
+            padding:0px 5px;
+            margin: 6px 0px;
+        }
+        
+        .button {
+            display: inline-block;
+            height: 30px;
+            color: #575757;
+            line-height: 30px;
+            padding: 0px 9px;
+            margin: 6px 0px;
+            border:1px solid #dfdfdf;
+            border-radius:5px;
+            background:#ffffff;
+            
+            &.circle{
+                color: #575757;
+                border:1px solid #fed130;
+            }
+            
+            &.submit {
+                color: #575757;
+                border:1px solid #fed130;
+                background-color: #fed130;
+            }
+        }
+    }
+}

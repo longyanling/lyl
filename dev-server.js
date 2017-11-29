@@ -12,7 +12,7 @@ var server = new WebpackDevServer(compiler, {
     hot: true, 
     proxy: {
         '/user/profile/jdv2' : {
-            target: 'http://192.168.199.80:8080/',
+            target: 'http://dev.toysuperman.com/',
             secure: false,
             changeOrigin: true
         },

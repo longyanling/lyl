@@ -1,30 +1,30 @@
 import Mine from "@/views/mine/index.vue";
-import MineProfile from "@/views/mine/profile.vue";
-import MineProfileDate from "@/views/mine/pop_date.vue";
-import MineOrder from "@/views/mine/order.vue";
-import MineCoupon from "@/views/mine/coupon.vue";
-import MineAddressAdd from "@/views/mine/addressAdd.vue";
-import MineAddressList from "@/views/mine/addressList.vue";
-import MineOrderDetails from "@/views/mine/details.vue";
-import MineOrderExpress from "@/views/mine/express.vue";
-import MineOrderLogistics from "@/views/mine/logistics.vue";
-import MineOrderReturn from "@/views/mine/return.vue";
+import Profile from "@/views/mine/profile/profile.vue";
+import ProfileBirthdate from "@/views/mine/profile/birthdate.vue";
+import Order from "@/views/mine/order/list.vue";
+import OrderDetails from "@/views/mine/order/details.vue";
+import OrderLogistics from "@/views/mine/order/logistics.vue";
+import OrderReturn from "@/views/mine/order/return.vue";
+import OrderExpress from "@/views/mine/order/express.vue";
+import Coupon from "@/views/mine/coupon/list.vue";
+import Address from "@/views/mine/address/list.vue";
+import AddressEdit from "@/views/mine/address/edit.vue";
 
 export default {
 	routes: [
 		{ path: '/mine', name: 'Mine', component: Mine },
-		{ path: '/mine/coupon', name: 'MineCoupon', component: MineCoupon },
-		{ path: '/mine/addressAdd', name: 'MineAddressAdd', component: MineAddressAdd },
-        { path: '/mine/addressList', name: 'MineAddressList', component: MineAddressList },
-		{ path: '/mine/profile', name: 'MineProfile', component: MineProfile ,
+		{ path: '/mine/profile', name: 'Profile', component: Profile,
 		    children: [
-                { path: '/mine/profile/date', component: MineProfileDate }
+                { path: '/mine/profile/birthdate', component: ProfileBirthdate }
             ]
         },
-        { path: '/mine/order', name: 'MineOrder', component: MineOrder },
-        { path: '/mine/order/details', name: 'MineOrderDetails', component: MineOrderDetails },
-        { path: '/mine/order/express', name: 'MineOrderExpress', component: MineOrderExpress },
-        { path: '/mine/order/logistics', name: 'MineOrderLogistics', component: MineOrderLogistics },
-        { path: '/mine/order/return', name: 'MineOrderReturn', component: MineOrderReturn }
+        { path: '/mine/order', name: 'Order', component: Order },
+        { path: '/mine/order/details', name: 'OrderDetails', component: OrderDetails },
+        { path: '/mine/order/return', name: 'OrderReturn', component: OrderReturn },
+        { path: '/mine/order/express', name: 'OrderExpress', component: OrderExpress },
+        { path: '/mine/order/logistics', name: 'OrderLogistics', component: OrderLogistics },
+		{ path: '/mine/coupon', name: 'Coupon', component: Coupon },
+        { path: '/mine/address', name: 'Address', component: Address },
+		{ path: '/mine/address/edit', name: 'AddressEdit', component: AddressEdit }
     ]
 }

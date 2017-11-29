@@ -64,6 +64,20 @@ a, input, button, img {
     }
 }
 
+button:focus, input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+}
+    
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+   color:#C9C9C9;
+}
+　
 .clearfix {
     clear:both;
     display:block;
