@@ -1,5 +1,6 @@
 'use strict';
 import Toast from '@/directives/toast';
+import Store from '@/directives/store';
 import indexAPI from "@/services/index-service";
 
 
@@ -65,9 +66,9 @@ var _default = (function(){
                     }
                 )
             },
-            cellHref: function( e, url ){
-        
-                this.$router.push( url );
+            addNewAddress: function( e, item ){
+                Store.address = item;
+                this.$router.push( '/index/confirm/addressAdd' );
             }
         }
     }

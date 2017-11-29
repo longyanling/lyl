@@ -73,8 +73,10 @@ var _default = (function(){
             httpPost(
                 '/user/login',
                 {
-                    'phone': '17610007876',
-                    'pwd': MD5('a123456'),
+//                  'phone': '17610007876',
+//                  'pwd': MD5('a123456'),
+                    'phone' : '15901135082',
+                    'pwd' : MD5('shenxu'),
                     'cityCode': '010'
                 }, 
                 callback);
@@ -114,6 +116,14 @@ var _default = (function(){
             
             httpGet( '/address/list', data, callback);
         },
+        addressInsert : function( data, callback){
+
+            httpPost( 'gd/insert', data, callback);
+        },
+        addressUpdata : function( data, callback){
+
+            httpPost( 'gd/updata', data, callback);
+        },
         buyCheck : function( data, callback ){
             
             httpPost( '/order/buy/check', data, callback);
@@ -126,6 +136,10 @@ var _default = (function(){
             
             httpPost( '/address/delete', data, callback);
         },
+        submit : function( data, callback ){
+            
+            httpPost( 'order/submit', data, callback);
+        }
             
     };
 })();

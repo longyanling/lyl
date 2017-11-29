@@ -96,8 +96,8 @@
             </span>
 	    </div>
 	    <div class="button">
-	    	<span class="plusCart" v-touch:tap=" { event: addCart, params: [ ] } ">加入购物车</span>
-	    	<span class="robRent" v-touch:tap=" { event: goToConfirm, params: [detailItem.toyId] } ">立即抢租</span>
+	    	<span class="plusCart" v-touch:tap=" { event: addCart, params: [] } ">加入购物车</span>
+	    	<span class="robRent" v-touch:tap=" { event: goToConfirm, params: [] } ">立即抢租</span>
 	    </div>
 	</div>
 </template>

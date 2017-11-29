@@ -26,7 +26,7 @@ import Vue from "vue";
 	})();
 	
 	//	绑定事件
-	var touchEventAdd = function(el,handler,capture){
+	var touchEventAdd = function(el, handler, capture){
         	
         el.addEventListener(touchEventType.start, handler.start, capture);
         el.addEventListener(touchEventType.move, handler.move, capture);
@@ -35,7 +35,7 @@ import Vue from "vue";
     };
     
     //	解除绑定事件
-    var touchEventRemove = function(el,handler){
+    var touchEventRemove = function(el, handler){
     	
         el.removeEventListener(touchEventType.start, handler.start);
         el.removeEventListener(touchEventType.move, handler.move);
@@ -97,7 +97,7 @@ import Vue from "vue";
         return  {
             start: function(e){
             	
-            	//	初始化变量
+            	//  初始化变量
                 var key = this['vue-touch-id'];
                 var data = touchSpace[key][type];
                 var modifiers = data.modifiers;
@@ -121,7 +121,7 @@ import Vue from "vue";
                 	method['start'].apply(e, [e].concat(data.params));
                 }
                 
-                //	如果是长按，则通过定时器实现
+                //  如果是长按，则通过定时器实现
                 if (type === 'holdtap'){
                     if (data.timer) {
                     	clearTimeout(data.timer);

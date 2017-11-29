@@ -8,7 +8,6 @@ var _default = (function(){
             for (var i = that.lease.min; i <= that.lease.max; i++) {
                 that.daysItem.push(i);
             };
-            console.log(that.lease)
         },
         destoryed: function(){
 
@@ -25,7 +24,6 @@ var _default = (function(){
         },
         methods: {
             SelectedDate : function( e, item ){
-                console.log(item);
                 this.$emit('resetDate', item);
                 this.$router.push( '/index/confirm' );
             },

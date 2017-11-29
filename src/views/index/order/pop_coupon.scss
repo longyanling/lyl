@@ -27,8 +27,7 @@ $imageCDNUrl: "https://ts.zlimg.com/v2/h5/jd/";
         }
         .notUse {
             display: block;
-            width: 90%;
-            margin: 10px 5%;
+            margin: 10px;
             background-color: #fff;
             border-radius: 3px;
             text-align: center;
@@ -44,12 +43,11 @@ $imageCDNUrl: "https://ts.zlimg.com/v2/h5/jd/";
             }
         }
         .coupons {
+            display: block;
             height: 98px;
-            width: 90%;
-            margin: 10px 5% 0px 5% ;
+            margin: 10px 10px 0px 10px ;
             border-radius: 3px;
             position: relative;
-            background-image: url($imageCDNUrl + "coupon_background_selected.png");
             background-size: auto;
             .main {
                 height: 65px;
@@ -61,8 +59,7 @@ $imageCDNUrl: "https://ts.zlimg.com/v2/h5/jd/";
                     display: inline-block;
                     height: 65px;
                     line-height: 65px;
-                    padding-left: 10px;
-                    color: #ed6f37;
+                    margin-left: 10px;
                     dfn {
                         font-size: 17px;
                     }
@@ -72,7 +69,7 @@ $imageCDNUrl: "https://ts.zlimg.com/v2/h5/jd/";
                     }
                 }
                 .box {
-                    width: 40%;
+                    width: 50%;
                     float: left;
                     display: block;
                     height: 65px;
@@ -99,15 +96,8 @@ $imageCDNUrl: "https://ts.zlimg.com/v2/h5/jd/";
                 .use {
                     position: absolute;
                     right: 10px;
-                    top: 20px;
-                    color: #ed6f37;
-                    display: block;
-                    font-size: 13px;
-                    width: 62px;
-                    text-align: center;
-                    padding: 7px 0;
-                    border-radius: 3px;
-                    border: 1px solid #ed6f37;
+                    top: 30px;
+                    width: 15px;
                 }
             }
             .validity {
@@ -117,17 +107,39 @@ $imageCDNUrl: "https://ts.zlimg.com/v2/h5/jd/";
                 em {
                     float: left;
                     font-size: 11px;
-                    color: #ed6f37;
                     padding: 10px 0 10px 10px; 
                 }
                 dfn {
                     float: right;
                     font-size: 11px;
-                    color: #575757;
                     padding: 10px 10px 10px 0; 
                 }
             }
         }
 
+    }
+    .optional {
+        color: #575757;
+    }
+    .notOptional {
+        color: #b3b3b3;
+    }
+    .backgroundOptional {
+        background-image: url($imageCDNUrl + "coupon_background_selected.png");
+    }
+    .backgroundnotOptional {
+        background-image: url($imageCDNUrl + "coupon_background_unselected.png");
+    }
+    .moneyOptional {
+        color: #ed6f37;
+    }
+    .moneyNotOptional {
+        color: #b3b3b3;
+    }
+    .contentOptional {
+        color: #333333;
+    }
+    .contentNotOptional {
+        color: #b3b3b3;
     }
 }

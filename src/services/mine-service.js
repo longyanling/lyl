@@ -73,8 +73,10 @@ var _default = (function(){
 			httpPost(
 				'/user/login',
 				{
-					'phone': '17610007876',
-					'pwd': MD5('a123456'),
+//					'phone': '17610007876',
+//					'pwd': MD5('a123456'),
+                    'phone' : '15901135082',
+                    'pwd' : MD5('shenxu'),
 					'cityCode': '010'
 				}, 
 				callback);

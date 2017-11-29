@@ -32,8 +32,8 @@
                     <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/order_coupon_clickable.png"/>
                     <span class="text">优惠券</span>
                     <img class="arrow" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
-                    <span class="last" v-show="confirmItem.coupon && confirmItem.coupon.couponId != -1">{{couponName}}</span>
-                    <span class="last" v-show="confirmItem.coupon && confirmItem.coupon.couponId == -1">不使用优惠券</span>
+                    <span class="last" v-show="confirmItem.coupon && defaultCoupon != -1">{{couponName}}</span>
+                    <span class="last" v-show="confirmItem.coupon && defaultCoupon == -1">不使用优惠券</span>
                     <span class="last" v-show="!confirmItem.coupon">{{confirmItem.couponList && confirmItem.couponList.length ? '提高总租金以使用优惠' : '没有可用优惠券'}}</span>
                 </div>
             </div>
@@ -89,11 +89,11 @@
                     </div>
                 </div>
                 <div class="submit">
-                    <span class="price">物品总价值：<span>￥{{confirmItem.payMoney / 1000}}</span></span>
-                    <span class="apply" v-touch:tap="{event:cellHref, params: ['/mine/order']}">京东支付</span>
+                    <span class="price">物品总价值：<span>￥{{confirmItem.payMoney ? confirmItem.payMoney / 1000 : '0'}}</span></span>
+                    <span class="apply" v-touch:tap="{event:payment, params: []}">京东支付</span>
                 </div>
             </div>
-            <router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
+            <router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" @resetCoupon="setCoupon" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
         </div>
     </div>
 </template>

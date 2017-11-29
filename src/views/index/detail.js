@@ -1,6 +1,7 @@
 'use strict';
 import Vue from 'vue';
 import Toast from '@/directives/toast';
+import Store from '@/directives/store';
 import indexAPI from "@/services/index-service";
 import Slide from '@/components/slide.vue'
 
@@ -9,8 +10,6 @@ var _default = (function(){
 		name: 'toy-detail', 
 		mounted: function(){
 			var self = this;
-        
-            console.log(self.$route.query.toyid);
             indexAPI.toyDetail(
                 {
                     tid : self.$route.query.toyid ,
@@ -21,8 +20,7 @@ var _default = (function(){
                         self.slideItems = data.data.headers;
                         for (var i = 0; i<self.slideItems.length;i++){
                             self.slideItems[i]['src'] =self.slideItems[i]['image'] ;
-                        }
-                        console.log(self.slideItems)
+                        };
                         self.toyAbilityItem = data.data.intro[0];
                         self.toyFeatureItem = data.data.intro[1];
                         self.toyShowItem = data.data.intro[2];
@@ -55,8 +53,8 @@ var _default = (function(){
 		},
 		methods: {
 		    addCart : function (e, toyId) {
+		        
 		        toyId = (toyId == undefined ? this.detailItem.toyId : toyId);
-		        console.log(toyId)
 		        indexAPI.cartAdd(
                     {
                         tid : toyId
@@ -71,6 +69,7 @@ var _default = (function(){
                 );
 		    },
 		    goToToyDetail: function(e, toyId){
+		        
 		        var that = this;
 		        that.detailItem = [];
                 that.toyAbilityItem = [];
@@ -78,7 +77,6 @@ var _default = (function(){
                 that.slideItems = [];
                 that.toyShowItem = [];
                 that.toyDetailsItem = [];
-		        console.log(toyId)
                 indexAPI.toyDetail(
                     {
                         tid : toyId ,
@@ -89,8 +87,7 @@ var _default = (function(){
                             that.slideItems = data.data.headers;
                             for (var i = 0; i<that.slideItems.length;i++){
                                 that.slideItems[i]['src'] =that.slideItems[i]['image'] ;
-                            }
-                            console.log(that.slideItems)
+                            };
                             that.toyAbilityItem = data.data.intro[0];
                             that.toyFeatureItem = data.data.intro[1];
                             that.toyShowItem = data.data.intro[2];
@@ -102,8 +99,10 @@ var _default = (function(){
                     }
                 );
             },
-		    goToConfirm : function (e,toyId) {
-		        
+		    goToConfirm : function ( ) {
+                var toys = new Array();
+                toys.push(this.detailItem);
+		        Store.data = toys;
 		        this.$router.push('/index/confirm');
 		    },
 			tabsScroll: function( e, docked ){

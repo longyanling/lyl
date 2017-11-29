@@ -8,11 +8,11 @@
                 <span class="set">
                     <em class="default" v-show="index == 0"><img class="selected_orange" src="https://ts.zlimg.com/v2/h5/jd/base_selected_orange.png"/><dfn>默认地址</dfn></em>
                      <span class="edit" v-touch:tap="{event: deleteAddress , params:[ item.addressId ]}"><img src="https://ts.zlimg.com/v2/h5/jd/address_delete.png"/><dfn>删除</dfn></span>
-                    <span class="edit" v-touch:tap="{event: cellHref , params:[ '/index/confirm/addressAdd' ]}"><img src="https://ts.zlimg.com/v2/h5/jd/address_edit.png"/><dfn>编辑</dfn></span>
+                    <span class="edit" v-touch:tap="{event: addNewAddress , params:[ item ]}"><img src="https://ts.zlimg.com/v2/h5/jd/address_edit.png"/><dfn>编辑</dfn></span>
                 </span>
             </div>
         </div>
-        <div class="add" v-touch:tap="{event:cellHref,params:['/index/confirm/addressAdd']}">添加新地址</div>
+        <div class="add" v-touch:tap="{event: addNewAddress,params:[ ]}">添加新地址</div>
     </div>
 </template>
 
