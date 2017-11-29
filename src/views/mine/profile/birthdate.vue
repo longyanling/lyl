@@ -11,8 +11,8 @@
 </template>
 
 <script>
-    import ProfileDate from '@/views/mine/profile/birthdate.js'
+    import Birthdate from '@/views/mine/profile/birthdate.js'
     import '@/views/mine/profile/birthdate.scss'
     
-    export default ProfileDate;
+    export default Birthdate;
 </script>

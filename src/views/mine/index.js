@@ -13,8 +13,8 @@ var _default = (function(){
 			
 			API.Mine.profile(function(data){
 				
-				vm.userInfo = data.data.user || {};
-				vm.babyInfo = data.data.babys && data.data.babys.length ? data.data.babys[0] : {};
+				vm.userInfo = data.data ? (data.data.user || {}) : {};
+				vm.babyInfo = data.data ? (data.data.babys && data.data.babys.length ? data.data.babys[0] : {}) : {};
 			});
 		},
 		data: function(){
@@ -25,19 +25,19 @@ var _default = (function(){
                 userMenus: [
                 	{
                 		text: '我的订单',
-                		url: '/mine/order/list',
+                		url: '/mine/order',
                 		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_order.png'
                 	},
                 	{
                 		text: '我的优惠券',
-                		url: '/mine/coupon/list',
+                		url: '/mine/coupon',
                 		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_coupon.png'
                 	}
                 ],
                 systemMenus: [
                 	{
                 		text: '常用地址',
-                		url: '/mine/address/list',
+                		url: '/mine/address',
                 		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_address.png'
                 	},
                 	{

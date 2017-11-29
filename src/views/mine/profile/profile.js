@@ -1,7 +1,6 @@
 'use strict';
 
 import Utils from '@/directives/utils';
-import Toast from '@/directives/toast';
 import API from '@/services/api';
 
 var _default = (function(){

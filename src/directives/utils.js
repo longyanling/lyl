@@ -18,11 +18,23 @@ var utils = (function(){
 		
 		fromString: function(date){
 			
-			var dates = date.split('-');
-			if(dates.length==3){
-				return new Date(parseInt(dates[0], 10), parseInt(dates[1], 10), parseInt(dates[2], 10));
+			var datepart = /[0-9]{2,4}-[0-9]{1,2}-[0-9]{1,2}/.exec(date);
+			var timepart = /[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/.exec(date);
+			var datearray, year, month, day;
+			var timearray, hour, minute, second;
+			if (datepart.length){
+				datearray = datepart[0].split('-');
+				year = parseInt(datearray[0], 10);
+				month = parseInt(datearray[1], 10);
+				day = parseInt(datearray[2], 10);
 			}
-			return new Date();
+			if (timepart.length){
+				timearray = timepart[0].split(':');
+				hour = parseInt(timearray[0], 10);
+				minute = parseInt(timearray[1], 10);
+				second = parseInt(timearray[2], 10);
+			}
+			return new Date(year,month,day,hour,minute,second );
 		},
 		
 		fromTicks: function(ticks){

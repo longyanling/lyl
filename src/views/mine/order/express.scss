@@ -1,0 +1,74 @@
+$cdnImageUrl: 'https://ts.zlimg.com/v2/h5/jd/';
+
+.tm-mine-order-express {
+    
+    .search {
+        display:block;
+        position: fixed;
+        top:0px;
+        left:0px;
+        right:0px;
+        height:36px;
+        padding:4px;
+        border-bottom:1px solid #f0f0f0;
+        background:#f3f3f3;
+        
+        .keyword {
+            display: block;
+            height: 36px;
+            color: #969696;
+            font-size:14px;
+            line-height: 36px;
+            padding: 0px 0px 0px 32px;
+            margin: 0px 0px 0px 0px;
+            border: 0px solid #ffffff;
+            border-radius: 5px;
+            background: #ffffff;
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/icon_search_text.png');
+            background-size: 12px 12px;
+            background-position: 12px center;
+            background-repeat: no-repeat;
+            
+            input {
+                width: 100%;
+                padding: 0px;
+                margin: 0px;
+                border: 0px;
+            }
+        }
+    }
+    
+    .datalist {
+        margin-top:55px;
+        margin-bottom:15px;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .caption {
+            display: block;
+            height:32px;
+            color:#969696;
+            font-size:12px;
+            font-weight:normal;
+            line-height:32px;
+            padding:0px 10px;
+            border-top:1px solid #f0f0f0;
+            border-bottom:1px solid #f0f0f0;
+            background:#fcfcfc;
+        }
+        .item {
+            display: block;
+            height: 44px;
+            color: #575757;
+            font-size: 14px;
+            line-height: 44px;
+            margin:0px 5px 0px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            
+            &:last-child {
+                border-bottom: 0px;
+            }
+        }
+    }
+    
+}

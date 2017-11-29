@@ -22,8 +22,8 @@
 </template>
 
 <script>
-    import Coupon from '@/views/mine/coupon/list.js';
+    import List from '@/views/mine/coupon/list.js';
     import '@/views/mine/coupon/list.scss';
 
-    export default Coupon;
+    export default List;
 </script>

@@ -47,9 +47,8 @@
             display:block;
             padding:0px 7px;
             margin-top:10px;
-            border:1px solid #f0f0f0;
-            border-left:0px;
-            border-right:0px;
+            border-top:1px solid #f0f0f0;
+            border-bottom:1px solid #f0f0f0;
             background: #ffffff;
             
             .caption {
@@ -76,62 +75,13 @@
             }
             .toylist {
                 
-                .toyitem {
-                    height: 68px;
-                    margin-bottom:1px;
-                    background-color: #f9f9f9;
-                    
-                    .thumb {
-                        float: left;
-                        display: block;
-                        width: 96px;
-                    }
-                    .info {
-                        display: block;
-                        margin-left: 105px;
-                        
-                        .title {
-                            display: block;
-                            overflow: hidden;
-                            color: #575757;
-                            font-size: 14px;
-                            white-space: nowrap;
-                            text-overflow: ellipsis;
-                            padding-top: 7px;
-                        }
-                        .age {
-                            display: block;
-                            font-size: 12px;
-                            color: #b3b3b3;
-                            padding-top:7px;
-                        }
-                    }
-                    .price {
-                        float:right;
-                        display:block;
-                        color:#575757;
-                        font-size:14px;
-                        text-align:right;
-                        padding-top:21px;
-                        padding-right:12px;
-                        
-                        small {
-                            display:block;
-                            color:#969696;
-                            font-size:12px;
-                            font-weight: normal;
-                            margin-top:5px;
-                        }
-                    }
-                }
             }
             .expand {
-                display:block;
-                height: 24px;
+                display: block;
                 color: #b3b3b3;
                 font-size: 14px;
                 text-align: center;
-                line-height: 24px;;
+                padding-bottom: 5px;
             }
             .total {
                 display:block;

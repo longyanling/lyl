@@ -1,20 +1,26 @@
 'use strict';
-import mineAPI from "@/services/mine-service";
+
+import API from "@/services/api";
 
 var _default = (function(){
-    
+
     return {
-        name: 'mine-addressAdd',
+        name: 'details',
         mounted: function(){
-
-        },
-        destoryed: function(){
-
+        	
+            var vm = this;
+            
+            API.Mine.orderDetail({
+            	orderId : this.$route.query.order_id
+            }, function(data){
+            	
+            	vm.orderInfo = data.data;
+            });
         },
         data: function(){
             
             return {
-                
+                orderInfo : [],
             };
         },
         methods: {

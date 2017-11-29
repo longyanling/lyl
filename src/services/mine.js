@@ -41,11 +41,43 @@ var mine = {
 		}, 1);
 	},
 	
+	orderDetail: function(data, callback){
+		
+		setTimeout(function(){
+			
+			Utils.Axios.post('/order/detail', data, callback);
+		}, 1);
+	},
+	
+	express: function(callback){
+            
+		setTimeout(function(){
+			
+			Utils.Axios.post('/order/express/companies', {}, callback);
+		}, 1);
+    },
+    
+    logistics: function( data, callback ){
+           
+		setTimeout(function(){
+			
+			Utils.Axios.post('/order/express/list', data, callback);
+		}, 1); 
+    },
+	
 	coupons: function(callback){
 		
 		setTimeout(function(){
 			
 			Utils.Axios.post('/coupon/list', { }, callback);
+		}, 1);
+	},
+	
+	address: function(callback){
+		
+		setTimeout(function(){
+			
+			Utils.Axios.post('/address/list', { }, callback);
 		}, 1);
 	}
 };
