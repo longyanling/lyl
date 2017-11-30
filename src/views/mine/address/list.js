@@ -12,7 +12,7 @@ var _default = (function(){
         
         	API.Mine.address(function(data){
         		
-        		vm.addressItems = data.data || {};
+        		vm.addressItems = data;
         	});
         },
         data: function(){

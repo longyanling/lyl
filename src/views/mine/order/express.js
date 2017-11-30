@@ -1,6 +1,6 @@
 'use strict';
 
-import Sort from "@/directives/sort";
+import Sortor from "@/directives/sortor";
 import API from "@/services/api";
 
 var _default = (function(){
@@ -14,7 +14,7 @@ var _default = (function(){
             API.Mine.express(function(data){
             	
             	vm.hotItems = data.data.companyHot || [];
-            	vm.listItems = Sort.pinyin(data.data.companyList || []);
+            	vm.listItems = Sortor.pinyin(data.data.companyList || []);
             });
         },
         data: function(){

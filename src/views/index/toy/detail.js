@@ -7,7 +7,7 @@ import Slide from '@/components/slide.vue'
 
 var _default = (function(){
 	return {
-		name: 'toy-detail', 
+		name: 'Detail', 
 		mounted: function(){
 			var self = this;
             indexAPI.toyDetail(

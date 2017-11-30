@@ -13,7 +13,7 @@
         .clickable {
             float: left;
             width: 16px;
-            margin: 27px 10px 0 10px;
+            margin: 27px 10px 0 12px;
         }
         .main {
             float: left;
@@ -54,7 +54,7 @@
         .sign {
             float: left;
             width: 16px;
-            margin: 16px 10px 0 10px;
+            margin: 16px 10px 0 0;
         }
         .text {
             float: left;
@@ -64,7 +64,7 @@
         .arrow {
             float: right;
             width: 8px;
-            margin: 15.5px 10px 0 10px;
+            margin: 15.5px 5px 0 10px;
         }
         .opt {
             float: right;
@@ -86,12 +86,16 @@
             }
         }
         .delivery {
+            display: block;
+            margin: 0 5px 0 12px;
             height: 45px;
             border-bottom: 1px solid #f0f0f0;
             overflow: auto;
         }
         .coupon {
             height: 45px;
+            display: block;
+            margin: 0 5px 0 12px;
             border-bottom: 1px solid #f0f0f0;
             overflow: auto;
             .last {
@@ -111,22 +115,25 @@
         .title{
             float: left;
             font-size: 13px;
-            padding: 10.5px 0 10.5px 10px;
+            padding: 13px 0;
         }
         .prompt {
             float: left;
             color: #b3b3b3;
             font-size: 12px;
-            padding: 11.5px 0 11.5px 5px;
+            padding: 14px 0 14px 5px;
         }
         .sum {
             float: right;
             font-size: 13px;
-            padding: 10.5px 0;
+            padding: 13px 0;
         }
         .ho {
+            display: block;
+            margin-left: 12px;
+            margin-right: 5px;
             overflow: auto;
-            padding-right: 10px;
+            padding-right: 5px;
             border-top: 1px solid #f0f0f0
         }
         .colorb3 {
@@ -140,7 +147,7 @@
         background-color: #ffffff;
         .title{
             float: left;
-            padding: 15.5px 0 15.5px 10px;
+            padding: 15.5px 0 15.5px 12px;
         }
         .prompt {
             float: left;
@@ -186,83 +193,21 @@
                 }
             }
         }
-        .list {
-            width: 100%;
-            background-color: #f9f9f9;
-            .content {
-                overflow: hidden;
-                position: relative;
-                border-bottom: 1px solid #f0f0f0;
-                .toyImg {
-                    float: left;
-                    width: 30%;
-                    margin: 20px 2% 20px 10px;
-                }
-                .remind {
-                    height: 14px;
-                }
-                .texts {
-                    float: left;
-                    .toyName {
-                        color: #575757;
-                        padding-top: 21%;
-                        font-size: 14px;
-                        text-overflow: ellipsis;
-                        display: -webkit-box;
-                        -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 1;
-                        overflow: hidden;
-                    }
-                    .toyAge {
-                        display: block;
-                        margin-top: 10%;
-                        font-size: 12px;
-                        color: #888888;
-                    }
-                    .labels {
-                        margin-top: 12%;
-                        dfn {
-                            display: inline-block;
-                            line-height: 16px;
-                            padding: 0px 2px;
-                            border-radius: 3px;
-                            
-                            &.size {
-                                color: #aaaaaa;
-                                border: 1px solid #dfdfdf;
-                            }
-                            &.recommend {
-                                
-                            }
-                            &.hot {
-                                color: #ffffff;
-                                border: 1px solid #ED6F37;
-                                background:#ED6F37;
-                            }
-                            
-                            &.post {
-                                color: #ffffff;
-                                border: 1px solid #ceaff1;
-                                background: #ceaff1;
-                            }
-                            
+        .itemtoys {
+            padding: 0 10px;
+            background-color: #ffffff;
+            .toylist {
+                .toyitem {
+                    .info {
+                        .title {
+                            background-color: #f9f9f9;
                         }
                     }
                 }
             }
-            .price {
-                color: #575757;
-                position: absolute;
-                top: 18%;
-                right: 5px;
-                font-size: 13px;
-                .unit {
-                    font-size: 12px;
-                }
-            }
         }
     }
-    .submit {
+    .submitpay {
         position: fixed;
         bottom: 0;
         left: 0;
@@ -291,4 +236,5 @@
             text-align: center;
         }
     }
+
 }

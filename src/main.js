@@ -2,7 +2,6 @@ import Vue from "vue";
 import Router from '@/routes/routes';
 import Touch from "@/directives/touch";
 import Scroll from "@/directives/scroll";
-import Sort from "@/directives/sort";
 import Frame from "@/frame.vue";
 import Axios from 'axios';
 import '@/clear.scss';

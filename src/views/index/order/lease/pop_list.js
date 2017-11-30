@@ -1,6 +1,6 @@
 var _default = (function(){
     return {
-        name: 'pop_lease',
+        name: 'Lease',
         mounted: function(){
             var that = this;
             that.daysDefault = that.lease;

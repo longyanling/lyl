@@ -13,7 +13,7 @@ var _default = (function(){
 	        
 	        API.Mine.coupons(function(data){
 	        	
-	        	vm.couponItems = (data.data || {}).data || [];
+	        	vm.couponItems = data;
 	        });
         },
         data: function(){

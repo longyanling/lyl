@@ -1,14 +1,14 @@
 import Index from "@/views/index/index.vue";
-import Cart from "@/views/index/cart.vue";
-import ToyDetail from "@/views/index/detail.vue";
-import Location from "@/views/index/location.vue";
-import Search from "@/views/index/search.vue";
-import Confirm from "@/views/index/confirm.vue";
-import ConfirmAddressAdd from "@/views/index/order/pop_addressAdd.vue";
-import ConfirmAddressList from "@/views/index/order/pop_addressList.vue";
-import ConfirmDistribution from "@/views/index/order/pop_distribution.vue";
-import ConfirmLease from "@/views/index/order/pop_lease.vue";
-import ConfirmCoupon from "@/views/index/order/pop_coupon.vue";
+import Cart from "@/views/index/cart/list.vue";
+import ToyDetail from "@/views/index/toy/detail.vue";
+import Location from "@/views/index/location/list.vue";
+import Search from "@/views/index/search/search.vue";
+import Confirm from "@/views/index/order/confirm.vue";
+import ConfirmCoupon from "@/views/index/order/coupon/pop_list.vue";
+import ConfirmAddress from "@/views/index/order/address/pop_list.vue";
+import ConfirmAddressEdit from "@/views/index/order/address/pop_edit.vue";
+import ConfirmDistribution from "@/views/index/order/distribution/pop_list.vue";
+import ConfirmLease from "@/views/index/order/lease/pop_list.vue";
 
 export default {
 	routes: [
@@ -22,11 +22,11 @@ export default {
 		{ path: '/index/detail', name: 'ToyDetail', component: ToyDetail },
 		{ path: '/index/confirm', name: 'Confirm', component: Confirm ,
             children: [
-                { path: '/index/confirm/addressAdd', component: ConfirmAddressAdd },
-                { path: '/index/confirm/addressList', component: ConfirmAddressList },
+                { path: '/index/confirm/coupon', component: ConfirmCoupon },
+                { path: '/index/confirm/address', component: ConfirmAddress },
+                { path: '/index/confirm/address/edit', component: ConfirmAddressEdit },
                 { path: '/index/confirm/distribution', component: ConfirmDistribution },
-                { path: '/index/confirm/lease', component: ConfirmLease },
-                { path: '/index/confirm/coupon', component: ConfirmCoupon }
+                { path: '/index/confirm/lease', component: ConfirmLease }
             ]
         },
     ]

@@ -118,11 +118,11 @@ var _default = (function(){
         },
         addressInsert : function( data, callback){
 
-            httpPost( 'gd/insert', data, callback);
+            httpPost( '/address/gd/insert', data, callback);
         },
         addressUpdata : function( data, callback){
 
-            httpPost( 'gd/updata', data, callback);
+            httpPost( '/address/gd/update', data, callback);
         },
         buyCheck : function( data, callback ){
             

@@ -1,5 +1,5 @@
 <template>
-    <div id="toy-location" class="tm-toy-location">
+    <div id="location" class="tm-index-location">
         <em class="title">定位城市</em>
         <div class="main">
             <var>定位失败</var> 
@@ -17,8 +17,8 @@
 </template>
 
 <script>
-    import Location from '@/views/index/location.js'
-    import '@/views/index/location.scss'
+    import Location from '@/views/index/location/list.js'
+    import '@/views/index/location/list.scss'
     
     export default Location;
 </script>

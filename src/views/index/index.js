@@ -1,7 +1,7 @@
 'use strict';
 import Slide from '@/components/slide.vue'
 import Toast from '@/directives/toast';
-import Sort from "@/directives/sort";
+import Sortor from "@/directives/sortor";
 import indexAPI from "@/services/index-service";
 
 var _default = (function(){
@@ -12,34 +12,6 @@ var _default = (function(){
 		mounted: function(){
             var that = this;
 
-            //排序
-            function pySort(arr,empty){
-                var $this = this;
-                if(!String.prototype.localeCompare)return null;
-                var letters ="ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
-                var zh ="啊把差大额发噶哈*级卡啦吗那哦爬器然撒他**哇西呀咋".split('');
-                var result = [];
-                var curr;
-                for( var i = 0;i < letters.length ; i++ ){
-                    curr = {letter: letters[i], data:[]};
-                    if(i!=26){
-                        for(var j = 0;j <arr.length;j++){
-                            var initial = Sort(arr[j].brandName.charAt(0));
-                            if(initial == letters[i] || initial == letters[i].toLowerCase()){
-                                curr.data.push(arr[j]);
-                            }
-                        }
-                    }
-                    if(empty || curr.data.length) {
-                        result.push(curr);
-                        curr.data.sort(function(a,b){
-                            return b.brandName.localeCompare(a);
-                        });
-                    }
-                }
-                return result;
-            };
-        
         
         //请求接口：
             //首页banner接口
@@ -137,7 +109,7 @@ var _default = (function(){
                         //品牌
                         that.brandHotItem = data.data.brand.hot;
                         var brandAll = data.data.brand.all;
-                        that.brandAllItem = pySort(brandAll);
+                        that.brandAllItem = Sortor.pinyin(brandAll);
                         //能力
                         that.abilityItemOne = data.data.ability.slice(0,9);
                         that.abilityItemTwo = data.data.ability.slice(9,18),

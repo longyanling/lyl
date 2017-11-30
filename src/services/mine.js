@@ -1,6 +1,7 @@
 'use strict';
 
 import MD5 from '@/directives/md5';
+import Store from '@/directives/store';
 import Utils from '@/directives/utils';
 
 var mine = {
@@ -67,19 +68,67 @@ var mine = {
 	
 	coupons: function(callback){
 		
-		setTimeout(function(){
-			
-			Utils.Axios.post('/coupon/list', { }, callback);
-		}, 1);
+        if (Store.Mine.coupons){
+            callback(Store.Mine.coupons);
+        } else {
+            setTimeout(function(){
+                
+                Utils.Axios.post('/coupon/list', { }, function(data){
+                    
+                    if (data.code == 0 ){
+                        Store.Mine.coupons = data.data && data.data.data ? data.data.data : [];
+                        callback(Store.Mine.coupons);   
+                    } else {
+                        console.log('请求失败');
+                    }
+                });
+            }, 1);
+        }
 	},
 	
 	address: function(callback){
 		
-		setTimeout(function(){
-			
-			Utils.Axios.post('/address/list', { }, callback);
-		}, 1);
-	}
+		if (Store.Mine.address){
+		    callback(Store.Mine.address);
+		} else {
+    		setTimeout(function(){
+    			
+    			Utils.Axios.post('/address/list', { }, function(data){
+    			    
+    			    if (data.code == 0 ){
+                        Store.Mine.address = data.data || [];
+                        callback(Store.Mine.address);   
+    			    } else {
+    			        console.log('请求失败');
+    			    }
+    			});
+    		}, 1);
+		}
+	},
+	
+	addressDelete : function( data, callback ){
+            
+        setTimeout(function(){
+            
+            Utils.Axios.post('/address/delete', data, callback);
+        }, 1);
+    },
+	
+	addressInsert : function( data, callback ){
+            
+        setTimeout(function(){
+            
+            Utils.Axios.post('/address/gd/insert', data, callback);
+        }, 1);
+    },
+    
+    addressUpdata : function( data, callback ){
+            
+        setTimeout(function(){
+            
+            Utils.Axios.post('/address/gd/update', data, callback);
+        }, 1);
+    }
 };
 
 export default mine;

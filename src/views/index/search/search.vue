@@ -25,8 +25,8 @@
 
 <script>
 	
-	import Search from '@/views/index/search.js'
-	import '@/views/index/search.scss'
+	import Search from '@/views/index/search/search.js'
+	import '@/views/index/search/search.scss'
 	
 	export default Search;
 	

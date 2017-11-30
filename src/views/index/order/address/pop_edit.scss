@@ -1,0 +1,32 @@
+.tm-order-address-add {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    .addressBox {
+        position:absolute;
+        display: block;
+        overflow:auto;
+        top:96px;
+        left:0px;
+        right:0px;
+        bottom:73px;
+        background-color: #f0f0f0;
+        -webkit-overflow-scrolling: touch;
+    }
+    .controls {
+        position: fixed;
+        left:0px;
+        right:0px;
+        bottom:0px;
+        padding:15px;
+        background-color: #f0f0f0;
+        
+        .submit {
+            position: static;
+        }
+    }
+}

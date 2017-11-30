@@ -1,5 +1,5 @@
 <template>
-    <div id="pop_distribution" class="tm-order-pop_distribution">
+    <div id="distribution" class="tm-order-distribution">
     	<div class="null" v-touch:tap="{ event: cellHref, params: ['/index/confirm'] }"></div>
     	<div class="content">
     		<div class="title">
@@ -35,8 +35,8 @@
 </template>
 
 <script>
-    import POP_Distribution from '@/views/index/order/pop_distribution.js';
-    import '@/views/index/order/pop_distribution.scss';
+    import Distribution from '@/views/index/order/distribution/pop_list.js';
+    import '@/views/index/order/distribution/pop_list.scss';
 
-    export default POP_Distribution;
+    export default Distribution;
 </script>

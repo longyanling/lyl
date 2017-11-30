@@ -1,5 +1,5 @@
 <template>
-	<div id="toy-detail" class="tm-toy-detail">
+	<div id="toy-detail" class="tm-index-detail">
 		<tm-slide :slideItems="slideItems"></tm-slide>
 		<div class="infos">
 			<span class="title"> {{detailItem.toyName}} </span>
@@ -104,8 +104,8 @@
 
 <script>
 	
-	import Detail from '@/views/index/detail.js'
-	import '@/views/index/detail.scss'
+	import Detail from '@/views/index/toy/detail.js'
+	import '@/views/index/toy/detail.scss'
 	
 	export default Detail;
 	
