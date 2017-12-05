@@ -164,25 +164,25 @@
                 </div>
             </div>
 		</div>
-		<div class="toys">
-			<div class="list">
-				<span class="item" v-for="(item, index) in toysListItem" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
-					<span class="shell">
-					    <span class="thumb"><img :src="item.image" /></span>
+
+		<div class="toygrid">
+            <div class="toyinner">
+                <span class="toyitem" v-for="(item, index) in toysListItem" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+                    <span class="inner">
+                        <span class="thumb"><img :src="item.image" /></span>
                         <span class="title"> {{item.toyName}} </span>
                         <span v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></span>
                         <span class="price">
                             <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
                             <var v-show="item.canPostal">可邮寄 </var>
                         </span>
-					</span>
-				</span>
-				<ins class="clearfix" />
-				<span id="scrolload" class="scrolload" v-show="LoadState">
-					上拉加载更多..
-				</span>
-			</div>
-		</div>
+                    </span>
+                </span>
+                <span id="toyMore" class="toymore" v-show="LoadState">
+                                    上拉加载更多..
+                </span>
+            </div>
+        </div>
 		<a class="basePhone" href="tel://4006351987"><img src="https://ts.zlimg.com/v2/h5/jd/home_service.png"/></a>
 		<img class="baseCart" v-touch:tap="{event: goToCart, params: []}" src="https://ts.zlimg.com/v2/h5/jd/home_cart.png"/>
         <router-view></router-view>

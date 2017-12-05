@@ -93,4 +93,12 @@ $cdnImageUrl: 'https://ts.zlimg.com/v2/h5/jd/';
             }
         }
     }
+    .bitmap {
+        display: block;
+        height: 510px;
+        background-image: url('https://ts.zlimg.com/v2/h5/jd/bitmap_coupon.png');
+        background-size: 192px 200px;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
 }

@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+        <div class="bitmap" v-show="orderItems[statusIndex].length == 0"></div>
     </div>
 </template>
 

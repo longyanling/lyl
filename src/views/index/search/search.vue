@@ -43,6 +43,7 @@
                 <span id="toyMore" class="toymore" v-show="toyItems.length > 0 && !IsEnd">
                                     上拉加载更多..
                 </span>
+                <div class="bitmap" v-show="toyItems.length == 0"></div>
             </div>
         </div>
 	</div>

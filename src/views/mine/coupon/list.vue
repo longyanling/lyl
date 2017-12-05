@@ -19,6 +19,7 @@
             	</span>
             </div>
         </div>
+        <div class="bitmap" v-show="couponItems.length == 0"></div>
     </div>
     
 </template>

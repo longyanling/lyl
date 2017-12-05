@@ -4,6 +4,7 @@
     height: 100%;
     color: #575757;
     font-size: 14px;
+    background: #f0f0f0;
     
     .searchbar {
         position: fixed;
@@ -94,5 +95,15 @@
         padding-top: 48px;
         border-bottom: 1px solid #f3f3f3;
         background: #f0f0f0;
+        .toyinner {
+            .bitmap {
+                display: block;
+                height: 510px;
+                background-image: url('https://ts.zlimg.com/v2/h5/jd/bitmap_no_result.png');
+                background-size: 192px 200px;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+        }
     }
 }
