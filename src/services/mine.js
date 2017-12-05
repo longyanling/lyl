@@ -8,62 +8,41 @@ var mine = {
 	
 	login: function(callback){
 		
-		setTimeout(function(){
-			
-			Utils.Axios.post('/user/login', {
-					'phone': '17610007876',
-					'pwd': MD5('a123456'),
-					'cityCode': '010'
-				}, callback);
-		}, 1);
+		Utils.Axios.deferPost('/api/user/login', {
+				'phone': '17610007876',
+				'pwd': MD5('a123456'),
+				'cityCode': '010'
+			}, callback);
 	},
 	
 	profile: function(callback){
 		
-		setTimeout(function(){
-			
-			Utils.Axios.post('/user/profile/jdv2', { }, callback);
-		}, 1);
+		Utils.Axios.deferPost('/api/user/profile/jdv2', { }, callback);
 	},
 	
 	update: function(data, callback){
 		
-		setTimeout(function(){
-			
-			Utils.Axios.post('/user/profile/update', data, callback);
-		}, 1);
+		Utils.Axios.deferPost('/api/user/profile/update', data, callback);
 	},
 	
 	orders: function(callback){
 		
-		setTimeout(function(){
-			
-			Utils.Axios.post('/order/list/v2', { }, callback);
-		}, 1);
+		Utils.Axios.deferPost('/api/order/list/v2', { }, callback);
 	},
 	
 	orderDetail: function(data, callback){
 		
-		setTimeout(function(){
-			
-			Utils.Axios.post('/order/detail', data, callback);
-		}, 1);
+		Utils.Axios.deferPost('/api/order/detail', data, callback);
 	},
 	
 	express: function(callback){
             
-		setTimeout(function(){
-			
-			Utils.Axios.post('/order/express/companies', {}, callback);
-		}, 1);
+        Utils.Axios.deferPost('/api/order/express/companies', {}, callback);
     },
     
     logistics: function( data, callback ){
-           
-		setTimeout(function(){
-			
-			Utils.Axios.post('/order/express/list', data, callback);
-		}, 1); 
+    	
+    	Utils.Axios.deferPost('/api/order/express/list', data, callback);
     },
 	
 	coupons: function(callback){
@@ -71,18 +50,15 @@ var mine = {
         if (Store.Mine.coupons){
             callback(Store.Mine.coupons);
         } else {
-            setTimeout(function(){
-                
-                Utils.Axios.post('/coupon/list', { }, function(data){
-                    
-                    if (data.code == 0 ){
-                        Store.Mine.coupons = data.data && data.data.data ? data.data.data : [];
-                        callback(Store.Mine.coupons);   
-                    } else {
-                        console.log('请求失败');
-                    }
-                });
-            }, 1);
+        	Utils.Axios.deferPost('/api/coupon/list', { }, function(data){
+        		
+        		if (data.code == 0 ){
+                    Store.Mine.coupons = data.data && data.data.data ? data.data.data : [];
+                    callback(Store.Mine.coupons);   
+                } else {
+                    console.log('请求失败');
+                }
+           });
         }
 	},
 	
@@ -91,43 +67,31 @@ var mine = {
 		if (Store.Mine.address){
 		    callback(Store.Mine.address);
 		} else {
-    		setTimeout(function(){
-    			
-    			Utils.Axios.post('/address/list', { }, function(data){
-    			    
-    			    if (data.code == 0 ){
-                        Store.Mine.address = data.data || [];
-                        callback(Store.Mine.address);   
-    			    } else {
-    			        console.log('请求失败');
-    			    }
-    			});
-    		}, 1);
+			Utils.Axios.deferPost('/api/address/list', { }, function(data){
+			    
+			    if (data.code == 0 ){
+                    Store.Mine.address = data.data || [];
+                    callback(Store.Mine.address);   
+			    } else {
+			        console.log('请求失败');
+			    }
+			});
 		}
 	},
 	
 	addressInsert : function( data, callback ){
-            
-        setTimeout(function(){
-            
-            Utils.Axios.post('/address/gd/insert', data, callback);
-        }, 1);
+		
+		Utils.Axios.deferPost('/api/address/gd/insert', data, callback);
     },
     
     addressUpdata : function( data, callback ){
-            
-        setTimeout(function(){
-            
-            Utils.Axios.post('/address/gd/update', data, callback);
-        }, 1);
+    	
+    	Utils.Axios.deferPost('/api/address/gd/update', data, callback);
     },
     
     addressDelete : function( data, callback ){
-            
-        setTimeout(function(){
-            
-            Utils.Axios.post('/address/delete', data, callback);
-        }, 1);
+    	
+    	Utils.Axios.deferPost('/api/address/delete', data, callback);
     }
 };
 
