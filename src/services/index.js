@@ -6,98 +6,63 @@ import Store from '@/directives/store';
 var index = {
     
     banner: function(data, callback){
-        
-        setTimeout(function(){
-            
-            Utils.Axios.get( 'home/banner', data, callback);
-        }, 1);
+    	
+    	Utils.Axios.deferGet( '/api/home/banner', data, callback);
     },
     location: function( data, callback){
-        setTimeout(function(){
-            
-            Utils.Axios.get( '/home/cities', data, callback);
-        }, 1);
+    	
+    	Utils.Axios.deferGet( '/api/home/cities', data, callback);
     },
     toyList: function(data, callback){
-
-        setTimeout(function(){
-            
-            Utils.Axios.get( '/toy/list', data, callback);
-        }, 1);
+    	
+    	Utils.Axios.deferGet( '/api/toy/list', data, callback);
     },
     toyDetail: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.get( '/toy/info', data, callback);
-        }, 1);
+        Utils.Axios.deferGet( '/api/toy/info', data, callback);
     },
     screen: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.get( '/search/filter/list/v3', data, callback);
-        }, 1);
+        Utils.Axios.deferGet( '/api/search/filter/list/v3', data, callback);
     },
     cartList: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.get( '/cart/list', data, callback);
-        }, 1);
+        Utils.Axios.deferGet( '/api/cart/list', data, callback);
     },
     cartAdd: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.post( '/cart/checkAndAdd', data, callback);
-        }, 1);
+        Utils.Axios.deferPost( '/api/cart/checkAndAdd', data, callback);
     },
     cartClear: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.post( '/cart/clear', data, callback);
-        }, 1);
+        Utils.Axios.deferPost( '/api/cart/clear', data, callback);
     },
     buyCheck: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.post( '/order/buy/check', data, callback);
-        }, 1);
+        Utils.Axios.deferPost( '/api/order/buy/check', data, callback);
     },
     presubmit: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.post( '/order/presubmit', data, callback);
-        }, 1);
+        Utils.Axios.deferPost( '/api/order/presubmit', data, callback);
     },
     submit: function(data, callback){
         
-        setTimeout(function(){
-            
-            Utils.Axios.post( 'order/submit', data, callback);
-        }, 1);
+        Utils.Axios.deferPost( '/api/order/submit', data, callback);
     },
     searchhot: function(data, callback){
         
         if (Store.Index.searchHot){
             callback(Store.Index.searchHot);
-        } else {
-            setTimeout(function(){
+        } else {        	
+        	Utils.Axios.deferPost('/api/on/start', { }, function(data){
                 
-                Utils.Axios.post('/on/start', { }, function(data){
-                    
-                    if (data.code == 0 ){
-                        Store.Index.searchHot = data.data || [];
-                        callback(Store.Index.searchHot);   
-                    } else {
-                        console.log('请求失败');
-                    }
-                });
-            }, 1);
+                if (data.code == 0 ){
+                    Store.Index.searchHot = data.data || [];
+                    callback(Store.Index.searchHot);   
+                } else {
+                    console.log('请求失败');
+                }
+            });
         }
     }
     
