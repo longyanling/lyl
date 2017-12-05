@@ -1,5 +1,5 @@
 <template>
-    <div id="pop_lease" class="tm-order-pop_lease">
+    <div id="lease" class="tm-order-lease">
         <div class="null" v-touch:tap="{ event: cellHref, params: ['/index/confirm'] }"></div>
         <div class="content">
             <em class="title">租期</em>
@@ -11,8 +11,8 @@
 </template>
 
 <script>
-    import POP_Lease from '@/views/index/order/pop_lease.js';
-    import '@/views/index/order/pop_lease.scss';
+    import Lease from '@/views/index/order/lease/pop_list.js';
+    import '@/views/index/order/lease/pop_list.scss';
 
-    export default POP_Lease;
+    export default Lease;
 </script>

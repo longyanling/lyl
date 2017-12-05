@@ -32,18 +32,18 @@
     		</div>
     	</div>
     	<div class="group">
-    		<div class="single">
+    		<span class="single">
     			<em>总租金</em>
     			<dfn><small>￥</small>{{orderInfo.totalRent /1000}}</dfn>
-    		</div>
-    		<div class="single">
+    		</span>
+    		<span class="single">
     			<em>运费</em>
     			<dfn><small>￥</small>{{orderInfo.deliveryMoney /1000}}</dfn>
-    		</div>
-    		<div class="single">
+    		</span>
+    		<span class="single">
     			<em>订单合计</em>
     			<dfn class="total"><small>￥</small>{{orderInfo.rentDiscount /1000}}</dfn>
-    		</div>
+    		</span>
     	</div>
     	<div class="group">
     		<div class="single">

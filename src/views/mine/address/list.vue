@@ -1,7 +1,7 @@
 <template>
     <div id="address" class="tm-mine-address-list">
-        <div class="datalist">
-            <div class="item" v-for="(item, index) in addressItems">
+        <div class="addresslist">
+            <div class="addressitem" v-for="(item, index) in addressItems">
             	<span class="consignee">
             		<em>{{item.addressConsignee}}</em>
             		<small>{{item.consigneeSex == 0 ? '先生' : '女士'}}</small>
@@ -11,18 +11,9 @@
             		{{item.addressTotal}}
             	</span>
                 <span class="actions">
-                	<em class="selected" v-show="index == 0">
-                		<img src="https://ts.zlimg.com/v2/h5/jd/base_selected_orange.png"/>
-                		<dfn>默认地址</dfn>                		
-                	</em>
-                	<a class="button">
-                		<dfn>删除</dfn>
-                		<img src="https://ts.zlimg.com/v2/h5/jd/address_delete.png"/>
-                	</a>
-                	<a class="button" v-touch:tap="{event: goEdit , params:[ item ]}">
-                		<dfn>编辑</dfn>
-                		<img src="https://ts.zlimg.com/v2/h5/jd/address_edit.png"/>
-                	</a>
+                	<em class="selected" v-show="index == 0">默认地址</em>
+                	<a class="button delete">删除</a>
+                	<a class="button edit" v-touch:tap="{event: goEdit , params:[ item ]}">编辑</a>
                 </span>
             </div>
         </div>

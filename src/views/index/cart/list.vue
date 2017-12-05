@@ -32,8 +32,8 @@
 </template>
 
 <script>
-    import Cart from '@/views/index/cart.js'
-    import '@/views/index/cart.scss'
+    import Cart from '@/views/index/cart/list.js'
+    import '@/views/index/cart/list.scss'
 
     export default Cart;
 </script>

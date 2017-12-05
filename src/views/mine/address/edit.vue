@@ -1,6 +1,6 @@
 <template>
     <div id="add" class="tm-mine-address-add">
-        <div class="group">
+        <div class="addressadd">
         	<span class="cell">
         		<em>收货人</em>
         		<dfn><input class="text" type="text" placeholder="请输入收货人姓名" v-model="consignee" /></dfn>

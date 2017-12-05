@@ -7,17 +7,18 @@ import indexAPI from "@/services/index-service";
 var _default = (function(){
 
     return {
-        name: 'order-confirm',
+        name: 'Confirm',
         mounted: function(){
             
             var that = this;
-            
+            console.log(Store)
             //  获取数据仓库中的数据
-            var target =  new Array();
-            Store.data.forEach(function(toy){
-                target.push({'toyId': toy.toyId, 'toyNum': 1 });
-            });
-            if(Store.data.length > 0){
+           
+            if(Store.data){
+                var target =  new Array();
+                Store.data.forEach(function(toy){
+                    target.push({'toyId': toy.toyId, 'toyNum': 1 });
+                });
                 indexAPI.buyCheck(
                     {
                         orderType : '1',

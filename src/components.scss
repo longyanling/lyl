@@ -36,8 +36,7 @@
             color:#575757;
             font-size:14px;
             text-align:right;
-            padding-top:21px;
-            padding-right:12px;
+            padding: 21px 12px 0px 12px;
             
             small {
                 display:block;
@@ -53,6 +52,311 @@
         }
     }
 }
+
+.addresslist {
+    
+    .addressitem {
+        display:block;
+        padding:10px 0px 0px 0px;
+        margin-top:10px;
+        border-top:1px solid #f0f0f0;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .consignee {
+            display: block;
+            height:28px;
+            color:#575757;
+            font-size:14px;
+            line-height:28px;
+            padding: 0px 12px;
+            
+            em {
+                float:left;
+                display:block;
+                height:inherit;
+            }
+            small {
+                float:left;
+                display:block;
+                height:inherit;
+                color:#b3b3b3;
+                margin-left:5px;
+            }
+            dfn {
+                float:right;
+                display:block;
+                height:inherit;
+            }
+        }
+        .total {
+            display: block;
+            color:#b3b3b3;
+            font-size:12px;
+            line-height:20px;
+            padding:0px 12px;
+        }
+        .actions{
+            display: block;
+            height:32px;
+            padding: 6px;
+            margin:7px 7px 0px 7px;
+            border-top:1px solid #f0f0f0;
+            
+            .selected {
+                float: left;
+                display: block;
+                height:32px;
+                height:32px;
+                color: #ed6f37;
+                font-size: 12px;
+                line-height:32px;
+                padding-left:24px;
+                background-image:url('https://ts.zlimg.com/v2/h5/jd/base_selected_orange.png');
+                background-position:0px center;
+                background-repeat: no-repeat;
+                background-size:16px 16px;
+            }
+            .button {
+                float:right;
+                display:block;
+                height:32px;
+                color: #575757;
+                font-size: 12px;
+                line-height:32px;
+                padding-left:24px;
+                margin-left:12px;
+                background-position:0px center;
+                background-repeat: no-repeat;
+                background-size:16px 16px;
+                
+                &.edit {
+                    background-image:url('https://ts.zlimg.com/v2/h5/jd/address_edit.png');
+                }
+                &.delete {
+                    background-image:url('https://ts.zlimg.com/v2/h5/jd/address_delete.png');
+                }
+            }
+        }
+    }   
+}
+ .addressadd {
+        margin-top:10px;
+        border-top:1px solid #f0f0f0;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .cell {
+            display:block;
+            height:44px;
+            font-size:14px;
+            line-height:44px;
+            margin:0px 5px 0px 12px;
+            border-bottom:1px solid #f0f0f0;
+            
+            em {
+                float:left;
+                display:block;
+                width:80px;
+                height:inherit;
+                color:#575757;
+                padding-left:5px;
+            }
+            dfn {
+                display:block;
+                margin-left:85px;
+                
+                .text {
+                    width:100%;
+                    height:42px;
+                    font-size:14px;
+                    border:0px;
+                }
+                .checkbox {
+                    display:inline-block;
+                    height:42px;
+                    padding-left:24px;
+                    margin-right:7px;
+                    background-image:url('https://ts.zlimg.com/v2/h5/jd/base_unselected.png');
+                    background-position:left center;
+                    background-size:16px 16px;
+                    background-repeat:no-repeat;
+                    
+                    &.checked {
+                        background-image:url('https://ts.zlimg.com/v2/h5/jd/base_selected.png');    
+                    }
+                }
+                
+            }
+            
+            &.textarea {
+                height:64px;
+                padding: 7px 0px;
+                
+                .text {
+                    height:inherit;
+                    line-height:24px;
+                    border:0px;
+                    resize:none;
+                }
+            }
+            
+            &:last-child {
+                border-bottom:0px;
+            }
+        }
+    }
+.couponlist {
+    
+    .couponitem {
+        display: block;
+        height:96px;
+        margin:10px 10px 0px 10px;
+        background-image: url('https://ts.zlimg.com/v2/h5/jd/coupon_background_selected.png');
+        background-size: auto 122px;
+        
+        .info {
+            display: block;
+            height: 64px;
+            line-height: 64px;
+            
+            .money {
+                float:left;
+                display: block;
+                overflow: hidden;
+                width:82px;
+                height: inherit;
+                color: #ed6f37;
+                font-family: Arial;
+                text-align: center;
+                line-height: inherit;
+                
+                small {
+                    font-size: 15px;
+                }
+                em {
+                    font-size: 32px;
+                }
+            }
+            
+            .text {
+                display: block;
+                height:inherit;
+                margin-left: 96px;
+                
+                em {
+                    display: block; 
+                    overflow:hidden;
+                    color: #323232;
+                    font-size: 15px;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                    padding-top:16px;
+                }
+                dfn {
+                    display: block; 
+                    overflow:hidden;
+                    color: #969696;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                    padding-top:5px;
+                }
+            }
+            
+            .button {
+                float:right;
+                display:block;
+                height:30px;
+                color: #ed6f37;
+                font-size: 12px;
+                line-height:30px;
+                padding: 0px 7px;
+                margin: 17px 12px 15px 12px;
+                border: 1px solid #ed6f37;
+                border-radius: 3px;
+            }
+            
+            .checkbox {
+                float:right;
+                display:block;
+                width:30px;
+                height:30px;
+                margin: 17px 12px 15px 12px;
+                background-image:url('https://ts.zlimg.com/v2/h5/jd/base_unselected.png');
+                background-size:15px 15px;
+                background-position:center center;
+                background-repeat: no-repeat;
+            }
+        }
+        .expire {
+            display: block;
+            height: 32px;
+            line-height: 32px;
+            margin:0px 7px;
+            border-top: 1px solid #f0f0f0;
+            
+            em {
+                float: left;
+                display: block;
+                color: #ed6f37;
+                font-size: 12px;
+                padding-left:2px;
+            }
+            dfn {
+                float: right;
+                display: block;
+                color: #969696;
+                font-size: 12px;
+                padding-right:2px;
+            }
+        }
+        &.selected {
+            
+            .info {
+            
+                .checkbox {
+                    background-image:url('https://ts.zlimg.com/v2/h5/jd/base_selected.png');
+                }    
+            }
+        }
+        
+        &.disabled{
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/coupon_background_unselected.png');
+        
+            .info {
+                
+                .money {
+                    color:#b3b3b3;
+                }
+            
+                .text {
+                    em {
+                        color:#b3b3b3;
+                    }
+                    dfn {
+                        color:#b3b3b3;
+                    }
+                }
+                
+                .checkbox {
+                    display:none;
+                }
+            }
+            
+            .expire {
+                
+                em {
+                    color:#b3b3b3;
+                }
+                dfn {
+                    color:#b3b3b3;
+                }
+            }
+        }
+    }
+}
+
 .controls {
     display:block;
     
