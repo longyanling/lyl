@@ -2,15 +2,15 @@ var _default = (function(){
     return {
         name: 'Lease',
         mounted: function(){
-            var that = this;
-            that.daysDefault = that.lease;
-            that.daysItem = new Array();
-            for (var i = that.lease.min; i <= that.lease.max; i++) {
-                that.daysItem.push(i);
+            
+            var vm = this;
+            
+            vm.dayDefault = vm.lease;
+            vm.dayItem = new Array();
+            
+            for (var i = vm.lease.min; i <= vm.lease.max; i++) {
+                vm.dayItems.push(i);
             };
-        },
-        destoryed: function(){
-
         },
         props: [
             'lease'
@@ -18,19 +18,22 @@ var _default = (function(){
         data: function(){
             
             return {
-                daysDefault : [],
-                daysItem : [],
+                dayDefault : [],
+                dayItems : [],
             };
         },
         methods: {
             SelectedDate : function( e, item ){
+                
                 this.$emit('resetDate', item);
                 this.$router.push( '/index/confirm' );
             },
-            cellHref: function( e, url ){
-
-                this.$router.push( url );
-            }
+           deactive: function(e){
+                
+                if (e.target.id == 'lease'){
+                    this.$router.push( '/index/confirm' );   
+                }
+            },
         }
     }
 })();

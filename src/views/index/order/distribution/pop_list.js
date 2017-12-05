@@ -3,29 +3,31 @@
 var _default = (function(){
 
     return {
-        name: 'pop_distribution',
+        name: 'distribution',
         mounted: function(){
-            var that = this;
-            that.canOnsite = that.distribution[2].canOnsite;
-            that.canPostal = that.distribution[2].canPostal;
-            that.methodsItem = that.distribution[1].methods;
-            that.modeIndex = that.distribution[1].default;
-            that.methodsItem.forEach(function(item){
-                if(item.value == that.modeIndex){
-                    that.deliveryHint = item.tips;
+            
+            var vm = this;
+            
+            vm.canOnsite = vm.distribution[2].canOnsite;
+            vm.canPostal = vm.distribution[2].canPostal;
+            vm.methodItems = vm.distribution[1].methods;
+            vm.methodIndex = vm.distribution[1].default;
+            
+            for (var i = 0; i < vm.methodItems.length; i++){
+                if(vm.methodItems[i].value == vm.methodIndex){
+                    vm.methodHint = vm.methodItems[i].tips;
                 }
-            })
-            that.infoDeterItem.splice(0, 1, (that.modeIndex == 1 ? that.methodsItem[0] :  that.methodsItem[1]));
-            that.daysItem = that.distribution[0].days;
-            that.daysIndex = that.distribution[0].default.timestamp;
-            that.daysItem.forEach(function(day){
-                if(day.timestamp == that.daysIndex){
-                   that.infoDeterItem.splice(1, 1, day);
+            }
+            
+            vm.infoDeterItem.splice(0, 1, (vm.methodIndex == 1 ? vm.methodItems[0] :  that.methodItems[1]));
+            vm.dayItems = vm.distribution[0].days;
+            vm.dayIndex = vm.distribution[0].default.timestamp;
+            
+            for (var i = 0; i < vm.dayItems.length; i++){
+                if(vm.dayItems[i].value == vm.dayIndex){
+                    vm.infoDeterItem.splice(1, 1, vm.dayItems[i]);
                 }
-            });
-        },
-        destoryed: function(){
-
+            }
         },
         props: [
             'distribution'
@@ -33,35 +35,40 @@ var _default = (function(){
         data: function(){
             
             return {
-                methodsItem : [],
-                daysItem : [],
-                modeIndex : null,
-                daysIndex : null,
+                methodIndex : null,
+                methodHint : null,
+                methodItems : [],
                 infoDeterItem : [],
+                dayItems : [],
+                dayIndex : null,
                 canOnsite : null,
-                canPostal : null,
-                deliveryHint : null
+                canPostal : null
             };
         },
         methods: {
-            selectMode : function (e, index, item) {
+            deactive: function(e){
+                
+                if (e.target.id == 'distribution'){
+                    this.$router.push( '/index/confirm' );   
+                }
+            },
+            selectMethod  : function (e, index, item) {
+                
                 if((index == 1 && !this.canOnsite) || (index == 2 && !this.canPostal)) return;
                 this.infoDeterItem.splice(0, 1, item);
-                this.deliveryHint = item.tips;
-                this.modeIndex = index;
+                this.methodHint = item.tips;
+                this.methodIndex = index;
             },
             selectDay : function (e, index, item) {
+                
                 this.infoDeterItem.splice(1, 1, item);
-                this.daysIndex = index;
+                this.dayIndex = index;
             },
             InfoDetermine : function () {
+                
                 var infoDeterData = this.infoDeterItem;
                 this.$emit('resetDistribution', infoDeterData);
                 this.$router.push( '/index/confirm' );
-            },
-            cellHref: function( e, url ){
-
-                this.$router.push( url );
             }
         }
     }

@@ -26,9 +26,6 @@ var _default = (function(){
             vm.addressAll = vm.gdProvinceName + vm.gdCityName + vm.gdAdName + vm.gdBusinessArea + vm.gdTitle; 
             vm.addressDetail = vm.addressInfo.addressDetail || '';
         },
-        destoryed: function(){
-
-        },
         data: function(){
 
             return {
@@ -87,12 +84,10 @@ var _default = (function(){
                     addressDetail : vm.addressDetail,
                     
                 };
-                console.log(JSON.stringify(args));
-                console.log(vm.address);
-                console.log(vm.isDefault)
+                
                 if(vm.address){
                     args.addressId = vm.addressInfo.addressId;
-                    console.log(args)
+                    
                     API.Mine.addressUpdata(
                         {
                             addressJson : JSON.stringify(args),
@@ -114,7 +109,6 @@ var _default = (function(){
                         },
                         function(data) {
                             if(data.code == 0){
-                                console.log(data);
                                 vm.goToAddress();
                             }else {
                                 Toast.show(data.msg);

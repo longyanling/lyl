@@ -1,20 +1,21 @@
 'use strict';
-import Vue from 'vue';
+
+import API from "@/services/api";
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
-import indexAPI from "@/services/index-service";
-import Slide from '@/components/slide.vue'
+import Slide from '@/components/slide.vue';
 
 var _default = (function(){
 	return {
 		name: 'Detail', 
 		mounted: function(){
+		    
 			var self = this;
-            indexAPI.toyDetail(
+			
+            API.Index.toyDetail(
                 {
-                    tid : self.$route.query.toyid ,
-                },
-                function (data) {
+                    tid : self.$route.query.toyid
+                },function (data) {
                     if (data.code == 0) {
                         self.detailItem = data.data;
                         self.slideItems = data.data.headers;
@@ -55,7 +56,7 @@ var _default = (function(){
 		    addCart : function (e, toyId) {
 		        
 		        toyId = (toyId == undefined ? this.detailItem.toyId : toyId);
-		        indexAPI.cartAdd(
+		        API.Index.cartAdd(
                     {
                         tid : toyId
                     },
@@ -77,7 +78,7 @@ var _default = (function(){
                 that.slideItems = [];
                 that.toyShowItem = [];
                 that.toyDetailsItem = [];
-                indexAPI.toyDetail(
+                API.Index.toyDetail(
                     {
                         tid : toyId ,
                     },

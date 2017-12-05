@@ -106,14 +106,6 @@ var mine = {
 		}
 	},
 	
-	addressDelete : function( data, callback ){
-            
-        setTimeout(function(){
-            
-            Utils.Axios.post('/address/delete', data, callback);
-        }, 1);
-    },
-	
 	addressInsert : function( data, callback ){
             
         setTimeout(function(){
@@ -127,6 +119,14 @@ var mine = {
         setTimeout(function(){
             
             Utils.Axios.post('/address/gd/update', data, callback);
+        }, 1);
+    },
+    
+    addressDelete : function( data, callback ){
+            
+        setTimeout(function(){
+            
+            Utils.Axios.post('/address/delete', data, callback);
         }, 1);
     }
 };

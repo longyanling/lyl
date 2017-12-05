@@ -1,5 +1,5 @@
 'use strict';
-import Axios from 'axios';
+import API from "@/services/api";
 import Sortor from "@/directives/sortor";
 
 var _default = (function(){
@@ -8,27 +8,20 @@ var _default = (function(){
         mounted: function(){
             var self = this;
             
-            Axios.get('/home/cities', {
+            API.Index.location({
                 
-            })
-            .then(function (response) {
-                var data = response.data;
+            },function (data) {
                 if (data.code == 0) {
+                    
                     var citys = data.data;
                     self.cityHotItem = citys.hotCities;
                     var queue = citys.cities;
                     self.cityListItem = Sortor.pinyin(queue);
                 } else {
-                    console.log(results);
+                    console.log(data.msg);
                 }
-            }.bind(this))
-            .catch(function (error) {
-                console.log(error);
-            });
+            })
            
-        },
-        destoryed: function(){
-
         },
         data: function(){
 

@@ -13,7 +13,6 @@ var _default = (function(){
             if (this.coupon && this.coupon.length > 1){
                 vm.couponItems = vm.coupon[1];
                 vm.couponDefault = (vm.coupon[1].length > 0 && vm.coupon[0] ? vm.coupon[0].couponId : '-1');
-                console.log(vm.couponDefault);
             }
         },
         props: [

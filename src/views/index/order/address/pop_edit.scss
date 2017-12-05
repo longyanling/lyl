@@ -6,6 +6,7 @@
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 10;
+    
     .addressBox {
         position:absolute;
         display: block;
@@ -13,12 +14,12 @@
         top:96px;
         left:0px;
         right:0px;
-        bottom:73px;
+        bottom:0px;
         background-color: #f0f0f0;
         -webkit-overflow-scrolling: touch;
     }
     .controls {
-        position: fixed;
+        position: absolute;
         left:0px;
         right:0px;
         bottom:0px;

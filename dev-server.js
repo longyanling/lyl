@@ -66,6 +66,11 @@ var server = new WebpackDevServer(compiler, {
             secure: false,
             changeOrigin: true
         },
+        '/on/**': {
+            target: 'http://dev.toysuperman.com/',
+            secure: false,
+            changeOrigin: true
+        },
     },
     stats: {
         colors: true

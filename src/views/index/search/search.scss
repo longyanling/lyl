@@ -1,84 +1,98 @@
-$fontColorCaption: #5d5d5d;
-$colorActived: #fed030;
-$imageCDNUrl: 'https://ts.zlimg.com/v2/h5/jd/';
 
 .tm-toy-search {
     width: 100%;
     height: 100%;
-    font-size: 14px;
     color: #575757;
-    .history {
-        display: block;
-        margin-top: 10px;
-        border-top: 1px solid #f3f3f3;
-        border-bottom: 1px solid #f3f3f3;
-        background: #ffffff;
-        
-        .caption {
-            display: block;
-            height: 28px;
-            color: #5d5d5d;
-            line-height: 28px; 
-            padding: 0px 7px;
-            border-bottom: 1px solid #f3f3f3;            
+    font-size: 14px;
+    
+    .searchbar {
+        position: fixed;
+        top:0px;
+        left:0px;
+        right:0px;
+        height:32px;
+        padding:6px;    
+        background:#f3f3f3;
+        z-index:50;
+                 
+        .submit {
+            float:right;
+            display: none;
+            width:64px;
+            height:36px;
+            white-space: nowrap;
+            border:0px;
+            border-radius: 5px;
+            background-color: #fed030;
+            transition: width 240ms ease-in;
         }
-        .list {
+        
+        .keyword {
             display: block;
-            padding: 12px;
+            height: 32px;
+            color: #969696;
+            line-height: 32px;
+            padding: 0px 0px 0px 32px;
+            border: 0px solid #ffffff;
+            border-radius: 5px;
+            background: #ffffff;
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/icon_search_text.png');
+            background-size: 12px 12px;
+            background-position: 12px center;
+            background-repeat: no-repeat;
             
-            .tag {
-                display: inline-block;
-                height: 26px;
-                color: #5d5d5d;
-                font-size: 14px;
-                line-height: 26px;
-                padding: 0px 10px;
-                margin-right: 5px;
-                margin-bottom: 5px;
-                border: 1px solid #f3f3f3;
-                border-radius: 14px;
-                background: #ffffff;
+            input {
+                width: 100%;
+                padding: 0px;
+                margin: 0px;
+                border: 0px;
             }
         }
     }
     
-    .hots {
-        display: block;
-        margin-top: 10px;
-        border-top: 1px solid #f3f3f3;
-        border-bottom: 1px solid #f3f3f3;
+    .tags {
+        position: fixed;
+        top: 44px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
         background: #ffffff;
+        z-index: 49;
         
-        .caption {
+        .taglist {
             display: block;
-            height: 28px;
-            color: #5d5d5d;
-            line-height: 28px; 
-            padding: 0px 7px;
-            border-bottom: 1px solid #f3f3f3;            
-        }
-        .list {
-            display: block;
-            padding: 12px;
             
-            .tag {
-                display: inline-block;
-                height: 26px;
+            .caption {
+                display: block;
+                height: 28px;
                 color: #5d5d5d;
-                font-size: 14px;
-                line-height: 26px;
-                padding: 0px 10px;
-                margin-right: 5px;
-                margin-bottom: 5px;
-                border: 1px solid #f3f3f3;
-                border-radius: 14px;
-                background: #ffffff;
+                line-height: 28px; 
+                padding: 0px 7px;          
+            }
+            .list {
+                display: block;
+                padding: 0px 12px 12px 12px;
+                
+                .item {
+                    display: inline-block;
+                    height: 26px;
+                    color: #5d5d5d;
+                    font-size: 14px;
+                    line-height: 26px;
+                    padding: 0px 10px;
+                    margin: 5px;
+                    border: 1px solid #f3f3f3;
+                    border-radius: 14px;
+                    background: #ffffff;
+                }
             }
         }
     }
     
-    .spacebar {
+    .toygrid {
         display: block;
-        height: 48px;
+        padding-top: 48px;
+        border-bottom: 1px solid #f3f3f3;
+        background: #f0f0f0;
     }
 }

@@ -67,6 +67,15 @@ var utils = (function(){
 	//	异步请求方法	
 	var axios = {
 		
+		extand: function(data){
+		    
+            data = data || {};
+            data['av'] = '3.0.0';
+            data['cv'] = '2.0.0';
+            data['client'] = (client.android ? 'jd-android' : ( client.iOS ? 'jd-ios' : 'jd-other' ));
+            return data;
+		},
+		
 		query: function(data){
 			
 	        var params = [];
@@ -85,7 +94,7 @@ var utils = (function(){
 		get: function(url, data, callback){
 			
             return Axios.get(url, {
-            		params: axios.query(data) 
+            		params: axios.extand(data)
             	}).then(function(response){
             		
             		if (response.status == 200){

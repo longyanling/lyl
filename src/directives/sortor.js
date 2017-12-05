@@ -442,7 +442,7 @@ var sortor = (function() {
             var zh = "啊把差大额发噶哈*级卡啦吗那哦爬器然撒他**哇西呀咋".split('');
             var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
             var curr, result = [];
-
+            
             for(var i = 0; i < letters.length; i++) {
                 curr = {
                     letter: letters[i],
@@ -450,7 +450,7 @@ var sortor = (function() {
                 };
                 if(i != 26) {
                     for(var j = 0; j < arr.length; j++) {
-                        var initial = formatSpell(arr[j].name.charAt(0));
+                        var initial = formatSpell((arr[j].name ? arr[j].name.charAt(0) : (arr[j].cityName ? arr[j].cityName.charAt(0) : (arr[j].brandName ? arr[j].brandName.charAt(0) : ''))));
                         if(initial == letters[i] || initial == letters[i].toLowerCase()) {
                             curr.data.push(arr[j]);
                         }
@@ -459,7 +459,7 @@ var sortor = (function() {
                 if(empty || curr.data.length) {
                     result.push(curr);
                     curr.data.sort(function(a, b) {
-                        return b.name.localeCompare(a);
+                        return (b.name ? b.name : (b.cityName ? b.cityName : (b.brandName ? b.brandName : ''))).localeCompare(a);
                     });
                 }
             }

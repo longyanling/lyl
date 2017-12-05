@@ -1,25 +1,50 @@
 <template>
-	<div id="toy-search" class="tm-toy-search">
+	<div id="search" class="tm-toy-search">
 		
-		<tm-search :submit="searchSubmit" :keyword='searchKeyword'></tm-search>
-		
-		<ins class="spacebar" />
-		
-		<!-- 搜索历史 -->
-		<div class="history">
-			<h5 class="caption">搜索历史</h5>
-			<div class="list">
-				<span v-for="(item, index) in historyItems" v-touch:tap=" { event: tagChange, params: [ item ]} " class="tag">{{item}}</span>
-			</div>
+		<div class="searchbar">
+		    <form v-on:submit.prevent="submit()">
+                <button type="submit" class="submit"> 确 定 </button>
+                <span v-touch:tap="{ event: tagDisplay , params: []}" class="keyword"><input id="keyword" type="search" placeholder="请输入要搜索的玩具" v-model="keyword" /></span>
+            </form>
+        </div>
+        
+		<div class="tags" v-show="tagVisible">
+
+            <!-- 搜索历史 -->
+            <div class="taglist history" v-show="tagHistoryItems.length > 0">
+                <h5 class="caption">搜索历史</h5>
+                <div class="list">
+                    <span v-for="(item, index) in tagHistoryItems" v-touch:tap=" { event: tagChange, params: [ item ]} " class="item">{{item}}</span>
+                </div>
+            </div>
+            
+            <!-- 热门搜索 -->
+            <div class="taglist hot">
+                <h5 class="caption">热门搜索</h5>
+                <div class="list">
+                    <span v-for="(item, index) in tagHotItems" v-touch:tap=" { event: tagChange, params: [ item ]} " class="item">{{item}}</span>
+                </div>
+            </div>
 		</div>
 		
-		<!-- 热门搜索 -->
-		<div class="hots">
-			<h5 class="caption">热门搜索</h5>
-			<div class="list">
-				<span v-for="(item, index) in hotItems" v-touch:tap=" { event: tagChange, params: [ item ]} " class="tag">{{item}}</span>
-			</div>
-		</div>
+		<div class="toygrid">
+            <div class="toyinner">
+                <span class="toyitem" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+                    <span class="inner">
+                        <span class="thumb"><img :src="item.image" /></span>
+                        <span class="title"> {{item.toyName}} </span>
+                        <span v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></span>
+                        <span class="price">
+                            <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
+                            <var v-show="item.canPostal">可邮寄 </var>
+                        </span>
+                    </span>
+                </span>
+                <span id="toyMore" class="toymore" v-show="toyItems.length > 0 && !IsEnd">
+                                    上拉加载更多..
+                </span>
+            </div>
+        </div>
 	</div>
 </template>
 

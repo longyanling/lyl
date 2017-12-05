@@ -269,6 +269,14 @@ import Vue from "vue";
 	        //	绑定事件
 	        touchEventAdd(el,handler,capture);
 		},
+		update: function(el, binding){
+		    
+            var key = el['vue-touch-id'];
+            var type = binding.arg;
+            var params = ( binding.value.params || [] );
+            
+            touchSpace[key][type].params = params;
+		},
 		unbind:function(el){
 			
 			//	初始化变量

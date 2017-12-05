@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
-import indexAPI from "@/services/index-service";
+import API from "@/services/api";
 
 var _default = (function(){
      
@@ -11,7 +11,7 @@ var _default = (function(){
         mounted: function(){
             var self = this;
             
-            indexAPI.cartList(
+            API.Index.cartList(
                 {
                     
                 },
@@ -43,9 +43,11 @@ var _default = (function(){
             };
         },
         methods: {
-            cellHref: function( e, url ){
-        
-                this.$router.push( url );
+            deactive: function(e){
+                
+                if (e.target.id == 'index-cart'){
+                    this.$router.push( '/index' );   
+                }
             },
             goToToyDetail : function(e, toyId){
                 this.$router.push('/index/detail?toyid=' + toyId);
@@ -53,7 +55,7 @@ var _default = (function(){
             deleteAllToys : function() {
                 this.shoppingItem = [];
                 var tidsJson = this.tidsItem.join(';');
-                indexAPI.cartClear(
+                API.Index.cartClear(
                     {
                         tids : tidsJson
                     },
@@ -76,7 +78,7 @@ var _default = (function(){
                 var that = this;
                 that.shoppingItem = [];
                 var tids = String(toyId);
-                indexAPI.cartClear(
+                API.Index.cartClear(
                     {
                         tids : tids
                     },

@@ -164,7 +164,7 @@
                 </div>
             </div>
 		</div>
-		<div class="morecommend">
+		<div class="toys">
 			<div class="list">
 				<span class="item" v-for="(item, index) in toysListItem" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
 					<span class="shell">

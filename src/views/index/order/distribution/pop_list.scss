@@ -1,194 +1,210 @@
 .tm-order-distribution {
     position: fixed;
     top: 0px;
-    width: 100%;
-    height: 100%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 10;
-    .null {
-        background-color: rgba(0, 0, 0, 0.0);
-        height: 30%;
-    }
-    .ins {
+    
+    .container {
         position: absolute;
-        top: 9px;
-        left: 0;
-        width: 3px;
-        height: 17px;
-        display: inline-block;
-        background-color: #fed130;
-    }
-    .content {
-        position: absolute;
+        left: 0px;
+        right: 0px;
         bottom: 0px;
-        width: 100%;
-        height: 70%;
-        font-size: 14px;
+        height:380px;
         background-color: #fff;
-        overflow-y: scroll;
-        .title {
+        
+        .caption {
             overflow: hidden;
             border-bottom: 1px solid #f0f0f0;
-            .name {
-                display: block;
-                font-size: 14px;
+            
+            .text {
                 float: left;
+                display: block;
                 color: #575757;
+                font-size: 14px;
                 padding: 13px 0 13px 10px;
             }
-            .confirm {
-                display: block;
-                font-size: 14px;
+            .button {
                 float: right;
+                display: block;
                 color: #ed6f37;
+                font-size: 14px;
                 padding: 13px 10px;
             }
         }
-        .mode {
-            .bar {
+        .picker {
+            
+            .subcaption {
+                display: block;
+                height: 36px;
                 color: #888888;
-                position: relative;
-                text-indent: 15px;
                 font-size: 13px;
-                padding: 11px 0;
+                line-height:36px;
+                vertical-align: middle;
+                
+                ins {
+                    display:inline-block;
+                    width: 3px;
+                    height: 16px;
+                    vertical-align: middle;
+                    margin:7px 5px 10px 0px;
+                    background-color: #fed130;
+                }
             }
-            .methods {
+            
+            .list {
                 overflow: hidden;
-                padding: 0px 1% 0px 1%;
                 font-size: 0px;
-                .method {
-                    width: calc(48% - 2px);
-                    float: left;
-                    background-color: #f9f9f9;
-                    margin: 0px 1% 0px 1%;
-                    display: inline-block;
-                    border-radius: 5px;
-                    position: relative;
-                    .name {
-                        display: block;
-                        font-size: 14px;
-                        font-weight: 700;
-                        padding: 12px 5px 0px 5px;
-                    }
-                    .price {
-                        display: block;
-                        margin: 68px 10px 15px 10px;
-                        font-size: 12px;
-                        .value {
-                            font-size: 15px;
+                
+                .item.method {
+                    float:left;
+                    display:block;
+                    width:50%;
+                    
+                    .inner {
+                        display:block;
+                        overflow:hidden;
+                        height:126px;
+                        padding:7px;
+                        border: 1px solid #e9e9e9; 
+                        border-radius: 5px;
+                        background-color: #f9f9f9;
+                        
+                        .title {
+                            display: block;
+                            font-size: 14px;
+                            line-height:24px;
+                        }
+                        .desc {
+                            display:block;
+                            overflow: hidden;
+                            height:54px;
+                            color: #b3b3b3;
+                            font-size: 12px;
+                            line-height: 18px;
+                        }
+                        .price {
+                            display: block;
+                            overflow: hidden;
+                            height: 48px;
+                            color: #575757;
+                            font-size: 12px;
+                            line-height: 48px;
+                            margin-right:56px;
+                            
+                            var {
+                                color: #ed6f37;
+                                font-size: 15px;
+                            }
+                        }
+                        .icon {
+                            float:right;
+                            display:block;
+                            width: 60px;
+                        }
+                        .choice {
+                            position:relative;
+                            display:block;
+                            top:-133px;
+                            right:-7px;
+                            height:14px;
+                            text-align: right;
+                            
+                            img {
+                                width:14px;
+                            }
                         }
                     }
-                    .desc {
-                        line-height: 17px;
-                        position: absolute;
-                        top: 30px;
-                        font-size: 12px;
-                        padding: 2px 5px 0px 5px;
-                        z-index: 2;
+                    
+                    
+                    &:first-child {
+                        .inner {                            
+                            margin:0px 6px 0px 12px;
+                        }
                     }
-                    .methoImg {
-                    width: 60px;
-                    position: absolute;
-                    right: 10px;
-                    bottom: 10px;
+                    &:last-child {
+                        .inner {
+                            margin:0px 12px 0px 6px;
+                        }
                     }
-                    .choice {
-                        position: absolute;
-                        right: 0px;
-                        top: 0px;
-                        width: 14px;
-                        z-index: 1;
+                    &.selected {
+                        .inner {
+                            border:1px solid #fed030;
+                        }
+                    }
+                    
+                    &.disabled {
+                        .inner {
+                            .title {
+                                color:#b3b3b3;
+                            }
+                            .price {
+                                color:#b3b3b3;
+                            }
+                        }
                     }
                 }
-            }
-        }
-        .time {
-            margin-top: 10px;
-            .bar {
-                color: #888888;
-                position: relative;
-                text-indent: 15px;
-                font-size: 13px;
-                padding: 11px 0;
-            }
-            .details {
-                padding: 0px 1% 0px 1%;
-                overflow: hidden;
-                .detail {
-                    width: 18%;
+                
+                .item.time {
                     float: left;
-                    background-color: #f9f9f9;
-                    margin: 0px 1% 10px 1%;
                     display: block;
-                    border-radius: 3px;
-                    position: relative;                                    
-                    .month {
-                        width: 100%;
-                        display: block;
-                        text-align: center;
-                        font-size: 12px;
+                    overflow:hidden;
+                    width: 64px;
+                    height: 54px;
+                    text-align:center;
+                    padding:5px 0px;
+                    margin-left: 12px;
+                    border: 1px solid #e9e9e9; 
+                    border-radius: 5px;
+                    background-color: #f9f9f9; 
+                    
+                    .nonth {        
+                        display: block;    
                         color: #575757;
-                        margin-top: 6px;
+                        font-size: 12px;
+                        text-align: center;
                     }
                     .day {
-                        width: 100%;
                         display: block;
-                        text-align: center;
-                        font-size: 18px;
                         color: #ed6f37;
-                        margin-top: 7px;
+                        font-size: 18px;
+                        text-align: center;
+                        margin-top: 5px;
                     }
                     .week {
-                        width: 100%;
                         display: block;
-                        text-align: center;
-                        font-size: 12px;
                         color: #575757;
-                        margin: 7px 0 3px 0;
+                        font-size: 12px;
+                        text-align: center;
+                        margin-top: 5px;
                     }
                     .choice {
-                        position: absolute;
-                        right: 0px;
-                        top: 0px;
-                        width: 10px;
+                        position:relative;
+                        display:block;
+                        top:-59px;
+                        height:14px;
+                        text-align: right;
+                        
+                        img {
+                            width:14px;
+                        }
+                    }
+                    
+                    &.selected {
+                        border:1px solid #fed030;
                     }
                 }
             }
         }
-        .footer {
+        .hint {
             display: block;
-            line-height: 20px;
-            width: 88%;
-            margin-top: 10px;
-            font-size: 12px;
             color: #b3b3b3;
+            font-size: 12px;
+            line-height: 20px;
             text-align: center;
-            padding: 10px 6% 10px 6%;
+            padding:8px 12px;
         }
-        
-    }
-    .selected {
-        border: 1px solid #fed030;
-    }
-    .unselected {
-        border: 1px solid #e9e9e9; 
-    }
-    .nameOptional {
-        color: #b3b3b3;
-    }
-    .nameNotOptional {
-        color: #575757;
-    }
-    .descOptional {
-        color: #b3b3b3;
-    }
-    .descNotOptional {
-        color: #888888;
-    }
-    .valueOptional {
-        color: #b3b3b3;
-    }
-    .valueNotOptional {
-        color: #ed6f37;
     }
 }

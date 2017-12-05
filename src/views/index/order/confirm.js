@@ -2,7 +2,7 @@
 import Utils from '@/directives/utils';
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
-import indexAPI from "@/services/index-service";
+import API from "@/services/api";
 
 var _default = (function(){
 
@@ -11,7 +11,6 @@ var _default = (function(){
         mounted: function(){
             
             var that = this;
-            console.log(Store)
             //  获取数据仓库中的数据
            
             if(Store.data){
@@ -19,7 +18,7 @@ var _default = (function(){
                 Store.data.forEach(function(toy){
                     target.push({'toyId': toy.toyId, 'toyNum': 1 });
                 });
-                indexAPI.buyCheck(
+                API.Index.buyCheck(
                     {
                         orderType : '1',
                         newToys :  JSON.stringify(target),
@@ -51,7 +50,7 @@ var _default = (function(){
                                 that.targets.push({'toyId': toy.toyId, 'toyNum': 1, 'toyPrice': toy.specialMoney});
                             });
 
-                            indexAPI.presubmit(
+                            API.Index.presubmit(
                                 
                                 {
                                     seqId : that.passSeqId,
@@ -128,7 +127,7 @@ var _default = (function(){
                 var stat = this;
                 stat.distributionNum = infoDeterData[0].value;
                 stat.distributionTime = infoDeterData[1].timestamp;
-                indexAPI.presubmit(
+                API.Index.presubmit(
                     
                     {
                         seqId : stat.passSeqId,
@@ -170,7 +169,7 @@ var _default = (function(){
                 self.addressSex = (address.consigneeSex == 0 ? '先生' : '女士');
                 self.addressPhone = address.consigneePhone;
 
-                indexAPI.presubmit(
+                API.Index.presubmit(
                     {
                         seqId : self.passSeqId,
                         orderType : 1,
@@ -206,7 +205,7 @@ var _default = (function(){
 
                 var self = this;
                 self.defaultLease = item;
-                indexAPI.presubmit(
+                API.Index.presubmit(
                     {
                         seqId : self.passSeqId,
                         orderType : 1,
@@ -242,7 +241,7 @@ var _default = (function(){
             setCoupon : function(couponId){
                 var self = this;
                 self.defaultCoupon = couponId;
-                indexAPI.presubmit(
+                API.Index.presubmit(
                     {
                         seqId : self.passSeqId,
                         orderType : 1,
@@ -283,7 +282,7 @@ var _default = (function(){
             },
             payment : function() {
                 var self = this;
-                indexAPI.submit(
+                API.Index.submit(
                     {
                         seqId : self.passSeqId,
                         orderType : 1,

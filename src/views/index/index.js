@@ -2,7 +2,7 @@
 import Slide from '@/components/slide.vue'
 import Toast from '@/directives/toast';
 import Sortor from "@/directives/sortor";
-import indexAPI from "@/services/index-service";
+import API from "@/services/api";
 
 var _default = (function(){
 	
@@ -10,20 +10,18 @@ var _default = (function(){
 	return {
 		name: 'home-index',
 		mounted: function(){
-            var that = this;
+		    
+            var vm = this;
 
-        
         //请求接口：
             //首页banner接口
-            indexAPI.banner(
-                {
+            API.Index.banner({
                     
-                },
-                function(data) {
+            },function(data) {
                     if(data.code == 0){
-                        that.bannerItems = data.data;
-                        for (var i = 0; i<that.bannerItems.length;i++){
-                            that.bannerItems[i]['src'] = that.bannerItems[i]['bannerImage'] ;
+                        vm.bannerItems = data.data;
+                        for (var i = 0; i<vm.bannerItems.length;i++){
+                            vm.bannerItems[i]['src'] = vm.bannerItems[i]['bannerImage'] ;
                         };
                     }else {
                        Toast.show(data.msg) 
@@ -31,29 +29,29 @@ var _default = (function(){
                 }
             );
             //玩具列表接口
-            indexAPI.toyList(
+            API.Index.toyList(
                 {
                     name : "",
-                    q : that.screenJSON,
+                    q : vm.screenJSON,
                     rt : 2,
                     sk : 1,
-                    tid : that.commonLastToyId,
+                    tid : vm.commonLastToyId,
                 },
                 function (data) {
                     if (data.code == 0) {
                         if(data.data.isEnd==false) {
-                            that.LoadState = true;
+                            vm.LoadState = true;
                         }else {
-                            that.LoadState = false;
+                            vm.LoadState = false;
                         };
                         if (data.data.toys.length > 0) {
-                            that.commonLastToyId = data.data.toys.slice(-1)[0].toyId;
+                            vm.commonLastToyId = data.data.toys.slice(-1)[0].toyId;
                         } else {
-                            that.commonLastToyId = -1;
+                            vm.commonLastToyId = -1;
                         };
                         var toyInit = data.data.toys;
                         toyInit.forEach(function(toys,index){  
-                            that.toysListItem.push(toys);  
+                            vm.toysListItem.push(toys);  
                         });
                     } else {
                         Toast.show(data.msg);
@@ -64,30 +62,30 @@ var _default = (function(){
             //滑动到玩具列表底部加载玩具列表
             window.addEventListener('scroll',function(){
                 // 判断是否滚动到底部  
-                if(document.body.scrollTop + window.innerHeight >= document.body.offsetHeight && that.LoadState) {
-                    indexAPI.toyList(
+                if(document.body.scrollTop + window.innerHeight >= document.body.offsetHeight && vm.LoadState) {
+                    API.Index.toyList(
                         {
                             name : "",
-                            q : that.screenJSON,
+                            q : vm.screenJSON,
                             rt : 2,
                             sk : 1,
-                            tid : that.commonLastToyId,
+                            tid : vm.commonLastToyId,
                         },
                         function (data) {
                             if (data.code == 0) {
                                 if(data.data.isEnd==false) {
-                                    that.LoadState = true;
+                                    vm.LoadState = true;
                                 }else {
-                                    that.LoadState = false;
+                                    vm.LoadState = false;
                                 };
                                 if (data.data.toys.length > 0) {
-                                    that.commonLastToyId = data.data.toys.slice(-1)[0].toyId;
+                                    vm.commonLastToyId = data.data.toys.slice(-1)[0].toyId;
                                 } else {
-                                    that.commonLastToyId = -1;
+                                    vm.commonLastToyId = -1;
                                 };
                                 var toyLoad = data.data.toys;
                                 toyLoad.forEach(function(toys,index){  
-                                    that.toysListItem.push(toys); 
+                                    vm.toysListItem.push(toys); 
                                 });
                             } else {
                                 Toast.show(data.msg);
@@ -98,32 +96,32 @@ var _default = (function(){
                 }
             });
             //筛选接口
-            indexAPI.screen(
+            API.Index.screen(
                 {
  
                 },
                 function (data) {
                     if (data.code == 0) {
                         //年龄
-                        that.ageItem = data.data.ageRange;
+                        vm.ageItem = data.data.ageRange;
                         //品牌
-                        that.brandHotItem = data.data.brand.hot;
+                        vm.brandHotItem = data.data.brand.hot;
                         var brandAll = data.data.brand.all;
-                        that.brandAllItem = Sortor.pinyin(brandAll);
+                        vm.brandAllItem = Sortor.pinyin(brandAll);
                         //能力
-                        that.abilityItemOne = data.data.ability.slice(0,9);
-                        that.abilityItemTwo = data.data.ability.slice(9,18),
-                        that.abilityItemThree = data.data.ability.slice(18,27),
-                        that.abilityItemFour = data.data.ability.slice(27,31),
+                        vm.abilityItemOne = data.data.ability.slice(0,9);
+                        vm.abilityItemTwo = data.data.ability.slice(9,18),
+                        vm.abilityItemThree = data.data.ability.slice(18,27),
+                        vm.abilityItemFour = data.data.ability.slice(27,31),
                         //类型
-                        that.toyTypeItemOne = data.data.toyType.slice(0,9);
-                        that.toyTypeItemTwo = data.data.toyType.slice(9,18),
-                        that.toyTypeItemThree = data.data.toyType.slice(18,27),
+                        vm.toyTypeItemOne = data.data.toyType.slice(0,9);
+                        vm.toyTypeItemTwo = data.data.toyType.slice(9,18),
+                        vm.toyTypeItemThree = data.data.toyType.slice(18,27),
                         //筛选
-                        that.toySortItem = data.data.toySort;
-                        that.toySizeItem = data.data.toySize;
-                        that.toyOtherRentType = data.data.toyOther[0];
-                        that.toyOtherStockNum = data.data.toyOther[1];  
+                        vm.toySortItem = data.data.toySort;
+                        vm.toySizeItem = data.data.toySize;
+                        vm.toyOtherRentType = data.data.toyOther[0];
+                        vm.toyOtherStockNum = data.data.toyOther[1];  
                     } else {
                         Toast.show(data.msg);
                     }
@@ -200,7 +198,7 @@ var _default = (function(){
 		    
 		    //添加到购物车
 		    addCart : function(e, toyId) {
-		        indexAPI.cartAdd(
+		        API.Index.cartAdd(
                     {
                         tid : toyId
                     },
@@ -317,7 +315,6 @@ var _default = (function(){
                 }else {
                     this.rentSelectedData = 2;
                 }
-                console.log(this.rentSelectedData)
             },
                 
             //有货选中
@@ -328,7 +325,6 @@ var _default = (function(){
                 }else {
                     this.stockSelectedData = 0;
                 }
-                console.log(this.stockSelectedData)
             },
  
             goToToyDetail: function(e, toyId){
@@ -434,7 +430,6 @@ var _default = (function(){
                 var brandes = (self.brandSelectedData && self.brandSelectedData.length ? self.brandSelectedData.join(';') : '');
                 var abilitys = (self.abilitySelectedData && self.abilitySelectedData.length ? self.abilitySelectedData.join(';') : '');
                 var sizes = (self.sizeSelectedData && self.sizeSelectedData.length ? self.sizeSelectedData.join(';') : '');
-                
                 self.screenJSON = JSON.stringify({
                     "ageRange": ages , 
                     "toySort" : self.sortSelectedData ,
@@ -445,7 +440,7 @@ var _default = (function(){
                     "stockNum": self.stockSelectedData ,
                     "rentType": self.rentSelectedData 
                 });
-                indexAPI.toyList(
+                API.Index.toyList(
                     {
                         name : "",
                         q : self.screenJSON,

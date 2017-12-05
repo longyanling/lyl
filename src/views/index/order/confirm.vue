@@ -35,8 +35,8 @@
                     <span class="text">优惠券</span>
                     <img class="arrow" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
                     <span class="last" v-show="confirmItem.coupon && defaultCoupon != -1">{{couponName}}</span>
-                    <span class="last" v-show="confirmItem.coupon && defaultCoupon == -1">不使用优惠券</span>
-                    <span class="last" v-show="!confirmItem.coupon">{{confirmItem.couponList && confirmItem.couponList.length ? '提高总租金以使用优惠' : '没有可用优惠券'}}</span>
+                    <span class="last" v-show="!confirmItem.coupon && defaultCoupon == -1">不使用优惠券</span>
+                    <span class="last" v-show="!confirmItem.coupon && defaultCoupon != -1">{{confirmItem.couponList && confirmItem.couponList.length ? '提高总租金以使用优惠' : '没有可用优惠券'}}</span>
                 </div>
             </div>
 
