@@ -59,7 +59,7 @@
     
     .toyinner {
         display: block;
-        padding:0px 2px 0px 2px;
+        padding: 0px;
         
         .toyitem {
             float: left;
@@ -71,7 +71,7 @@
             .inner {
                 display: block;
                 padding-top:1px;
-                margin:0px 2px 4px 2px;
+                border-bottom:1px solid #f0f0f0;
                 background-color: #ffffff;
                 
                 .thumb {
@@ -134,6 +134,9 @@
                         border-radius: 3px;
                         background: #ceaff1;
                     }
+                }
+                &:nth-child(odd){
+                    border-right:1px solid #f0f0f0;
                 }
             }
         }
