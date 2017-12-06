@@ -1,47 +1,75 @@
 .tm-index-location {
-    height: 100%;
-    color: #575757;
     display: block;
-    padding: 10px;
+    color: #575757;
     background-color: #ffffff;
 
-    .title {
+    .caption {
         display: block;
-        font-size: 12px;
+        height:32px;
         color: #b3b3b3;
+        font-size: 12px;
+        line-height:32px;
+        padding:0px 12px;
     }
-    .margin_top_15 {
-        margin-top: 15px;
-    }
-    .margin_bot_10 {
-        margin-bottom: 10px;
-    }
-    .main {
+    .citylist {
         display: block;
-        font-size: 13px;
-        var {
+        padding: 0px 7px;
+        
+        .item { 
             display: inline-block;
-            width: 28%;
-            text-align: center;
-            margin: 10px 2.66% 0 2.66%;
+            height: 32px;
             color: #575757;
-            padding: 6px 0;
-            border-radius: 3px;
+            line-height: 32px;
+            padding: 0px 12px;
+            margin: 5px;
+            border-radius: 5px;
             background-color: #f0f0f0;
         }
-        dfn {
-            display: block;
-            text-indent: 5px;
-            padding: 6px 0;
-            background-color: #f0f0f0;
+        
+        .location {
+            display: inline-block;
+            height: 32px;
+            color: #575757;
+            line-height: 32px;
+            padding: 0px 12px 0px 24px;
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_address.png');
+            background-repeat: no-repeat;
+            background-size: 12px 15px;
+            background-position: 5px center;;
         }
-        .city {
+        
+        .amap {
+            display: inline-block;
+            width: 64px;
+            height: 32px;
+        }
+    }
+    .citysheet {
+        display: block;
+        
+        .caption {
             display: block;
-                text-indent: 5px;
-                display: block;
-                padding: 11px 0;
-                border-bottom: 1px solid #f0f0f0;
-
+            position:sticky;
+            top:0px;
+            height: 32px;
+            line-height: 32px;
+            padding: 0px 12px;
+            border-top:1px solid #f0f0f0;
+            border-bottom:1px solid #f0f0f0;
+            background: #f9f9f9;
+        }
+        .item {
+            display: block;
+            height: 44px;
+            color: #575757;
+            font-size: 14px;
+            line-height: 44px;
+            margin:0px 5px 0px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            
+            &:last-child {
+                border-bottom: 0px;
+            }
         }
     }
 }
