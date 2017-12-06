@@ -6,13 +6,9 @@ import Utils from '@/directives/utils';
 
 var mine = {
 	
-	login: function(callback){
+	login: function(data, callback){
 		
-		Utils.Axios.deferPost('/api/user/login', {
-				'phone': '17610007876',
-				'pwd': MD5('a123456'),
-				'cityCode': '010'
-			}, callback);
+		Utils.Axios.deferPost('/api/user/login', data, callback);
 	},
 	
 	profile: function(callback){
