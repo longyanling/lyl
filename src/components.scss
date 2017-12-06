@@ -88,6 +88,9 @@
                     height: 32px;
                     color: #333333;
                     font-size: 14px;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
                     text-align: left;
                     line-height:16px;
                     padding: 6px 6px 0px 6px;
@@ -303,6 +306,7 @@
             }
         }
     }
+    
 .couponlist {
     
     .couponitem {

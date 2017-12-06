@@ -1,101 +1,112 @@
 <template>
-    <div id="order-confirm">
-        <div class="tm-order-confirm">
-
-        	<div class="location" v-touch:tap="{event:cellHref,params:['/index/confirm/address']}">
-                <img class="clickable" src="https://ts.zlimg.com/v2/h5/jd/order_address_clickable.png"/>
-                <div class="main">
-                    <span class="content"><dfn class="name">{{addressName}}</dfn><dfn class="sex">{{addressSex}}</dfn><dfn>{{addressPhone}}</dfn></span>
-                    <span class="detail">{{addressDetail}}</span>
-                </div>
-                <img class="entry" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
-            </div>
-
-            <div class="select">
-                <div class="delivery" v-touch:tap="{event:cellHref, params: ['/index/confirm/distribution']}">
-                    <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/order_time_clickable.png"/>
-                    <span class="text">配送信息</span>
-                    <img class="arrow" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
-                    <div class="opt">
-                        <span class="frist">{{defaultTime}}</span>
-                        <span class="last color57">{{defauitName}}</span>
-                    </div>
-                </div>
-                <div class="delivery" v-touch:tap="{event:cellHref, params: ['/index/confirm/lease']}">
-                    <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/order_rentdate_clickable.png"/>
-                    <span class="text">租期</span>
-                    <img class="arrow" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
-                    <span class="opt">
-                        <span class="frist">{{confirmItem.rentPeriod}}天</span>
-                        <span class="last">({{confirmItem.endTime | expire}}到期)</span>
-                    </span>
-                </div>
-                <div class="coupon" v-touch:tap="{event:cellHref, params: ['/index/confirm/coupon']}">
-                    <img class="sign" src="https://ts.zlimg.com/v2/h5/jd/order_coupon_clickable.png"/>
-                    <span class="text">优惠券</span>
-                    <img class="arrow" src="https://ts.zlimg.com/v2/h5/jd/home_button_entry.png"/>
-                    <span class="last" v-show="confirmItem.coupon && defaultCoupon != -1">{{couponName}}</span>
-                    <span class="last" v-show="!confirmItem.coupon && defaultCoupon == -1">不使用优惠券</span>
-                    <span class="last" v-show="!confirmItem.coupon && defaultCoupon != -1">{{confirmItem.couponList && confirmItem.couponList.length ? '提高总租金以使用优惠' : '没有可用优惠券'}}</span>
-                </div>
-            </div>
-
-            <div class="money">
-                <div class="rent ho">
-                    <em class="title">总租金</em>
-                    <span class="prompt">({{confirmItem.totalRentMsg}})</span>
-                    <var class="sum">￥{{confirmItem.totalRent ? confirmItem.totalRent/1000 : '0'}}</var>
-                </div>
-                <div class="freight ho">
-                    <em class="title">运费</em>
-                    <span class="prompt">({{confirmItem.deliveryMsg}})</span>
-                    <var class="sum">￥{{confirmItem.deliveryMoney ? confirmItem.deliveryMoney/1000 : '0'}}</var>
-                </div>
-                <div class="freight ho">
-                    <em class="title">优惠</em>
-                    <var class="sum">-￥{{confirmItem.rentDiscount ? confirmItem.rentDiscount/1000 : '0'}}</var>
-                </div>
-                <div class="total ho">
-                    <em class="title">合计</em>
-                    <span class="prompt">({{confirmItem.payOrderMsg}})</span>
-                    <var class="sum colorb3">￥{{confirmItem.payOrder ? confirmItem.payOrder/1000 : '0'}}</var>
-                </div>
-            </div>
-
-            <div class="deposit">
-                <em class="title">订单押金</em>
-                <span class="prompt">{{confirmItem.depositMsg}}</span>
-                <var class="sum">￥{{confirmItem.payDeposit ? confirmItem.payDeposit / 1000 : '0'}}</var>
-            </div>
-
-            <div class="toys">
-                <div class="title">
-                    <ins></ins>
-                    <em class="con">玩具列表</em>
-                    <var class="price">{{toyALLPrice}}元<var class="day">/天</var></var>
-                </div>
-                <div class="itemtoys">
-                    <div class="toylist">
-                        <div class="toyitem" v-for="item in toyItem">
-                            <img :src="item.image" class="thumb" />
-                            <dfn class="price">
-                                {{item.rentMoney / 1000}}
-                                <small class="unit">元/天</small>
-                            </dfn>
-                            <span class="info">
-                                <em class="title">{{item.toyName}}</em>
-                                <span class="age">适合年龄：{{item.ageRange}}</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="submitpay">
-                    <span class="price">物品总价值：<span>￥{{confirmItem.payMoney ? confirmItem.payMoney / 1000 : '0'}}</span></span>
-                    <span class="apply" v-touch:tap="{event:payment, params: []}">京东支付</span>
-                </div>
-            </div>
-            <router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" @resetCoupon="setCoupon" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
+    <div id="order-confirm" class="tm-order-confirm">
+        <div class="address" v-touch:tap="{event: showPopup,params:['/index/confirm/address']}">
+            <var class="icon"></var>
+            <var class="arrow"></var>
+            <span class="info">
+                <em class="cell">
+                    <var>{{addressName}} </var>
+                    <var>{{addressSex}} </var>
+                    <var>{{addressPhone}} </var>
+                </em>
+                <em class="cell">
+                    <var>{{addressDetail}}</var>
+                </em>
+            </span>
         </div>
+        <div class="group">
+            <span class="cell multi" v-touch:tap="{ event: showPopup, params: ['/index/confirm/distribution'] }">
+                <var class="icon delivery"></var>
+                <em class="label">配送信息</em>
+                <var class="arrow"></var>
+                <dfn class="value">
+                    <strong>{{defaultTime}}</strong>
+                    <small>{{defauitName}}</small>
+                </dfn>
+            </span>
+            <span class="cell multi" v-touch:tap="{ event: showPopup, params: ['/index/confirm/lease'] }">
+                <var class="icon period"></var>
+                <em class="label">租期</em>
+                <var class="arrow"></var>
+                <dfn class="value">
+                    <strong>{{confirmItem.rentPeriod}} 天</strong>
+                    <small>{{confirmItem.endTime}}</small>
+                </dfn>
+            </span>
+            <span class="cell signle" v-touch:tap="{ event: showPopup, params: ['/index/confirm/coupon'] }">
+                <var class="icon coupon"></var>
+                <em class="label">优惠券</em>
+                <var class="arrow"></var>
+                <dfn class="value">
+                    <var v-show="confirmItem.coupon && defaultCoupon != -1">{{couponName}}</var>
+                    <var class="gray" v-show="!confirmItem.coupon && defaultCoupon == -1">不使用优惠券</var>
+                    <var class="gray" v-show="!confirmItem.coupon && defaultCoupon != -1">{{confirmItem.couponList && confirmItem.couponList.length ? '提高总租金以使用优惠' : '没有可用优惠券'}}</var>
+                </dfn>
+            </span>
+        </div>        
+        <div class="group">
+            <span class="cell signle">
+                <em class="text">总租金 <small>({{confirmItem.totalRentMsg}})</small></em>
+                <dfn class="element">
+                    <var>￥{{confirmItem.totalRent ? confirmItem.totalRent/1000 : '0'}}</var>
+                </dfn>
+            </span>
+            <span class="cell signle">
+                <em class="text">运费 <small>({{confirmItem.deliveryMsg}})</small></em>
+                <dfn class="element">
+                    <var>￥{{confirmItem.deliveryMoney ? confirmItem.deliveryMoney/1000 : '0'}}</var>
+                </dfn>
+            </span>
+            <span class="cell signle">
+                <em class="text">优惠</em>
+                <dfn class="element">
+                    <var>-￥{{confirmItem.rentDiscount ? confirmItem.rentDiscount/1000 : '0'}}</var>
+                </dfn>
+            </span>
+            <span class="cell signle">
+                <em class="text">合计 <small>({{confirmItem.payOrderMsg}})</small></em>
+                <dfn class="element">
+                    <strong>￥{{confirmItem.payOrder ? confirmItem.payOrder/1000 : '0'}}</strong>
+                </dfn>
+            </span>
+        </div>
+
+        <div class="group">
+            <div class="cell single">
+                <em class="text">本单押金 <small>{{confirmItem.depositMsg}}</small></em>
+                <dfn class="element">
+                    <var>￥{{confirmItem.payDeposit ? confirmItem.payDeposit / 1000 : '0'}}</var>
+                </dfn>
+            </div>
+        </div>
+        
+        <div class="toys">
+            <div class="caption">
+                <ins></ins>
+                <em>玩具列表</em>
+                <dfn>{{toyALLPrice}}元<small>/天</small></dfn>
+            </div>
+            <div class="itemtoys">
+                <div class="toylist">
+                    <div class="toyitem" v-for="item in toyItems">
+                        <img :src="item.image" class="thumb" />
+                        <dfn class="price">
+                            {{item.rentMoney / 1000}}
+                            <small class="unit">元/天</small>
+                        </dfn>
+                        <span class="info">
+                            <em class="title">{{item.toyName}}</em>
+                            <span class="age">适合年龄：{{item.ageRange}}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <span class="price">物品总价值：<dfn>￥{{confirmItem.payMoney ? confirmItem.payMoney / 1000 : '0'}}</dfn></span>
+            <a class="button" v-touch:tap="{event:payment, params: []}">京东支付</a>
+        </div>
+        <router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" @resetCoupon="setCoupon" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
     </div>
 </template>
 

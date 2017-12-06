@@ -30,7 +30,8 @@ var data = {
             localStorage.setItem('SEARCH_HISTORY', words.join(','));
 
         },
-        searchHot: null
+        searchHot: null,
+        orderToys: []
     },
     Mine: {
         profile: null,

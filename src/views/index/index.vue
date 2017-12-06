@@ -9,7 +9,7 @@
 		<img class="search" v-touch:tap="{ event: goToSearch, params: [] }" src="https://ts.zlimg.com/v2/h5/jd/home_search.png"/>
 
 		<div class="main">
-			<div class="nav" v-scroll:dock=" { event: tabsScroll } ">
+			<div class="nav">
                 <span class="switch" v-for="(item, index) in navigationItems" v-touch:tap="{ event: navShow, params: [] }">{{item.text}}</span>
                 <span class="personal" v-touch:tap="{ event: goToMine, params: [] }">
                     <img class="portrait" src="https://ts.zlimg.com/v2/h5/jd/mine_personalCenter.png"/>
@@ -22,7 +22,7 @@
                     <span class="switch" v-touch:tap="{ event: typeShow, params: [] }">类型</span>
                     <span class="switch" v-touch:tap="{ event: screenShow, params: [] }">筛选</span>
                     <span class="personal" v-touch:tap="{ event: goToMine, params: [] }">
-                        <img class="portrait" src="https://ts.zlimg.com/v2/h5/jd/mine_personalCenter.png"/>
+                        <img class="portrait" src="https://ts.zlimg.com/v2/h5/jd/mine_personalcenter.png"/>
                         <img class="authorized" src="https://ts.zlimg.com/v2/h5/jd/mine_authorized.png"/>
                     </span>
                 </span>
@@ -183,9 +183,8 @@
                 </span>
             </div>
         </div>
-		<a class="basePhone" href="tel://4006351987"><img src="https://ts.zlimg.com/v2/h5/jd/home_service.png"/></a>
-		<img class="baseCart" v-touch:tap="{event: goToCart, params: []}" src="https://ts.zlimg.com/v2/h5/jd/home_cart.png"/>
         <router-view></router-view>
+        <tm-shortcut></tm-shortcut>
 	</div>
 </template>
 

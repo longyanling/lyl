@@ -62,8 +62,10 @@
 				display:block;
 				width:100%;
 				height:36px;
+				text-indent: 20px;
 				line-height:36px;
 				border:0px;
+				border-radius: 5px;
 			}
 		}
 		.button {
@@ -72,6 +74,8 @@
 			height:36px;
 			margin-top:10px;
 			border:0px;
+			background-color: #fed030;
+			border-radius: 5px;
 		}
 	}
 </style>

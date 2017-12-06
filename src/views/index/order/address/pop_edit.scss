@@ -26,8 +26,15 @@
         padding:15px;
         background-color: #f0f0f0;
         
-        .submit {
-            position: static;
+        .button {
+            float: none;
+            width: auto;
+            
+            &.submit {
+                color: #575757;
+                background:#fed030;
+                border-radius: 5px;
+            }   
         }
     }
 }

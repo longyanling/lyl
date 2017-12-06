@@ -1,7 +1,9 @@
 'use strict';
-import Slide from '@/components/slide.vue'
+
 import Toast from '@/directives/toast';
 import Sortor from "@/directives/sortor";
+import Slide from '@/components/slide.vue'
+import Shortcut from '@/components/shortcut.vue'
 import API from "@/services/api";
 
 var _default = (function(){
@@ -488,7 +490,8 @@ var _default = (function(){
             
 		},
 		components: {
-			'tm-slide': Slide
+			'tm-slide': Slide,
+			'tm-shortcut': Shortcut
 		}
 	}
 })();
