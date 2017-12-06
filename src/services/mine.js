@@ -1,6 +1,5 @@
 'use strict';
 
-import MD5 from '@/directives/md5';
 import Store from '@/directives/store';
 import Utils from '@/directives/utils';
 

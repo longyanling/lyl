@@ -27,7 +27,8 @@ ul, ol { list-style: none; }
 
 /* 重置文本格式元素 */
 a { text-decoration: none; }
-a:hover { text-decoration: underline; }
+a:focus { text-decoration: none; }
+a:hover { text-decoration: none; }
 
 /* 重置表单元素 */
 img { 

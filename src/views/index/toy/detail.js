@@ -3,6 +3,7 @@
 import API from "@/services/api";
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
+import Shortcut from '@/components/shortcut.vue'
 import Slide from '@/components/slide.vue';
 
 var _default = (function(){
@@ -53,6 +54,9 @@ var _default = (function(){
 			};
 		},
 		methods: {
+		    goCart : function () {
+		        this.$router.push( '/index/detail/cart');
+		    },
 		    addCart : function (e, toyId) {
 		        
 		        toyId = (toyId == undefined ? this.detailItem.toyId : toyId);
@@ -103,7 +107,8 @@ var _default = (function(){
 		    goToConfirm : function ( ) {
                 var toys = new Array();
                 toys.push(this.detailItem);
-		        Store.data = toys;
+                Store.Index.orderToys = [];
+		        Store.Index.orderToys = toys;
 		        this.$router.push('/index/confirm');
 		    },
 			tabsScroll: function( e, docked ){
@@ -124,7 +129,8 @@ var _default = (function(){
 			}
 		},
 		components: {
-			'tm-slide': Slide
+			'tm-slide': Slide,
+			'tm-shortcut': Shortcut
 		}
 	}
 })();

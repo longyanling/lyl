@@ -15,7 +15,7 @@
 				<dfn class="age">适合年龄：{{detailItem.ageRange}}</dfn>
 			</span>
 		</div>
-		<div class="tabs" v-scroll:dock=" { event: tabsScroll } ">
+		<div class="tabs">
 			<span class="item">详细介绍</span>
 			<span class="item">规格参数</span>
 			<span class="item">猜你喜欢</span>
@@ -99,8 +99,8 @@
 	    	<span class="plusCart" v-touch:tap=" { event: addCart, params: [] } ">加入购物车</span>
 	    	<span class="robRent" v-touch:tap=" { event: goToConfirm, params: [] } ">立即抢租</span>
 	    </div>
-	    <a class="basePhone" href="tel://4006351987"><img src="https://ts.zlimg.com/v2/h5/jd/home_service.png"/></a>
-        <img class="baseCart" v-touch:tap="{event: goToCart, params: []}" src="https://ts.zlimg.com/v2/h5/jd/home_cart.png"/>
+	    <router-view></router-view>
+	    <tm-shortcut :url="goCart"></tm-shortcut>
 	</div>
 </template>
 

@@ -1,4 +1,5 @@
 'use strict';
+
 import Utils from '@/directives/utils';
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
@@ -6,81 +7,80 @@ import API from "@/services/api";
 
 var _default = (function(){
 
+    var preToys = [];
+    var preSubmit = function(vm, data){
+        
+        API.Index.presubmit(data, function (data) {
+            
+            if (data.code == 0) {
+                vm.confirmItem = data.data;
+                vm.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
+                vm.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
+                vm.defaultLease = data.data.rentPeriod; 
+                var couponList = data.data.couponList;
+                var coupon = data.data.coupon;
+                vm.coupons = [coupon, couponList];
+                vm.leases = data.data.rentPeriodInfo;
+                var deliveryDays = data.data.deliveryDays;
+                var deliveryMethods = data.data.deliveryMethods;
+                vm.defaultTime = deliveryDays.default.string;
+                vm.distributionNum = deliveryMethods.default;
+                vm.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
+                vm.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal} ];
+                vm.deliverTime = data.data.deliveryDays.default.timestamp;
+            } else {
+                Toast.show(data.msg);
+            }
+        });                
+    };
+
     return {
-        name: 'Confirm',
+        name: 'order-confirm',
         mounted: function(){
             
-            var that = this;
-            //  获取数据仓库中的数据
-           
-            if(Store.data && Store.data.length >0){
-                var target =  new Array();
-                Store.data.forEach(function(toy){
-                    target.push({'toyId': toy.toyId, 'toyNum': 1 });
-                });
+            var vm = this;
+            var toys = [];
+            var price = 0;
+            
+            if( Store.Index.orderToys &&  Store.Index.orderToys.length >0){
+                for (var i = 0; i < Store.Index.orderToys.length; i++){
+                    toys.push({
+                        'toyId': Store.Index.orderToys[i].toyId, 
+                        'toyNum': 1
+                    });
+                }
                 API.Index.buyCheck(
                     {
                         orderType : '1',
-                        newToys :  JSON.stringify(target),
+                        newToys :  JSON.stringify(toys),
                     },
                     function (data) {
+                        
                         if (data.code == 0) {
-                            
-                            that.addressData = data.data.address;
-                            if(that.addressData == undefined) {
-                                that.addressName = '';
-                                that.addressDetail = '请您添加收货地址';
-                                that.addressSex = '';
-                                that.addressPhone = '';
-                            }else {
-                                that.addressName = that.addressData.addressConsignee;
-                                that.addressSex = (that.addressData.consigneeSex == 0 ? '先生' : '女士');
-                                that.addressPhone = that.addressData.consigneePhone;
-                                that.addressDetail = that.addressData.addressTotal;
+                            vm.addressData = data.data.address || {};
+                            vm.addressName = vm.addressData.addressConsignee || '';
+                            vm.addressDetail = vm.addressData.addressTotal || '请您添加收货地址';
+                            vm.addressSex = vm.addressData.consigneeSex ? (vm.addressData.consigneeSex == 0 ? '先生' : '女士') : '';
+                            vm.addressPhone = vm.addressData.consigneePhone || '';
+                            vm.passSeqId = data.data.seqId;
+                            vm.toyItems = data.data.toys.newToys.is;
+                            for (var i = 0; i < vm.toyItems.length; i++){
+                                price += vm.toyItems[i].specialMoney;
+                                preToys.push({
+                                    'toyId': vm.toyItems[i].toyId, 
+                                    'toyNum': 1, 
+                                    'toyPrice': vm.toyItems[i].specialMoney
+                                });
                             }
-                            that.toyItem = data.data.toys.newToys.is;
-                            var price = 0;
-                            that.toyItem.forEach(function(toy) {
-                                price += toy.specialMoney;
+                            vm.toyALLPrice = price/1000;
+                            
+                            preSubmit(vm, {
+                                seqId : vm.passSeqId,
+                                orderType : 1,
+                                newToys : JSON.stringify(preToys),
+                                addressId : vm.addressData.addressId || 0,
+                                dm : -1,
                             });
-                            that.toyALLPrice = price/1000;
-                            that.passSeqId = data.data.seqId;
-                            var targets = new Array();
-                            that.toyItem.forEach(function(toy){
-                                that.targets.push({'toyId': toy.toyId, 'toyNum': 1, 'toyPrice': toy.specialMoney});
-                            });
-
-                            API.Index.presubmit(
-                                
-                                {
-                                    seqId : that.passSeqId,
-                                    orderType : 1,
-                                    newToys : JSON.stringify(that.targets),
-                                    addressId : that.addressData.addressId,
-                                    dm : -1,
-                                },
-                                function (data) {
-                                    if (data.code == 0) {
-                                        that.confirmItem = data.data;
-                                        that.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
-                                        that.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
-                                        that.defaultLease = data.data.rentPeriod; 
-                                        var couponList = data.data.couponList;
-                                        var coupon = data.data.coupon;
-                                        that.coupons = [coupon, couponList];
-                                        that.leases = data.data.rentPeriodInfo;
-                                        var deliveryDays = data.data.deliveryDays;
-                                        var deliveryMethods = data.data.deliveryMethods;
-                                        that.defaultTime = deliveryDays.default.string;
-                                        that.distributionNum = deliveryMethods.default;
-                                        that.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
-                                        that.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal} ];
-                                        that.deliverTime = data.data.deliveryDays.default.timestamp;
-                                    } else {
-                                        Toast.show(data.msg);
-                                    }
-                                })
-                             
                         } else {
                             Toast.show(data.msg);
                         }   
@@ -92,9 +92,6 @@ var _default = (function(){
             }
 
         },
-        destoryed: function(){
-
-        },
         data: function(){
             
             return {
@@ -104,7 +101,7 @@ var _default = (function(){
                 addressSex : null,
                 addressPhone : null,
                 confirmItem : [],
-                toyItem : [],
+                toyItems : [],
                 targets : [],
                 coupons : [],
                 leases : [],
@@ -122,166 +119,76 @@ var _default = (function(){
             };
         },
         methods: {
+            
             //  修改配送信息
             setDistribution : function(infoDeterData){
                 
-                var stat = this;
-                stat.distributionNum = infoDeterData[0].value;
-                stat.distributionTime = infoDeterData[1].timestamp;
-                API.Index.presubmit(
-                    
-                    {
-                        seqId : stat.passSeqId,
-                        orderType : 1,
-                        newToys : JSON.stringify(stat.targets),
-                        addressId : stat.addressData.addressId,
-                        dm : stat.distributionNum,
-                        couponId : stat.defaultCoupon,
-                        orderTime : stat.distributionTime
-                    },
-                    function (data) {
-                        if (data.code == 0) {
-                            stat.confirmItem = data.data;
-                            stat.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
-                            stat.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
-                            stat.defaultLease = data.data.rentPeriod;
-                            var couponList = data.data.couponList;
-                            var coupon = data.data.coupon;
-                            stat.coupons = [coupon, couponList];
-                            stat.leases = data.data.rentPeriodInfo;
-                            var deliveryDays = data.data.deliveryDays;
-                            var deliveryMethods = data.data.deliveryMethods;
-                            stat.defaultTime = deliveryDays.default.string;
-                            stat.deliverTime = deliveryDays.default.timestamp;
-                            stat.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
-                            stat.distributions = [data.data.deliveryDays, data.data.deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal}];
-
-                        } else {
-                            Toast.show(data.msg);
-                        }
-                    })
+                this.distributionNum = infoDeterData[0].value;
+                this.distributionTime = infoDeterData[1].timestamp;
+                
+                preSubmit(this, {
+                    seqId : this.passSeqId,
+                    orderType : 1,
+                    newToys : JSON.stringify(preToys),
+                    addressId : this.addressData.addressId,
+                    dm : this.distributionNum,
+                    couponId : this.defaultCoupon,
+                    orderTime : this.distributionTime
+                });
             },
             //  修改配送地址
             setAddressId :function(address){
                 
-                var self = this;
-                self.addressName = address.addressConsignee;
-                self.addressDetail = address.addressTotal;
-                self.addressSex = (address.consigneeSex == 0 ? '先生' : '女士');
-                self.addressPhone = address.consigneePhone;
+                this.addressName = address.addressConsignee;
+                this.addressDetail = address.addressTotal;
+                this.addressSex = (address.consigneeSex == 0 ? '先生' : '女士');
+                this.addressPhone = address.consigneePhone;
 
-                API.Index.presubmit(
-                    {
-                        seqId : self.passSeqId,
-                        orderType : 1,
-                        newToys : JSON.stringify(self.targets),
-                        addressId : address.addressId,
-                        dm : self.distributionNum,
-                        couponId : self.defaultCoupon,
-                    },
-                    function (data) {
-                        if (data.code == 0) {
-                            self.confirmItem = data.data;
-                            self.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
-                            self.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
-                            self.defaultLease = data.data.rentPeriod;
-                            var couponList = data.data.couponList;
-                            var coupon = data.data.coupon;
-                            self.coupons = [coupon, couponList];
-                            self.leases = data.data.rentPeriodInfo;
-                            var deliveryDays = data.data.deliveryDays;
-                            var deliveryMethods = data.data.deliveryMethods;
-                            self.defaultTime = deliveryDays.default.string;
-                            self.deliverTime = deliveryDays.default.timestamp;
-                            self.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
-                            self.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal}];
-                            
-                        } else {
-                            Toast.show(data.msg);
-                        }
-                    })
+                preSubmit(this, {
+                    seqId : this.passSeqId,
+                    orderType : 1,
+                    newToys : JSON.stringify(preToys),
+                    addressId : address.addressId,
+                    dm : this.distributionNum,
+                    couponId : this.defaultCoupon
+                });
             },
             //  修改租期
             setDate : function(item){
 
-                var self = this;
-                self.defaultLease = item;
-                API.Index.presubmit(
-                    {
-                        seqId : self.passSeqId,
+                this.defaultLease = item;
+                
+                preSubmit(this, {
+                        seqId : this.passSeqId,
                         orderType : 1,
-                        newToys : JSON.stringify(self.targets),
-                        addressId : self.addressData.addressId,
-                        dm : self.distributionNum,
-                        couponId : self.defaultCoupon,
-                        rentPeriod : self.defaultLease
-                    },
-                    function (data) {
-                        if (data.code == 0) {
-                            self.confirmItem = data.data;
-                            self.couponName = (data.data.couponList.length>0 && data.data.coupon? data.data.coupon.displayName : '');
-                            self.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
-                            self.defaultLease = data.data.rentPeriod;
-                            var couponList = data.data.couponList;
-                            var coupon = data.data.coupon;
-                            self.coupons = [coupon, couponList];
-                            self.leases = data.data.rentPeriodInfo;
-                            var deliveryDays = data.data.deliveryDays;
-                            var deliveryMethods = data.data.deliveryMethods;
-                            self.defaultTime = deliveryDays.default.string;
-                            self.deliverTime = deliveryDays.default.timestamp;
-                            self.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
-                            self.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal}];
-                            
-                        } else {
-                            Toast.show(data.msg);
-                        }
-                    })
+                        newToys : JSON.stringify(preToys),
+                        addressId : this.addressData.addressId,
+                        dm : this.distributionNum,
+                        couponId : this.defaultCoupon,
+                        rentPeriod : this.defaultLease
+                });
             },
             //  选择优惠券
             setCoupon : function(couponId){
-                var self = this;
-                self.defaultCoupon = couponId;
-                API.Index.presubmit(
-                    {
-                        seqId : self.passSeqId,
-                        orderType : 1,
-                        newToys : JSON.stringify(self.targets),
-                        addressId : self.addressData.addressId,
-                        dm : self.distributionNum,
-                        couponId : self.defaultCoupon,
-                        rentPeriod : self.defaultLease
-                    },
-                    function (data) {
-                        if (data.code == 0) {
-                            self.confirmItem = data.data;
-                            self.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
-                            self.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
-                            self.defaultLease = data.data.rentPeriod;
-                            var couponList = data.data.couponList;
-                            var coupon = data.data.coupon;
-                            self.coupons = [coupon, couponList];
-                            self.leases = data.data.rentPeriodInfo;
-                            var deliveryDays = data.data.deliveryDays;
-                            var deliveryMethods = data.data.deliveryMethods;
-                            self.defaultTime = deliveryDays.default.string;
-//                          self.deliverTime = deliveryDays.default.timestamp;
-                            self.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
-                            self.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal}];
-                            
-                        } else {
-                            Toast.show(data.msg);
-                        }
-                    })
+                
+                this.defaultCoupon = couponId;
+                
+                preSubmit(this, {
+                    seqId : this.passSeqId,
+                    orderType : 1,
+                    newToys : JSON.stringify(preToys),
+                    addressId : this.addressData.addressId,
+                    dm : this.distributionNum,
+                    couponId : this.defaultCoupon,
+                    rentPeriod : this.defaultLease
+                });
             },
-            goToOrderList : function() {
-                this.$router.push( '/mine/order' );
-            },
-            cellHref: function( e, url ){
+            showPopup: function( e, url ){
 
                 this.$router.push( url );
             },
             payment : function() {
+                
                 var self = this;
                 API.Index.submit(
                     {
