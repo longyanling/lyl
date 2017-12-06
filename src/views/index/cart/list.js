@@ -9,7 +9,7 @@ var _default = (function(){
     return {
         name: 'index-cart',
         mounted: function(){
-            var self = this;
+            var vm = this;
             
             API.Index.cartList(
                 {
@@ -17,11 +17,11 @@ var _default = (function(){
                 },
                 function (data) {
                     if (data.code == 0) {
-                        self.shoppingItem = data.data;
-                        self.cartToysItem = data.data.cart;
+                        vm.cartToysItem = data.data.cart;
+                        vm.shoppingItem = data.data;
                         var toysQueue = data.data.cart;
                         toysQueue.forEach(function(toys){
-                            self.tidsItem.push(toys.toyId);
+                            vm.tidsItem.push(toys.toyId);
                         })
                     } else {
                         Toast.show(data.msg);
@@ -31,14 +31,11 @@ var _default = (function(){
            
 
         },
-        destoryed: function(){
-
-        },
         data: function(){
            
             return {
-                shoppingItem : [],
                 cartToysItem : [],
+                shoppingItem : [],
                 tidsItem : []       
             };
         },
@@ -75,8 +72,8 @@ var _default = (function(){
                 
             },
             deleteSoloToys : function(e, toyId) {
-                var that = this;
-                that.shoppingItem = [];
+                var vm = this;
+                vm.shoppingItem = [];
                 var tids = String(toyId);
                 API.Index.cartClear(
                     {
@@ -84,11 +81,11 @@ var _default = (function(){
                     },
                     function (data) {
                         if (data.code == 0) {
-                            that.shoppingItem = data.data;
-                            that.cartToysItem = data.data.cart;
+                            vm.shoppingItem = data.data;
+                            vm.cartToysItem = data.data.cart;
                             var toyCart = data.data.cart;
                             toyCart.forEach(function(toys){
-                                that.tidsItem.push(toys.toyId);
+                                vm.tidsItem.push(toys.toyId);
                             })
                         } else {
                             Toast.show(data.msg);
@@ -97,10 +94,11 @@ var _default = (function(){
                 )
             },
             goToToy : function() {
+                
                 this.$router.push('/index');
             },
             goToOrder : function() {
-                //在数据仓库中写入数据，在下单页面进行接收
+
                 Store.data = this.cartToysItem;
                 this.$router.push('/index/confirm');
             }

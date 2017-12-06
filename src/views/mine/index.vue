@@ -27,7 +27,7 @@
             </div>
 		</div>
 		
-		<a v-touch:tap="{ event : login, params : [ ]}" style="display:block; line-height:36px; text-align:center; ">登录</a>
+		<a v-touch:tap="{ event : go, params : [ '/mine/login' ]}" style="display:block; line-height:36px; text-align:center; ">登录</a>
 	</div>
 </template>
 

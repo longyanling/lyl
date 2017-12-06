@@ -13,6 +13,7 @@
                     <dfn class="price">{{item.rentMoney / 1000}}元<var class="unit">/天</var></dfn>
                     <em class="toyName">{{item.toyName}}</em>
                 </div>
+                <img v-show="cartToysItem.length == 0" class="bitmap" src="https://ts.zlimg.com/v2/h5/jd/bitmap_no_cart.png"/>
             </div>
 
             <div class="settlement">

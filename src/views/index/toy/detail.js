@@ -26,7 +26,7 @@ var _default = (function(){
                         self.toyFeatureItem = data.data.intro[1];
                         self.toyShowItem = data.data.intro[2];
                         self.toyDetailsItem = data.data.intro[3];
-                        self.toysItem = data.data.toys;
+                        self.toyItems = data.data.toys;
                     } else {
                         Toast.show(data.msg);
                     }
@@ -49,7 +49,7 @@ var _default = (function(){
 				toyDetailsItem : [],
 				tabsIsDock : false,
 				toyDetail : [],
-				toysItem : [],
+				toyItems : [],
 			};
 		},
 		methods: {
@@ -93,7 +93,7 @@ var _default = (function(){
                             that.toyFeatureItem = data.data.intro[1];
                             that.toyShowItem = data.data.intro[2];
                             that.toyDetailsItem = data.data.intro[3];
-                            that.toysItem = data.data.toys;
+                            that.toyItems = data.data.toys;
                         } else {
                             Toast.show(data.msg);
                         }

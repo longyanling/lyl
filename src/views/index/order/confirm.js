@@ -13,7 +13,7 @@ var _default = (function(){
             var that = this;
             //  获取数据仓库中的数据
            
-            if(Store.data){
+            if(Store.data && Store.data.length >0){
                 var target =  new Array();
                 Store.data.forEach(function(toy){
                     target.push({'toyId': toy.toyId, 'toyNum': 1 });
@@ -88,6 +88,7 @@ var _default = (function(){
                 )
             } else {
                 this.$router.push( '/index/cart' );
+                Toast.show('请查看您的购物车是否有玩具');
             }
 
         },
@@ -306,11 +307,11 @@ var _default = (function(){
         filters: {
             surplus: function (value) {
                 
-                return Math.floor((Utils.dateFromTicks(value) - new Date()) / 24 / 3600 / 1000);
+                return Math.floor((Utils.Date.fromTicks(value) - new Date()) / 24 / 3600 / 1000);
             },
             expire: function (value) {
                 
-                return Utils.dateFormat(Utils.dateFromTicks(value), 'yyyy/MM/dd');
+                return Utils.Date.toString(Utils.Date.fromTicks(value), 'yyyy/MM/dd');
             }
         }
     }
