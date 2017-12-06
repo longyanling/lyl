@@ -484,5 +484,11 @@
             color: #575757;
             background:#fed030;
         }   
+        
+        &.disabled {
+            color: #b3b3b3;
+            border:1px solid #f0f0f0;
+            background: #f0f0f0;    
+        }
     }
 }
