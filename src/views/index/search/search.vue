@@ -40,12 +40,14 @@
                         </span>
                     </span>
                 </span>
-                <span id="toyMore" class="toymore" v-show="toyItems.length > 0 && !IsEnd">
+                <span id="toyMore" class="toymore" v-show="toyItems.length > 0 && !toyIsEnd">
                                     上拉加载更多..
                 </span>
                 <div class="bitmap" v-show="toyItems.length == 0"></div>
             </div>
         </div>
+        <router-view :backUrl="backUrl"></router-view>
+        <tm-shortcut :cartsUrl="cartsUrl"></tm-shortcut>
 	</div>
 </template>
 

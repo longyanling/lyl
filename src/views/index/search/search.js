@@ -1,6 +1,7 @@
 'use strict';
 
 import Toast from '@/directives/toast';
+import Shortcut from '@/components/shortcut.vue'
 import Store from "@/directives/store";
 import API from "@/services/api";
 
@@ -34,7 +35,7 @@ var _default = (function(){
 		mounted: function(){
 			
 			var vm = this;
-			
+			vm.backUrl = '/index/search';
 			vm.keyword = this.$route.query.keyword || '';
 			vm.tagHistoryItems = (Store.Index.searchTagHistory || []).slice();
 
@@ -66,7 +67,9 @@ var _default = (function(){
 			    toyItems: [],
 			    toyLastId: -1,
                 toyIsEnd : false,
-				toyParams : null
+				toyParams : null,
+				backUrl: '',
+                cartsUrl: '/index/search/cart'
 			};
 		},
 		methods: {
@@ -138,7 +141,10 @@ var _default = (function(){
 			    loadToyList(vm);
 			    return false;
 			}
-		}
+		},
+        components: {
+            'tm-shortcut': Shortcut
+        }
 	}
 })();
 

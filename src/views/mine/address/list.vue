@@ -12,7 +12,7 @@
             	</span>
                 <span class="actions">
                 	<em class="selected" v-show="index == 0">默认地址</em>
-                	<a class="button delete">删除</a>
+                	<a class="button delete" v-touch:tap="{event: itemDelete , params:[ item.addressId ]}">删除</a>
                 	<a class="button edit" v-touch:tap="{event: goEdit , params:[ item ]}">编辑</a>
                 </span>
             </div>

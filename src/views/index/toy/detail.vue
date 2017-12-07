@@ -95,12 +95,12 @@
                 </span>
             </div>
 	    </div>
-	    <div class="button">
+	    <div class="footer">
 	    	<span class="plusCart" v-touch:tap=" { event: addCart, params: [] } ">加入购物车</span>
 	    	<span class="robRent" v-touch:tap=" { event: goToConfirm, params: [] } ">立即抢租</span>
 	    </div>
-	    <router-view></router-view>
-	    <tm-shortcut :url="goCart"></tm-shortcut>
+	    <router-view :backUrl="backUrl"></router-view>
+	    <tm-shortcut :cartsUrl="cartsUrl"></tm-shortcut>
 	</div>
 </template>
 

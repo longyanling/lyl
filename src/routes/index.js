@@ -19,8 +19,16 @@ export default {
             ]
         },
         { path: '/index/location' ,name: 'Location', component: Location },
-        { path: '/index/screen' ,name: 'Screen', component: Screen },
-        { path: '/index/search' ,name: 'Search', component: Search },
+        { path: '/index/screen' ,name: 'Screen', component: Screen ,
+            children: [
+                { path: '/index/screen/cart', component: Cart }
+            ]
+        },
+        { path: '/index/search' ,name: 'Search', component: Search,
+            children: [
+                { path: '/index/search/cart', component: Cart }
+            ]
+        },
 		{ path: '/index/detail', name: 'ToyDetail', component: ToyDetail,
 		  children: [
                 { path: '/index/detail/cart', component: Cart }

@@ -65,6 +65,9 @@ var _default = (function() {
                 vm.animateContainerClass = 'fadeIn';
             }, 1);
         },
+        props: [
+            'backUrl'
+        ],
         data: function() {
 
             return {
@@ -79,7 +82,7 @@ var _default = (function() {
             deactive: function(e) {
 
                 if(e.target.id == 'index-cart') {
-                    this.$router.push('/index');
+                    this.$router.push(this.backUrl || '/index');
                 }
             },
             selectAll: function() {

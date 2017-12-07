@@ -30,7 +30,7 @@
                 <var class="arrow"></var>
                 <dfn class="value">
                     <strong>{{confirmItem.rentPeriod}} 天</strong>
-                    <small>{{confirmItem.endTime}}</small>
+                    <small>{{confirmItem.endTime | expire}}</small>
                 </dfn>
             </span>
             <span class="cell signle" v-touch:tap="{ event: showPopup, params: ['/index/confirm/coupon'] }">

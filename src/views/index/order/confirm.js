@@ -207,8 +207,6 @@ var _default = (function(){
                     function(data) {
                     }
                 )
-                
-//              this.$router.push( 'mine/order' );
             }
         },
         filters: {

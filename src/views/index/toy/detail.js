@@ -13,6 +13,7 @@ var _default = (function(){
 		    
 			var self = this;
 			
+			this.backUrl = '/index/detail?toyid=' + this.$route.query.toyid;
             API.Index.toyDetail(
                 {
                     tid : self.$route.query.toyid
@@ -33,11 +34,6 @@ var _default = (function(){
                     }
                 }
             );
-
-
-		},
-		destoryed: function(){
-			
 		},
 		data: function(){
 			
@@ -51,12 +47,11 @@ var _default = (function(){
 				tabsIsDock : false,
 				toyDetail : [],
 				toyItems : [],
+				backUrl: '',
+				cartsUrl: '/index/detail/cart'
 			};
 		},
 		methods: {
-		    goCart : function () {
-		        this.$router.push( '/index/detail/cart');
-		    },
 		    addCart : function (e, toyId) {
 		        
 		        toyId = (toyId == undefined ? this.detailItem.toyId : toyId);

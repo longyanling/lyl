@@ -24,8 +24,24 @@ var _default = (function(){
         methods: {
             goEdit: function(e, address){
             	
-        	console.log(address);
                 this.$router.push( '/mine/address/edit?address_id=' + address );
+            },
+            itemDelete : function (e, addressId) {
+                
+                var vm = this;
+                
+                API.Mine.addressDelete({
+                    aid : addressId
+                },function(data){
+                    
+                    if(data.code == 0){
+        
+                        vm.itemLoad();
+                        Toast.show('删除地址成功');
+                    }else {
+                        Toast.show(data.msg);
+                    }
+                });
             }
         }
     }

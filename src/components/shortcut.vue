@@ -17,7 +17,7 @@
             this.toyCount = 0;
         },
         props: [
-            'url'
+            'cartsUrl'
         ],
         data: function(){
             
@@ -30,7 +30,7 @@
             return {
                 goCart: function( e ){
                    
-                    this.$router.push(this.url || '/index/cart');
+                    this.$router.push(this.cartsUrl || '/index/cart');
                 }
             };
         })()

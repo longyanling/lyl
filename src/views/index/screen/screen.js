@@ -2,11 +2,11 @@
 
 import Toast from '@/directives/toast';
 import Sortor from "@/directives/sortor";
+import Shortcut from '@/components/shortcut.vue'
 import API from "@/services/api";
 
 var _default = (function() {
 
-    var navigations = [{'text': '年龄'},{'text': '品牌'},{'text': '能力'},{'text': '类型'},{'text': '筛选'}];
     return {
         name: 'index-screen',
         mounted: function() {
@@ -43,6 +43,43 @@ var _default = (function() {
                     }
                 }
             );
+            
+            //滑动到玩具列表底部加载玩具列表
+            window.addEventListener('scroll',function(){
+                // 判断是否滚动到底部  
+                if(document.body.scrollTop + window.innerHeight >= document.body.offsetHeight && vm.LoadState) {
+                    API.Index.toyList(
+                        {
+                            name : "",
+                            q : vm.screenJSON,
+                            rt : 2,
+                            sk : 1,
+                            tid : vm.commonLastToyId,
+                        },
+                        function (data) {
+                            if (data.code == 0) {
+                                if(data.data.isEnd==false) {
+                                    vm.LoadState = true;
+                                }else {
+                                    vm.LoadState = false;
+                                };
+                                if (data.data.toys.length > 0) {
+                                    vm.commonLastToyId = data.data.toys.slice(-1)[0].toyId;
+                                } else {
+                                    vm.commonLastToyId = -1;
+                                };
+                                var toyLoad = data.data.toys;
+                                toyLoad.forEach(function(toys,index){  
+                                    vm.toysListItem.push(toys); 
+                                });
+                            } else {
+                                Toast.show(data.msg);
+                            }
+                            
+                        }
+                    ); 
+                }
+            });
         },
         data: function() {
 
@@ -55,18 +92,9 @@ var _default = (function() {
                 screenIsShow : false,
                 
                 commonLastToyId : -1,
-                //  是否为新用户
-                userIsNew: false,
-                
-                //  幻灯片选项卡
-                bannerItems: [],
-                
                 //玩具列表
                 toysListItem: [],
                 LoadState : false,
-                //  导航栏
-                navigationItems : navigations,
-                
                 //年龄
                 ageItem : [],
                 //品牌
@@ -102,9 +130,43 @@ var _default = (function() {
                 stockState : false,
                 rentState : false,
                 screenJSON : null,
+                
+                backUrl: '/index/screen',
+                cartsUrl: '/index/screen/cart'
             };
         },
         methods: {
+            deactive: function(e){
+                
+                if (e.target.id == 'index-screen'){
+                    this.ageIsShow = false;
+                    this.brandIsShow = false;
+                    this.abilityIsShow = false;
+                    this.typeIsShow = false;
+                    this.screenIsShow = false;  
+                }
+            },
+            //添加到购物车
+            addCart : function(e, toyId) {
+                API.Index.cartAdd(
+                    {
+                        tid : toyId
+                    },
+                    function (data) {
+                        if (data.code == 0) {
+                            Toast.show('玩具成功加入购物车');
+                        } else {
+                            Toast.show(data.msg);
+                        }
+                    }
+                );
+            },
+            goMine: function(){
+                this.$router.push('/mine');
+            },
+            goToToyDetail: function(e, toyId){
+                this.$router.push('/index/detail?toyid=' + toyId);
+            },
              //年龄选中
             ageSelected : function( e, ageRangeId) {
                 for(var i =0; i<this.ageSelectedData.length; i++){
@@ -218,7 +280,7 @@ var _default = (function() {
                     this.stockSelectedData = 0;
                 }
             },
-                        //筛选的切换
+            //  筛选的切换
             ageShow: function (){
                 this.ageIsShow = !this.ageIsShow;
                 this.brandIsShow = false;
@@ -326,6 +388,9 @@ var _default = (function() {
                 this.stockState = false;
                 this.rentState = false;
             },
+        },
+        components: {
+            'tm-shortcut': Shortcut
         }
     }
 })();

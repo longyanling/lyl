@@ -1,5 +1,5 @@
 <template>
-    <div id="index-Screen" class="tm-index-screen">
+    <div id="index-screen" class="tm-index-screen" v-touch:tap="{event: deactive, params:[]}">
         <div class="nav">
             <span :class=" [ 'dock', tabsIsDock == true ? '' : 'hide' ] ">
                 <span class="switch" v-touch:tap="{ event: ageShow, params: [] }">年龄</span>
@@ -7,13 +7,13 @@
                 <span class="switch" v-touch:tap="{ event: abilityShow, params: [] }">能力</span>
                 <span class="switch" v-touch:tap="{ event: typeShow, params: [] }">类型</span>
                 <span class="switch" v-touch:tap="{ event: screenShow, params: [] }">筛选</span>
-                <span class="personal" v-touch:tap="{ event: goToMine, params: [] }">
+                <span class="personal" v-touch:tap="{ event: goMine, params: [] }">
                     <img class="portrait" src="https://ts.zlimg.com/v2/h5/jd/mine_personalcenter.png"/>
                     <img class="authorized" src="https://ts.zlimg.com/v2/h5/jd/mine_authorized.png"/>
                 </span>
             </span>
         </div>
-        <div class="box" id="box" v-show="ageIsShow || brandIsShow || abilityIsShow || typeIsShow || screenIsShow">
+        <div class="box" v-show="ageIsShow || brandIsShow || abilityIsShow || typeIsShow || screenIsShow">
             <div class="age" v-show="ageIsShow">
                 <div class="ageMain">
                     <span class="vessel">
@@ -129,8 +129,8 @@
                         <div class="sort">
                             <span class="title"><var></var>其他</span>
                             <span class="vessel">
-                                <!--<!--<var class="item" v-touch:tap="{ event: rentSelected, params : []}" :class="rentState ? 'selected' : 'unselected'">{{toyOtherRentType.rentTypeName}}</var>
-                                <var class="item" v-touch:tap="{ event: stockSelected, params : []}" :class="stockState ? 'selected' : 'unselected'">{{toyOtherStockNum.stockNumName}}</var>-->
+                                <var class="item" v-touch:tap="{ event: rentSelected, params : []}" :class="rentState ? 'selected' : 'unselected'">{{toyOtherRentType.rentTypeName}}</var>
+                                <var class="item" v-touch:tap="{ event: stockSelected, params : []}" :class="stockState ? 'selected' : 'unselected'">{{toyOtherStockNum.stockNumName}}</var>
                             </span>
                         </div>
                     </div>
@@ -145,7 +145,27 @@
                 </div>
             </div>
         </div>
-        <div class="bitmap"></div>
+        <div class="toygrid">
+            <div class="toyinner">
+                <span class="toyitem" v-for="(item, index) in toysListItem" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+                    <span class="inner">
+                        <span class="thumb"><img :src="item.image" /></span>
+                        <span class="title"> {{item.toyName}} </span>
+                        <span v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></span>
+                        <span class="price">
+                            <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
+                            <var v-show="item.canPostal">可邮寄 </var>
+                        </span>
+                    </span>
+                </span>
+                <span id="toyMore" class="toymore" v-show="LoadState">
+                                    上拉加载更多..
+                </span>
+            </div>
+        </div>
+        <div class="bitmap" v-show="toysListItem.length == 0"></div>
+        <router-view :backUrl="backUrl"></router-view>
+        <tm-shortcut :cartsUrl="cartsUrl"></tm-shortcut>
     </div>
 </template>
 
