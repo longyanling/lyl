@@ -7,42 +7,40 @@ import API from "@/services/api";
 var _default = (function(){
     
     return {
-        name: 'addressEdit',
+        name: 'edit',
         mounted: function(){
             
             var vm = this;
-            vm.addressInfo =Store.Mine.addressCurrent || {}; 
-            //  var address = Store.Mine.addressCurrent || {};
-            vm.addressConsignee = (vm.addressInfo.addressConsignee || '');
-            vm.consigneeSex = (vm.addressInfo.consigneeSex == 1 ? true : false);
-            vm.sexIndex = vm.consigneeSex ? 1 : 0;
-            vm.consigneePhone = vm.addressInfo.consigneePhone || ''; 
-            vm.gdProvinceName = vm.addressInfo.gdProvinceName || '';
-            vm.gdCityName = vm.addressInfo.gdCityName || '';
-            vm.gdAdName = vm.addressInfo.gdAdName || '';
-            vm.gdAdCode = vm.addressInfo.gdAdCode || '';
-            vm.gdBusinessArea = vm.addressInfo.gdBusinessArea || '';
-            vm.gdTitle = vm.addressInfo.gdTitle || '';
-            vm.addressAll = vm.gdProvinceName + vm.gdCityName + vm.gdAdName + vm.gdBusinessArea + vm.gdTitle; 
-            vm.addressDetail = vm.addressInfo.addressDetail || '';
+            
+			this.addressInfo = Store.Mine.addressCurrent || {};
+			this.addressId = this.addressInfo.addressId || 0; 
+			this.addressConsignee = this.addressInfo.addressConsignee || '';
+			this.consigneeSex = this.addressInfo.consigneeSex || 0;
+			this.consigneePhone = this.addressInfo.consigneePhone || '';
+			this.addressPrefix = ( this.addressInfo.gdProvinceName || '' );
+			this.addressPrefix += ( this.addressInfo.gdCityName == this.addressPrefix ? '' : (this.addressInfo.gdCityName || ''));
+			this.addressPrefix += ( this.addressInfo.gdAdName || '' );
+			this.addressPrefix += (this.addressInfo.gdBusinessArea || '');
+			this.addressPrefix += (this.addressInfo.gdTitle || '');
+			this.addressPrefix = this.addressPrefix.replace(/(^\s*)|(\s*$)/g, "");
+			this.addressSub = (this.addressInfo.addressDetail || '');
+			this.addressSub = this.addressSub.replace(/(^\s*)|(\s*$)/g, "");
+			this.isDefault = this.addressInfo.isDefault ? 1 : 0;
+			if (this.addressPrefix && this.addressSub.indexOf(this.addressPrefix) == 0){
+				this.addressSub = this.addressSub.substring(this.addressPrefix.length, this.addressSub.length);
+			}
         },
         data: function(){
 
             return {
-                addressInfo: null,
-                addressConsignee : null,
-                consigneeSex : null,
-                consigneePhone : null,
-                gdProvinceName : null,
-                gdCityName : null,
-                gdAdName : null,
-                gdBusinessArea : null,
-                gdTitle : null,
-                addressAll : null,
-                addressDetail : null,
-                sexIndex : null,
-                isDefaultState : false,
-                isDefault : 0
+            	addressId: 0,
+            	addressInfo: {},
+            	addressConsignee: null,
+            	addressPrefix: null,
+            	addressSub: null,
+            	consigneeSex: 0,
+            	consigneePhone: null,
+            	isDefault: 0
             };
         },
         methods: {
@@ -52,76 +50,81 @@ var _default = (function(){
                     this.$router.push( '/index/confirm' );   
                 }
             },
-            sexSelect : function( e, state){
-            
-                this.consigneeSex = state;
-                this.sexIndex = state ? 1 : 0;
-            },
-            isDefaultSelect : function(){
-                
-                this.isDefaultState = !this.isDefaultState;
-                this.isDefault = this.isDefaultState ? 1 : 0;
-            },
-            itemSave : function(){
-                
-                var vm = this;
-                
+        	sexCheck: function(e, sex){
+        		
+        		this.consigneeSex = sex;
+        	},
+        	defaultCheck: function(e){
+        		
+        		this.isDefault = this.isDefault ? 0 : 1;
+        	},
+        	getLocation: function(){
+        		
+        		Store.Mine.addressCurrent = Store.Mine.addressCurrent || {};
+			 	Store.Mine.addressCurrent.addressConsignee = this.addressConsignee;
+			 	Store.Mine.addressCurrent.consigneeSex = this.consigneeSex;
+				Store.Mine.addressCurrent.consigneePhone = this.consigneePhone;
+        		this.$router.push('/index/confirm/address/location?address=' + this.addressPrefix);
+        	},
+            submit: function( e, url ){
+            	
+            	var vm = this;
                 var args = {
-                    addressConsignee : vm.addressConsignee,
+                	addressId: vm.addressId,
+                    addressConsignee : vm.addressConsignee || '',
                     consigneePhone : Number(vm.consigneePhone),
-                    consigneeSex : vm.sexIndex,
-                    gdProvinceName : vm.gdProvinceName,
-                    gdProvinceCode : vm.gdProvinceCode,
-                    gdCityName : vm.gdCityName,
-                    gdCityCode : vm.gdCityCode,
-                    gdAdName : vm.gdAdName,
-                    gdAdCode : vm.gdAdCode,
-                    gdBusinessArea : vm.gdBusinessArea,
-                    gdLatitude : vm.gdLatitude,
-                    gdLongitude : vm.gdLongitude,
-                    gdId : vm.gdId,
-                    gdTitle : vm.gdTitle,
-                    addressDetail : vm.addressDetail,
-                    
+                    consigneeSex : vm.consigneeSex,
+                    gdTitle : vm.addressInfo.gdTitle || '',
+                    addressDetail : vm.addressSub || '',
+                    gdLatitude : vm.addressInfo.gdLatitude,
+                    gdLongitude : vm.addressInfo.gdLongitude,
+                    gdId : vm.addressInfo.gdId,
+                    gdBusinessArea : vm.addressInfo.gdBusinessArea || '',
+                    gdAdCode : vm.addressInfo.gdAdCode || '',
+                    gdAdName : vm.addressInfo.gdAdName || '',
+                    gdCityCode : vm.addressInfo.gdCityCode || '',
+                    gdCityName : vm.addressInfo.gdCityName  || '',
+                    gdProvinceCode : vm.addressInfo.gdProvinceCode || '',
+                    gdProvinceName : vm.addressInfo.gdProvinceName  || ''                    
                 };
                 
-                if(vm.address){
-                    args.addressId = vm.addressInfo.addressId;
-                    
+                if(vm.addressId){
                     API.Mine.addressUpdata(
                         {
                             addressJson : JSON.stringify(args),
                             isDefault : vm.isDefault
                         },
                         function(data) {
-                            if(data.code == 0){
-                                vm.goToAddress();
-                            }else {
+                        	
+                            if (data.code == 0){
+                            	Store.Mine.address = null;
+                            	vm.$router.push('/index/confirm/address');
+                            } else {
                                 Toast.show(data.msg);
                             }
                         }
                     )
                 } else {
-                    API.Mine.addressInsert(
-                        {
-                            addressJson : JSON.stringify(args),
-                            isDefault : vm.isDefault
-                        },
-                        function(data) {
-                            if(data.code == 0){
-                                vm.goToAddress();
-                            }else {
-                                Toast.show(data.msg);
-                            }
-                        }
-                    )
+                	if (this.addressInfo.gdId){
+	                    API.Mine.addressInsert(
+	                        {
+	                            addressJson : JSON.stringify(args),
+	                            isDefault : vm.isDefault
+	                        },
+	                        function(data) {
+	                        	
+	                            if (data.code == 0){
+	                            	Store.Mine.address = null; 
+	                            	vm.$router.push('/index/confirm/address');
+	                            } else {
+	                                Toast.show(data.msg);
+	                            }
+	                        }
+	                    );
+                    } else {
+                    	Toast.show('请提供位置信息');
+                    }
                 };
-                
-            },
-            
-            goToAddress: function(){
-        
-                this.$router.push( '/index/confirm/address' );
             }
         }
     }

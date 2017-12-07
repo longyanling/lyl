@@ -43,6 +43,11 @@ var _default = (function(){
                 this.$emit('resetAddressId', address);
                 this.$router.push( '/index/confirm' );
             },
+            itemEdit: function( e, item ){
+                
+                Store.Mine.addressCurrent = item; 
+                this.$router.push( '/index/confirm/address/edit' );
+            },
             itemDelete : function (e, addressId) {
                 
                 var vm = this;
@@ -59,11 +64,6 @@ var _default = (function(){
                         Toast.show(data.msg);
                     }
                 });
-            },
-            goEdit: function( e, item ){
-                
-                Store.Mine.addressCurrent = item; 
-                this.$router.push( '/index/confirm/address/edit' );
             }
         }
     }
