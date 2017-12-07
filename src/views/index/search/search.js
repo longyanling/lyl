@@ -35,6 +35,7 @@ var _default = (function(){
 			
 			var vm = this;
 			
+			vm.keyword = this.$route.query.keyword || '';
 			vm.tagHistoryItems = (Store.Index.searchTagHistory || []).slice();
 
 			API.Index.searchhot({
@@ -52,6 +53,8 @@ var _default = (function(){
                     loadToyList(vm);
                 }
             });
+            
+            vm.keyword && this.submit();
 		},
 		data: function(){
 			
