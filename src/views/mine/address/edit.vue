@@ -1,33 +1,33 @@
 <template>
-    <div id="add" class="tm-mine-address-add">
-        <div class="addressadd">
+    <div id="edit" class="tm-mine-address-edit">
+        <div class="addressedit">
         	<span class="cell">
         		<em>收货人</em>
-        		<dfn><input class="text" type="text" placeholder="请输入收货人姓名" v-model="consignee" /></dfn>
+        		<dfn><input class="text" type="text" placeholder="请输入收货人姓名" v-model="addressConsignee" /></dfn>
         	</span>
         	<span class="cell">
         		<em></em>
         		<dfn>
-                    <var :class="sex == 0 ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexChange, params: [0] }">男士</var>
-        			<var :class="sex == 1 ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexChange, params: [1] }">女士</var>
+                    <var :class="consigneeSex == 0 ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexCheck, params: [0] }">男士</var>
+        			<var :class="consigneeSex == 1 ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexCheck, params: [1] }">女士</var>
         		</dfn>
         	</span>
         	<span class="cell">
         		<em>手机号码</em>
         		<dfn>
-        			<input class="text" type="text" placeholder="请填写手机号码" v-model="phone" />
+        			<input class="text" type="text" placeholder="请填写手机号码" v-model="consigneePhone" />
         		</dfn>
         	</span>
-        	<span class="cell">
+        	<span class="cell" v-touch:tap=" { event: getLocation, params: [] }">
         		<em>收货地址</em>
         		<dfn>
-        			<input class="text" type="text" placeholder="点击定位地址或小区" v-model="location" />
+        			<input class="text" type="text" placeholder="点击定位地址或小区" v-model="addressPrefix" />
         		</dfn>
         	</span>
         	<span class="cell textarea">
         		<em></em>
         		<dfn>
-        			<textarea class="text" placeholder="具体门牌号(例：2号楼-101室)" v-model="address" ></textarea>
+        			<textarea class="text" placeholder="具体门牌号(例：2号楼-101室)" v-model="addressSub" ></textarea>
         		</dfn>
         	</span>
         	<span class="cell">

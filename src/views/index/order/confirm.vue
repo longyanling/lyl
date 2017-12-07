@@ -106,7 +106,9 @@
             <span class="price">物品总价值：<dfn>￥{{confirmItem.payMoney ? confirmItem.payMoney / 1000 : '0'}}</dfn></span>
             <a class="button" v-touch:tap="{event:payment, params: []}">京东支付</a>
         </div>
-        <router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" @resetCoupon="setCoupon" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
+        <div style="background:#ff0000">
+        	<router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" @resetCoupon="setCoupon" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
+        </div>
     </div>
 </template>
 

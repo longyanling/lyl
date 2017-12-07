@@ -1,0 +1,73 @@
+.tm-mine-address-location {
+    width: 100%;
+    height: 100%;
+    color: #575757;
+    font-size: 14px;
+    background: #f0f0f0;
+    
+    .searchbar {
+        position: fixed;
+        top:0px;
+        left:0px;
+        right:0px;
+        height:32px;
+        padding:6px;    
+        background:#f3f3f3;
+        z-index:50;
+                 
+        .submit {
+            float:right;
+            display: none;
+            width:64px;
+            height:36px;
+            white-space: nowrap;
+            border:0px;
+            border-radius: 5px;
+            background-color: #fed030;
+            transition: width 240ms ease-in;
+        }
+        
+        .keyword {
+            display: block;
+            height: 32px;
+            color: #969696;
+            line-height: 32px;
+            padding: 0px 0px 0px 32px;
+            border: 0px solid #ffffff;
+            border-radius: 5px;
+            background: #ffffff;
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/icon_search_text.png');
+            background-size: 12px 12px;
+            background-position: 12px center;
+            background-repeat: no-repeat;
+            
+            input {
+                width: 100%;
+                padding: 0px;
+                margin: 0px;
+                border: 0px;
+            }
+        }
+    }
+    .datalist {
+        margin-top:45px;
+        margin-bottom:15px;
+        border-bottom:1px solid #f0f0f0;
+        background:#ffffff;
+        
+        .item {
+            display: block;
+            overflow: hidden;
+            height: 44px;
+            color: #575757;
+            font-size: 14px;
+            line-height: 44px;
+            margin:0px 5px 0px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            
+            &:last-child {
+                border-bottom: 0px;
+            }
+        }
+    }
+}

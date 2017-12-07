@@ -12,13 +12,13 @@
             	</span>
                 <span class="actions">
                 	<em class="selected" v-show="index == 0">默认地址</em>
-                	<a class="button delete">删除</a>
-                	<a class="button edit" v-touch:tap="{event: goEdit , params:[ item ]}">编辑</a>
+                	<a class="button delete" v-touch:tap=" { event: itemDelete, params: [item, index] } ">删除</a>
+                	<a class="button edit" v-touch:tap=" { event: itemEdit, params: [item, index] } ">编辑</a>
                 </span>
             </div>
         </div>
         <div class="controls">
-        	<a class="button submit" v-touch:tap="{event: goEdit , params:[ ]}">添加新地址</a>
+        	<a class="button submit" v-touch:tap="{event: itemEdit , params:[ ]}">添加新地址</a>
         </div>
     </div>
 </template>

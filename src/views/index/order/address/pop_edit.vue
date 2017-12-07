@@ -1,46 +1,46 @@
 <template>
-    <div id="addressAdd" class="tm-order-address-add" v-touch:tap="{event: deactive, params:[]}">
-        <div class="addressBox">
-            <div class="addressadd">
-                <span class="cell">
-                    <em>收货人</em>
-                    <dfn><input class="text" type="text" placeholder="请输入收货人姓名" v-model="addressConsignee" /></dfn>
-                </span>
-                <span class="cell">
-                    <em></em>
-                    <dfn>
-                        <var :class="consigneeSex == true ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexSelect, params: [ true ] }">女士</var>
-                        <var :class="consigneeSex == false ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexSelect, params: [ false ] }">男士</var>
-                    </dfn>
-                </span>
-                <span class="cell">
-                    <em>手机号码</em>
-                    <dfn>
-                        <input class="text" type="text" placeholder="请填写手机号码" v-model="consigneePhone" />
-                    </dfn>
-                </span>
-                <span class="cell">
-                    <em>收货地址</em>
-                    <dfn>
-                        <input class="text" type="text" placeholder="点击定位地址或小区" v-model="gdTitle" />
-                    </dfn>
-                </span>
-                <span class="cell textarea">
-                    <em></em>
-                    <dfn>
-                        <textarea class="text" placeholder="具体门牌号(例：2号楼-101室)" v-model="addressDetail" ></textarea>
-                    </dfn>
-                </span>
-                <span class="cell">
-                    <em></em>
-                    <dfn>
-                        <var :class="isDefaultState ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: isDefaultSelect, params: [ ] }">设为默认收货地址</var>
-                    </dfn>
-                </span>
-            </div>
-            <div class="controls">
-                <a class="button submit" v-touch:tap = "{event: itemSave, params: []}">保 存</a>
-            </div>
+    <div id="edit" class="tm-order-address-edit" v-touch:tap="{event: deactive, params:[]}">
+        <div class="addressbox">
+	        <div class="addressedit">
+	        	<span class="cell">
+	        		<em>收货人</em>
+	        		<dfn><input class="text" type="text" placeholder="请输入收货人姓名" v-model="addressConsignee" /></dfn>
+	        	</span>
+	        	<span class="cell">
+	        		<em></em>
+	        		<dfn>
+	                    <var :class="consigneeSex == 0 ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexCheck, params: [0] }">男士</var>
+	        			<var :class="consigneeSex == 1 ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: sexCheck, params: [1] }">女士</var>
+	        		</dfn>
+	        	</span>
+	        	<span class="cell">
+	        		<em>手机号码</em>
+	        		<dfn>
+	        			<input class="text" type="text" placeholder="请填写手机号码" v-model="consigneePhone" />
+	        		</dfn>
+	        	</span>
+	        	<span class="cell" v-touch:tap=" { event: getLocation, params: [] }">
+	        		<em>收货地址</em>
+	        		<dfn>
+	        			<input class="text" type="text" placeholder="点击定位地址或小区" v-model="addressPrefix" />
+	        		</dfn>
+	        	</span>
+	        	<span class="cell textarea">
+	        		<em></em>
+	        		<dfn>
+	        			<textarea class="text" placeholder="具体门牌号(例：2号楼-101室)" v-model="addressSub" ></textarea>
+	        		</dfn>
+	        	</span>
+	        	<span class="cell">
+	        		<em></em>
+	        		<dfn>
+	        			<var :class="isDefault ? 'checkbox checked':'checkbox'" v-touch:tap="{ event: defaultCheck, params: [ ] }">设为默认收货地址</var>
+	        		</dfn>
+	        	</span>
+	        </div>
+	        <div class="controls">
+	        	<a class="button submit" v-touch:tap = "{event: submit, params: []}">保 存</a>
+	        </div>
         </div>
     </div>
 </template>

@@ -8,6 +8,7 @@ import Confirm from "@/views/index/order/confirm.vue";
 import ConfirmCoupon from "@/views/index/order/coupon/pop_list.vue";
 import ConfirmAddress from "@/views/index/order/address/pop_list.vue";
 import ConfirmAddressEdit from "@/views/index/order/address/pop_edit.vue";
+import ConfirmAddressLocation from "@/views/index/order/address/pop_location.vue";
 import ConfirmDistribution from "@/views/index/order/distribution/pop_list.vue";
 import ConfirmLease from "@/views/index/order/lease/pop_list.vue";
 
@@ -31,6 +32,7 @@ export default {
                 { path: '/index/confirm/coupon', component: ConfirmCoupon },
                 { path: '/index/confirm/address', component: ConfirmAddress },
                 { path: '/index/confirm/address/edit', component: ConfirmAddressEdit },
+                { path: '/index/confirm/address/location', component: ConfirmAddressLocation },
                 { path: '/index/confirm/distribution', component: ConfirmDistribution },
                 { path: '/index/confirm/lease', component: ConfirmLease }
             ]
