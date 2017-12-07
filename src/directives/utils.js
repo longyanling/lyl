@@ -64,6 +64,18 @@ var utils = (function(){
 		}
 	};
 	
+	// 数组方法
+	var _array = {
+	    indexOf: function(arr, value){
+	        
+	        arr = arr || [];
+	        for ( var i = 0; i < arr.length; i++){
+	            if (arr[i] == value) return i;
+	        }
+	        return -1;
+	    }
+	};
+	
 	//	异步请求方法	
 	var axios = {
 		
@@ -145,8 +157,9 @@ var utils = (function(){
 	return {
 		
 		Client: client,
-		Axios: axios,
-		Date: date
+        Date: date,
+		Array: _array,
+		Axios: axios
 	};
 })();
 

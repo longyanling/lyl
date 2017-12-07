@@ -313,8 +313,10 @@
         display: block;
         height:96px;
         margin:10px 10px 0px 10px;
+        background-color: #ffffff;
         background-image: url('https://ts.zlimg.com/v2/h5/jd/coupon_background_selected.png');
-        background-size: auto 122px;
+        background-repeat: repeat-x;
+        background-size: 8px 4px;
         
         .info {
             display: block;

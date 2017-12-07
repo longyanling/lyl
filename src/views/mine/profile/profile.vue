@@ -3,12 +3,12 @@
     	<div class="container">
     	    <em class="caption">宝宝信息</em>
     	    <div class="sexpicker">
-    	    	<div class="item" v-touch:tap="{event: sexChange, params: [ 0]}" v-bind:class="babyInfo.babySex == 0 ? 'selected' : '' ">
+    	    	<div class="item" v-touch:tap="{event: sexChange, params: [ 0 ]}" v-bind:class="babyInfo.babySex == 0 ? 'selected' : '' ">
     	    		<img class="babyicon" src="https://ts.zlimg.com/v2/h5/jd/mine_sex_boy.png"/>
     	    		<img class="check" src="https://ts.zlimg.com/v2/h5/jd/base_selected.png"/>
     	    		<span class="text">男宝宝</span>
     	    	</div>
-    	    	<div class="item" v-touch:tap="{event: sexChange, params: [ 1]}" v-bind:class="babyInfo.babySex == 1 ? 'selected' : '' ">
+    	    	<div class="item" v-touch:tap="{event: sexChange, params: [ 1 ]}" v-bind:class="babyInfo.babySex == 1 ? 'selected' : '' ">
     	    		<img class="babyicon" src="https://ts.zlimg.com/v2/h5/jd/mine_sex_girl.png"/>
     	    		<img class="check" src="https://ts.zlimg.com/v2/h5/jd/base_selected.png"/>
     	    		<span class="text">女宝宝</span>

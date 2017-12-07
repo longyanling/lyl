@@ -1,6 +1,7 @@
 'use strict';
 
 import Utils from '@/directives/utils';
+import Toast from '@/directives/toast';
 import API from '@/services/api';
 
 var _default = (function(){
@@ -26,8 +27,8 @@ var _default = (function(){
             };
         },
         methods: {
-            sexChange: function( sex ){
-            	
+            sexChange: function( e, sex ){
+                
             	this.babyInfo.babySex = sex;
             },
             birthPicker: function(){
@@ -41,16 +42,20 @@ var _default = (function(){
             },
             submit: function(){
            
-           		var self = this;
+           		var vm = this;
            		
            		API.Mine.update({
-					'avatar':this.userInfo.avatar,
-					'name':this.userInfo.nickName,
-					'babySex': this.babyInfo.babySex,
-					'babyBD': this.babyInfo.birthDate
+					'avatar': vm.userInfo.avatar,
+					'name': vm.userInfo.nickName,
+					'babySex': vm.babyInfo.babySex,
+					'babyBD': vm.babyInfo.birthDate
            		},function(data){
-           			
-           			console.log(data);
+           			if(data.code == 0){
+           			    Toast.show("更新成功");
+           			    vm.$router.push('/mine');
+           			}else {
+           			    Toast.show("更新失败");
+           			}
            		});
             },
             login: function(){

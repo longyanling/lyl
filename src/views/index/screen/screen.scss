@@ -1,0 +1,335 @@
+.tm-index-screen {
+    
+    .bitmap {
+        display: block;
+        height: 500px;
+        background-image: url('https://ts.zlimg.com/v2/h5/jd/bitmap_no_result.png');
+        background-repeat: no-repeat;
+        background-size: 192px 200px;
+        background-position: center center;
+    }
+    .nav {
+        display: block;
+        height: 42px;
+        overflow: hidden;
+        background: #ffffff;
+        border-top: 1px solid #f3f3f3;
+        
+        .personal {
+            float: left;
+            width: 20%;
+            height: 44px;
+            font-size: 13px;
+            border: 0px;
+            position: relative;
+            overflow: hidden;
+            .portrait {
+                float: right;
+                width: 34px;
+                padding: 5px 40% 0 0;
+            }
+            .authorized {
+                width: 28px;
+                position: absolute;
+                top: 0;
+                right: 23%;
+            }
+        }
+        .switch {
+            float: left;
+            width: 16%;
+            height: 44px;
+            border: 0px;
+            font-size: 15px;
+            line-height: 44px;
+            text-align: center;
+        }
+        .dock {
+            display: block;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height:44px;
+            background-color: #ffffff;;
+            overflow: hidden;
+            border-top: 1px solid #f3f3f3;
+            border-bottom: 1px dotted #f3f3f3;
+            z-index: 10;
+        }
+    }
+    .box {
+        position: fixed;
+        top: 44px;
+        left: 0px;
+        right: 0px;
+        width: 100%;
+        z-index: 99;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        .age{
+            display: block;
+            .ageMain {
+                width: 100%;
+                background-color: #ffffff;
+                border-radius: 0 0 8px 8px;
+                position: relative;
+                .vessel {
+                    display: block;
+                    font-size: 0;
+                    overflow: hidden;
+                    padding: 15px 4.5% 0px 4.5%;
+                    
+                    .item {
+                        float: left;
+                        width: calc(23.45% - 2px);
+                        font-size: 13px;
+                        padding: 6px 0;
+                        border-radius: 25px;
+                        margin: 5px 4.94%;
+                        text-align: center;
+                        border: 1px solid #f0f0f0;
+                    }
+                }
+            }
+        }
+        .ability {
+            display: block;
+            height: calc(100% - 44px);
+            .abilityMain {
+                width: 100%;
+                height: 70%;
+                background-color: #ffffff;
+                .condition {
+                    height: 99%;
+                    overflow: auto;
+                    .vessel {
+                        display: block;
+                        font-size: 0;
+                        padding: 15px 4.5%;
+                        overflow: hidden;
+                        border-bottom: 1px solid #f0f0f0;
+                        .item {
+                            float: left;
+                            width: calc(23.45% - 2px);
+                            font-size: 13px;
+                            padding: 6px 0;
+                            border-radius: 25px;
+                            margin: 5px 4.94%;
+                            text-align: center;
+                            overflow: hidden;
+                            text-overflow:ellipsis;
+                            white-space: nowrap;
+                            border: 1px solid #f0f0f0;
+                        }
+                    }
+                    .vessel:last-child{
+                        border-bottom: 0px;
+                    }
+                }
+            }
+        }
+        .bottom {
+            width: 100%;
+            height: 60px;
+        }
+        .screen {
+            display: block;
+            height: calc(100% - 44px);
+            .screenMain {
+                display: block;
+                height: 70%;
+                background-color: #ffffff;
+                .condition {
+                    height: 99%;
+                    overflow: auto;
+                    .title {
+                        height: 30px;
+                        line-height: 30px;
+                        display: block;
+                        font-size: 15px;
+                        position: relative;
+                        text-indent: 30px;
+                        var {
+                            position: absolute;
+                            left: 20px;
+                            top: 7.5px;
+                            display: inline-block;
+                            width: 3px;
+                            height: 15px;
+                            border: 3px;
+                            background-color: #fed030;
+                        }
+                    }
+                    .sort {
+                        .vessel {
+                            display: block;
+                            font-size: 0;
+                            padding: 0px 4.5% 15px 4.5%;
+                            overflow: hidden;
+                            .item {
+                                float: left;
+                                width: calc(23.45% - 2px);
+                                font-size: 13px;
+                                padding: 6px 0;
+                                border-radius: 25px;
+                                margin: 5px 4.94%;
+                                text-align: center;
+                                overflow: hidden;
+                                text-overflow:ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                    .size {
+                        .vessel{
+                            display: block;
+                            height: 50px;
+                            line-height: 50px;
+                            overflow: hidden;
+                            .name {
+                                float: left;
+                                font-size: 14px;
+                                width: 42%;
+                                text-align: center;
+                            }
+                            .toyImg {
+                                float: left;
+                                width: 57px;
+                                padding: 5px 0;
+                            }
+                            .choice {
+                                float: right;
+                                width: 40%;
+                                text-align: center;
+                                img{
+                                    width: 18px;
+                                    padding: 16px 0;
+                                }
+                            }
+                        }
+                    }
+                } 
+            }
+        }
+        .brand {
+            display: block;
+            height: calc(100% - 44px);
+            .brandMain {
+                display: block;
+                height: 70%;
+                background-color: #ffffff;
+                .vessel {
+                    display: block;
+                    height: 99%;
+                    overflow: auto;
+                    .hot {
+                        display: inline-block;
+                        width: 25%;
+                        position: relative;
+                        .brandImg {
+                            width: 100%;
+                            padding: 11px 0;
+                        }
+                        .item {
+                            display: block;
+                            font-size: 13px;
+                            text-align: center;
+                            padding-bottom: 12px;
+                        }
+                        .choice {
+                            position: absolute;
+                            top: 5px;
+                            right: 5px;
+                            width: 15px;
+                        }
+                    }
+                    .all {
+                        display: block;
+                        em {
+                            display: block;
+                            color: #888888;
+                            font-size: 14px;
+                            height: 35px;
+                            line-height: 35px;
+                            text-indent: 20px;
+                        }
+                        .seed {
+                            display: block;
+                            .letter {
+                                display: block;
+                                text-indent: 30px;
+                                font-size: 14px;
+                                padding: 6px 0;
+                                background-color: #f0f0f0;
+                            }
+                            .child {
+                                display: block;
+                                margin-left: 23px;
+                                overflow: hidden;
+                                border-bottom: 1px solid #f0f0f0;
+                                .brandImg {
+                                    float: left;
+                                    width: 54px;
+                                    padding: 11px 6px 11px 0;
+                                }
+                                var {
+                                    float: left;
+                                    font-size: 13px;
+                                    padding: 18.5px 0;
+                                }
+                                .brabdSelected {
+                                    float: right;
+                                    width: 18px;
+                                    padding: 16px 25px 16px 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .button {
+        height: 80px;
+        background-color: #ffffff;
+        border-radius: 0 0 8px 8px;
+        .left {
+            width: 50%;
+            float: left;
+            .reset {
+                display: block;
+                padding: 11.5px 0;
+                margin: 20px 15px 0px 20px;
+                text-align: center;
+                color: #fed030;
+                font-size: 15px;
+                border-radius: 8px;
+                border: 1px solid #fed030;
+            }
+        }
+        .right {
+            width: 50%;
+            float: left;
+            .determine {
+                display: block;
+                padding: 12.5px 0;
+                font-size: 15px;
+                margin: 20px 20px 0px 15px;
+                text-align: center;
+                color: #ffffff;
+                border-radius: 8px;
+                background-color: #fed030;
+            }
+        }
+    }
+    .selected {
+        background-color: #fed030;
+        color: #ffffff;
+        border: 1px solid #fed030;
+    }
+    .unselected {
+        border: 1px solid #f0f0f0;
+        background-color: #ffffff;
+    }
+}

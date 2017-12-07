@@ -3,6 +3,7 @@ import Cart from "@/views/index/cart/list.vue";
 import ToyDetail from "@/views/index/toy/detail.vue";
 import Location from "@/views/index/location/list.vue";
 import Search from "@/views/index/search/search.vue";
+import Screen from "@/views/index/screen/screen.vue";
 import Confirm from "@/views/index/order/confirm.vue";
 import ConfirmCoupon from "@/views/index/order/coupon/pop_list.vue";
 import ConfirmAddress from "@/views/index/order/address/pop_list.vue";
@@ -18,6 +19,7 @@ export default {
             ]
         },
         { path: '/index/location' ,name: 'Location', component: Location },
+        { path: '/index/screen' ,name: 'Screen', component: Screen },
         { path: '/index/search' ,name: 'Search', component: Search },
 		{ path: '/index/detail', name: 'ToyDetail', component: ToyDetail,
 		  children: [

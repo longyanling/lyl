@@ -30,7 +30,7 @@
                 	租期 <strong>2</strong> 天 
                 </div>
                 <div class="actions">
-                	<span class="clock" v-show="1>0 || item.status == 0">
+                	<span class="clock" v-show="item.status == 0">
                 		<em>倒计时:</em>
                 		<var>{{item.lastSeconds | clock}}</var>
                 	</span>
@@ -38,7 +38,7 @@
                     <a class="button circle" v-show="item.status == 1" v-touch:tap="{ event: goIndex, params: ['/toy']}">再次下单</a>
                     <a class="button" v-show="item.status == 2 || item.status == 3 || item.status == 4 || item.status == 5 || item.status == 6" v-touch:tap="{ event: goLogistics, params: [item.orderId]}">物流信息</a>
                     <a class="button" v-show="item.status == 7 || item.status == 11 || item.status==12 || item.status == 13 " v-touch:tap="{ event: goIndex, params: [ ]}">再租几件</a>
-                    <a class="button" v-show="1>0 || item.status == 7 || item.status == 8 || item.status==9" v-touch:tap="{ event: goLogistics, params: [ item.orderId ] }">物流信息</a>
+                    <a class="button" v-show="item.status == 7 || item.status == 8 || item.status==9" v-touch:tap="{ event: goLogistics, params: [ item.orderId ] }">物流信息</a>
                     <a class="link" v-show="item.status == 0">取消订单</a>
                 </div>
             </div>

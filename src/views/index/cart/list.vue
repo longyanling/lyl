@@ -2,12 +2,13 @@
 	<div id="index-cart" class="tm-index-cart" v-touch:tap="{ event: deactive , params: []}">
         <div :class="['container',animateContainerClass]">
         	<div class="caption">
-                <em class="text">已选商品：</em>
+                <em :class="toySelectedAll ? 'text' : 'text unselect'" v-touch:tap="{ event: selectAll, params :[  ]}">全选</em>
                 <a class="button" v-touch:tap="{event: clear, params: []}">清空</a>
             </div>
             <div class="datalist">
-                <div class="item" v-for="item in toyItems" v-touch:tap="{ event: goToyDetail, params: [item.toyId] }">
+                <div class="item" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToyDetail, params: [item.toyId] }">
                     <img class="remind" v-show="item.sw" src="https://ts.zlimg.com/jd/toy_storage_warning.png"/>
+                    <span :class="item.selected ? 'check' : 'check uncheck'" v-touch:tap="{ event: selectItem, params :[ item.toyId ]}"></span>
                     <img class="thumb" :src="item.image"/>
                     <var class="button delete"  v-touch:tap="{ event: deleteItem, params: [item.toyId] }"></var>
                     <span class="info">
@@ -23,7 +24,7 @@
                     <dfn>{{data.rentTotalMoney ? data.rentTotalMoney/1000 : '0'}} <small>元/天</small></dfn>
                     <var>{{data.deliverMoneyMsg}}</var>
                 </span>
-                <a class="button" v-touch:tap="{ event: submit, params: [ ] }">去结算({{data.rentTotalCount ? data.rentTotalCount : '0'}})</a>
+                <a class="button" v-touch:tap="{ event: submit, params: [ ] }">去结算({{ toySelectedIds.length }})</a>
             </div>
         </div>
 	</div>

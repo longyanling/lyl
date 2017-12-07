@@ -24,9 +24,18 @@
             .text {
                 float: left;
                 display: block;
+                width: 60px;
+                text-align: right;
                 color: #575757;
                 font-size: 14px;
                 padding: 0px 10px;
+                background-image: url('https://ts.zlimg.com/v2/h5/jd/base_selected.png');
+                background-repeat: no-repeat;
+                background-position: 14px center;
+                background-size: 18px 18px;
+                &.unselect {
+                    background-image: url('https://ts.zlimg.com/v2/h5/jd/base_unselected.png');
+                }
             }
             .button {
                 float: right;
@@ -50,6 +59,7 @@
             
             .item {
                 display:block;
+                position: relative;
                 height: 68px;
                 padding: 10px 0px;
                 border-bottom: 1px solid #f0f0f0;
@@ -62,13 +72,28 @@
                 }
                 .remind {
                     position: absolute;
+                    top: 10px;
+                    left: 38px;
                     height: 14px;
+                }
+                .check {
+                    float: left;
+                    display: block;
+                    width: 38px;
+                    height: 68px;
+                    background-image: url('https://ts.zlimg.com/v2/h5/jd/base_selected.png');
+                    background-position: 7px center;
+                    background-repeat: no-repeat;
+                    background-size: 18px 18px;
+                    &.uncheck {
+                        background-image: url('https://ts.zlimg.com/v2/h5/jd/base_unselected.png');
+                    }
                 }
                 .button.delete {
                     float: right;
                     width: 18px;
                     height: 18px;
-                    margin: 20px 5px 35px 0px;
+                    margin: 20px 5px 30px 0px;
                     background-image: url("https://ts.zlimg.com/v2/h5/jd/optional_suite_close_b3.png");
                     background-repeat: no-repeat;
                     background-size: 18px 18px;
@@ -77,7 +102,7 @@
                 .info {
                     display: block;
                     height: 68px;
-                    margin: 0px 28px 0px 106px;
+                    margin: 0px 28px 0px 142px;
                     
                     .title {
                         display: block;
