@@ -24,6 +24,8 @@ var apiProxy = {
 			'/api/order/buy/check': '/order/buy/check',
 			'/api/order/presubmit': '/order/presubmit',
 			'/api/order/submit': '/order/submit',
+			'/api/order/pay/jd': '/order/pay/jd',
+			'/api/order/pay/check': '/order/pay/check',
 			'/api/order/list/v2': '/order/list/v2',
 			'/api/order/detail': '/order/detail',
 			'/api/order/express/companies': '/order/express/companies',

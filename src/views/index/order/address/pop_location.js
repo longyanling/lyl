@@ -29,6 +29,12 @@ var _default = (function(){
             };
         },
         methods: {
+            deactive: function(e){
+                
+                if (e.target.id == 'location'){
+                    this.$router.push( '/index/confirm' );   
+                }
+            },
         	submitCallback: function(status, result){
         	
         		if (status === 'complete' && result.info === 'OK'){

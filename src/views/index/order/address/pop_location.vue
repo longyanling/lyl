@@ -1,5 +1,5 @@
 <template>
-    <div id="location" class="tm-index-order-address-location">
+    <div id="location" class="tm-index-order-address-location" v-touch:tap="{event: deactive, params:[]}">
     	<div class="locationbox">
 			<div class="searchbar">
 			    <form v-on:submit.prevent="submit()">

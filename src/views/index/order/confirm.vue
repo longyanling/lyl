@@ -109,6 +109,10 @@
         <div style="background:#ff0000">
         	<router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" @resetCoupon="setCoupon" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
         </div>
+        <form id="jdPayment" action="/api/order/pay/jd" method="post">
+            <input type="hidden" id="seqId" name="seqId" />
+            <input type="hidden" id="orderId" name="orderId" />
+        </form>
     </div>
 </template>
 

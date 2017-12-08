@@ -46,7 +46,7 @@ var _default = (function(){
         methods: {
             deactive: function(e){
                 
-                if (e.target.id == 'addressAdd'){
+                if (e.target.id == 'edit'){
                     this.$router.push( '/index/confirm' );   
                 }
             },

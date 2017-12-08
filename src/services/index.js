@@ -46,8 +46,16 @@ var index = {
         Utils.Axios.deferPost( '/api/order/presubmit', data, callback);
     },
     submit: function(data, callback){
-        
+
         Utils.Axios.deferPost( '/api/order/submit', data, callback);
+    },
+    payCheck: function(data, callback){
+
+        Utils.Axios.deferGet('/api/order/pay/check', data, callback);
+    },
+    pay: function(data, callback){
+      
+      Utils.Axios.deferPost( '/api/order/pay/jd', data, callback);
     },
     searchhot: function(data, callback){
         
