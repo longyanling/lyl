@@ -13,7 +13,7 @@ var apiProxy = {
 		secure: false,
         changeOrigin: true,
         pathRewrite: {
-        	'/api/home/banner': '/home/banner',
+        	'/api/home/list/v3' : '/home/list/v3',
 			'/api/home/cities': '/home/cities',
 			'/api/toy/list': '/toy/list',
 			'/api/toy/info': '/toy/info',

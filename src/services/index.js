@@ -5,9 +5,9 @@ import Store from '@/directives/store';
 
 var index = {
     
-    banner: function(data, callback){
-    	
-    	Utils.Axios.deferGet( '/api/home/banner', data, callback);
+    homeList : function(data, callback) {
+    
+        Utils.Axios.deferGet( '/api/home/list/v3', data, callback );
     },
     location: function( data, callback){
     	

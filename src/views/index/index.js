@@ -14,16 +14,50 @@ var _default = (function(){
 		    
             var vm = this;
 
-            API.Index.banner({
+            API.Index.homeList({
                     
             },function(data) {
                     if(data.code == 0){
-                        vm.bannerItems = data.data;
+                        console.log(data);
+                        vm.bannerItems = data.data[0].banner;
                         for (var i = 0; i<vm.bannerItems.length;i++){
                             vm.bannerItems[i]['src'] = vm.bannerItems[i]['bannerImage'] ;
                         };
+                        vm.toyRecommendItems = data.data[2];
+                        vm.toyHotItems = data.data[4];
+                        
                     }else {
                        Toast.show(data.msg) 
+                    }
+                }
+            );
+            API.Index.toyList(
+                {
+                    name : "",
+                    q : JSON.stringify({
+                        "ageRange": "", 
+                        "toySort" : 0,
+                        "toyType": "",
+                        "brand": "35",
+                        "ability": "",
+                        "toySize": "",
+                        "stockNum": 0,
+                        "rentType": 2
+                    }),
+                    rt : 2,
+                    sk : 1,
+                    tid : -1,
+                },
+                function (data) {
+                    if (data.code == 0) {
+//                      data.data.ability.slice(0,9)
+                        console.log(data.data.toys.slice(0,4))
+                        vm.toyLegoItems = data.data.toys.slice(0,4);
+                        for (var i = 0; i < vm.toyLegoItems.length; i++){
+                            vm.toyLegoItems[i].image = (vm.toyLegoItems[i].image || '').replace('h1.jpg','h0.png'); 
+                        }
+                    } else {
+                        Toast.show(data.msg);
                     }
                 }
             );
@@ -50,7 +84,7 @@ var _default = (function(){
                         };
                         var toyInit = data.data.toys;
                         toyInit.forEach(function(toys,index){  
-                            vm.toysListItem.push(toys);  
+                            vm.toyListItems.push(toys);  
                         });
                     } else {
                         Toast.show(data.msg);
@@ -84,7 +118,7 @@ var _default = (function(){
                                 };
                                 var toyLoad = data.data.toys;
                                 toyLoad.forEach(function(toys,index){  
-                                    vm.toysListItem.push(toys); 
+                                    vm.toyListItems.push(toys); 
                                 });
                             } else {
                                 Toast.show(data.msg);
@@ -100,7 +134,10 @@ var _default = (function(){
 			return {
 				commonLastToyId : -1,
 				bannerItems: [],
-				toysListItem: [],
+				toyHotItems : [],
+				toyRecommendItems : [],
+				toyLegoItems: [],
+				toyListItems: [],
 				LoadState : false,
 				navigationItems : navigations,
                 screenJSON : null,

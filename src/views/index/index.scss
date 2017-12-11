@@ -69,4 +69,248 @@
         }
          
     }
+    .toylego {
+        display: block;
+        margin-top: 10px;
+        background-color: #ffffff;
+        
+        .title {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            color: #4d9df7;
+            font-size: 16px;
+            text-align: center;
+        }
+        .toylegoitem {
+            display: block;
+            overflow: hidden;
+            
+            .hot {
+                float: left;
+                display: block;
+                width: calc(40% - 1px);
+                border-right: 1px solid #f0f0f0;
+                .name {
+                    display: block;
+                    font-size: 14px;
+                    height: 36px;
+                    line-height: 18px;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    text-overflow:ellipsis;
+                    overflow: hidden;
+                    margin: 0px 10px;
+                    padding-top: 10px;
+                }
+                dfn {
+                    display: block;
+                    height: 33px;
+                    line-height: 33px;
+                    color: #ff4956;
+                    font-size: 14px;
+                    text-align: left;
+                    margin: 0px 10px;
+                    small {
+                        font-size: 12px;
+                    }
+                }
+                .hotimg {
+                    width: 100%;
+                    margin: 20px 0px;
+                }
+            }
+            .hottop {
+                float: left;
+                display: block;
+                width: 60%;
+                border-bottom: 1px solid #f0f0f0;
+                overflow: hidden;
+                
+                .content {
+                    float: left;
+                    width: 50%;
+                    .name {
+                        display: block;
+                        font-size: 14px;
+                        height: 36px;
+                        line-height: 18px;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        text-overflow:ellipsis;
+                        overflow: hidden;
+                        padding: 10px 0px 0px 10px;
+                    }
+                    dfn {
+                        display: block;
+                        height: 33px;
+                        line-height: 33px;
+                        color: #ff4956;
+                        font-size: 14px;
+                        text-align: left;
+                        margin: 0px 10px;
+                        small {
+                            font-size: 12px;
+                        }
+                    }
+                }
+                .img {
+                    float:left;
+                    width: 50%;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .hotbottom {
+                float: left;
+                display: block;
+                width: 60%;
+                overflow: hidden;
+                
+                .left {
+                    float: left;
+                    width: 50%;
+                    overflow: hidden;
+                    .name {
+                        display: block;
+                        font-size: 12px;
+                        height: 36px;
+                        line-height: 18px;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        text-overflow:ellipsis;
+                        overflow: hidden;
+                        margin: 0px 10px;
+                        padding-top: 10px;
+                    }
+                    dfn {
+                        display: block;
+                        height: 16px;
+                        line-height: 16px;
+                        color: #ff4956;
+                        font-size: 12px;
+                        text-align: left;
+                        margin: 0px 10px;
+                        small {
+                            font-size: 12px;
+                        }
+                    }
+                    .img {
+                        width: 100%;
+                    }
+                }
+                .left:first-child {
+                    width: calc(50% - 1px);
+                    border-right: 1px solid #f0f0f0;
+                }  
+            }
+        }
+    }
+    .recommend {
+        display: block;
+        overflow: hidden;
+        margin-top: 10px;
+        background-color: #ffffff;
+        
+        .title {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            color: #4d9df7;
+            font-size: 16px;
+            text-align: center;   
+        }
+        .recommenditem {
+            float: left;
+            width: 33.3%;
+            img {
+                width: 100%;
+            }
+            .name {
+                display: block;
+                height: 28px;
+                line-height: 14px;
+                color: #333333;
+                font-size: 12px;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                text-overflow:ellipsis;
+                overflow: hidden;
+                margin: 10px 10px 0px 10px;
+            }
+            dfn {
+                display: block;
+                height: 33px;
+                line-height: 33px;
+                color: #ff4956;
+                font-size: 13px;
+                text-align: center;
+                small {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .toyhot {
+        display: block;
+        margin-top: 10px;
+        overflow: hidden;
+        background-color: #ffffff;
+        
+        .title {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            color: #4d9df7;
+            font-size: 16px;
+            text-align: center;   
+        }
+        .hotitem {
+            float: left;
+            display: block;
+            width: calc(50% - 1px);
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            img {
+                width: 100%;
+                margin: 10px 0px;
+            }
+            .name {
+                display: block;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                margin: 10px;
+            }
+            dfn {
+                display: block;
+                height: 33px;
+                line-height: 33px;
+                color:  #ff4956;
+                font-size: 16px;
+                font-weight: 700;
+                text-align: left;
+                margin: 0px 10px;
+                small {
+                    font-size: 12px;
+                }
+            }
+        }
+        .hotitem:last-child {
+            border-bottom: 0px;
+        }
+    }
+    .toygrid {
+        .title {
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            color: #ff8942;
+            font-size: 16px;
+            text-align: center;
+            background-color: #ffffff;
+            margin-top: 10px;
+        }
+    } 
 }

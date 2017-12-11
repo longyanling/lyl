@@ -15,10 +15,59 @@
                 <img class="authorized" src="https://ts.zlimg.com/v2/h5/jd/mine_authorized.png"/>
             </span>    
         </div>
-
+        <div class="toylego">
+        	<em class="title">乐高专区</em>
+            <div class="toylegoitem">
+                <div class="hot">
+                    <span class="name"> {{toyLegoItems[0].toyName}} </span>
+                    <dfn>{{toyLegoItems[0].rentMoney / 1000}}<small>元/天</small></dfn>
+                	<img class="hotimg" :src="toyLegoItems[0].image"/>
+                </div>
+                <div class="hottop">
+                    <span class="content">
+                        <span class="name"> {{toyLegoItems[1].toyName}} </span>
+                        <dfn>{{toyLegoItems[1].rentMoney / 1000}}<small>元/天</small></dfn>
+                    </span>
+                    <span class="img">
+                        <img :src="toyLegoItems[1].image"/>
+                    </span>
+                </div>
+                <div class="hotbottom">
+                	<div class="left">
+                		<span class="name"> {{toyLegoItems[2].toyName}} </span>
+                        <dfn>{{toyLegoItems[2].rentMoney / 1000}}<small>元/天</small></dfn>
+                        <img class="img" :src="toyLegoItems[2].image"/>
+                	</div>
+                	<div class="left">
+                		<span class="name"> {{toyLegoItems[3].toyName}} </span>
+                        <dfn>{{toyLegoItems[3].rentMoney / 1000}}<small>元/天</small></dfn>
+                        <img class="img" :src="toyLegoItems[3].image"/>
+                	</div>
+                </div>
+            </div>
+        </div>
+        <div class="recommend">
+            <em class="title">{{toyRecommendItems.title}}</em>
+            <div class="recommenditem" v-for="item in toyRecommendItems.toyList">
+                <img :src="item.image"/>
+                <span class="name"> {{item.toyName}} </span>
+                <dfn>{{item.rentMoney / 1000}}<small>元/天</small></dfn>
+            </div>
+        </div>
+        
+        <div class="toyhot">
+            <em class="title">{{toyHotItems.title}}</em>
+        	<div class="hotitem" v-for="item in toyHotItems.toyList">
+        		<img :src="item.image"/>
+        		<span class="name"> {{item.toyName}} </span>
+                <dfn> {{item.rentMoney / 1000}} <small>元/天</small></dfn>
+        	</div>
+        </div>
+        
 		<div class="toygrid">
+		    <em class="title">更多推荐</em>
             <div class="toyinner">
-                <span class="toyitem" v-for="(item, index) in toysListItem" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+                <span class="toyitem" v-for="(item, index) in toyListItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
                     <span class="inner">
                         <span class="thumb"><img :src="item.image" /></span>
                         <span class="title"> {{item.toyName}} </span>
