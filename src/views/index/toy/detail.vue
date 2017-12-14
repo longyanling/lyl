@@ -1,6 +1,12 @@
 <template>
 	<div id="toy-detail" class="tm-index-detail">
+	    <div class="stock">
+	        <span class="bookable" v-show="detailItem.stockNum <= 0"><dfn class="text">暂无库存</dfn></span>
+	        <span class="rentable" v-show="detailItem.stockNum > 0"><dfn class="text">{{detailItem.stockText}}</dfn></span>
+	    </div>
+
 		<tm-slide :slideItems="slideItems"></tm-slide>
+		
 		<div class="infos">
 			<span class="title"> {{detailItem.toyName}} </span>
 			<span class="price"> <dfn>{{detailItem.rentMoney / 1000}}</dfn> 元/天 </span>
@@ -92,12 +98,14 @@
                             <var v-show="item.canPostal">可邮寄 </var>
                         </span>
                     </span>
+                    <img v-show="item.stockNum > 0 && item.sw" class="stock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>
                 </span>
             </div>
 	    </div>
 	    <div class="footer">
-	    	<span class="plusCart" v-touch:tap=" { event: addCart, params: [] } ">加入购物车</span>
-	    	<span class="robRent" v-touch:tap=" { event: goToConfirm, params: [] } ">立即抢租</span>
+	    	<span class="plusCart" v-show="detailItem.stockNum > 0" v-touch:tap=" { event: addCart, params: [] } ">加入购物车</span>
+	    	<span class="robRent" v-show="detailItem.stockNum > 0" v-touch:tap=" { event: goToConfirm, params: [] } ">立即抢租</span>
+	    	<span class="bookable" v-show="detailItem.stockNum <= 0">此玩具暂无库存</span>
 	    </div>
 	    <router-view :backUrl="backUrl"></router-view>
 	    <tm-shortcut :cartsUrl="cartsUrl"></tm-shortcut>

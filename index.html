@@ -14,6 +14,15 @@
     <div id="app">
     	<tm-frame></tm-frame>
     </div>
+    <script type="text/javascript">
+        var _width = Math.floor((screen.width - 1) / 2); 
+        document.write('<style>'+
+        '   .tm-toy-index .hotitem img {'+
+        '       width: '+ ( _width ) +'px;'+
+        '       height: ' + ((_width / 588) * 414) + 'px;'+
+        '   }'+
+        '</style>');
+    </script>
     <script src="http://webapi.amap.com/maps?v=1.4.2&key=531dc6d5c09b1f4b7c72e98aff96e67a&plugin=AMap.PlaceSearch,AMap.Geocoder"></script>
     <script src="./dist/bundle.js"></script>
 </body>

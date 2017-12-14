@@ -112,11 +112,11 @@ var utils = (function(){
             		if (response.status == 200){
             			callback.call(this, response.data || {});
             		}else {
-            			alert('网络请求错误' + response);	
+            			console.log('网络请求错误' + response);	
             		}
             	}.bind(this)).catch(function (error) {
             		
-            		alert('网络请求错误' + error);
+            		console.log('网络请求错误' + error);
             	});
 		},
 		
@@ -129,11 +129,11 @@ var utils = (function(){
             		if (response.status == 200){
             			callback.call(this, response.data || {});
             		}else {
-            			alert('网络请求错误' + response);	
+            			console.log('网络请求错误' + response);	
             		}
             	}.bind(this)).catch(function (error) {
                 
-                	alert('网络请求错误' + error);
+                	console.log('网络请求错误' + error);
             	});
 		},
 		

@@ -1,6 +1,7 @@
 'use strict';
 
 import Toast from '@/directives/toast';
+import Affirm from '@/directives/affirm';
 import Slide from '@/components/slide.vue'
 import Shortcut from '@/components/shortcut.vue'
 import API from "@/services/api";
@@ -13,19 +14,18 @@ var _default = (function(){
 		mounted: function(){
 		    
             var vm = this;
+            vm.locationItem = this.$route.query.location ? this.$route.query.location : '北京';
 
             API.Index.homeList({
                     
             },function(data) {
                     if(data.code == 0){
-                        console.log(data);
                         vm.bannerItems = data.data[0].banner;
                         for (var i = 0; i<vm.bannerItems.length;i++){
                             vm.bannerItems[i]['src'] = vm.bannerItems[i]['bannerImage'] ;
                         };
-                        vm.toyRecommendItems = data.data[2];
-                        vm.toyHotItems = data.data[4];
-                        
+                        vm.toyRecommendItems = data.data[2].toyList;
+                        vm.toyHotItems = data.data[4].toyList;
                     }else {
                        Toast.show(data.msg) 
                     }
@@ -45,17 +45,19 @@ var _default = (function(){
                         "rentType": 2
                     }),
                     rt : 2,
-                    sk : 1,
+                    sk : 0,
                     tid : -1,
                 },
                 function (data) {
                     if (data.code == 0) {
-//                      data.data.ability.slice(0,9)
-                        console.log(data.data.toys.slice(0,4))
-                        vm.toyLegoItems = data.data.toys.slice(0,4);
-                        for (var i = 0; i < vm.toyLegoItems.length; i++){
-                            vm.toyLegoItems[i].image = (vm.toyLegoItems[i].image || '').replace('h1.jpg','h0.png'); 
-                        }
+                        vm.toyLegoFirst = (data.data.toys && data.data.toys.length > 0 ? data.data.toys[0] : {});
+                        vm.toyLegoFirst.image = (vm.toyLegoFirst.image || '').replace('h1.jpg','h0.png'); 
+                        vm.toyLegoSecond = (data.data.toys && data.data.toys.length > 0 ? data.data.toys[1] : {});
+                        vm.toyLegoSecond.image = (vm.toyLegoSecond.image || '').replace('h1.jpg','h0.png');
+                        vm.toyLegoThird = (data.data.toys && data.data.toys.length > 0 ? data.data.toys[2] : {});
+                        vm.toyLegoThird.image = (vm.toyLegoThird.image || '').replace('h1.jpg','h0.png');
+                        vm.toyLegoFourth =(data.data.toys && data.data.toys.length > 0 ? data.data.toys[3] : {});
+                        vm.toyLegoFourth.image = (vm.toyLegoFourth.image || '').replace('h1.jpg','h0.png');
                     } else {
                         Toast.show(data.msg);
                     }
@@ -67,7 +69,7 @@ var _default = (function(){
                     name : "",
                     q : vm.screenJSON,
                     rt : 2,
-                    sk : 1,
+                    sk : 0,
                     tid : vm.commonLastToyId,
                 },
                 function (data) {
@@ -101,7 +103,7 @@ var _default = (function(){
                             name : "",
                             q : vm.screenJSON,
                             rt : 2,
-                            sk : 1,
+                            sk : 0,
                             tid : vm.commonLastToyId,
                         },
                         function (data) {
@@ -136,14 +138,22 @@ var _default = (function(){
 				bannerItems: [],
 				toyHotItems : [],
 				toyRecommendItems : [],
-				toyLegoItems: [],
+				toyLegoFirst: {},
+				toyLegoSecond: {},
+				toyLegoThird: {},
+				toyLegoFourth: {},
 				toyListItems: [],
 				LoadState : false,
 				navigationItems : navigations,
                 screenJSON : null,
+                locationItem : null
 			};
 		},
 		methods: {
+		    
+		    aaaa :function(){
+		        Affirm.show('您确定要删除改地址吗');
+		    },
 		    
 		    //添加到购物车
 		    addCart : function(e, toyId) {

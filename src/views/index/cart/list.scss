@@ -88,6 +88,9 @@
                     &.uncheck {
                         background-image: url('https://ts.zlimg.com/v2/h5/jd/base_unselected.png');
                     }
+                    &.notoptiona {
+                        background-image: url('https://ts.zlimg.com/v2/h5/jd/cart_not_optional.png');
+                    }
                 }
                 .button.delete {
                     float: right;
@@ -122,6 +125,16 @@
                         
                         small {
                             font-size: 12px;
+                        }
+                    }
+                }
+                &.unitem {
+                    .info {
+                        .title {
+                            color: #b3b3b3;
+                        }
+                        .price {
+                            color: #b3b3b3;
                         }
                     }
                 }

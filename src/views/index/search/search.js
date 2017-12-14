@@ -14,7 +14,7 @@ var _default = (function(){
                 name : vm.keyword,
                 q : vm.toyParams,
                 rt : 2,
-                sk : 1,
+                sk : 0,
                 tid : vm.toyLastId,
             },
             function (data) {
@@ -48,7 +48,7 @@ var _default = (function(){
 			
 			 window.addEventListener('scroll',function(){
 			     
-                //  判断是否滚动到底部  
+                //  判断是否滚动到底部 
                 if(document.body.scrollTop + window.innerHeight >= document.body.offsetHeight && 
                     !vm.toyIsEnd) {
                     loadToyList(vm);
@@ -88,7 +88,6 @@ var _default = (function(){
                         tid : toyId
                     },
                     function (data) {
-                        
                         if (data.code == 0) {
                             Toast.show('玩具成功加入购物车');
                         } else {

@@ -13,6 +13,10 @@ var index = {
     	
     	Utils.Axios.deferGet( '/api/home/cities', data, callback);
     },
+    cityCode : function(data, callback) {
+        
+        Utils.Axios.deferPost( '/api/user/update/cityCode', data, callback);
+    },
     toyList: function(data, callback){
     	
     	Utils.Axios.deferGet( '/api/toy/list', data, callback);

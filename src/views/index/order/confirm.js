@@ -12,6 +12,10 @@ var _default = (function(){
         
         API.Index.presubmit(data, function (data) {
             
+            if(data.code == 174){
+                Toast.show(data.msg);
+                return;
+            }
             if (data.code == 0) {
                 vm.confirmItem = data.data;
                 vm.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
@@ -64,6 +68,7 @@ var _default = (function(){
                             vm.addressPhone = vm.addressData.consigneePhone || '';
                             vm.passSeqId = data.data.seqId;
                             vm.toyItems = data.data.toys.newToys.is;
+                            preToys = [];
                             for (var i = 0; i < vm.toyItems.length; i++){
                                 price += vm.toyItems[i].specialMoney;
                                 preToys.push({
@@ -190,6 +195,7 @@ var _default = (function(){
             payment : function() {
                 
                 var self = this;
+
                 API.Index.submit(
                     {
                         seqId : self.passSeqId,
@@ -223,6 +229,9 @@ var _default = (function(){
                                     }
                                 }
                             )
+                        }
+                        if(data.code == 129){
+                            Toast.show(data.msg);
                         }
                     }
                 )

@@ -69,19 +69,53 @@
         }
          
     }
+    .modulartitle {
+        display: block;
+        height: 70px;
+        text-align: center;
+        .logo {
+            display: block;
+            .logoname {
+                display: inline-block;
+                color: #ff4956;
+                font-size: 16px;
+                margin-top: 20px;
+            }
+            .logoimg {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-right: 5px;
+                background-image: url('https://ts.zlimg.com/v2/h5/jd/home_lego.png');
+                background-repeat: no-repeat;
+                background-size: 16px 16px;
+                background-position: center center;
+                
+            }
+        }
+        .logocon {
+            display: block;
+            color: #b3b3b3;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
     .toylego {
         display: block;
         margin-top: 10px;
         background-color: #ffffff;
         
-        .title {
-            display: block;
-            height: 45px;
-            line-height: 45px;
-            color: #4d9df7;
-            font-size: 16px;
-            text-align: center;
+        .modulartitle {
+            position: relative;
+            .logoarrow {
+                position: absolute;
+                top: 31px;
+                right: 10px;
+                width: 7px;
+                height: 12.5px;
+            }
         }
+
         .toylegoitem {
             display: block;
             overflow: hidden;
@@ -91,6 +125,7 @@
                 display: block;
                 width: calc(40% - 1px);
                 border-right: 1px solid #f0f0f0;
+                position: relative;
                 .name {
                     display: block;
                     font-size: 14px;
@@ -108,7 +143,8 @@
                     height: 33px;
                     line-height: 33px;
                     color: #ff4956;
-                    font-size: 14px;
+                    font-size: 16px;
+                    font-weight: 700;
                     text-align: left;
                     margin: 0px 10px;
                     small {
@@ -118,6 +154,13 @@
                 .hotimg {
                     width: 100%;
                     margin: 20px 0px;
+                }
+                .homehot {
+                    position: absolute;
+                    top: 40%;
+                    left: 10px;
+                    width: 32px;
+                    height: 32px;
                 }
             }
             .hottop {
@@ -212,20 +255,24 @@
         overflow: hidden;
         margin-top: 10px;
         background-color: #ffffff;
-        
-        .title {
-            display: block;
-            height: 45px;
-            line-height: 45px;
-            color: #4d9df7;
-            font-size: 16px;
-            text-align: center;   
+        .modulartitle {
+            .logo {
+                .logoname {
+                    color: #4d9df7;
+                }
+                .logoimg {
+                    background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_recommend.png');
+                }
+            }
         }
         .recommenditem {
             float: left;
-            width: 33.3%;
+            width: calc(33.3% - 1px);
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
             img {
                 width: 100%;
+                margin-top: 10px;
             }
             .name {
                 display: block;
@@ -244,7 +291,8 @@
                 height: 33px;
                 line-height: 33px;
                 color: #ff4956;
-                font-size: 13px;
+                font-size: 16px;
+                font-weight: 700;
                 text-align: center;
                 small {
                     font-size: 12px;
@@ -257,14 +305,15 @@
         margin-top: 10px;
         overflow: hidden;
         background-color: #ffffff;
-        
-        .title {
-            display: block;
-            height: 45px;
-            line-height: 45px;
-            color: #4d9df7;
-            font-size: 16px;
-            text-align: center;   
+        .modulartitle {
+            .logo {
+                .logoname {
+                    color: #985ddb;
+                }
+                .logoimg {
+                    background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_hot.png');
+                }
+            }
         }
         .hotitem {
             float: left;
@@ -302,15 +351,17 @@
         }
     }
     .toygrid {
-        .title {
-            display: block;
-            height: 45px;
-            line-height: 45px;
-            color: #ff8942;
-            font-size: 16px;
-            text-align: center;
+        margin-top: 10px;
+        .modulartitle {
             background-color: #ffffff;
-            margin-top: 10px;
+            .logo {
+                .logoname {
+                    color: #ff8942;
+                }
+                .logoimg {
+                    background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_more.png');
+                }
+            }
         }
     } 
 }

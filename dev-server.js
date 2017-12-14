@@ -27,6 +27,8 @@ var apiProxy = {
 			'/api/order/pay/jd': '/order/pay/jd',
 			'/api/order/pay/check': '/order/pay/check',
 			'/api/order/list/v2': '/order/list/v2',
+			'/api/order/cancel': '/order/cancel',
+			'/api/order/delete': '/order/delete',
 			'/api/order/detail': '/order/detail',
 			'/api/order/express/companies': '/order/express/companies',
 			'/api/order/express/list': '/order/express/list',
@@ -38,7 +40,8 @@ var apiProxy = {
 			'/api/on/start': '/on/start',
 			'/api/user/login': '/user/login',
 			'/api/user/profile/jdv2': '/user/profile/jdv2',
-			'/api/user/profile/update': '/user/profile/update'
+			'/api/user/profile/update': '/user/profile/update',
+			'/api/user/update/cityCode': '/user/update/cityCode'
         }
 	}
 };

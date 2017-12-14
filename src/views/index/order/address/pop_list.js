@@ -58,8 +58,9 @@ var _default = (function(){
                     
                     if(data.code == 0){
         
-                        vm.itemLoad();
+                        Store.Mine.address = null;
                         Toast.show('删除地址成功');
+                        vm.itemLoad();
                     }else {
                         Toast.show(data.msg);
                     }

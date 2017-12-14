@@ -8,7 +8,7 @@ import API from "@/services/api";
 var _default = (function() {
 
     var toyClear = function(vm, tids) {
-
+        
         API.Index.cartClear({
                 tids: tids
             },
@@ -31,7 +31,11 @@ var _default = (function() {
     var toyRecount = function(vm) {
 
         vm.toySelectedIds = [];
+        vm.toyTotalPrice = 0;
         for(var i = 0; i < vm.toyItems.length; i++) {
+            if(vm.toyItems[i].selected){
+                vm.toyTotalPrice += vm.toyItems[i].rentMoney / 1000;
+            }
             vm.toyItems[i].selected && vm.toySelectedIds.push(vm.toyItems[i].toyId);
         };
         vm.toySelectedAll = (vm.toySelectedIds.length == vm.toyItems.length)
@@ -50,9 +54,16 @@ var _default = (function() {
 
                     if(data.code == 0) {
                         vm.data = data.data;
-                        vm.toyItems = data.data.cart || [];
+                        var toys = data.data.cart || [];
+                        for( var i = 0; i < toys.length; i++){
+                            if(toys[i].stockNum > 0){
+                                vm.toyItems.push(toys[i]);
+                            }else {
+                                vm.stockItems.push(toys[i]);
+                            }
+                        }
                         for(var i = 0; i < vm.toyItems.length; i++) {
-                            vm.toyItems[i].selected = true;
+                            vm.toyItems[i].selected = vm.toyItems[i].stockNum <= 0 ? false : true;
                         };
                         toyRecount(vm);
                     } else {
@@ -73,6 +84,8 @@ var _default = (function() {
             return {
                 data: [],
                 toyItems: [],
+                toyTotalPrice: 0,
+                stockItems : [],
                 toySelectedAll: true,
                 toySelectedIds: [],
                 animateContainerClass: '',
@@ -86,17 +99,18 @@ var _default = (function() {
                 }
             },
             selectAll: function() {
-
-                this.toySelectedAll = !this.toySelectedAll;
-                for(var i = 0; i < this.toyItems.length; i++) {
-                    this.toyItems[i].selected = this.toySelectedAll;
+                
+                var vm = this;
+                vm.toySelectedAll = !vm.toySelectedAll;
+                for(var i = 0; i < vm.toyItems.length; i++) {
+                    vm.toyItems[i].selected = vm.toySelectedAll;
                 };
-                toyRecount(this);
+                toyRecount(vm);
             },
-            selectItem: function(e, toyId) {
+            selectItem: function(e, item) {
 
                 for(var i = 0; i < this.toyItems.length; i++) {
-                    if(this.toyItems[i].toyId == toyId) {
+                    if(this.toyItems[i].toyId == item.toyId) {
                         this.toyItems[i].selected = !this.toyItems[i].selected;
                     }
                 };
@@ -115,9 +129,12 @@ var _default = (function() {
             clear: function() {
 
                 var vm = this;
-                vm.data = {};
-
-                toyClear(this, vm.tidsItem.join(';'));
+                vm.data = [];
+                var tid = [];
+                for(var i = 0; i< vm.toyItems.length; i++){
+                    tid.push(vm.toyItems[i].toyId);
+                };
+                toyClear(this, tid.join(';'));
             },
             submit: function() {
 

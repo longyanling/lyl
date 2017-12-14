@@ -25,6 +25,16 @@ var mine = {
 		Utils.Axios.deferPost('/api/order/list/v2', { }, callback);
 	},
 	
+	cancel: function(data, callback){
+        
+        Utils.Axios.deferPost('/api/order/cancel', data, callback);
+    },
+	
+	delete: function(data, callback){
+        
+        Utils.Axios.deferPost('/api/order/delete', data, callback);
+    },
+	
 	orderDetail: function(data, callback){
 		
 		Utils.Axios.deferPost('/api/order/detail', data, callback);

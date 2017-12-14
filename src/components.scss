@@ -60,6 +60,7 @@
     .toyinner {
         display: block;
         padding: 0px;
+        overflow: hidden;
         
         .toyitem {
             float: left;
@@ -67,6 +68,7 @@
             width: 50%;
             line-height: 1;
             min-height: 1px;
+            position: relative;
             
             .inner {
                 display: block;
@@ -138,8 +140,32 @@
                         background: #ceaff1;
                     }
                 }
+                .stock  {
+                    width: 50px;
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                }
                 &:nth-child(odd){
                     border-right:1px solid #f0f0f0;
+                }
+            }
+            &.toyitemnull {
+                .inner {
+                    .title {
+                        color: #b3b3b3;
+                    } 
+                    .cart {
+                        background-image: url('https://ts.zlimg.com/v2/h5/jd/home_unjoincart.png');
+                    }
+                    .price {
+                        color: #b3b3b3;
+                                        
+                        dfn {
+                            
+                            color: #b3b3b3;
+                        }
+                    }
                 }
             }
         }

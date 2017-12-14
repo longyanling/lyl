@@ -1,5 +1,38 @@
 .tm-index-detail {
     
+    .stock {
+        position: absolute;
+        top: 0;
+        color: #fff;
+        font-size: 12px;
+        z-index: 1;
+        .bookable {
+            display: block;
+            padding: 6px;
+            background-color: #cdcdcd;
+            
+            .text {
+                background: url('https://ts.zlimg.com/v2/h5/jd/toy_bookable.png');
+                background-repeat: no-repeat;
+                background-position: 0px center;
+                background-size: 12px 12px;
+                padding-left: 18px;
+            }
+        }
+        .rentable {
+            display: block;
+            padding: 6px;
+            background-color: #fed030;
+           
+            .text {
+                background: url('https://ts.zlimg.com/v2/h5/jd/toy_rentable.png');
+                background-repeat: no-repeat;
+                background-position: 0px center;
+                background-size: 12px 12px;
+                padding-left: 18px;
+            }
+        } 
+    }
     .infos {
         display: block;
         padding: 5px 0px;
@@ -293,6 +326,11 @@
                 }
             }
         }
+        .stock {
+            width: 50px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
         .item:nth-of-type(odd) .shell{
             margin-right: 2.5px;
             margin-left: 5px;
@@ -329,6 +367,17 @@
             text-align: center;
             background-color: #fc7522;
         }
+        .bookable {
+            float: left;
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            font-size: 16px;
+            width: 100%;
+            color: #575757;
+            text-align: center;
+            background-color: #b3b3b3;
+        } 
     }
     .basePhone {
         width: 45px;

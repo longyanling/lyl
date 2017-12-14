@@ -1,6 +1,7 @@
 'use strict';
 
 import Sortor from "@/directives/sortor";
+import Toast from '@/directives/toast';
 import API from "@/services/api";
 
 var _default = (function(){
@@ -23,9 +24,19 @@ var _default = (function(){
 	        map.addControl(geolocation);
 	        geolocation.getCurrentPosition();
 	        AMap.event.addListener(geolocation, 'complete', function(data){
-	        	
+	        	var citycode = data.addressComponent.citycode;
 				vm.cityInfo = data.addressComponent.city ||  data.addressComponent.province || '定位失败';
 				vm.cityLocation = '定位成功';
+				API.Index.cityCode({
+                    cityCode: citycode
+                    },function (data) {
+                    if (data.code == 0) {
+                        Toast.show('定位成功')
+                        vm.$router.push('/index?location=' + vm.cityInfo);
+                    } else {
+                        Toast.show(data.msg);
+                    }
+                });
 	        });
 	    });
 	};
@@ -44,7 +55,7 @@ var _default = (function(){
                     vm.cityHotItems = data.data.hotCities;       
                     vm.cityAllItems = Sortor.pinyin(data.data.cities);
                 } else {
-                    console.log(data.msg);
+                    Toast.show(data.msg);
                 }
             });
         },
@@ -71,7 +82,22 @@ var _default = (function(){
             goHome : function() {
             	
                 this.$router.push('/index');
+            },
+            itemSelect : function(e, item){
+                
+                API.Index.cityCode({
+                    cityCode: item.cityCode
+                },function (data) {
+                    
+                    if (data.code == 0) {
+                        
+                    } else {
+                        Toast.show(data.msg);
+                    }
+                });
+                this.$router.push('/index?location=' + item.cityName);
             }
+            
         }
     }
 })();

@@ -16,8 +16,9 @@ var _default = (function(){
             }, function(data){
             	
             	if (data.data && data.data.expressList){
+            	    vm.orderStatus = data.data.status;
             		for (var i = 0; i < data.data.expressList.length; i++){
-            			if (data.data.expressList[i].expressType == 200 ){
+            			if (data.data.expressList[i].expressType == 100 ){
             				vm.sendItems.push(data.data.expressList[i]);
             			} else {
             				vm.receiveItems.push(data.data.expressList[i]);
@@ -29,7 +30,8 @@ var _default = (function(){
         data: function(){
             
             return {
-            	tabIndex: 1,
+            	tabIndex: 0,
+            	orderStatus : null,
             	sendItems: [],
             	receiveItems: [],
             	expressMailIndex : 0,
@@ -42,7 +44,8 @@ var _default = (function(){
         		this.tabIndex = index;
         	},
             goReturn: function(e){
-        
+                
+                if(this.orderStatus < 5) return ;
                 this.$router.push( '/mine/order/return' );
             }
         },

@@ -29,7 +29,7 @@
 		
 		<div class="toygrid">
             <div class="toyinner">
-                <span class="toyitem" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+                <span class="toyitem" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }" :class="item.stockNum <= 0 ? 'toyitemnull' : ''">
                     <span class="inner">
                         <span class="thumb"><img :src="item.image" /></span>
                         <span class="title"> {{item.toyName}} </span>
@@ -38,6 +38,7 @@
                             <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
                             <var v-show="item.canPostal">可邮寄 </var>
                         </span>
+                        <img v-show="item.stockNum > 0 && item.sw" class="stock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>
                     </span>
                 </span>
                 <span id="toyMore" class="toymore" v-show="toyItems.length > 0 && !toyIsEnd">

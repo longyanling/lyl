@@ -92,5 +92,15 @@
         right:0px;
         bottom:0px;
         padding:0px 15px 15px 15px;
+        .button{
+            .submit {
+                
+            }
+            &.unbutton {
+                color: #575757;
+                border: 1px solid #b3b3b3;
+                background-color: #b3b3b3;
+            }
+        }
     }
 }

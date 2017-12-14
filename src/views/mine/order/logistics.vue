@@ -39,7 +39,7 @@
     		</div>
     	</div>
         <div class="controls">
-        	<a class="button submit" v-touch:tap="{ event: goReturn, params:[] }">添加寄回快递信息</a>
+        	<a :class="orderStatus >= 5 && orderStatus <= 13 ?'button submit' : 'button unbutton'" v-touch:tap="{ event: goReturn, params:[] }">添加寄回快递信息</a>
         </div>
     </div>
 </template>
