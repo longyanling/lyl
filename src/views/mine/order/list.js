@@ -9,7 +9,7 @@ var _default = (function(){
     
     var orderList = function(vm){
         API.Mine.orders(function(data){
-                
+            vm.orderItems = [[],[],[],[],[]];   
             var orders = (data.data || {}).data || [];
             for (var i = 0; i < orders.length;i++){
                 
@@ -65,13 +65,12 @@ var _default = (function(){
             },
             orderCancel : function(e, orderId){
                 var vm = this;
-                vm.orderItems = [[],[],[],[],[]];
+                
                 API.Mine.cancel(
                     {
                         orderId : orderId
                     },function(data){
                         if(data.code == 0){
-
                             orderList(vm);
                         }else {
                             Toast.show(data.msg);
@@ -81,7 +80,7 @@ var _default = (function(){
             },
             orderDelete: function(e, orderId){
                 var vm = this;
-                vm.orderItems = [[],[],[],[],[]];
+                
                 API.Mine.delete(
                     {
                         orderId : orderId

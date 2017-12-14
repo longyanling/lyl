@@ -90,7 +90,7 @@ var mine = {
     },
     
     addressUpdata : function( data, callback ){
-    	
+
     	Utils.Axios.deferPost('/api/address/gd/update', data, callback);
     },
     

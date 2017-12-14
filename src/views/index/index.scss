@@ -1,5 +1,21 @@
 .tm-toy-index {
     height: 100%;
+    .loading {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 9999;
+        text-align: center;
+        background-color: #ffffff;
+        
+        img {
+            width: 22%;
+            border-radius: 10px;
+            margin-top: 60%;
+        }
+    }
     .city {
         position: absolute;
         left: 10px;

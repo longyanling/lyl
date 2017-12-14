@@ -100,6 +100,9 @@
                 </span>
             </div>
         </div>
+        <div class="loading" v-show="loadingShow">
+        	<img src="https://ts.zlimg.com/ap/loading.gif"/>
+        </div>
         <router-view></router-view>
         <tm-shortcut></tm-shortcut>
 	</div>

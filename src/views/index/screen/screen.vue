@@ -1,19 +1,15 @@
 <template>
     <div id="index-screen" class="tm-index-screen" v-touch:tap="{event: deactive, params:[]}">
         <div class="nav">
-            <span :class=" [ 'dock', tabsIsDock == true ? '' : 'hide' ] ">
-                <span class="switch" v-touch:tap="{ event: ageShow, params: [] }">年龄</span>
-                <span class="switch" v-touch:tap="{ event: brandShow, params: [] }">品牌</span>
-                <span class="switch" v-touch:tap="{ event: abilityShow, params: [] }">能力</span>
-                <span class="switch" v-touch:tap="{ event: typeShow, params: [] }">类型</span>
-                <span class="switch" v-touch:tap="{ event: screenShow, params: [] }">筛选</span>
-                <span class="personal" v-touch:tap="{ event: goMine, params: [] }">
-                    <img class="portrait" src="https://ts.zlimg.com/v2/h5/jd/mine_personalcenter.png"/>
-                    <img class="authorized" src="https://ts.zlimg.com/v2/h5/jd/mine_authorized.png"/>
-                </span>
+            <span class="dock">
+                <span :class="ageIsShow ? 'switch select' : 'switch'" v-touch:tap="{ event: ageShow, params: [] }">年龄<var v-show="ageSelectedData.length > 0">({{ageSelectedData.length}})</var></span>
+                <span :class="brandIsShow ? 'switch select' : 'switch'" v-touch:tap="{ event: brandShow, params: [] }">品牌<var v-show="brandSelectedData.length > 0">({{brandSelectedData.length}})</var></span>
+                <span :class="abilityIsShow ? 'switch select' : 'switch'" v-touch:tap="{ event: abilityShow, params: [] }">能力<var v-show="abilitySelectedData.length > 0">({{abilitySelectedData.length}})</var></span>
+                <span :class="typeIsShow ? 'switch select' : 'switch'" v-touch:tap="{ event: typeShow, params: [] }">类型<var v-show="typeSelectedData.length > 0">({{typeSelectedData.length}})</var></span>
+                <span :class="screenIsShow ? 'switch select' : 'switch'" v-touch:tap="{ event: screenShow, params: [] }">筛选<var>({{1 + sizeSelectedData.length + (rentSelectedData==4 ? 1 : 0) + (stockSelectedData!=0 ? 1 : 0)}})</var></span>
             </span>
         </div>
-        <div class="box" v-show="ageIsShow || brandIsShow || abilityIsShow || typeIsShow || screenIsShow">
+        <div class="box" v-show="ageIsShow || brandIsShow || abilityIsShow || typeIsShow || screenIsShow" v-touch:tap="{event: deactive, params:[]}">
             <div class="age" v-show="ageIsShow">
                 <div class="ageMain">
                     <span class="vessel">

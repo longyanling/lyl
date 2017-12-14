@@ -14,6 +14,9 @@ var _default = (function(){
 		mounted: function(){
 		    
             var vm = this;
+            
+            vm.loadingShow = true;
+            
             vm.locationItem = this.$route.query.location ? this.$route.query.location : '北京';
 
             API.Index.homeList({
@@ -26,6 +29,8 @@ var _default = (function(){
                         };
                         vm.toyRecommendItems = data.data[2].toyList;
                         vm.toyHotItems = data.data[4].toyList;
+                        
+//                      vm.loadingShow = false;
                     }else {
                        Toast.show(data.msg) 
                     }
@@ -58,6 +63,7 @@ var _default = (function(){
                         vm.toyLegoThird.image = (vm.toyLegoThird.image || '').replace('h1.jpg','h0.png');
                         vm.toyLegoFourth =(data.data.toys && data.data.toys.length > 0 ? data.data.toys[3] : {});
                         vm.toyLegoFourth.image = (vm.toyLegoFourth.image || '').replace('h1.jpg','h0.png');
+//                      vm.loadingShow = false;
                     } else {
                         Toast.show(data.msg);
                     }
@@ -88,6 +94,7 @@ var _default = (function(){
                         toyInit.forEach(function(toys,index){  
                             vm.toyListItems.push(toys);  
                         });
+                        vm.loadingShow = false;
                     } else {
                         Toast.show(data.msg);
                     }
@@ -96,7 +103,7 @@ var _default = (function(){
             
             //滑动到玩具列表底部加载玩具列表
             window.addEventListener('scroll',function(){
-                // 判断是否滚动到底部  
+                // 判断是否滚动到底部 
                 if(document.body.scrollTop + window.innerHeight >= document.body.offsetHeight && vm.LoadState) {
                     API.Index.toyList(
                         {
@@ -134,6 +141,7 @@ var _default = (function(){
 		data: function(){
             
 			return {
+			    loadingShow: true,
 				commonLastToyId : -1,
 				bannerItems: [],
 				toyHotItems : [],

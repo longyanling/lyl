@@ -19,7 +19,7 @@ var _default = (function(){
                 }
             }
             
-            vm.infoDeterItem.splice(0, 1, (vm.methodIndex == 1 ? vm.methodItems[0] :  that.methodItems[1]));
+            vm.infoDeterItem.splice(0, 1, (vm.methodIndex == 1 ? vm.methodItems[0] :  vm.methodItems[1]));
             vm.dayItems = vm.distribution[0].days;
             vm.dayIndex = vm.distribution[0].default.timestamp;
             
@@ -56,6 +56,7 @@ var _default = (function(){
                 
                 if((index == 1 && !this.canOnsite) || (index == 2 && !this.canPostal)) return;
                 this.infoDeterItem.splice(0, 1, item);
+                this.methodHint = '';
                 this.methodHint = item.tips;
                 this.methodIndex = index;
             },

@@ -152,6 +152,7 @@ var _default = (function() {
                 sizeSelectedData : [],
                 rentSelectedData : 2,
                 stockSelectedData : 0,
+//              screenSelected:  0,
                 stockState : false,
                 rentState : false,
                 screenJSON : null,
@@ -162,8 +163,7 @@ var _default = (function() {
         },
         methods: {
             deactive: function(e){
-                
-                if (e.target.id == 'index-screen'){
+                if (e.target.className == 'box' || e.target.className == 'brand' || e.target.className == 'ability' || e.target.className == 'screen'){
                     this.ageIsShow = false;
                     this.brandIsShow = false;
                     this.abilityIsShow = false;
@@ -345,7 +345,6 @@ var _default = (function() {
             screenConfirm: function(){
                 var self = this;
                 self.commonLastToyId = -1;
-                self.toysListItem = [];
                 self.tabsIsDock = false;
                 self.ageIsShow = false;
                 self.brandIsShow = false;
@@ -378,6 +377,7 @@ var _default = (function() {
                     },
                     function (data) {
                         if (data.code == 0) {
+                            self.toysListItem = [];
                             self.toyIsEnd = data.data.isEnd;
                             self.toyLastId = (data.data.toys.length > 0 ? data.data.toys.slice(-1)[0].toyId : -1);
                             var toysLoad = data.data.toys;
@@ -400,7 +400,7 @@ var _default = (function() {
                 this.sortSelectedData = 0;
                 this.sizeSelectedData = [];
                 this.rentSelectedData = 2;
-                this.tockSelectedData = 0;
+                this.stockSelectedData = 0;
                 this.stockState = false;
                 this.rentState = false;
             },
