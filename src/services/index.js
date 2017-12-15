@@ -31,7 +31,19 @@ var index = {
     },
     cartList: function(data, callback){
         
-        Utils.Axios.deferGet( '/api/cart/list', data, callback);
+        if (Store.Index.cartToys){
+            callback(Store.Index.cartToys);
+        } else {        	
+        	Utils.Axios.deferGet( '/api/cart/list', data, function(data){
+                
+                if (data.code == 0 ){
+                    Store.Index.cartToys = data.data || [];
+                    callback(Store.Index.cartToys);   
+                } else {
+                    console.log('请求失败');
+                }
+        	});
+        }
     },
     cartAdd: function(data, callback){
         

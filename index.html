@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>玩具超人</title>
     <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no"/>
     <meta name="format-detection" content="email=no" />
     <meta name="format-detection" content="address=no" />
     <meta name="keywords" content="玩具,玩具租赁,玩具出租,玩具交换,玩具换租,乐高,变形金刚,芭比娃娃,玩具反斗城,积木,费雪,智高,Hape,小泰克,早教,金宝贝,蒙台梭利,美吉姆,电动玩具,益智玩具,音乐盒,宝宝树,摇篮,童装,糖果,模型,幼儿,妈妈,宝宝,蜜芽宝贝,贝贝" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>玩具超人</title>
     <link rel="shortcut icon" href="toy.ico" />
 </head>
 <body>
@@ -15,11 +15,12 @@
     	<tm-frame></tm-frame>
     </div>
     <script type="text/javascript">
-        var _width = Math.floor((screen.width - 1) / 2); 
+        var _toyWidth = Math.floor((screen.width - 1) / 2);
+        var _bannerWidth = screen.width;
         document.write('<style>'+
-        '   .tm-toy-index .hotitem img {'+
-        '       width: '+ ( _width ) +'px;'+
-        '       height: ' + ((_width / 588) * 414) + 'px;'+
+        '   .tm-toy-index {'+
+        '       width: '+ ( _toyWidth ) +'px;'+
+        '       height: ' + ((_toyWidth / 588) * 414)+ 'px;'+
         '   }'+
         '</style>');
     </script>

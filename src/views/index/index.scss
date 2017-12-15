@@ -1,382 +1,374 @@
-.tm-toy-index {
-    height: 100%;
-    .loading {
-        position: fixed;
+
+.tm-index {
+    
+    .topbar {
+        position: absolute;
         top: 0px;
         left: 0px;
         right: 0px;
-        bottom: 0px;
-        z-index: 9999;
-        text-align: center;
-        background-color: #ffffff;
+        height: 44px;
         
-        img {
-            width: 22%;
-            border-radius: 10px;
-            margin-top: 60%;
-        }
-    }
-    .city {
-        position: absolute;
-        left: 10px;
-        top: 10px;
-        background-color: hsla(0,0%,100%,0.8);
-        padding: 3px 10px;
-        font-size: 12px;
-        color: #575757;
-        z-index: 2;
-        border-radius: 10px;
-        var {
-            float: left;
-            padding-top: 1px;
-        }
         .location {
             float: left;
-            margin-right: 5px;
-            width: 10px;
-        }
-        .arrow {
-            float: left;
-            width: 5px;
-            padding: 2px 0px 0px  7px;
-        }
-    }
-    .search{
-        position: absolute;
-        top: 5px;
-        right: 3px;
-        z-index: 2;
-        width: 50px;
-    }
-    .nav {
-        display: block;
-        height: 42px;
-        border-top: 1px solid #f3f3f3;
-        background: #ffffff;
-        overflow: hidden;
-        .personal {
-            float: left;
-            width: 20%;
-            height: 44px;
-            font-size: 13px;
-            border: 0px;
-            position: relative;
-            overflow: hidden;
-            .portrait {
-                float: right;
-                width: 34px;
-                padding: 5px 40% 0 0;
+            display: 24px;
+            margin: 16px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.8);
+            
+            var {
+                float: left;
+                display: block;
+                width: 24px;
+                height: 24px;
+                background: url("https://ts.zlimg.com/v2/h5/jd/home_icon_address.png") center center/12px 15px no-repeat;
             }
-            .authorized {
-                width: 28px;
-                position: absolute;
-                top: 0;
-                right: 23%;
+            em {
+                float: left;
+                display: block;
+                height: 24px;
+                color: #575757;
+                font-size: 12px;
+                line-height: 24px;
+                padding-right: 12px;
+                margin-right: 6px;
+                background: url("https://ts.zlimg.com/v2/h5/jd/home_arrow.png") right center/7px 12px no-repeat;
             }
         }
-        .switch {
-            float: left;
-            width: 16%;
-            height: 44px;
-            border: 0px;
-            font-size: 15px;
-            line-height: 44px;
-            text-align: center;
-        }
-         
-    }
-    .modulartitle {
-        display: block;
-        height: 70px;
-        text-align: center;
-        .logo {
+        
+        .search {
+            float: right;
             display: block;
-            .logoname {
+            width: 50px;
+            height: 50px;  
+            margin-top: 6px;
+            margin-right: 5px;
+            background: url("https://ts.zlimg.com/v2/h5/jd/home_search.png") center center/49px 49px no-repeat;  
+        }
+    }
+    
+    .navigation {
+        display: block;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0px;
+        height: 44px;
+        padding: 0px;
+        margin: 0px;
+        border-bottom: 1px solid #f3f3f3;
+        background: #ffffff;
+        
+        .personal {
+            float: right;
+            display: block;
+            overflow: hidden;
+            width: 44px;
+            height: 44px;
+            
+            &:before {
+                display: block;
+                position: relative;
+                content: "";
+                width: 44px;
+                height: 44px;
+                background: url("https://ts.zlimg.com/v2/h5/jd/mine_personalcenter.png") center center/32px 32px no-repeat;
+                /*animation: headshake 360ms 360ms infinite;*/
+                -webkit-animation: headshake 1200ms ease 0s infinite alternate;
+            }
+            &:after {
+                display: block;
+                position: relative;
+                content: "";
+                top: -44px;
+                width: 28px;
+                height: 21px;
+                margin-left: 16px;
+                background: url("https://ts.zlimg.com/v2/h5/jd/mine_authorized.png") center top/28px 21px no-repeat;            
+            }        
+        }
+        .category {
+            display: block;
+            height: 44px;
+            margin-right: 44px;
+            
+            .item {
+                float:left; 
+                display: block;
+                width: 20%;
+                height: inherit;
+                
+                em {
+                    display: block;
+                    height: inherit;
+                    font-size: 15px;
+                    text-align: center;
+                    line-height: 44px;
+                }
+            }
+        }
+    }
+    
+    .summary {
+        margin-top: 12px;
+        background: #ffffff;
+        
+        .caption {
+            display: block;
+            height: 70px;
+            text-align: center;
+            margin: 0px 12px;
+            background: url('https://ts.zlimg.com/v2/h5/jd/home_button_entry.png') right center / 7px 12px no-repeat;
+            
+            em {
                 display: inline-block;
                 color: #ff4956;
                 font-size: 16px;
-                margin-top: 20px;
+                padding-left: 20px;
+                margin-top: 22px;
+                background: url('https://ts.zlimg.com/v2/h5/jd/home_lego.png') left center / 16px 16px no-repeat;
             }
-            .logoimg {
-                display: inline-block;
-                width: 16px;
-                height: 16px;
-                margin-right: 5px;
-                background-image: url('https://ts.zlimg.com/v2/h5/jd/home_lego.png');
-                background-repeat: no-repeat;
-                background-size: 16px 16px;
-                background-position: center center;
-                
+            dfn {
+                display: block;
+                color: #b3b3b3;
+                font-size: 12px;
+                margin-top: 10px;
             }
         }
-        .logocon {
-            display: block;
-            color: #b3b3b3;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-    }
-    .toylego {
-        display: block;
-        margin-top: 10px;
-        background-color: #ffffff;
         
-        .modulartitle {
-            position: relative;
-            .logoarrow {
-                position: absolute;
-                top: 31px;
-                right: 10px;
-                width: 7px;
-                height: 12.5px;
-            }
-        }
-
-        .toylegoitem {
+        .datalist {
             display: block;
             overflow: hidden;
             
-            .hot {
+            .item {
                 float: left;
-                display: block;
-                width: calc(40% - 1px);
                 border-right: 1px solid #f0f0f0;
-                position: relative;
-                .name {
+                border-bottom: 1px solid #f0f0f0;
+                
+                img {
+                    margin-top: 10px;
+                }
+                em {
                     display: block;
-                    font-size: 14px;
-                    height: 36px;
-                    line-height: 18px;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    text-overflow:ellipsis;
                     overflow: hidden;
-                    margin: 0px 10px;
-                    padding-top: 10px;
+                    color: #333333;
+                    font-size: 12px;
+                    line-height: 14px;
+                    text-overflow:ellipsis;
                 }
                 dfn {
                     display: block;
                     height: 33px;
-                    line-height: 33px;
                     color: #ff4956;
                     font-size: 16px;
                     font-weight: 700;
+                    line-height: 33px;
+                }
+            }
+            
+            .best {
+                float: left;
+                display: block;
+                width: calc(40% - 1px);
+                border-right: 1px solid #f0f0f0;
+                
+                em {
+                    display: block;
+                    overflow: hidden;
+                    height: 36px;
+                    font-size: 14px;
+                    line-height: 18px;
+                    text-overflow:ellipsis;
+                    padding-top: 10px;
+                    margin: 0px 10px;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+                dfn {
+                    display: block;
+                    height: 33px;
+                    color: #ff4956;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 33px;
                     text-align: left;
                     margin: 0px 10px;
-                    small {
-                        font-size: 12px;
-                    }
                 }
-                .hotimg {
+                img {
                     width: 100%;
                     margin: 20px 0px;
                 }
-                .homehot {
+                var {
+                    display: block;
                     position: absolute;
-                    top: 40%;
-                    left: 10px;
                     width: 32px;
                     height: 32px;
+                    margin-top: -40vw;
+                    margin-left: 10px;
+                    background: url('https://ts.zlimg.com/v2/h5/jd/home_hot.png') center center / 32px 32px no-repeat;
                 }
             }
-            .hottop {
+            .next {
                 float: left;
                 display: block;
+                overflow: hidden;
                 width: 60%;
                 border-bottom: 1px solid #f0f0f0;
-                overflow: hidden;
                 
-                .content {
+                img {
+                    float: right;
+                    width: 50%;
+                }
+                em {
+                    display: block;
+                    overflow: hidden;
+                    height: 36px;
+                    font-size: 14px;
+                    line-height: 18px;
+                    text-overflow:ellipsis;
+                    padding: 10px 0px 0px 10px;
+                    margin-right: 50%;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+                dfn {
+                    display: block;
+                    overflow: hidden;
+                    height: 33px;
+                    color: #ff4956;
+                    font-size: 14px;
+                    line-height: 33px;
+                    text-align: left;
+                    margin: 0px 50% 0px 10px;
+                }
+            }
+            .third {
+                float: left;
+                display: block;
+                overflow: hidden;
+                width: 60%;
+                
+                .subitem {
                     float: left;
                     width: 50%;
-                    .name {
+                    overflow: hidden;
+                    
+                    em {
                         display: block;
-                        font-size: 14px;
+                        overflow: hidden;
                         height: 36px;
+                        font-size: 12px;
                         line-height: 18px;
+                        text-overflow:ellipsis;
+                        margin: 0px 10px;
+                        padding-top: 10px;
                         -webkit-box-orient: vertical;
                         -webkit-line-clamp: 2;
-                        text-overflow:ellipsis;
-                        overflow: hidden;
-                        padding: 10px 0px 0px 10px;
                     }
                     dfn {
                         display: block;
-                        height: 33px;
-                        line-height: 33px;
+                        height: 16px;
                         color: #ff4956;
-                        font-size: 14px;
+                        font-size: 12px;
+                        line-height: 16px;
                         text-align: left;
                         margin: 0px 10px;
-                        small {
-                            font-size: 12px;
-                        }
                     }
-                }
-                .img {
-                    float:left;
-                    width: 50%;
                     img {
                         width: 100%;
                     }
                 }
             }
-            .hotbottom {
-                float: left;
-                display: block;
-                width: 60%;
-                overflow: hidden;
-                
-                .left {
-                    float: left;
-                    width: 50%;
-                    overflow: hidden;
-                    .name {
-                        display: block;
-                        font-size: 12px;
-                        height: 36px;
-                        line-height: 18px;
-                        -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 2;
-                        text-overflow:ellipsis;
-                        overflow: hidden;
-                        margin: 0px 10px;
-                        padding-top: 10px;
-                    }
-                    dfn {
-                        display: block;
-                        height: 16px;
-                        line-height: 16px;
-                        color: #ff4956;
-                        font-size: 12px;
-                        text-align: left;
-                        margin: 0px 10px;
-                        small {
-                            font-size: 12px;
-                        }
-                    }
-                    .img {
-                        width: 100%;
-                    }
-                }
-                .left:first-child {
-                    width: calc(50% - 1px);
-                    border-right: 1px solid #f0f0f0;
-                }  
-            }
         }
-    }
-    .recommend {
-        display: block;
-        overflow: hidden;
-        margin-top: 10px;
-        background-color: #ffffff;
-        .modulartitle {
-            .logo {
-                .logoname {
+        
+        &.recommend {
+            .caption {
+                background: none;
+            
+                em {
                     color: #4d9df7;
-                }
-                .logoimg {
                     background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_recommend.png');
                 }
             }
-        }
-        .recommenditem {
-            float: left;
-            width: calc(33.3% - 1px);
-            border-right: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
-            img {
-                width: 100%;
-                margin-top: 10px;
-            }
-            .name {
-                display: block;
-                height: 28px;
-                line-height: 14px;
-                color: #333333;
-                font-size: 12px;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                text-overflow:ellipsis;
-                overflow: hidden;
-                margin: 10px 10px 0px 10px;
-            }
-            dfn {
-                display: block;
-                height: 33px;
-                line-height: 33px;
-                color: #ff4956;
-                font-size: 16px;
-                font-weight: 700;
-                text-align: center;
-                small {
-                    font-size: 12px;
+            .datalist {
+                .item {
+                    width: calc(33.3vw - 1px);
+                    
+                    img {
+                        width: 100%;
+                        height: 23.4vw;
+                    }
+                    em {
+                        height: 28px;
+                        line-height: 14px;
+                        margin: 10px 10px 0px 10px;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                    }
+                    dfn {
+                        text-align: center;
+                    }
                 }
             }
-        }
-    }
-    .toyhot {
-        display: block;
-        margin-top: 10px;
-        overflow: hidden;
-        background-color: #ffffff;
-        .modulartitle {
-            .logo {
-                .logoname {
+        }   
+        &.hot {
+            .caption {
+                background: none;
+                
+                em {
                     color: #985ddb;
-                }
-                .logoimg {
                     background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_hot.png');
                 }
             }
-        }
-        .hotitem {
-            float: left;
-            display: block;
-            width: calc(50% - 1px);
-            border-right: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
-            img {
-                width: 100%;
-                margin: 10px 0px;
+            .datalist {
+                .item {
+                    width: calc(50vw - 1px);
+                    
+                    img {
+                        width: 100%;
+                        height: 23.4vw;
+                    }
+                    em {
+                        height: 28px;
+                        color: #333333;
+                        font-size: 12px;
+                        line-height: 14px;
+                        white-space: nowrap;
+                        text-overflow:ellipsis;
+                        margin: 10px;
+                    }
+                    dfn {
+                        text-align: left;
+                        margin: 0px 10px;
+                    }
+                }    
+                &:last-child {
+                    border-bottom: 0px;
+                }
             }
-            .name {
-                display: block;
-                overflow: hidden;
-                text-overflow:ellipsis;
-                white-space: nowrap;
-                margin: 10px;
+        }
+    }
+    
+    .toygrid {
+        margin-top: 10px;
+        background: #ffffff;
+        
+        .caption {
+            display: block;
+            height: 70px;
+            text-align: center;
+            
+            em {
+                display: inline-block;
+                color: #ff8942;
+                font-size: 16px;
+                padding-left: 20px;
+                margin-top: 22px;
+                background: url('https://ts.zlimg.com/v2/h5/jd/home_icon_more.png') left center / 16px 16px no-repeat;
             }
             dfn {
                 display: block;
-                height: 33px;
-                line-height: 33px;
-                color:  #ff4956;
-                font-size: 16px;
-                font-weight: 700;
-                text-align: left;
-                margin: 0px 10px;
-                small {
-                    font-size: 12px;
-                }
-            }
-        }
-        .hotitem:last-child {
-            border-bottom: 0px;
-        }
-    }
-    .toygrid {
-        margin-top: 10px;
-        .modulartitle {
-            background-color: #ffffff;
-            .logo {
-                .logoname {
-                    color: #ff8942;
-                }
-                .logoimg {
-                    background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_more.png');
-                }
+                color: #b3b3b3;
+                font-size: 12px;
+                margin-top: 10px;
             }
         }
     } 

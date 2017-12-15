@@ -55,12 +55,15 @@ var _default = (function(){
 		    addCart : function (e, toyId) {
 		        
 		        toyId = (toyId == undefined ? this.detailItem.toyId : toyId);
+		        
 		        API.Index.cartAdd(
                     {
                         tid : toyId
                     },
                     function (data) {
+                    	
                         if (data.code == 0) {
+                        	Store.Mine.cartAdd();
                             Toast.show('玩具成功加入购物车');
                         } else {
                             Toast.show(data.msg);

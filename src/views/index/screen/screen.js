@@ -1,6 +1,7 @@
 'use strict';
 
 import Toast from '@/directives/toast';
+import Store from "@/directives/store";
 import Sortor from "@/directives/sortor";
 import Shortcut from '@/components/shortcut.vue'
 import API from "@/services/api";
@@ -178,7 +179,9 @@ var _default = (function() {
                         tid : toyId
                     },
                     function (data) {
+                    	
                         if (data.code == 0) {
+                        	Store.Mine.cartAdd();
                             Toast.show('玩具成功加入购物车');
                         } else {
                             Toast.show(data.msg);
