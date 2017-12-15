@@ -30,45 +30,44 @@ var _default = (function() {
 
     var toyRecount = function(vm) {
 
-        vm.toySelectedIds = [];
         vm.toyTotalPrice = 0;
+        vm.toySelectedIds = [];
         for(var i = 0; i < vm.toyItems.length; i++) {
             if(vm.toyItems[i].selected){
                 vm.toyTotalPrice += parseFloat(vm.toyItems[i].rentMoney * 1000) / 1000;
             }
             vm.toyItems[i].selected && vm.toySelectedIds.push(vm.toyItems[i].toyId);
         };
-        vm.toySelectedAll = (vm.toySelectedIds.length == vm.toyItems.length)
+        vm.toySelectedAll = (vm.toySelectedIds.length == vm.toyItems.length);
+        Store.Hub.$emit('cartRefresh');
     };
 
     return {
         name: 'index-cart',
         mounted: function() {
-            
-            var vm = this;
+
+            var vm = this, toys;
             
             vm.cartLoading = true;
             
-            API.Index.cartList({
+            API.Index.cartList({ }, function(data) {
 
-                },
-                function(data) {
-                    vm.data = data;
-                    var toys = data.cart || [];
-                    for( var i = 0; i < toys.length; i++){
-                        if(toys[i].stockNum > 0){
-                            vm.toyItems.push(toys[i]);
-                        }else {
-                            vm.stockItems.push(toys[i]);
-                        }
+                vm.data = data;
+                toys = data.cart || [];
+                for( var i = 0; i < toys.length; i++){
+                    if(toys[i].stockNum > 0){
+                        vm.toyItems.push(toys[i]);
+                    }else {
+                        vm.stockItems.push(toys[i]);
                     }
-                    for(var i = 0; i < vm.toyItems.length; i++) {
-                        vm.toyItems[i].selected = vm.toyItems[i].stockNum <= 0 ? false : true;
-                    };
-                    toyRecount(vm);
-                    vm.cartLoading = false;
                 }
-            );
+                for(var i = 0; i < vm.toyItems.length; i++) {
+                    vm.toyItems[i].selected = vm.toyItems[i].stockNum <= 0 ? false : true;
+                };
+                toyRecount(vm);
+                vm.cartLoading = false;
+            });
+            
             setTimeout(function() {
 
                 vm.animateContainerClass = 'fadeIn';
@@ -93,7 +92,7 @@ var _default = (function() {
         methods: {
             deactive: function(e) {
 
-                if(e.target.id == 'index-cart') {
+                if (e.target.id == 'index-cart') {
                     this.$router.back( -1 );
                 }
             },

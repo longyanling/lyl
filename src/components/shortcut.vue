@@ -9,11 +9,18 @@
 
 <script>
 	
+	import Toast from '@/directives/toast';
     import Store from '@/directives/store';
+    import API from '@/services/api';
     
-    const getToyItem = function(vm, toyId){
+    var getToyItem = function(vm, toyId, isDetail){
     	
-    	var items = document.getElementsByClassName('toyitem') || [];
+    	var items;
+    	if ( isDetail ){
+    		items = document.getElementsByClassName('plusCart') || [];
+    	} else {
+    		items = document.getElementsByClassName('toyitem') || [];
+    	}
     	for (var i = 0; i < items.length; i++){
     		if (items[i].getAttribute('data-id') == toyId) {
     			return items[i]; 
@@ -22,33 +29,40 @@
     	return null;
     };
     
-    const getToyIcon = function(vm, toyItem){
+    var getToyIcon = function(vm, toyItem, isDetail){
     	
     	var toyImage, toyIcon;
     	
     	if (toyItem){
-			toyImage = toyItem.getElementsByTagName('A')[0];
 			toyIcon = document.getElementById('toyAnimate');
-			if (toyIcon){
-				toyIcon.remove();
-			} 
+			toyIcon && toyIcon.remove();
 			toyIcon = document.createElement('IMG');
 			toyIcon.id = 'toyAnimate';
 			toyIcon.src = 'https://ts.zlimg.com/v2/h5/jd/mine_personalcenter.png';
 	    	toyIcon.style.display = 'block';
 	    	toyIcon.style.position = 'absolute';
-	    	toyIcon.style.top = (toyImage.offsetTop + 10) + 'px';
-	    	toyIcon.style.left = (toyImage.offsetLeft + 10) + 'px';
 	    	toyIcon.style.width = '32px';
 	    	toyIcon.style.height = '32px';
 	    	toyIcon.style.opacity = 1;
 	    	toyIcon.style.transition = "top 0.5s ease-in,left 0.5s ease-out,opacity 0.5s linear";
+    		if (isDetail){
+				toyImage = toyItem;
+		    	toyIcon.style.top = ( ( document.body.scrollTop ? document.body.scrollTop : (document.documentElement.scrollTop || 0)) + screen.height - 38 ) + 'px';
+		    	toyIcon.style.left = ( toyImage.offsetLeft + 10 ) + 'px';
+			} else {
+				toyImage = toyItem.getElementsByTagName('A')[0];	
+		    	toyIcon.style.top = (toyImage.offsetTop + 10) + 'px';
+		    	toyIcon.style.left = (toyImage.offsetLeft + 10) + 'px';
+			}
 	    	document.body.appendChild(toyIcon);
 		}
     	return toyIcon;
     };
     
-    const getToyStart = function(vm, toyIcon){
+    var getToyStart = function(vm, toyId, isDetail){
+
+    	var toyItem = getToyItem(vm, toyId, isDetail);
+    	var toyIcon = getToyIcon(vm, toyItem, isDetail);
     	
 		toyIcon.style.top = ( ( document.body.scrollTop ? document.body.scrollTop : (document.documentElement.scrollTop || 0)) + screen.height - 46) + 'px';
 		toyIcon.style.left = ( screen.width - 46) + 'px';
@@ -58,7 +72,9 @@
 			
 			toyIcon.style.display = 'none';
 			vm.cartToyCount += 1;
-			vm.cartAnimate = 'shake';	
+			vm.cartAnimate = 'shake';
+			
+			//	Toast.show('玩具成功加入购物车');
 		}, 500);
 		
 		setTimeout(function(){
@@ -67,14 +83,37 @@
 		}, 800);
     };
     
+    var getToyRefresh = function(vm){
+    	
+        API.Index.cartList({}, function(data){
+        	
+        	vm.cartToyCount = (data.cart || []).length;
+        });	
+    };
+    
     export default {
         name: 'shortcut',
+        created: function(){
+        	
+        	var vm = this;
+        	
+            Store.Hub.$on('cartRefresh', function(){
+            	
+            	getToyRefresh(vm);
+            });
+        },
         mounted: function(){
             
+            var vm = this;
+            
             this.bottomStyle = this.haveToolbar ? 'bottom: 44px' : 'bottom: 12px';
+            this.timer = setTimeout(function(){
+            	
+            	getToyRefresh(vm);
+            }, 100);
         },
         props: [
-            'cartsUrl', 'haveToolbar'
+            'cartUrl', 'haveToolbar'
         ],
         data: function(){
             
@@ -87,22 +126,23 @@
         methods: (function(){
             
             return {
-            	
-            	addToy: function(toyId){
+            	addToy: function(toyId, isDetail){
             		
             		var vm = this;
-            		var toyItem = getToyItem(vm, toyId);
-            		var toyIcon = getToyIcon(vm, toyItem);
-            		
-            		setTimeout(function(){
-            			
-            			getToyStart(vm, toyIcon);
-            		}, 100);
+	            		
+	                API.Index.cartAdd( { tid : toyId }, function (data) {
+	                    	
+                        if (data.code == 0) {
+        					getToyStart(vm, toyId, isDetail);
+                        } else {
+                            Toast.show(data.msg);
+                        }
+                    });
             	},
             	
                 goCart: function( e ){
                    
-                    this.$router.push(this.cartsUrl || '/index/cart');
+                    this.$router.push(this.cartUrl || '/index/cart');
                 }
             };
         })()
