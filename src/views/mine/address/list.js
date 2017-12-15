@@ -9,7 +9,7 @@ var _default = (function(){
     return {
         name: 'address',
         mounted: function(){
-        	
+
             var vm = this;
             
             this.itemLoad();

@@ -26,7 +26,7 @@ var _default = (function(){
             deactive: function(e){
                 
                 if (e.target.id == 'address'){
-                    this.$router.push( '/index/confirm' );   
+                    this.$router.back( -1 );   
                 }
             },
             itemLoad: function(){
@@ -41,7 +41,7 @@ var _default = (function(){
             itemSelect : function(e, address){
                 
                 this.$emit('resetAddressId', address);
-                this.$router.push( '/index/confirm' );
+                this.$router.back( -1 );
             },
             itemEdit: function( e, item ){
                 

@@ -29,14 +29,14 @@ var _default = (function(){
             deactive: function(e){
                 
                 if (e.target.id == 'coupons'){
-                    this.$router.push( '/index/confirm' );   
+                    this.$router.back( -1 );   
                 }
             },
             itemSelect : function(e, item, couponId) {
                 
                 if(!item.available) return;
                 this.$emit('resetCoupon', couponId);
-                this.$router.push( '/index/confirm' );
+                this.$router.back( -1 );
             }
         },
         filters: {

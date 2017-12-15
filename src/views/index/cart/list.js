@@ -34,7 +34,7 @@ var _default = (function() {
         vm.toyTotalPrice = 0;
         for(var i = 0; i < vm.toyItems.length; i++) {
             if(vm.toyItems[i].selected){
-                vm.toyTotalPrice += vm.toyItems[i].rentMoney / 1000;
+                vm.toyTotalPrice += parseFloat(vm.toyItems[i].rentMoney * 1000) / 1000;
             }
             vm.toyItems[i].selected && vm.toySelectedIds.push(vm.toyItems[i].toyId);
         };
@@ -95,7 +95,7 @@ var _default = (function() {
             deactive: function(e) {
 
                 if(e.target.id == 'index-cart') {
-                    this.$router.push(this.backUrl || '/index');
+                    this.$router.back( -1 );
                 }
             },
             selectAll: function() {

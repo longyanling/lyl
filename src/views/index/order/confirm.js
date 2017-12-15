@@ -92,8 +92,8 @@ var _default = (function(){
                     }
                 )
             } else {
-                this.$router.push( '/index/cart' );
-                Toast.show('请查看您的购物车是否有玩具');
+                this.$router.back( -1 );
+                Toast.show('请查看您的购物车是否有选中结算的玩具!');
             }
 
         },

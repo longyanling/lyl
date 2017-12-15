@@ -36,7 +36,8 @@
 		<div class="content">
 			<em class="caption">{{toyShowItem.paraName}}</em>
 			<span class="main">
-				<img v-for="(item, index) in toyShowItem.contents" :src="item" />
+				<img v-show="toyShowItem.paraType == 1" v-for="(item, index) in toyShowItem.contents" :src="item" />
+			    <span class="vid" v-show="toyShowItem.paraType == 3"><video class="vid" v-for="(item, index) in toyShowItem.contents" controls="controls" :poster="item.dImage" :src="item.video"></video></span> 
 			</span>
 			<em class="caption">{{toyDetailsItem.paraName}}</em>
 			<span class="detail">

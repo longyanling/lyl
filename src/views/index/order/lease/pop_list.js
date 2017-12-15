@@ -26,12 +26,12 @@ var _default = (function(){
             SelectedDate : function( e, item ){
                 
                 this.$emit('resetDate', item);
-                this.$router.push( '/index/confirm' );
+                this.$router.back( -1 );
             },
            deactive: function(e){
                 
                 if (e.target.id == 'lease'){
-                    this.$router.push( '/index/confirm' );   
+                    this.$router.back( -1 );   
                 }
             },
         }

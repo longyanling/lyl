@@ -66,8 +66,8 @@ var _default = (function(){
 		            	Store.Mine.addressCurrent.gdId = address.id;
 		            	Store.Mine.addressCurrent.gdLatitude = address.location.lat;
 		            	Store.Mine.addressCurrent.gdLongitude = address.location.lng;
-                    	Store.Mine.addressCurrent.addressDetail = address.name;
-                    	Store.Mine.addressCurrent.gdTitle = '';
+                    	Store.Mine.addressCurrent.addressDetail = '';
+                    	Store.Mine.addressCurrent.gdTitle = address.name;
 		            	Store.Mine.addressCurrent.gdBusinessArea = '';
 		            	Store.Mine.addressCurrent.gdAdCode = poi.adcode;
 		            	Store.Mine.addressCurrent.gdAdName = poi.district;
@@ -76,7 +76,7 @@ var _default = (function(){
 		            	Store.Mine.addressCurrent.gdProvinceCode = poi.city;
 		            	Store.Mine.addressCurrent.gdProvinceName = poi.province;
                     
-                    	vm.$router.push('/index/confirm/address/edit');
+                    	vm.$router.back( -1 );
 		            } else {
         				Toast.show('地址搜索失败:' + status);
 		            }

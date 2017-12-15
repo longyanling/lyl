@@ -30,9 +30,7 @@
                     </div>
                 </div>
     	    </div>
-    	    <span class="hint">
-    	        {{methodHint}}
-    	    </span>
+    	    <span class="hint">{{methodHint}}</span>
     	</div>
     </div>
 </template>

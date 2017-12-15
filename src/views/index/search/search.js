@@ -134,7 +134,7 @@ var _default = (function(){
                     });
 			    
                 vm.tagVisible = false;
-			    vm.toyItems = [];
+                vm.toyItems = [];
 			    vm.toyLastId = -1;
 			    
 			    document.getElementById('keyword').blur();

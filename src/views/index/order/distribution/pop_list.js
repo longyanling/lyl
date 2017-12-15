@@ -19,7 +19,7 @@ var _default = (function(){
                 }
             }
             
-            vm.infoDeterItem.splice(0, 1, (vm.methodIndex == 1 ? vm.methodItems[0] :  that.methodItems[1]));
+            vm.infoDeterItem.splice(0, 1, (vm.methodIndex == 1 ? vm.methodItems[0] :  vm.methodItems[1]));
             vm.dayItems = vm.distribution[0].days;
             vm.dayIndex = vm.distribution[0].default.timestamp;
             
@@ -49,13 +49,14 @@ var _default = (function(){
             deactive: function(e){
                 
                 if (e.target.id == 'distribution'){
-                    this.$router.push( '/index/confirm' );   
+                    this.$router.back( -1 );   
                 }
             },
             selectMethod  : function (e, index, item) {
                 
                 if((index == 1 && !this.canOnsite) || (index == 2 && !this.canPostal)) return;
                 this.infoDeterItem.splice(0, 1, item);
+                this.methodHint = '';
                 this.methodHint = item.tips;
                 this.methodIndex = index;
             },
@@ -68,7 +69,7 @@ var _default = (function(){
                 
                 var infoDeterData = this.infoDeterItem;
                 this.$emit('resetDistribution', infoDeterData);
-                this.$router.push( '/index/confirm' );
+                this.$router.back( -1 );
             }
         }
     }

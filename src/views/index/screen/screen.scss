@@ -14,36 +14,6 @@
         overflow: hidden;
         background: #ffffff;
         border-top: 1px solid #f3f3f3;
-        
-        .personal {
-            float: left;
-            width: 20%;
-            height: 44px;
-            font-size: 13px;
-            border: 0px;
-            position: relative;
-            overflow: hidden;
-            .portrait {
-                float: right;
-                width: 34px;
-                padding: 5px 40% 0 0;
-            }
-            .authorized {
-                width: 28px;
-                position: absolute;
-                top: 0;
-                right: 23%;
-            }
-        }
-        .switch {
-            float: left;
-            width: 16%;
-            height: 44px;
-            border: 0px;
-            font-size: 15px;
-            line-height: 44px;
-            text-align: center;
-        }
         .dock {
             display: block;
             position: fixed;
@@ -56,6 +26,22 @@
             border-top: 1px solid #f3f3f3;
             border-bottom: 1px dotted #f3f3f3;
             z-index: 10;
+            .switch {
+                float: left;
+                width: 20%;
+                height: 44px;
+                border: 0px;
+                font-size: 15px;
+                line-height: 44px;
+                text-align: center;
+                var {
+                    font-size: 12px;
+                }
+                &.select {
+                    color: #fed030;
+                    font-weight: 700;
+                }
+            }
         }
     }
     .box {

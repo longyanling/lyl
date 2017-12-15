@@ -1,6 +1,7 @@
 'use strict';
 
 import Store from "@/directives/store";
+import Toast from "@/directives/toast";
 import API from "@/services/api";
 
 var _default = (function(){
@@ -60,62 +61,66 @@ var _default = (function(){
             submit: function( e, url ){
             	
             	var vm = this;
-                var args = {
-                	addressId: vm.addressId,
-                    addressConsignee : vm.addressConsignee || '',
-                    consigneePhone : Number(vm.consigneePhone),
-                    consigneeSex : vm.consigneeSex,
-                    gdTitle : vm.addressInfo.gdTitle || '',
-                    addressDetail : vm.addressSub || '',
-                    gdLatitude : vm.addressInfo.gdLatitude,
-                    gdLongitude : vm.addressInfo.gdLongitude,
-                    gdId : vm.addressInfo.gdId,
-                    gdBusinessArea : vm.addressInfo.gdBusinessArea || '',
-                    gdAdCode : vm.addressInfo.gdAdCode || '',
-                    gdAdName : vm.addressInfo.gdAdName || '',
-                    gdCityCode : vm.addressInfo.gdCityCode || '',
-                    gdCityName : vm.addressInfo.gdCityName  || '',
-                    gdProvinceCode : vm.addressInfo.gdProvinceCode || '',
-                    gdProvinceName : vm.addressInfo.gdProvinceName  || ''                    
-                };
-                
-                if(vm.addressId){
-                    API.Mine.addressUpdata(
-                        {
-                            addressJson : JSON.stringify(args),
-                            isDefault : vm.isDefault
-                        },
-                        function(data) {
-                        	
-                            if (data.code == 0){
-                            	Store.Mine.address = null;
-                            	vm.$router.push('/mine/address');
-                            } else {
-                                Toast.show(data.msg);
+            	
+            	if(vm.addressConsignee != '' && vm.consigneePhone != '' && vm.addressPrefix != '' && vm.addressSub != ''){
+
+                    var args = {
+                    	addressId: vm.addressId,
+                        addressConsignee : vm.addressConsignee || '',
+                        consigneePhone : Number(vm.consigneePhone),
+                        consigneeSex : vm.consigneeSex,
+                        gdTitle : vm.addressInfo.gdTitle || '',
+                        addressDetail : vm.addressSub || '',
+                        gdLatitude : vm.addressInfo.gdLatitude,
+                        gdLongitude : vm.addressInfo.gdLongitude,
+                        gdId : vm.addressInfo.gdId,
+                        gdBusinessArea : vm.addressInfo.gdBusinessArea || '',
+                        gdAdCode : vm.addressInfo.gdAdCode || '',
+                        gdAdName : vm.addressInfo.gdAdName || '',
+                        gdCityCode : vm.addressInfo.gdCityCode || '',
+                        gdCityName : vm.addressInfo.gdCityName  || '',
+                        gdProvinceCode : vm.addressInfo.gdProvinceCode || '',
+                        gdProvinceName : vm.addressInfo.gdProvinceName  || ''                    
+                    };
+                    
+                    if(vm.addressId){
+                        API.Mine.addressUpdata(
+                            {
+                                addressJson : JSON.stringify(args),
+                                isDefault : vm.isDefault
+                            },function(data){
+                                if (data.code == 0){
+                                    Store.Mine.address = null;
+                                    vm.$router.back(-1);
+                                } else {
+                                    Toast.show(data.msg);
+                                }
                             }
-                        }
-                    )
-                } else {
-                	if (this.addressInfo.gdId){
-	                    API.Mine.addressInsert(
-	                        {
-	                            addressJson : JSON.stringify(args),
-	                            isDefault : vm.isDefault
-	                        },
-	                        function(data) {
-	                        	
-	                            if (data.code == 0){
-	                            	Store.Mine.address = null; 
-	                            	vm.$router.push('/mine/address');
-	                            } else {
-	                                Toast.show(data.msg);
-	                            }
-	                        }
-	                    );
+                        )
                     } else {
-                    	Toast.show('请提供位置信息');
-                    }
-                };
+                    	if (this.addressInfo.gdId){
+    	                    API.Mine.addressInsert(
+    	                        {
+    	                            addressJson : JSON.stringify(args),
+    	                            isDefault : vm.isDefault
+    	                        },function(data){
+                                    if (data.code == 0){
+                                        Store.Mine.address = null;
+//                                      Store.Mine.addressCallback && Store.Mine.addressCallback(); 
+                                        // vm.$router.push('/mine/address');
+                                        vm.$router.back(-1);
+                                    } else {
+                                        Toast.show(data.msg);
+                                    }
+                                }
+    	                    );
+                        } else {
+                        	Toast.show('请提供位置信息');
+                        }
+                    };
+                }else {
+                    Toast.show('请完善您的个人信息！');
+                }
             }
         }
     }

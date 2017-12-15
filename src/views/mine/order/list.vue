@@ -26,8 +26,8 @@
                 </div>
                 <div class="expand" v-show="item.toys.length > 2" v-touch:tap="{ event: goDetails, params: [item.orderId]}">……</div>                
                 <div class="total">
-                	共 <strong>{{item.toys.length}}</strong> 件玩具， 
-                	租期 <strong>{{item.rentPeriod}}</strong> 天 
+                	共 <strong>{{item.toys.length ? item.toys.length : '0'}}</strong> 件玩具， 
+                	租期 <strong>{{item.rentPeriod ? item.rentPeriod : '0'}}</strong> 天 
                 </div>
                 <div class="actions">
                 	<span class="clock" v-show="item.status == 0">
