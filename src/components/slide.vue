@@ -88,11 +88,13 @@
     .tm-slide {
         display: block;
         overflow: hidden;
+        width: 100vw;
+        height: 42vw;
         background: #323232;
         
         .images {
-            width: 100%;
-            min-height: 96px;
+        	width: inherit;
+        	height: inherit;
             border-collapse: collapse;
             background: #ffcc00;
             margin-left: 0px;

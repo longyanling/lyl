@@ -1,4 +1,7 @@
 /* 清除内外边距 */
+html {
+    -webkit-text-size-adjust:none;
+}
 html,body,div,table,
 td,h1,h2,h3,h4,h5,h6, 
 p,span {
@@ -83,4 +86,37 @@ textarea::-webkit-input-placeholder {
     clear:both;
     display:block;
     height:1px;
+}
+
+/*
+@keyframes headshake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+*/
+
+@-webkit-keyframes headshake {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(10deg); }
+  20% { transform: rotate(0deg); }
+  30% { transform: rotate(-10deg); }
+  40% { transform: rotate(0deg); }
+}
+
+/*
+@keyframes cartshake
+{
+    50% {
+        transform: scale(1.5);
+    }
+}
+*/
+
+@-webkit-keyframes cartshake {
+    50% {
+        transform: scale(1.5);
+    }
 }

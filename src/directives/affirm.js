@@ -47,7 +47,7 @@ var affirm = (function( ) {
         affirmImg.style.width = '64px';
         affirmImg.style.marginTop = '-132px';
         affirmImg.style.marginLeft = '-32px';
-        affirmImg.src = 'https://ts.zlimg.com/v2/h5/jd/Popup_logo.png';
+        affirmImg.src = 'https://ts.zlimg.com/v2/h5/jd/popup_logo.png';
         
         affirmSpan = document.createElement('span');
         affirmSpan.id = 'affirmSpan';

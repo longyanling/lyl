@@ -11,6 +11,7 @@ var data = {
         filterSize: null,
         filterRentType: null,
         filterStockNum: null,
+        cartToys: null,
         searchTagHistory: (function(){
             
             if (localStorage.getItem('SEARCH_HISTORY')){
@@ -37,8 +38,7 @@ var data = {
         profile: null,
         address: null,
         addressCurrent: null,
-        coupons: null,
-        carts: null
+        coupons: null
     }
 };
 

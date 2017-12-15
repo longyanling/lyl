@@ -108,7 +108,7 @@
 	    	<span class="bookable" v-show="detailItem.stockNum <= 0">此玩具暂无库存</span>
 	    </div>
 	    <router-view :backUrl="backUrl"></router-view>
-	    <tm-shortcut :cartsUrl="cartsUrl"></tm-shortcut>
+	    <tm-shortcut :cartsUrl="cartsUrl" :haveToolbar="true"></tm-shortcut>
 	</div>
 </template>
 
