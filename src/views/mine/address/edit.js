@@ -88,12 +88,10 @@ var _default = (function(){
                             {
                                 addressJson : JSON.stringify(args),
                                 isDefault : vm.isDefault
-                            },
-                            function(data) {
-                            	
+                            },function(data){
                                 if (data.code == 0){
-                                	Store.Mine.address = null;
-                                	vm.$router.push('/mine/address');
+                                    Store.Mine.address = null;
+                                    vm.$router.back(-1);
                                 } else {
                                     Toast.show(data.msg);
                                 }
@@ -105,16 +103,16 @@ var _default = (function(){
     	                        {
     	                            addressJson : JSON.stringify(args),
     	                            isDefault : vm.isDefault
-    	                        },
-    	                        function(data) {
-    	                        	
-    	                            if (data.code == 0){
-    	                            	Store.Mine.address = null; 
-    	                            	vm.$router.push('/mine/address');
-    	                            } else {
-    	                                Toast.show(data.msg);
-    	                            }
-    	                        }
+    	                        },function(data){
+                                    if (data.code == 0){
+                                        Store.Mine.address = null;
+//                                      Store.Mine.addressCallback && Store.Mine.addressCallback(); 
+                                        // vm.$router.push('/mine/address');
+                                        vm.$router.back(-1);
+                                    } else {
+                                        Toast.show(data.msg);
+                                    }
+                                }
     	                    );
                         } else {
                         	Toast.show('请提供位置信息');

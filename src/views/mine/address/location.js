@@ -70,7 +70,7 @@ var _default = (function(){
 		            	Store.Mine.addressCurrent.gdProvinceCode = poi.city;
 		            	Store.Mine.addressCurrent.gdProvinceName = poi.province;
                     
-                    	vm.$router.push('/mine/address/edit');
+                    	vm.$router.back(-1);
 		            } else {
         				Toast.show('地址搜索失败:' + status);
 		            }

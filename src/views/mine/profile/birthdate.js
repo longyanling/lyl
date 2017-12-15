@@ -25,12 +25,12 @@ var _default = (function(){
             submit: function(e, url){
         
         		this.$emit('resetBirthDate', this.birthDate.getTime());
-                this.$router.push( '/mine/profile');
+                this.$router.back( -1 );
             },
             deactive: function(e){
             	
             	if (e.target.id == 'birthdate'){
-            		this.$router.push( '/mine/profile' );	
+            		this.$router.back( -1 );	
             	}
             }
         },

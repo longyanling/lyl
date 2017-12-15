@@ -100,7 +100,7 @@ var _default = (function(){
                             	
                                 if (data.code == 0){
                                 	Store.Mine.address = null;
-                                	vm.$router.push('/index/confirm/address');
+                                	vm.$router.back( -1 );
                                 } else {
                                     Toast.show(data.msg);
                                 }
@@ -117,7 +117,7 @@ var _default = (function(){
     	                        	
     	                            if (data.code == 0){
     	                            	Store.Mine.address = null; 
-    	                            	vm.$router.push('/index/confirm/address');
+    	                            	vm.$router.back( -1 );
     	                            } else {
     	                                Toast.show(data.msg);
     	                            }

@@ -52,7 +52,7 @@ var _default = (function(){
            		},function(data){
            			if(data.code == 0){
            			    Toast.show("更新成功");
-           			    vm.$router.push('/mine');
+           			    vm.$router.back( -1 );
            			}else {
            			    Toast.show("更新失败");
            			}

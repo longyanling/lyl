@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="loading" v-show="loadingShow">
-        	<img src="https://ts.zlimg.com/ap/loading.gif"/>
+        	<img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/>
         </div>
         <router-view></router-view>
         <tm-shortcut></tm-shortcut>

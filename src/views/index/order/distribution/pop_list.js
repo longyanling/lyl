@@ -49,7 +49,7 @@ var _default = (function(){
             deactive: function(e){
                 
                 if (e.target.id == 'distribution'){
-                    this.$router.push( '/index/confirm' );   
+                    this.$router.back( -1 );   
                 }
             },
             selectMethod  : function (e, index, item) {
@@ -69,7 +69,7 @@ var _default = (function(){
                 
                 var infoDeterData = this.infoDeterItem;
                 this.$emit('resetDistribution', infoDeterData);
-                this.$router.push( '/index/confirm' );
+                this.$router.back( -1 );
             }
         }
     }

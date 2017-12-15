@@ -95,7 +95,7 @@ var _default = (function() {
             deactive: function(e) {
 
                 if(e.target.id == 'index-cart') {
-                    this.$router.push(this.backUrl || '/index');
+                    this.$router.back( -1 );
                 }
             },
             selectAll: function() {
