@@ -56,6 +56,7 @@
             height: 292px;
             padding: 0px 7px; 
             background-color: #ffffff;
+            position: relative;
             
             .item {
                 display:block;
@@ -147,6 +148,24 @@
                 background-repeat: no-repeat;
                 background-size: auto 160px;
             }
+            .loading {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                right:0px;
+                bottom: 0px;
+                
+                .head {
+                    margin-top: 100px;
+                    
+                    .face {
+                         
+                    }
+                     
+                }
+
+            }
+
         }
         
         .controls {

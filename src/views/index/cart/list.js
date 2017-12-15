@@ -44,31 +44,29 @@ var _default = (function() {
     return {
         name: 'index-cart',
         mounted: function() {
-
+            
             var vm = this;
-
+            
+            vm.cartLoading = true;
+            
             API.Index.cartList({
 
                 },
                 function(data) {
-
-                    if(data.code == 0) {
-                        vm.data = data.data;
-                        var toys = data.data.cart || [];
-                        for( var i = 0; i < toys.length; i++){
-                            if(toys[i].stockNum > 0){
-                                vm.toyItems.push(toys[i]);
-                            }else {
-                                vm.stockItems.push(toys[i]);
-                            }
+                    vm.data = data;
+                    var toys = data.cart || [];
+                    for( var i = 0; i < toys.length; i++){
+                        if(toys[i].stockNum > 0){
+                            vm.toyItems.push(toys[i]);
+                        }else {
+                            vm.stockItems.push(toys[i]);
                         }
-                        for(var i = 0; i < vm.toyItems.length; i++) {
-                            vm.toyItems[i].selected = vm.toyItems[i].stockNum <= 0 ? false : true;
-                        };
-                        toyRecount(vm);
-                    } else {
-                        Toast.show(data.msg);
                     }
+                    for(var i = 0; i < vm.toyItems.length; i++) {
+                        vm.toyItems[i].selected = vm.toyItems[i].stockNum <= 0 ? false : true;
+                    };
+                    toyRecount(vm);
+                    vm.cartLoading = false;
                 }
             );
             setTimeout(function() {
@@ -82,6 +80,7 @@ var _default = (function() {
         data: function() {
 
             return {
+                cartLoading: true,
                 data: [],
                 toyItems: [],
                 toyTotalPrice: 0,

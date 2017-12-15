@@ -27,6 +27,12 @@
                     </span>
                 </div>
                 <div class="empty" v-show="toyItems.length == 0"></div>
+                <div class="loading" v-show="cartLoading">
+                    <div class="head">
+                        <div class="face"></div>
+                    </div>
+                </div>
+                
             </div>
             <div class="controls">
                 <span class="price">
