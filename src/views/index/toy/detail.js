@@ -7,38 +7,53 @@ import Shortcut from '@/components/shortcut.vue'
 import Slide from '@/components/slide.vue';
 
 var _default = (function(){
+	
+	var getDetail = function(vm, toyId){
+	
+		vm.toyId = toyId;
+		vm.backUrl = '/index/detail?toyid=' + toyId;
+		
+        API.Index.toyDetail(
+            {
+                tid : vm.toyId
+            }, function (data) {
+            	
+                if (data.code == 0) {
+                    vm.detailItem = data.data;
+                    vm.slideItems = data.data.headers;
+                    for (var i = 0; i<vm.slideItems.length;i++){
+                        vm.slideItems[i]['src'] =vm.slideItems[i]['image'] ;
+                    };
+                    vm.toyAbilityItem = data.data.intro[0];
+                    vm.toyFeatureItem = data.data.intro[1];
+                    vm.toyShowItem = data.data.intro[2];
+                    vm.toyDetailsItem = data.data.intro[3];
+                    vm.toyItems = data.data.toys;
+                } else {
+                    Toast.show(data.msg);
+                }
+            }
+        );
+	};
+	
 	return {
 		name: 'Detail', 
 		mounted: function(){
 		    
-			var self = this;
+			getDetail(this, this.$route.query.toyid);
+		},
+		updated: function(){
 			
-			this.backUrl = '/index/detail?toyid=' + this.$route.query.toyid;
-            API.Index.toyDetail(
-                {
-                    tid : self.$route.query.toyid
-                },function (data) {
-                    if (data.code == 0) {
-                        self.detailItem = data.data;
-                        self.slideItems = data.data.headers;
-                        for (var i = 0; i<self.slideItems.length;i++){
-                            self.slideItems[i]['src'] =self.slideItems[i]['image'] ;
-                        };
-                        self.toyAbilityItem = data.data.intro[0];
-                        self.toyFeatureItem = data.data.intro[1];
-                        self.toyShowItem = data.data.intro[2];
-                        self.toyDetailsItem = data.data.intro[3];
-                        self.toyItems = data.data.toys;
-                    } else {
-                        Toast.show(data.msg);
-                    }
-                }
-            );
+			if (this.$route.query.toyid != this.toyId){
+				
+				getDetail(this, this.$route.query.toyid);
+			}
 		},
 		data: function(){
 			
 			return {
 			    detailItem : [],
+			    toyId: 0,
 			    toyAbilityItem : [],
 			    toyFeatureItem : [],
 				slideItems : [],
@@ -48,70 +63,32 @@ var _default = (function(){
 				toyDetail : [],
 				toyItems : [],
 				backUrl: '',
-				cartsUrl: '/index/detail/cart'
+				cartUrl: '/index/detail/cart'
 			};
 		},
 		methods: {
-		    addCart : function (e, toyId) {
+		    addCart : function (e, toyId, isDetail) {
 		        
-		        toyId = (toyId == undefined ? this.detailItem.toyId : toyId);
-		        
-		        API.Index.cartAdd(
-                    {
-                        tid : toyId
-                    },
-                    function (data) {
-                    	
-                        if (data.code == 0) {
-                        	Store.Mine.cartAdd();
-                            Toast.show('玩具成功加入购物车');
-                        } else {
-                            Toast.show(data.msg);
-                        }
-                    }
-                );
+		    	this.$refs.carts.addToy(toyId, isDetail);
 		    },
 		    goToToyDetail: function(e, toyId){
 		        
-		        var that = this;
-		        that.detailItem = [];
-                that.toyAbilityItem = [];
-                that.toyFeatureItem = [];
-                that.slideItems = [];
-                that.toyShowItem = [];
-                that.toyDetailsItem = [];
-                API.Index.toyDetail(
-                    {
-                        tid : toyId ,
-                    },
-                    function (data) {
-                        if (data.code == 0) {
-                            that.detailItem = data.data;
-                            that.slideItems = data.data.headers;
-                            for (var i = 0; i<that.slideItems.length;i++){
-                                that.slideItems[i]['src'] =that.slideItems[i]['image'] ;
-                            };
-                            that.toyAbilityItem = data.data.intro[0];
-                            that.toyFeatureItem = data.data.intro[1];
-                            that.toyShowItem = data.data.intro[2];
-                            that.toyDetailsItem = data.data.intro[3];
-                            that.toyItems = data.data.toys;
-                        } else {
-                            Toast.show(data.msg);
-                        }
-                    }
-                );
+                this.$router.push('/index/detail?toyid=' + toyId);
             },
 		    goToConfirm : function ( ) {
+		    	
                 var toys = new Array();
+                
                 toys.push(this.detailItem);
                 Store.Index.orderToys = [];
 		        Store.Index.orderToys = toys;
+		        
 		        this.$router.push('/index/confirm');
 		    },
 			tabsScroll: function( e, docked ){
 				
 				var tabsDock = document.querySelector('.tabs .dock');
+				
 				if (docked == true && tabsDock.style.display !== 'block'){
 					tabsDock.style.display = 'block';
 				}

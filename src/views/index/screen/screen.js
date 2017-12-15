@@ -159,11 +159,12 @@ var _default = (function() {
                 screenJSON : null,
                 
                 backUrl: '/index/screen',
-                cartsUrl: '/index/screen/cart'
+                cartUrl: '/index/screen/cart'
             };
         },
         methods: {
             deactive: function(e){
+            	
                 if (e.target.className == 'box' || e.target.className == 'brand' || e.target.className == 'ability' || e.target.className == 'screen'){
                     this.ageIsShow = false;
                     this.brandIsShow = false;
@@ -174,29 +175,20 @@ var _default = (function() {
             },
             //添加到购物车
             addCart : function(e, toyId) {
-                API.Index.cartAdd(
-                    {
-                        tid : toyId
-                    },
-                    function (data) {
-                    	
-                        if (data.code == 0) {
-                        	Store.Mine.cartAdd();
-                            Toast.show('玩具成功加入购物车');
-                        } else {
-                            Toast.show(data.msg);
-                        }
-                    }
-                );
+			    
+		    	this.$refs.carts.addToy(toyId);
             },
             goMine: function(){
+            	
                 this.$router.push('/mine');
             },
             goToToyDetail: function(e, toyId){
+            	
                 this.$router.push('/index/detail?toyid=' + toyId);
             },
              //年龄选中
             ageSelected : function( e, ageRangeId) {
+            	
                 for(var i =0; i<this.ageSelectedData.length; i++){
                     if (this.ageSelectedData[i] == ageRangeId){
                         this.ageSelectedData.splice(i,1);
@@ -206,6 +198,7 @@ var _default = (function() {
                 this.ageSelectedData.push(ageRangeId);
             },
             ageIsSelected: function( ageRangeId ){
+            	
                 for(var i =0; i<this.ageSelectedData.length; i++){
                     if (this.ageSelectedData[i] == ageRangeId){
                         return true;
@@ -215,6 +208,7 @@ var _default = (function() {
             },
             //品牌选中
             brandSelected : function(e, brandId) {
+            	
                 for(var i =0; i<this.brandSelectedData.length; i++){
                     if (this.brandSelectedData[i] == brandId){
                         this.brandSelectedData.splice(i,1);
@@ -224,6 +218,7 @@ var _default = (function() {
                 this.brandSelectedData.push(brandId);
             },
             brandIsSelected : function(brandId) {
+            	
                 for(var i =0; i<this.brandSelectedData.length; i++){
                     if (this.brandSelectedData[i] == brandId){
                         return true;
@@ -233,6 +228,7 @@ var _default = (function() {
             },
             //能力选中
             abilitySelected : function(e, abilityId){
+            	
                 for(var i =0; i<this.abilitySelectedData.length; i++){
                     if (this.abilitySelectedData[i] == abilityId){
                         this.abilitySelectedData.splice(i,1);
@@ -242,6 +238,7 @@ var _default = (function() {
                 this.abilitySelectedData.push(abilityId);
             },
             abilityIsSelected : function(abilityId) {
+            	
                 for(var i =0; i<this.abilitySelectedData.length; i++){
                     if (this.abilitySelectedData[i] == abilityId){
                         return true;
@@ -251,6 +248,7 @@ var _default = (function() {
             },
             //类型选中
             typeSelected : function(e, toyTypeId) {
+            	
                 for(var i =0; i<this.typeSelectedData.length; i++){
                     if (this.typeSelectedData[i] == toyTypeId){
                         this.typeSelectedData.splice(i,1);
@@ -260,6 +258,7 @@ var _default = (function() {
                 this.typeSelectedData.push(toyTypeId);
             },
             typeIsSelected : function(toyTypeId) {
+            	
                 for(var i =0; i<this.typeSelectedData.length; i++){
                     if (this.typeSelectedData[i] == toyTypeId){
                         return true;
@@ -269,6 +268,7 @@ var _default = (function() {
             },
             //排序选中
              sortSelected : function(e, toySortTypeId){
+             	
                 this.sortSelectedData = toySortTypeId;
             },
             //玩具大小选中
@@ -282,6 +282,7 @@ var _default = (function() {
                 this.sizeSelectedData.push(toySizeTypeId);
             },
             sizeIsSelected : function(toySizeTypeId) {
+            	
                 for(var i =0; i<this.sizeSelectedData.length; i++){
                     if (this.sizeSelectedData[i] == toySizeTypeId){
                         return true;
@@ -291,6 +292,7 @@ var _default = (function() {
             },
             //可邮寄选中
             rentSelected : function() {
+            	
                 this.rentState = !this.rentState;
                 if(this.rentState){
                     this.rentSelectedData = this.toyOtherRentType.rentTypeId; 
@@ -301,6 +303,7 @@ var _default = (function() {
                 
             //有货选中
             stockSelected : function() {
+            	
                 this.stockState = !this.stockState;
                 if(this.stockState){
                     this.stockSelectedData = this.toyOtherStockNum.stockNum;
@@ -310,6 +313,7 @@ var _default = (function() {
             },
             //  筛选的切换
             ageShow: function (){
+            	
                 this.ageIsShow = !this.ageIsShow;
                 this.brandIsShow = false;
                 this.abilityIsShow = false;
@@ -317,6 +321,7 @@ var _default = (function() {
                 this.screenIsShow = false;
             },
             brandShow: function (){
+            	
                 this.brandIsShow = !this.brandIsShow;
                 this.ageIsShow = false;
                 this.abilityIsShow = false;
@@ -324,6 +329,7 @@ var _default = (function() {
                 this.screenIsShow = false;
             },
             abilityShow: function (){
+            	
                 this.abilityIsShow = !this.abilityIsShow;
                 this.ageIsShow = false;
                 this.brandIsShow = false;
@@ -331,6 +337,7 @@ var _default = (function() {
                 this.screenIsShow = false;
             },
             typeShow: function (){
+            	
                 this.typeIsShow = !this.typeIsShow;
                 this.ageIsShow = false;
                 this.brandIsShow = false;
@@ -338,6 +345,7 @@ var _default = (function() {
                 this.screenIsShow = false;
             },
             screenShow: function (){
+            	
                 this.screenIsShow = !this.screenIsShow;
                 this.typeIsShow = false;
                 this.ageIsShow = false;
@@ -346,6 +354,7 @@ var _default = (function() {
             },
             
             screenConfirm: function(){
+            	
                 var self = this;
                 self.commonLastToyId = -1;
                 self.tabsIsDock = false;
@@ -396,6 +405,7 @@ var _default = (function() {
                 );
             },
             screenReset : function() {
+            	
                 this.ageSelectedData = [];
                 this.brandSelectedData = [];
                 this.abilitySelectedData = [];

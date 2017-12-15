@@ -47,11 +47,23 @@ var index = {
     },
     cartAdd: function(data, callback){
         
-        Utils.Axios.deferPost( '/api/cart/checkAndAdd', data, callback);
+        Utils.Axios.deferPost( '/api/cart/checkAndAdd', data, function(data){
+        	
+        	if (data.code ==0 ){
+        		Store.Index.cartToys = null;	
+        	}
+        	callback(data);
+        });
     },
     cartClear: function(data, callback){
         
-        Utils.Axios.deferPost( '/api/cart/clear', data, callback);
+        Utils.Axios.deferPost( '/api/cart/clear', data, function(data){
+        	
+        	if (data.code ==0 ){
+        		Store.Index.cartToys = null;	
+        	}
+        	callback(data);
+        });
     },
     buyCheck: function(data, callback){
         

@@ -29,11 +29,11 @@
 		
 		<div class="toygrid">
             <div class="toyinner">
-                <span class="toyitem" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }" :class="item.stockNum <= 0 ? 'toyitemnull' : ''">
+                <span class="toyitem" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }" :class="item.stockNum <= 0 ? 'toyitemnull' : ''" :data-id="item.toyId">
                     <span class="inner">
                         <span class="thumb"><img :src="item.image" /></span>
                         <span class="title"> {{item.toyName}} </span>
-                        <span v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></span>
+                        <a v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></a>
                         <span class="price">
                             <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
                             <var v-show="item.canPostal">可邮寄 </var>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <router-view :backUrl="backUrl"></router-view>
-        <tm-shortcut :cartsUrl="cartsUrl"></tm-shortcut>
+        <tm-shortcut :cartUrl="cartUrl" ref="carts"></tm-shortcut>
 	</div>
 </template>
 

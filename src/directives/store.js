@@ -1,4 +1,9 @@
+'use strict';
+
+import Vue from "vue";
+
 var data = {
+	Hub: new Vue(),
     Index: {
         cityHot: null,
         cityAll: null,

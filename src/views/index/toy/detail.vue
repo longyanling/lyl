@@ -89,11 +89,11 @@
 	    <div class="toygrid">
 	        <div class="toyinner">
                 <img class="header" src="https://ts.zlimg.com/v2/h5/jd/toy_detail_guessYouLike.png"/>
-                <span class="toyitem" v-for="(item, index) in toyItems">
+                <span class="toyitem" v-for="(item, index) in toyItems" :data-id="item.toyId">
                     <span class="inner"  v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
                         <span class="thumb"><img :src="item.image" /></span>
                         <span class="title"> {{item.toyName}} </span>
-                        <span v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></span>
+                        <a v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></a>
                         <span class="price">
                             <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
                             <var v-show="item.canPostal">可邮寄 </var>
@@ -104,12 +104,12 @@
             </div>
 	    </div>
 	    <div class="footer">
-	    	<span class="plusCart" v-show="detailItem.stockNum > 0" v-touch:tap=" { event: addCart, params: [] } ">加入购物车</span>
-	    	<span class="robRent" v-show="detailItem.stockNum > 0" v-touch:tap=" { event: goToConfirm, params: [] } ">立即抢租</span>
+	    	<a class="plusCart" v-show="detailItem.stockNum > 0" v-touch:tap=" { event: addCart, params: [ toyId, true ] } " :data-id="toyId">加入购物车</a>
+	    	<a class="robRent" v-show="detailItem.stockNum > 0" v-touch:tap=" { event: goToConfirm, params: [] } ">立即抢租</a>
 	    	<span class="bookable" v-show="detailItem.stockNum <= 0">此玩具暂无库存</span>
 	    </div>
 	    <router-view :backUrl="backUrl"></router-view>
-	    <tm-shortcut :cartsUrl="cartsUrl" :haveToolbar="true"></tm-shortcut>
+	    <tm-shortcut :cartUrl="cartUrl" ref="carts" :haveToolbar="true"></tm-shortcut>
 	</div>
 </template>
 
