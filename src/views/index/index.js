@@ -95,7 +95,7 @@ var _default = (function(){
 	return {
 		name: 'home-index',
 		mounted: function(){
-		    
+			
             this.locationInfo = this.$route.query.location ? this.$route.query.location : '北京';
 
 			homeLoad (this);
@@ -115,8 +115,7 @@ var _default = (function(){
 				hotItems : [],
 				toyItems: [],
 				toyLastId: -1,
-				toyIsEnd: false,
-                cartToyCount: Store.Mine.cartCount
+				toyIsEnd: false
 			};
 		},
 		methods: {
