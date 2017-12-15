@@ -127,7 +127,6 @@ var _default = (function(){
             
             //  修改配送信息
             setDistribution : function(infoDeterData){
-                
                 this.distributionNum = infoDeterData[0].value;
                 this.distributionTime = infoDeterData[1].timestamp;
                 

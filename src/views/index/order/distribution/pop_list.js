@@ -7,7 +7,7 @@ var _default = (function(){
         mounted: function(){
             
             var vm = this;
-            
+
             vm.canOnsite = vm.distribution[2].canOnsite;
             vm.canPostal = vm.distribution[2].canPostal;
             vm.methodItems = vm.distribution[1].methods;
@@ -24,7 +24,7 @@ var _default = (function(){
             vm.dayIndex = vm.distribution[0].default.timestamp;
             
             for (var i = 0; i < vm.dayItems.length; i++){
-                if(vm.dayItems[i].value == vm.dayIndex){
+                if(vm.dayItems[i].timestamp == vm.dayIndex){
                     vm.infoDeterItem.splice(1, 1, vm.dayItems[i]);
                 }
             }

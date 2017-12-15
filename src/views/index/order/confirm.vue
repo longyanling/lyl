@@ -54,10 +54,10 @@
             <span class="cell signle">
                 <em class="text">运费 <small>({{confirmItem.deliveryMsg}})</small></em>
                 <dfn class="element">
-                    <var>￥{{confirmItem.deliveryMoney ? confirmItem.deliveryMoney/1000 : '0'}}</var>
+                    <var>￥{{confirmItem.deliveryMoney ? (confirmItem.deliveryMoney - (confirmItem.deliveryDiscount ? confirmItem.deliveryDiscount : 0))/1000 : '0'}}</var>
                 </dfn>
             </span>
-            <span class="cell signle">
+            <span class="cell signle" v-show="confirmItem.rentDiscount > 0 ">
                 <em class="text">优惠</em>
                 <dfn class="element">
                     <var>-￥{{confirmItem.rentDiscount ? confirmItem.rentDiscount/1000 : '0'}}</var>
@@ -75,7 +75,7 @@
             <div class="cell single">
                 <em class="text">本单押金 <small>{{confirmItem.depositMsg}}</small></em>
                 <dfn class="element">
-                    <var>￥{{confirmItem.payDeposit ? confirmItem.payDeposit / 1000 : '0'}}</var>
+                    <var>￥{{confirmItem.deposit ? confirmItem.deposit / 1000 : '0'}}</var>
                 </dfn>
             </div>
         </div>
