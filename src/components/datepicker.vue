@@ -164,6 +164,7 @@
                 height: inherit;
                 padding-left:30px;
                 margin-right:30px;
+                -webkit-overflow-scrolling: touch;
                 
                 .item {
                     display:block;

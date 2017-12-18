@@ -1,5 +1,5 @@
 <template>
-	<div id="index-cart" class="tm-index-cart" v-touch:tap="{ event: deactive , params: []}">
+	<div id="index-cart" class="tm-index-cart" v-touch:tap="{ event: deactive , params: []}" v-scroll:duck=" {  } ">
         <div :class="['container',animateContainerClass]">
         	<div class="caption">
                 <em :class="toySelectedAll ? 'text' : 'text unselect'" v-touch:tap="{ event: selectAll, params :[  ]}">全选</em>

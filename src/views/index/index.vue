@@ -11,7 +11,7 @@
 			<a class="search" v-touch:tap="{ event: goToSearch, params: [] }"></a>
 		</div>
 		
-		<div class="navigation">
+		<div class="navigation" v-scroll:sticky="{ top:0 }">
             <a class="personal icon" v-touch:tap="{ event: goToMine, params: [] }"></a>
 			<span class="category">
 	            <a class="item" v-for="(item, index) in navigationItems" v-touch:tap="{ event: goScreen, params: [] }">
@@ -98,7 +98,7 @@
                         <img v-show="item.stockNum > 0 && item.sw" class="nostock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>
                     </span>
                 </span>
-                <span id="toyMore" class="toymore" v-show="!toyIsEnd">
+                <span id="toyMore" class="toymore" v-show="!toyIsEnd" v-scroll:pullup="{ 'event': loadMore }">
                                     上拉加载更多..
                 </span>
             </div>
