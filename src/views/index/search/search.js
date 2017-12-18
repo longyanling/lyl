@@ -23,6 +23,7 @@ var _default = (function(){
                     vm.toyIsEnd = data.data.isEnd;
                     vm.toyLastId = (data.data.toys.length > 0 ? data.data.toys.slice(-1)[0].toyId : -1);
                     vm.toyItems = vm.toyItems.concat(data.data.toys || []);
+                    vm.loadingState = false;
                 } else {
                     Toast.show(data.msg);
                 }
@@ -35,6 +36,7 @@ var _default = (function(){
 		mounted: function(){
 			
 			var vm = this;
+			vm.loadingState = true;
 			vm.backUrl = '/index/search';
 			vm.keyword = this.$route.query.keyword || '';
 			vm.tagHistoryItems = (Store.Index.searchTagHistory || []).slice();
@@ -44,9 +46,10 @@ var _default = (function(){
 			},function(data){
 			    
 			    vm.tagHotItems = data.hotSearchWords;
+			    vm.loadingState = false;
 			});
 			
-			 window.addEventListener('scroll',function(){
+            window.addEventListener('scroll',function(){
 			     
                 //  判断是否滚动到底部 
                 if(document.body.scrollTop + window.innerHeight >= document.body.offsetHeight && 
@@ -60,6 +63,7 @@ var _default = (function(){
 		data: function(){
 			
 			return {
+			    loadingState: true,
 			    wordText: null,
                 tagHistoryItems: [],
                 tagHotItems: null,
@@ -108,6 +112,7 @@ var _default = (function(){
 			submit: function(){
 			    
 			    var vm = this;
+			    vm.loadingState = true;
 			    
 			    vm.toyParams = JSON.stringify({
                     "ageRange": "", 

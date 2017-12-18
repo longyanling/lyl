@@ -11,12 +11,14 @@ var _default = (function(){
         mounted: function(){
 
             var vm = this;
+            vm.loadingstate = true;
             
             this.itemLoad();
         },
         data: function(){
             
             return {
+                loadingstate: true,
                 addressItems : []
             };
         },
@@ -28,6 +30,7 @@ var _default = (function(){
 	        	API.Mine.address(function(data){
 	        		
 	        		vm.addressItems = data;
+	        		vm.loadingstate = false;
 	        	});
             },
             itemEdit: function(e, address, index){

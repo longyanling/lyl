@@ -80,6 +80,7 @@
     		<a class="button" v-show="orderInfo.status == 7 || orderInfo.status == 11 || orderInfo.status==12 || orderInfo.status == 13 " v-touch:tap="{ event: goIndex, params: [ ]}">再租几件</a>
     		<a class="button" v-show="orderInfo.status == 2 || orderInfo.status == 3 || orderInfo.status == 4 || orderInfo.status == 5 || orderInfo.status == 6" v-touch:tap="{ event: goLogistics, params: [orderInfo.orderId]}">物流信息</a>
     	</div>
+    	<div class="loading" v-show="loadingstate"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
     </div>
 </template>
 

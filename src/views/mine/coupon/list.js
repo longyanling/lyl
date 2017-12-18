@@ -10,15 +10,18 @@ var _default = (function(){
         mounted: function(){
 	        
 	        var vm = this;
+	        vm.loadingstate = true;
 	        
 	        API.Mine.coupons(function(data){
 	        	
 	        	vm.couponItems = data;
+	        	vm.loadingstate = false;
 	        });
         },
         data: function(){
             
             return {
+                loadingstate: true,
                  couponItems: []
             };
         },

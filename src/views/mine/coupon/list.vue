@@ -19,6 +19,7 @@
             	</span>
             </div>
         </div>
+        <div class="loading" v-show="loadingstate"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <div class="bitmap" v-show="couponItems.length == 0"></div>
     </div>
     

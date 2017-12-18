@@ -20,6 +20,7 @@
         <div class="controls">
         	<a class="button submit" v-touch:tap="{event: itemEdit , params:[ ]}">添加新地址</a>
         </div>
+        <div class="loading" v-show="loadingstate"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
     </div>
 </template>
 

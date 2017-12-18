@@ -36,9 +36,14 @@
                         <a v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></a>
                         <span class="price">
                             <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
+                            <var>{{item.toySize == 'XL' ? '豪华' : (item.toySize == 'L' ? '大' : (item.toySize == 'M' ? '中' : (item.toySize == 'S' ? '小' : '')))}}</var>
+                            <var v-show="item.isRecommend">荐</var>
+                            <var v-show="item.isLatest">新</var>
+                            <var v-show="item.isHot">热</var>
+                            <var v-show="item.isSpecialMoney">惠</var>
                             <var v-show="item.canPostal">可邮寄 </var>
                         </span>
-                        <img v-show="item.stockNum > 0 && item.sw" class="stock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>
+                        <img v-show="item.stockNum > 0 && item.sw" class="nostock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>
                     </span>
                 </span>
                 <span id="toyMore" class="toymore" v-show="toyItems.length > 0 && !toyIsEnd">
@@ -47,6 +52,7 @@
                 <div class="bitmap" v-show="toyItems.length == 0"></div>
             </div>
         </div>
+        <div class="loading" v-show="loadingState"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <router-view :backUrl="backUrl"></router-view>
         <tm-shortcut :cartUrl="cartUrl" ref="carts"></tm-shortcut>
 	</div>

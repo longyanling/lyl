@@ -89,7 +89,6 @@
         display: block;
         overflow: hidden;
         width: 100vw;
-        height: 42vw;
         background: #323232;
         
         .images {

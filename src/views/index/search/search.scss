@@ -106,7 +106,14 @@
                 background-repeat: no-repeat;
                 background-position: center center;
             }
-        }
-        
+        } 
+    }
+    .loading {
+        position: fixed;
+        top: 44px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 2;
     }
 }

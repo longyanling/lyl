@@ -9,6 +9,8 @@ var _default = (function(){
         mounted: function(){
         	
             var vm = this;
+            
+            vm.loadingstate = true;
             vm.orderIdItem = this.$route.query.order_id;
             
             API.Mine.orderDetail({
@@ -16,11 +18,13 @@ var _default = (function(){
             }, function(data){
             	
             	vm.orderInfo = data.data;
+            	vm.loadingstate = false;
             });
         },
         data: function(){
             
             return {
+                loadingstate: true,
                 orderInfo : [],
                 orderIdItem :null
             };

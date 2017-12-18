@@ -23,6 +23,7 @@ var _default = (function(){
                     vm.startClock(orders[i]);
                 }
                 vm.orderItems[0].push(orders[i]);
+                vm.orderLoading = false;
             }
         })
     }
@@ -32,11 +33,17 @@ var _default = (function(){
         mounted: function(){
         	
         	var vm = this;
+        	
+        	vm.orderLoading = true;
+        	
             orderList(vm);
+            
+            
         },
         data: function(){
 
             return {
+                orderLoading: true,
             	statusIndex: 0,
             	statusItems: [ '全部','待付款','待收货','待归还','已完成'],
             	orderItems: [[],[],[],[],[]]

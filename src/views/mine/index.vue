@@ -2,13 +2,17 @@
 	<div id="mine-index" class="tm-mine-index">
 		<div class="heading">
 			<span class="avatar"><img :src="userInfo.avatar" class="image" /></span>
-			<span class="info" v-touch:tap="{ event : go, params : [ '/mine/profile' ]}">
-				<em class="nick">{{userInfo.nickName}}</em>
+			<span class="info">
+				<em class="nick">{{userInfo.nickName ? userInfo.nickName : '未登录'}}</em>
+				<a class="button" v-show="loginState" v-touch:tap="{ event : go, params : [ '/mine/profile' ] }">宝宝信息<var></var></a>
+				<a class="button" v-show="!loginState" v-touch:tap="{ event : go, params : [ '/mine/login' ]}">立即登录<var></var></a>
 				<var class="age-sex">
-					<dfn>{{babyInfo.ageStr}}</dfn>
-					<dfn>{{babyInfo.sexStr}}</dfn>
+					<dfn>{{babyInfo.sexStr ? babyInfo.sexStr : ''}}</dfn>
+					<dfn>{{babyInfo.ageStr ? babyInfo.ageStr : ''}}</dfn>
 				</var>
+				
 			</span>
+			
 		</div>
 		<div class="cells">
 			<div class="group">
@@ -26,8 +30,6 @@
 	            </span>
             </div>
 		</div>
-		
-		<a v-touch:tap="{ event : go, params : [ '/mine/login' ]}" style="display:block; line-height:36px; text-align:center; ">登录</a>
 	</div>
 </template>
 

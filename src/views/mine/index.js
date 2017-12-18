@@ -11,17 +11,23 @@ var _default = (function(){
 			
 			var vm = this;
 			API.Mine.profile(function(data){
-				
-				vm.userInfo = data.data ? (data.data.user || {}) : {};
-				vm.babyInfo = data.data ? (data.data.babys && data.data.babys.length ? data.data.babys[0] : {}) : {};
-			});
+				if(data.code == 0){
+				    vm.loginState = true;
+    				vm.userInfo = data.data ? (data.data.user || {}) : {};
+    			    vm.babyInfo = data.data ? (data.data.babys && data.data.babys.length ? data.data.babys[0] : {}) : {};
+			    }else {
+			        vm.loginState = false;
+			    }
+		    });
 		},
 		data: function(){
 
             return {
                 userInfo: {},
                 babyInfo: {},
+                loginState : false,
                 userMenus: [
+                
                 	{
                 		text: '我的订单',
                 		url: '/mine/order',

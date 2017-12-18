@@ -29,6 +29,7 @@ var _default = (function(){
                     vm.toyShowItem = data.data.intro[2];
                     vm.toyDetailsItem = data.data.intro[3];
                     vm.toyItems = data.data.toys;
+                    vm.loadingState = false;
                 } else {
                     Toast.show(data.msg);
                 }
@@ -39,7 +40,7 @@ var _default = (function(){
 	return {
 		name: 'Detail', 
 		mounted: function(){
-		    
+		    this.loadingState = true;
 			getDetail(this, this.$route.query.toyid);
 		},
 		updated: function(){
@@ -52,6 +53,7 @@ var _default = (function(){
 		data: function(){
 			
 			return {
+			    loadingState: true,
 			    detailItem : [],
 			    toyId: 0,
 			    toyAbilityItem : [],
