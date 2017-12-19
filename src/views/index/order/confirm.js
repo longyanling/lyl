@@ -143,16 +143,17 @@ var _default = (function(){
             //  修改配送地址
             setAddressId :function(address){
                 
-                this.addressName = address.addressConsignee;
-                this.addressDetail = address.addressTotal;
-                this.addressSex = (address.consigneeSex == 0 ? '先生' : '女士');
-                this.addressPhone = address.consigneePhone;
+                this.addressData = address;
+                this.addressName = this.addressData.addressConsignee;
+                this.addressDetail = this.addressData.addressTotal;
+                this.addressSex = (this.addressData.consigneeSex == 0 ? '先生' : '女士');
+                this.addressPhone = this.addressData.consigneePhone;
 
                 preSubmit(this, {
                     seqId : this.passSeqId,
                     orderType : 1,
                     newToys : JSON.stringify(preToys),
-                    addressId : address.addressId,
+                    addressId : this.addressData.addressId,
                     dm : this.distributionNum,
                     couponId : this.defaultCoupon
                 });

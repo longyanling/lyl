@@ -91,7 +91,7 @@ var _default = (function() {
         },
         methods: {
             deactive: function(e) {
-
+                    
                 if (e.target.id == 'index-cart') {
                     this.$router.back( -1 );
                 }
