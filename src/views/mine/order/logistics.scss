@@ -66,7 +66,7 @@
                     color:#575757;
                     font-size:14px;
                     line-height:44px;
-                    margin-right:64px;
+                    margin-right: 75px;
                 }
                 
                 dfn {
@@ -83,6 +83,15 @@
                     border-bottom: 0px;
                 }
             }
+        }
+        .bitmap {
+            display: block;
+            height: calc(100vh - 56px);
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/bitmap_no_logistics.png');
+            background-repeat: no-repeat;
+            background-size: 35%;
+            background-position: center center;
+            
         }
     }
     
