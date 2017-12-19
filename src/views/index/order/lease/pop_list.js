@@ -11,6 +11,9 @@ var _default = (function(){
             for (var i = vm.lease.min; i <= vm.lease.max; i++) {
                 vm.dayItems.push(i);
             };
+            vm.dayFirstItems = vm.dayItems.slice(0, 18);
+            vm.daySecondItems = vm.dayItems.slice(18, 36);
+            vm.dayThirdItems = vm.dayItems.slice(36, 54);
         },
         props: [
             'lease'
@@ -20,6 +23,9 @@ var _default = (function(){
             return {
                 dayDefault : [],
                 dayItems : [],
+                dayFirstItems : [],
+                daySecondItems : [],
+                dayThirdItems : []
             };
         },
         methods: {
