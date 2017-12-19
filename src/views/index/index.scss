@@ -50,15 +50,15 @@
     
     .navigation {
         display: block;
-        position: sticky;
-        position: -webkit-sticky;
-        z-index: 99;
         top: 0px;
+        left: 0px;
+        right: 0px;
         height: 44px;
         padding: 0px;
         margin: 0px;
         border-bottom: 1px solid #f3f3f3;
         background: #ffffff;
+        z-index: 99;
         
         .personal {
             float: right;

@@ -73,6 +73,7 @@ var _default = (function(){
 	
 	var toyLoad = function(vm){
 		
+		vm.toyLoading = true;
         API.Index.toyList(
             {
                 name : "",
@@ -90,6 +91,7 @@ var _default = (function(){
                 } else {
                     Toast.show(data.msg);
                 }
+				vm.toyLoading = false;
             }
         );
 	};
@@ -119,7 +121,8 @@ var _default = (function(){
 				hotItems : [],
 				toyItems: [],
 				toyLastId: -1,
-				toyIsEnd: false
+				toyIsEnd: false,
+				toyLoading: false
 			};
 		},
 		methods: {
@@ -128,6 +131,11 @@ var _default = (function(){
 		    addCart : function(e, toyId) {
 
 		    	this.$refs.carts.addToy(toyId);
+		    },
+		    
+		    loadMore: function(e){
+		    	
+		    	!this.toyLoading && toyLoad(this);
 		    },
 		    
 		    goToLego :function(){
