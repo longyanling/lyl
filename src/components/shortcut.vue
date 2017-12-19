@@ -1,5 +1,5 @@
 <template>
-    <div id="shortcut" class="tm-shortcut" :style="bottomStyle">
+    <div id="componentShortcut" class="tm-component-shortcut" :style="bottomStyle">
         <a href="tel://4006351987" class="icon service"></a>
         <a v-touch:tap="{ event: goCart, params: [] }" :class="['icon','cart', cartAnimate]">
             <dfn v-show="cartToyCount > 0" class="badge">{{cartToyCount}}</dfn>
@@ -92,7 +92,7 @@
     };
     
     export default {
-        name: 'shortcut',
+        name: 'componentShortcut',
         created: function(){
         	
         	var vm = this;
@@ -152,7 +152,7 @@
 
 <style lang="scss">
     
-    .tm-shortcut {
+    .tm-component-shortcut {
         display: block;
         position: fixed;
         right: 8px;

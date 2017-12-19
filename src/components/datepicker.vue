@@ -1,5 +1,5 @@
 <template>
-	<div id="datepicker" class="tm-datepicker">
+	<div id="componentDatepicker" class="tm-component-datepicker">
     	<div class="segment years">
     		<em class="label">年</em>
     		<span id="dateYear" class="list" @scroll="scrollSegment(1,$event)">
@@ -36,7 +36,7 @@
 	};
 	
 	export default {
-		name: 'datepicker',
+		name: 'componentDatepicker',
 		mounted: function(){
 			
 			for (var i = 2017; i > 2000; i --){
@@ -140,7 +140,7 @@
 
 <style lang="scss">
 	
-    .tm-datepicker {
+    .tm-component-datepicker {
     	width:100%;
     	height:196px;
                
