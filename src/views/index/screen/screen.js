@@ -12,6 +12,7 @@ var _default = (function() {
         name: 'index-screen',
         mounted: function() {
             var vm = this; 
+            vm.loadingState = true;
             
             API.Index.toyList(
                 {
@@ -38,7 +39,7 @@ var _default = (function() {
                         for(var i = 0; i < toysLoad.length ; i++){
                             vm.toysListItem.push(toysLoad[i]);
                         }
-
+                        vm.loadingState = false;
                     } else {
                         Toast.show(data.msg);
                     }
@@ -110,6 +111,7 @@ var _default = (function() {
         data: function() {
 
             return {
+                loadingState: true,
                 tabsIsDock: false,
                 ageIsShow : false,
                 brandIsShow : false,

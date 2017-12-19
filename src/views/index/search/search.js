@@ -46,7 +46,6 @@ var _default = (function(){
 			},function(data){
 			    
 			    vm.tagHotItems = data.hotSearchWords;
-			    vm.loadingState = false;
 			});
 			
             window.addEventListener('scroll',function(){

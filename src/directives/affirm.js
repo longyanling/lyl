@@ -27,7 +27,6 @@ var affirm = (function( ) {
         affirm.style.top = '50%';
         affirm.style.left = '50%';
         affirm.style.width = '260px';
-//      affirm.style.height = '160px';
         affirm.style.color = '#fff';
         affirm.style.fontSize = '14px';
         affirm.style.lineHeight = '24px';
@@ -52,16 +51,10 @@ var affirm = (function( ) {
         affirmSpan = document.createElement('span');
         affirmSpan.id = 'affirmSpan';
         affirmSpan.style.display = 'none';
-//      affirmSpan.style.position = 'absolute';
-//      affirmSpan.style.zIndex = 9999;
-//      affirmSpan.style.top = '50%';
-//      affirmSpan.style.left = '50%';
         affirmSpan.style.width = '100%';
         affirmSpan.style.lineHeight = '32px';
         affirmSpan.style.marginTop = '40px';
         affirmSpan.style.backgroundColor = 'pink';
-//      affirmSpan.style.marginTop = '-132px';
-//      affirmSpan.style.marginLeft = '-32px';
         affirmSpan.innerText = '您购物车中已经有该玩具了，快去下单吧！';
         
         document.body.appendChild(affirmBack);

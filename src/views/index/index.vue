@@ -103,9 +103,7 @@
                 </span>
             </div>
         </div>
-        <div class="loading" v-show="loadingShow">
-        	<img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/>
-        </div>
+        <div class="loading" v-show="loadingShow"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <router-view></router-view>
         <tm-shortcut ref="carts"></tm-shortcut>
 	</div>

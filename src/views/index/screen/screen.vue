@@ -165,6 +165,7 @@
                 </span>
             </div>
         </div>
+        <div class="loading" v-show="loadingState"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <div class="bitmap" v-show="toysListItem.length == 0"></div>
         <router-view :backUrl="backUrl"></router-view>
         <tm-shortcut :cartUrl="cartUrl" ref="carts"></tm-shortcut>
