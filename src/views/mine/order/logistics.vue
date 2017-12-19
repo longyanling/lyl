@@ -6,7 +6,7 @@
     	</div>
     	<div class="datalist" v-show="tabIndex == 0">
     		<div class="item" v-for="(item, index) in sendItems">
-    			<h1 class="caption">
+    			<h1 class="caption" v-show="item.company || item.code">
     				<em class="name">{{item.company}}</em>
     				<var class="number">{{item.code}}</var>
     			</h1>
@@ -20,10 +20,11 @@
 	                </div>
     			</div>
     		</div>
+    		<div class="bitmap" v-show="sendItems.length <= 0"></div>
     	</div>
     	<div class="datalist" v-show="tabIndex == 1">
     		<div class="item" v-for="(item, index) in receiveItems">
-    			<h1 class="caption">
+    			<h1 class="caption" v-show="item.company || item.code">
     				<em class="name">{{item.company}}</em>
     				<var class="number">{{item.code}}</var>
     			</h1>
@@ -37,10 +38,12 @@
 	                </div>
     			</div>
     		</div>
+    		<div class="bitmap" v-show="receiveItems.length <= 0"></div>
     	</div>
         <div class="controls">
         	<a :class="orderStatus >= 5 && orderStatus <= 13 ?'button submit' : 'button unbutton'" v-touch:tap="{ event: goReturn, params:[] }">添加寄回快递信息</a>
         </div>
+        <div class="loading" v-show="orderLoading"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
     </div>
 </template>
 

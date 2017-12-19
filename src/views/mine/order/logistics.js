@@ -10,6 +10,7 @@ var _default = (function(){
         mounted: function(){
         	
             var vm = this;
+            vm.orderLoading = true;
             
             API.Mine.logistics({
             	orderId : this.$route.query.order_id
@@ -24,12 +25,14 @@ var _default = (function(){
             				vm.receiveItems.push(data.data.expressList[i]);
             			}
             		}
-            	} 
+            	}
+            	vm.orderLoading = false;
             });
         },
         data: function(){
             
             return {
+                orderLoading: true,
             	tabIndex: 0,
             	orderStatus : null,
             	sendItems: [],

@@ -26,6 +26,7 @@
         }
         .time {
             overflow: auto;
+            -webkit-overflow-scrolling : touch;
             height: 335px;
             .content {
                 padding: 20px 0px 30px 0px;

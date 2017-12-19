@@ -36,8 +36,8 @@
                 	</span>
                 	<a class="button" v-show="item.status == 0" v-touch:tap="{ event: orderCancel, params:[ item.orderId ]}">取消订单</a>
                 	<a class="button" v-show="item.status == 1 || item.status == 13" v-touch:tap="{ event: orderDelete, params:[ item.orderId ]}">删除订单</a>
-                    <a class="button submit" v-show="item.status == 0" v-touch:tap="{event : payment, params: [ item.toys ]}">立即付款</a>
-                    <a class="button circle" v-show="item.status == 1" v-touch:tap="{ event: payment, params: [ item.toys ]}">再次下单</a>
+                    <a class="button submit" v-show="item.status == 0" v-touch:tap="{event : payment, params: [ item.orderId ]}">立即付款</a>
+                    <a class="button circle" v-show="item.status == 1" v-touch:tap="{ event: placeOrder, params: [ item.toys ]}">再次下单</a>
                     <a class="button" v-show="item.status == 2 || item.status == 3 || item.status == 4 || item.status == 5 || item.status == 6" v-touch:tap="{ event: goLogistics, params: [item.orderId]}">物流信息</a>
                     <a class="button" v-show="item.status == 7 || item.status == 11 || item.status==12 || item.status == 13 " v-touch:tap="{ event: goIndex, params: [ ]}">再租几件</a>
                     <a class="button" v-show="item.status == 7 || item.status == 8 || item.status==9" v-touch:tap="{ event: goLogistics, params: [ item.orderId ] }">物流信息</a>
@@ -47,6 +47,10 @@
         </div>
         <div class="loading" v-show="orderLoading"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <div class="bitmap" v-show="orderItems[statusIndex].length == 0"></div>
+        <form id="paymentJd" action="/api/order/pay/jd" method="post">
+            <input type="hidden" id="seqId" name="seqId" />
+            <input type="hidden" id="orderId" name="orderId" />
+        </form>
     </div>
 </template>
 
