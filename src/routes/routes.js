@@ -16,17 +16,17 @@ var Routers = new VueRouter({
 	    .concat(Index.routes)
 });
 
-Routers.beforeEach(function(to, from, next){
-	
-	for ( var i = 0; i < paths.length; i++){
-		if (paths[i] == to.fullPath){
-			return;
-		}
-	}
-	paths.push(to.fullPath);
-	document.documentElement.scrollTop = 0;
-	document.body.scrollTop = 0;
-	next();
-});
+//Routers.beforeEach(function(to, from, next){
+//	
+//	for ( var i = 0; i < paths.length; i++){
+//		if (paths[i] == to.fullPath){
+//			return;
+//		}
+//	}
+//	paths.push(to.fullPath);
+//	document.documentElement.scrollTop = 0;
+//	document.body.scrollTop = 0;
+//	next();
+//});
 
 export default Routers;

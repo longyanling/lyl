@@ -99,15 +99,13 @@
                     </span>
                 </span>
                 <span id="toyMore" class="toymore" v-show="!toyIsEnd" v-scroll:pullup="{ 'event': loadMore }">
-                                    上拉加载更多..
+                                        上拉加载更多..
                 </span>
             </div>
         </div>
-        <div class="loading" v-show="loadingShow">
-        	<img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/>
-        </div>
         <router-view></router-view>
         <tm-shortcut ref="carts"></tm-shortcut>
+        <div class="loading" v-show="loadingShow"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
 	</div>
 </template>
 

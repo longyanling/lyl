@@ -5,6 +5,15 @@ import Vue from "vue";
 var data = {
 	Hub: new Vue(),
     Index: {
+        cityNameSet: function(name){
+
+            data.Index.cityName = name;
+            localStorage.setItem('CITY_NAME', name);
+        },
+        cityName: (function(){
+            
+            return localStorage.getItem('CITY_NAME');
+        })(),
         cityHot: null,
         cityAll: null,
         filterAge: null,

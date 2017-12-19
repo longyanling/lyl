@@ -1,6 +1,7 @@
 'use strict';
 
 import Sortor from "@/directives/sortor";
+import Store from "@/directives/store";
 import Toast from '@/directives/toast';
 import API from "@/services/api";
 
@@ -31,8 +32,9 @@ var _default = (function(){
                     cityCode: citycode
                     },function (data) {
                     if (data.code == 0) {
-                        Toast.show('定位成功')
-                        vm.$router.push('/index?location=' + vm.cityInfo);
+                        Toast.show('定位成功');
+                        Store.Index.cityNameSet(vm.cityInfo);
+                        vm.$router.back(-1);
                     } else {
                         Toast.show(data.msg);
                     }
@@ -46,6 +48,8 @@ var _default = (function(){
         mounted: function(){
         	
             var vm = this;
+            vm.loadingShow = true;
+            vm.cityInfo = Store.Index.cityName ? Store.Index.cityName : '北京';
             
             API.Index.location({
                 
@@ -54,6 +58,7 @@ var _default = (function(){
                 if (data.code == 0) {
                     vm.cityHotItems = data.data.hotCities;       
                     vm.cityAllItems = Sortor.pinyin(data.data.cities);
+                    vm.loadingShow = false;
                 } else {
                     Toast.show(data.msg);
                 }
@@ -62,7 +67,8 @@ var _default = (function(){
         data: function(){
 
             return {
-            	cityInfo: '定位',
+                loadingShow : true,
+            	cityInfo: null,
             	cityLocation: '获取定位',
                 cityHotItems : null,
                 cityAllItems : null,
@@ -78,24 +84,22 @@ var _default = (function(){
         	selectLocation: function(){
         		
                 this.$router.push('/index/location/amap');
-        	}, 
-            goHome : function() {
-            	
-                this.$router.push('/index');
-            },
+        	},
             itemSelect : function(e, item){
+                
+                var vm = this;
                 
                 API.Index.cityCode({
                     cityCode: item.cityCode
                 },function (data) {
-                    
                     if (data.code == 0) {
-                        
+                            
+                        Store.Index.cityNameSet(item.cityName);
+                        vm.$router.back(-1);
                     } else {
                         Toast.show(data.msg);
                     }
                 });
-                this.$router.push('/index?location=' + item.cityName);
             }
             
         }

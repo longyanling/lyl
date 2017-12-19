@@ -42,6 +42,7 @@ var _default = (function(){
         		};
         		vm.recommendItems = data.data[2].toyList;
         		vm.hotItems = data.data[4].toyList;
+        		vm.loadingShow = false;
         	}else {
         		Toast.show(data.msg);
             }
@@ -63,6 +64,7 @@ var _default = (function(){
                     vm.legoBest = makeToy(data, 0);
                     vm.legoNext = makeToy(data, 1);
                     vm.legoThird = [makeToy(data, 2) , makeToy(data, 3)];
+                    vm.legoLoadsing = true;
                 } else {
                     Toast.show(data.msg);
                 }
@@ -96,9 +98,9 @@ var _default = (function(){
 	
 	return {
 		name: 'home-index',
-		mounted: function(){
-			
-            this.locationInfo = this.$route.query.location ? this.$route.query.location : '北京';
+
+            this.loadingShow = true;
+            this.locationInfo = Store.Index.cityName ? Store.Index.cityName : '北京';
 
 			homeLoad (this);
 			legoLoad(this);
@@ -107,7 +109,8 @@ var _default = (function(){
 		data: function(){
             
 			return {
-                locationInfo : null,
+			    loadingShow: true,
+                locationInfo: null,
 				bannerItems: [],
 				navigationItems : [{'text': '年龄'},{'text': '品牌'},{'text': '能力'},{'text': '类型'},{'text': '筛选'}],
 				legoBest: {},

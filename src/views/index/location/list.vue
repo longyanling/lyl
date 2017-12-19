@@ -15,6 +15,7 @@
         	<dfn class="caption">{{item.letter}}</dfn>
         	<span class="item" v-for="city in item.data" v-touch:tap="{event:itemSelect, params: [ city ]}">{{city.cityName}}</span>
         </div>
+        <div class="loading" v-show="loadingShow"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
     </div>
 </template>
 
