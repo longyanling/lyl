@@ -43,6 +43,7 @@
                 <a class="button" v-touch:tap="{ event: submit, params: [ ] }">去结算({{ toySelectedIds.length }})</a>
             </div>
         </div>
+        <tm-modal ref="modal" :success="success" :cancel="cancel"></tm-modal>
 	</div>
 </template>
 
