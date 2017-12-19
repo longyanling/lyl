@@ -50,7 +50,6 @@ var _default = (function() {
             var vm = this, toys;
             
             vm.cartLoading = true;
-            vm.$refs.modal.show('123412341234');
             
             API.Index.cartList({ }, function(data) {
 
