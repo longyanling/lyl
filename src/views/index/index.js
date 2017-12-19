@@ -98,6 +98,7 @@ var _default = (function(){
 	
 	return {
 		name: 'home-index',
+		mounted: function(){
 
             this.loadingShow = true;
             this.locationInfo = Store.Index.cityName ? Store.Index.cityName : '北京';
