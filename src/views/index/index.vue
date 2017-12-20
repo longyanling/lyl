@@ -83,6 +83,7 @@
             <div class="toyinner">
                 <span class="toyitem" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }" :data-id="item.toyId">
                     <span class="inner">
+                        <img v-show="item.stockNum > 0 && item.sw" class="nostock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>
                         <span class="thumb"><img :src="item.image" /></span>
                         <span class="title"> {{item.toyName}} </span>
                         <a v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></a>
@@ -95,7 +96,6 @@
                             <var v-show="item.isSpecialMoney">惠</var>
                             <var v-show="item.canPostal">可邮寄 </var>
                         </span>
-                        <img v-show="item.stockNum > 0 && item.sw" class="nostock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>
                     </span>
                 </span>
                 <span id="toyMore" class="toymore" v-show="!toyIsEnd" v-scroll:pullup="{ 'event': loadMore }">

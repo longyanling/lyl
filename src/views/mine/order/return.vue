@@ -7,7 +7,7 @@
     		</span>
     		<span class="cell">
     			<em>快递单号</em>
-    			<dfn><input class="text" placeholder="请输入寄出的快递单号" /></dfn>
+    			<dfn><input class="text" placeholder="请输入寄出的快递单号" v-model="oddNumber"/></dfn>
     		</span>
     	</div>
     	<div class="tips">
@@ -20,7 +20,7 @@
         </div>
         
         <div class="controls">
-        	<a class="button submit">确认提交</a>
+        	<a class="button submit" v-touch:tap="{ event: submit, params: []}">确认提交</a>
         </div>
     </div>
 </template>

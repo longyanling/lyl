@@ -45,6 +45,10 @@ var mine = {
         Utils.Axios.deferPost('/api/order/express/companies', {}, callback);
     },
     
+    expressSave: function( data, callback){
+        Utils.Axios.deferPost('/api/order/express/save', data, callback);
+    },
+    
     logistics: function( data, callback ){
     	
     	Utils.Axios.deferPost('/api/order/express/list', data, callback);

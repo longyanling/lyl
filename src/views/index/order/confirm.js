@@ -37,6 +37,7 @@ var _default = (function(){
                 var deliveryDays = data.data.deliveryDays;
                 var deliveryMethods = data.data.deliveryMethods;
                 vm.defaultTime = deliveryDays.default.string;
+                vm.distributionTime = deliveryDays.default.timestamp;
                 vm.distributionNum = deliveryMethods.default;
                 vm.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
                 vm.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal} ];
@@ -72,7 +73,9 @@ var _default = (function(){
                     function (data) {
                         
                         if (data.code == 0) {
+                            
                             vm.addressData = data.data.address || {};
+                            vm.distributionTime = data.data.defaultDeliveryDay.timestamp;
                             vm.addressName = vm.addressData.addressConsignee || '';
                             vm.addressDetail = vm.addressData.addressTotal || '请您添加收货地址';
                             vm.addressSex = vm.addressData.consigneeSex ? (vm.addressData.consigneeSex == 0 ? '先生' : '女士') : '';
@@ -129,8 +132,8 @@ var _default = (function(){
                 distributions : [],
                 couponName : null,
                 passSeqId : null,
-                defaultLease : null,
-                defaultCoupon : null,
+                defaultLease : 20,
+                defaultCoupon : -1,
                 distributionNum : null,
                 distributionTime : null,
                 deliverTime : null ,
@@ -170,6 +173,9 @@ var _default = (function(){
                     newToys : JSON.stringify(preToys),
                     addressId : vm.addressData.addressId || 0,
                     dm : -1,
+                    couponId : vm.defaultCoupon,
+                    orderTime : vm.distributionTime,
+                    rentPeriod : vm.defaultLease
                 });
                 Toast.show('不可邮寄玩具已删除，请重新确认玩具列表!');
             },
@@ -215,6 +221,7 @@ var _default = (function(){
                     addressId : this.addressData.addressId,
                     dm : this.distributionNum,
                     couponId : this.defaultCoupon,
+                    orderTime : this.distributionTime,
                     rentPeriod : this.defaultLease
                 });
             },
@@ -230,6 +237,7 @@ var _default = (function(){
                         addressId : this.addressData.addressId,
                         dm : this.distributionNum,
                         couponId : this.defaultCoupon,
+                        orderTime : this.distributionTime,
                         rentPeriod : this.defaultLease
                 });
             },
@@ -245,6 +253,7 @@ var _default = (function(){
                     addressId : this.addressData.addressId,
                     dm : this.distributionNum,
                     couponId : this.defaultCoupon,
+                    orderTime : this.distributionTime,
                     rentPeriod : this.defaultLease
                 });
             },

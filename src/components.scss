@@ -89,7 +89,7 @@
                 padding-top:1px;
                 border-bottom:1px solid #f0f0f0;
                 background-color: #ffffff;
-                position: relative;
+//              position: relative;
                 
                 .thumb {
                     display: block;
@@ -159,8 +159,8 @@
                 .nostock  {
                     width: 50px;
                     position: absolute;
-                    top: 5px;
-                    left: 5px;
+                    margin-top: 5px;
+                    margin-left: 5px;
                 }
                 &:nth-child(odd){
                     border-right:1px solid #f0f0f0;

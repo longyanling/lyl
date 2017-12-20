@@ -11,9 +11,10 @@ var _default = (function(){
         	
             var vm = this;
             vm.orderLoading = true;
+            vm.orderId = this.$route.query.order_id
             
             API.Mine.logistics({
-            	orderId : this.$route.query.order_id
+            	orderId : vm.orderId
             }, function(data){
             	
             	if (data.data && data.data.expressList){
@@ -39,6 +40,7 @@ var _default = (function(){
             	receiveItems: [],
             	expressMailIndex : 0,
             	expressReturnIndex : 0,
+            	orderId : null
             };
         },
         methods: {
@@ -49,7 +51,7 @@ var _default = (function(){
             goReturn: function(e){
                 
                 if(this.orderStatus < 5) return ;
-                this.$router.push( '/mine/order/return' );
+                this.$router.push( '/mine/order/return?order_id=' + this.orderId);
             }
         },
         filters: {
