@@ -79,7 +79,7 @@
 			top: 50%;
 			left: 50%;
 			width: 240px;
-			height: 160px;
+			/*height: 160px;*/
 			padding: 12px;
 			margin-top: -80px;
 			margin-left: -132px;
@@ -106,9 +106,8 @@
 		}
 		.dialog .content {
 			display: block;
-			height: 64px;
 			color: #575757;
-			font-size: 14px;
+			font-size: 12px;
 			text-align: center;
 			line-height: 20px;
 			padding: 5px 5px 10px 5px;
@@ -116,6 +115,7 @@
 		.dialog .actions {
 			display: block;
 			height: 44px;
+			line-height: 44px;
 			text-align: center;
 		}
 		.dialog .actions .link {

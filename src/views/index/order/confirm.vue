@@ -114,6 +114,7 @@
             <input type="hidden" id="seqId" name="seqId" />
             <input type="hidden" id="orderId" name="orderId" />
         </form>
+        <div class="loading" v-show="loadingShow"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
     </div>
 </template>
 

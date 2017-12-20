@@ -18,10 +18,11 @@ var _default = (function(){
                 vm.canOnsiteState = data.data.canOnsite;
                 if(vm.canOnsiteState){
                     vm.$refs.modal.show(data.msg , '修改地址', '删除玩具');
+                    vm.loadingShow = false;
                 }else {
                     vm.$refs.modal.show(data.msg, '返回购物车', '删除玩具');
+                    vm.loadingShow = false;
                 }
-               
                 return;
             }
             if (data.code == 0) {
@@ -40,6 +41,7 @@ var _default = (function(){
                 vm.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
                 vm.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal} ];
                 vm.deliverTime = data.data.deliveryDays.default.timestamp;
+                vm.loadingShow = false;
             } else {
                 Toast.show(data.msg);
             }
@@ -51,6 +53,7 @@ var _default = (function(){
         mounted: function(){
             
             var vm = this;
+            vm.loadingShow = true;
             var toys = [];
             var price = 0;
             
@@ -108,7 +111,7 @@ var _default = (function(){
         data: function(){
             
             return {
-                
+                loadingShow : true,
                 addressData : [],
                 addressName : null,
                 addressDetail : null,
@@ -139,24 +142,28 @@ var _default = (function(){
             success: function(){
                 
                 var vm = this;
+                
+                preToys = [];
                 var price = 0;
-                for(var i = 0; i < vm.toyItems.length; i++){
-                    for( var j = 0; j < vm.toyNotMailingItems.length; j++){
-                        if(vm.toyItems[i].toyId == vm.toyNotMailingItems[j]){
+                
+                for( var j = 0; j < vm.toyNotMailingItems.length; j++){
+                    for (var i = 0; i < vm.toyItems.length; i++){
+                        if (vm.toyItems[i].toyId == vm.toyNotMailingItems[j]){
                             vm.toyItems.splice( i, 1);
+                            break;
                         }
                     }
-                };
-                preToys = [];
-                for (var i = 0; i < vm.toyItems.length; i++){
-                    price += vm.toyItems[i].specialMoney;
+                }
+                for (var l = 0; l < vm.toyItems.length; l++){
+                    price += vm.toyItems[l].specialMoney;
                     preToys.push({
-                        'toyId': vm.toyItems[i].toyId, 
+                        'toyId': vm.toyItems[l].toyId, 
                         'toyNum': 1, 
-                        'toyPrice': vm.toyItems[i].specialMoney
+                        'toyPrice': vm.toyItems[l].specialMoney
                     });
                 }
                 vm.toyALLPrice = price/1000;
+
                 preSubmit(vm, {
                     seqId : vm.passSeqId,
                     orderType : 1,
@@ -164,6 +171,7 @@ var _default = (function(){
                     addressId : vm.addressData.addressId || 0,
                     dm : -1,
                 });
+                Toast.show('不可邮寄玩具已删除，请重新确认玩具列表!');
             },
             cancel: function(){
 
@@ -187,7 +195,8 @@ var _default = (function(){
                     addressId : this.addressData.addressId,
                     dm : this.distributionNum,
                     couponId : this.defaultCoupon,
-                    orderTime : this.distributionTime
+                    orderTime : this.distributionTime,
+                    rentPeriod : this.defaultLease
                 });
             },
             //  修改配送地址
@@ -205,7 +214,8 @@ var _default = (function(){
                     newToys : JSON.stringify(preToys),
                     addressId : this.addressData.addressId,
                     dm : this.distributionNum,
-                    couponId : this.defaultCoupon
+                    couponId : this.defaultCoupon,
+                    rentPeriod : this.defaultLease
                 });
             },
             //  修改租期
