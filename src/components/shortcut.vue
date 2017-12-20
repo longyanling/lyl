@@ -131,7 +131,12 @@
             		var vm = this;
 	            		
 	                API.Index.cartAdd( { tid : toyId }, function (data) {
-	                    	
+	                    
+	                    if(data.code == 138){
+	                        
+	                        vm.$emit('toyExists');
+	                        return;
+	                    }
                         if (data.code == 0) {
         					getToyStart(vm, toyId, isDetail);
                         } else {

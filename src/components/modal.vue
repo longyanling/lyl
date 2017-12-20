@@ -2,10 +2,11 @@
     <div id="componentModal" class="tm-component-modal" v-show="visible">
     	<div class="dialog">
 			<var class="icon"></var>
+			<span class="title">亲爱的用户</span>
 			<span class="content">{{text}}</span>
 			<span class="actions">
-				<a class="link submit" v-touch:tap=" { event: _success } ">确 定</a>
-				<a class="link" v-touch:tap=" { event: _cancel } ">取 消</a>
+			    <a class="link" v-touch:tap=" { event: _cancel } ">{{confirmTitle}}</a>
+				<a class="link submit" v-touch:tap=" { event: _success } ">{{cancelTitle}}</a>
 			</span>
     	</div>
     </div>
@@ -29,15 +30,19 @@
             
             return {
             	text: '',
-            	visible: false
+            	visible: false,
+            	confirmTitle: '',
+            	cancelTitle: '',
             };
         },
         methods: (function(){
             
             return {
-            	show: function( text ){
+            	show: function( text, confirm,  cancel){
             		
             		this.text = text;
+            		this.confirmTitle = confirm;
+            		this.cancelTitle = cancel;
             		this.visible = true;
             	},
             	_success: function(){
@@ -77,7 +82,7 @@
 			height: 160px;
 			padding: 12px;
 			margin-top: -80px;
-			margin-left: -120px;
+			margin-left: -132px;
 			border-radius: 5px;
 			background: #ffffff;
 		}
@@ -85,7 +90,7 @@
 			display: block;
 			width: 64px;
 			height: 64px;
-			margin: -36px auto 0px auto;
+			margin: -45px auto 0px auto;
 			border-radius: 50%;
 			background: #ffffff;
 			background-image: url('https://ts.zlimg.com/v2/activity/rebateweb1212/popup_logo.png');
@@ -93,10 +98,17 @@
 			background-position: center center;
 			background-size: 64px 64px;
 		}
+		.dialog .title {
+		    display: block;
+		    font-size: 18px;
+		    text-align: center;
+		    color: #575757;
+		}
 		.dialog .content {
 			display: block;
 			height: 64px;
 			color: #575757;
+			font-size: 14px;
 			text-align: center;
 			line-height: 20px;
 			padding: 5px 5px 10px 5px;
@@ -108,20 +120,20 @@
 		}
 		.dialog .actions .link {
 			display: inline-block;
-			height: 44px;
-			color: #575757;
+			width: 94px;
+			height: 29px;
+			color: #ffc000;
+			font-size: 14px;
 			text-align: center;
-			line-height: 44px;
-			padding: 0px 25px;
+			line-height: 29px;
 			margin: 0px 9px;
 			border-radius: 5px;
-			background: #f3f3f3;
+			background-color: #ffffff;
+			border: 1px solid #ffc000;
 			
 			&.submit {
-				background-image: url('https://ts.zlimg.com/v2/activity/rebateweb1212/button.png');
-				background-repeat: repeat-x;
-				background-position: -12px center;
-				background-size: auto 44px;
+				background-color: #ffc000;
+				color: #575757;
 			}
 		}
     }

@@ -3,6 +3,7 @@
 import Utils from '@/directives/utils';
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
+import Modal from '@/components/modal.vue';
 import API from "@/services/api";
 
 var _default = (function(){
@@ -13,7 +14,14 @@ var _default = (function(){
         API.Index.presubmit(data, function (data) {
             
             if(data.code == 174){
-                Toast.show(data.msg);
+                vm.toyNotMailingItems = data.data.newToys;
+                vm.canOnsiteState = data.data.canOnsite;
+                if(vm.canOnsiteState){
+                    vm.$refs.modal.show(data.msg , '修改地址', '删除玩具');
+                }else {
+                    vm.$refs.modal.show(data.msg, '返回购物车', '删除玩具');
+                }
+               
                 return;
             }
             if (data.code == 0) {
@@ -100,6 +108,7 @@ var _default = (function(){
         data: function(){
             
             return {
+                
                 addressData : [],
                 addressName : null,
                 addressDetail : null,
@@ -111,6 +120,7 @@ var _default = (function(){
                 coupons : [],
                 leases : [],
                 toyALLPrice : [],
+                toyNotMailingItems: [],
                 defaultTime : null,
                 defauitName : null,
                 distributions : [],
@@ -120,10 +130,50 @@ var _default = (function(){
                 defaultCoupon : null,
                 distributionNum : null,
                 distributionTime : null,
-                deliverTime : null 
+                deliverTime : null ,
+                canOnsiteState : null
             };
         },
         methods: {
+            
+            success: function(){
+                
+                var vm = this;
+                var price = 0;
+                for(var i = 0; i < vm.toyItems.length; i++){
+                    for( var j = 0; j < vm.toyNotMailingItems.length; j++){
+                        if(vm.toyItems[i].toyId == vm.toyNotMailingItems[j]){
+                            vm.toyItems.splice( i, 1);
+                        }
+                    }
+                };
+                preToys = [];
+                for (var i = 0; i < vm.toyItems.length; i++){
+                    price += vm.toyItems[i].specialMoney;
+                    preToys.push({
+                        'toyId': vm.toyItems[i].toyId, 
+                        'toyNum': 1, 
+                        'toyPrice': vm.toyItems[i].specialMoney
+                    });
+                }
+                vm.toyALLPrice = price/1000;
+                preSubmit(vm, {
+                    seqId : vm.passSeqId,
+                    orderType : 1,
+                    newToys : JSON.stringify(preToys),
+                    addressId : vm.addressData.addressId || 0,
+                    dm : -1,
+                });
+            },
+            cancel: function(){
+
+                if(this.canOnsiteState) {
+                    this.$router.push( '/index/confirm/address' ); 
+                    
+                }else {
+                    this.$router.back( -1 );
+                }
+            },
             
             //  修改配送信息
             setDistribution : function(infoDeterData){
@@ -246,6 +296,9 @@ var _default = (function(){
                 
                 return Utils.Date.toString(Utils.Date.fromTicks(value), 'yyyy/MM/dd');
             }
+        },
+        components: {
+            'tm-modal': Modal
         }
     }
 })();

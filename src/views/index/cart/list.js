@@ -3,7 +3,6 @@
 import Utils from '@/directives/utils';
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
-import Modal from '@/components/modal.vue';
 import API from "@/services/api";
 
 var _default = (function() {
@@ -50,7 +49,6 @@ var _default = (function() {
             var vm = this, toys;
             
             vm.cartLoading = true;
-            vm.$refs.modal.show('123412341234');
             
             API.Index.cartList({ }, function(data) {
 
@@ -147,19 +145,8 @@ var _default = (function() {
                 } else {
                     Toast.show('您尚未选择玩具');
                 }
-            },
-            success: function(){
-            	
-            	console.log('点了【确定】');
-            },
-            cancel: function(){
-            	
-            	console.log('点了【取消】');
             }
-        },
-		components: {
-			'tm-modal': Modal
-		}
+        }
     }
 })();
 

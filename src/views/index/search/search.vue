@@ -54,7 +54,8 @@
         </div>
         <div class="loading" v-show="loadingState"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <router-view :backUrl="backUrl"></router-view>
-        <tm-shortcut :cartUrl="cartUrl" ref="carts"></tm-shortcut>
+        <tm-shortcut :cartUrl="cartUrl" ref="carts" @toyExists = "showToyExists"></tm-shortcut>
+        <tm-modal ref="modal" :success="goToCart"></tm-modal>
 	</div>
 </template>
 

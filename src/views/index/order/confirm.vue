@@ -109,6 +109,7 @@
         <div style="background:#ff0000">
         	<router-view @resetAddressId="setAddressId" @resetDistribution="setDistribution" @resetDate="setDate" @resetCoupon="setCoupon" :coupon = 'coupons' :distribution = 'distributions' :lease = 'leases'></router-view>
         </div>
+        <tm-modal ref="modal" :success="success" :cancel="cancel"></tm-modal>
         <form id="jdPayment" action="/api/order/pay/jd" method="post">
             <input type="hidden" id="seqId" name="seqId" />
             <input type="hidden" id="orderId" name="orderId" />
