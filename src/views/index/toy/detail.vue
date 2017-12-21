@@ -117,7 +117,8 @@
 	    </div>
 	    <div class="loading" v-show="loadingState"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
 	    <router-view :backUrl="backUrl"></router-view>
-	    <tm-shortcut :cartUrl="cartUrl" ref="carts" :haveToolbar="true"></tm-shortcut>
+	    <tm-modal ref="modal" :success="goToCart"></tm-modal>
+	    <tm-shortcut :cartUrl="cartUrl" ref="carts" :haveToolbar="true" @toyExists = "showToyExists"></tm-shortcut>
 	</div>
 </template>
 
