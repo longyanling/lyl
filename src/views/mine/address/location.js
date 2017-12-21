@@ -54,7 +54,6 @@ var _default = (function(){
         data: function(){
             
             return {
-            	placeSearch: null,
             	address: null,
             	addressOld: null,
             	poiItems: []
@@ -72,7 +71,7 @@ var _default = (function(){
         	submit: function(){
         		
         		if (this.address != this.addressOld){
-        			this.placeSearch.search(this.address, this.submitCallback);
+        			placeSearch.search(this.address, this.submitCallback);
         			this.addressOld = this.address;
         		}
 			    return false;
