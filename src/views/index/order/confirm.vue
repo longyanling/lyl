@@ -81,7 +81,10 @@
                     <small v-show="confirmItem.isJdCreditEnough && confirmItem.isJdPayDepositMore">(当前押金超过2000元，需支付押金)</small>
                 </em>
                 <dfn class="element">
-                    <var>￥{{confirmItem.deposit ? confirmItem.deposit / 1000 : '0'}}</var>
+                    <var v-show="confirmItem.isJdCreditEnough && confirmItem.isJdPayDepositMore">￥{{confirmItem.deposit ? confirmItem.deposit / 1000 : '0'}}</var>
+                    <var v-show="!confirmItem.isJdCreditEnough && !confirmItem.isJdPayDepositMore">￥{{confirmItem.deposit ? confirmItem.deposit / 1000 : '0'}}</var>
+                    <var v-show="!confirmItem.isJdCreditEnough && confirmItem.isJdPayDepositMore">￥{{confirmItem.deposit ? confirmItem.deposit / 1000 : '0'}}</var>
+                    <s v-show="confirmItem.isJdCreditEnough && !confirmItem.isJdPayDepositMore">￥{{confirmItem.deposit ? confirmItem.deposit / 1000 : '0'}}</s>
                 </dfn>
             </div>
         </div>
