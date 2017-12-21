@@ -30,7 +30,7 @@
                 <var class="arrow"></var>
                 <dfn class="value">
                     <strong>{{confirmItem.rentPeriod}} 天</strong>
-                    <small>{{confirmItem.endTime | expire}}</small>
+                    <small>({{confirmItem.endTime | expire}}到期)</small>
                 </dfn>
             </span>
             <span class="cell signle" v-touch:tap="{ event: showPopup, params: ['/index/confirm/coupon'] }">
@@ -73,7 +73,13 @@
 
         <div class="group">
             <div class="cell single">
-                <em class="text">本单押金 <small>{{confirmItem.depositMsg}}</small></em>
+                <em class="text">
+                    <span class="jdlogo" v-show="confirmItem.isJdCreditEnough && !confirmItem.isJdPayDepositMore"></span>
+                    {{confirmItem.isJdCreditEnough && !confirmItem.isJdPayDepositMore ? '小白信用免押' : '订单押金'}} 
+                    <small v-show="!confirmItem.isJdCreditEnough && !confirmItem.isJdPayDepositMore">(小白信用不足，未享用免押服务)</small>
+                    <small v-show="!confirmItem.isJdCreditEnough && confirmItem.isJdPayDepositMore">(小白信用不足，未享用免押服务)</small>
+                    <small v-show="confirmItem.isJdCreditEnough && confirmItem.isJdPayDepositMore">(当前押金超过2000元，需支付押金)</small>
+                </em>
                 <dfn class="element">
                     <var>￥{{confirmItem.deposit ? confirmItem.deposit / 1000 : '0'}}</var>
                 </dfn>

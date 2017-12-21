@@ -12,12 +12,12 @@
 			<span class="price"> <dfn>{{detailItem.rentMoney / 1000}}</dfn> 元/天 </span>
 			<span class="saleprice"> 吊牌价：{{detailItem.price / 1000}} 元 </span>
 			<span class="tags">
-			    <dfn class="size" v-show="detailItem.toySize == 'S'">小</dfn>
-			    <dfn class="size" v-show="detailItem.toySize == 'M'">中</dfn>
-				<dfn class="size" v-show="detailItem.toySize == 'L'">大</dfn>
-				<dfn class="size" v-show="detailItem.toySize == 'XL'">豪华</dfn>
+			    <dfn class="post" v-show="detailItem.canPostal">可邮寄</dfn>
+			    <dfn class="recommend" v-show="detailItem.isRecommend">荐</dfn>
+                <dfn class="latest" v-show="detailItem.isLatest">新</dfn>
+                <dfn class="special" v-show="detailItem.isSpecialMoney">惠</dfn>
 				<dfn class="hot" v-show="detailItem.isHot">热</dfn>
-				<dfn class="post" v-show="detailItem.canPostal">可邮寄</dfn>
+				<dfn class="size">{{detailItem.toySize == 'XL' ? '豪华' : (detailItem.toySize == 'L' ? '大' : (detailItem.toySize == 'M' ? '中' : (detailItem.toySize == 'S' ? '小' : '')))}}</dfn>
 				<dfn class="age">适合年龄：{{detailItem.ageRange}}</dfn>
 			</span>
 		</div>
@@ -96,12 +96,14 @@
                         <a v-touch:tap=" { event: addCart, params: [ item.toyId ] } " class="cart"></a>
                         <span class="price">
                             <dfn> {{item.rentMoney / 1000}} <small>元/天</small> </dfn>
-                            <var>{{item.toySize == 'XL' ? '豪华' : (item.toySize == 'L' ? '大' : (item.toySize == 'M' ? '中' : (item.toySize == 'S' ? '小' : '')))}}</var>
-                            <var v-show="item.isRecommend">荐</var>
-                            <var v-show="item.isLatest">新</var>
-                            <var v-show="item.isHot">热</var>
-                            <var v-show="item.isSpecialMoney">惠</var>
-                            <var v-show="item.canPostal">可邮寄 </var>
+                            <span class="label">
+                                <var v-show="item.canPostal">可邮寄 </var>
+                                <var v-show="item.isRecommend">荐</var>
+                                <var v-show="item.isLatest">新</var>
+                                <var v-show="item.isHot">热</var>
+                                <var v-show="item.isSpecialMoney">惠</var>
+                                <var>{{item.toySize == 'XL' ? '豪华' : (item.toySize == 'L' ? '大' : (item.toySize == 'M' ? '中' : (item.toySize == 'S' ? '小' : '')))}}</var>
+                            </span>
                         </span>
                     </span>
                     <img v-show="item.stockNum > 0 && item.sw" class="nostock" src="https://ts.zlimg.com/v2/h5/jd/toy_storage_warning.png"/>

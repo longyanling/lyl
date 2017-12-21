@@ -1,7 +1,7 @@
 <template>
 	<div id="mine-index" class="tm-mine-index">
 		<div class="heading">
-			<span class="avatar"><img :src="userInfo.avatar" class="image" /></span>
+			<span class="avatar"><img :src="userInfo.avatar" class="image"/></span>
 			<span class="info">
 				<em class="nick">{{userInfo.nickName ? userInfo.nickName : '未登录'}}</em>
 				<a class="button" v-show="loginState" v-touch:tap="{ event : go, params : [ '/mine/profile' ] }">宝宝信息<var></var></a>

@@ -30,14 +30,14 @@ var _default = (function(){
                 vm.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
                 vm.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
                 vm.defaultLease = data.data.rentPeriod; 
+                var deliveryMethods = data.data.deliveryMethods;
                 var couponList = data.data.couponList;
                 var coupon = data.data.coupon;
                 vm.coupons = [coupon, couponList];
                 vm.leases = data.data.rentPeriodInfo;
-                var deliveryDays = data.data.deliveryDays;
-                var deliveryMethods = data.data.deliveryMethods;
+                var deliveryDays = deliveryMethods.default == 1 ? data.data.deliveryDays : data.data.postalDays;
                 vm.defaultTime = deliveryDays.default.string;
-                vm.distributionTime = deliveryDays.default.timestamp;
+                vm.distributionTime = deliveryMethods.default == 1 ? deliveryDays.default.timestamp : data.data.postalDays.default.timestamp;
                 vm.distributionNum = deliveryMethods.default;
                 vm.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
                 vm.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal} ];
@@ -172,10 +172,7 @@ var _default = (function(){
                     orderType : 1,
                     newToys : JSON.stringify(preToys),
                     addressId : vm.addressData.addressId || 0,
-                    dm : -1,
-                    couponId : vm.defaultCoupon,
-                    orderTime : vm.distributionTime,
-                    rentPeriod : vm.defaultLease
+                    dm : -1
                 });
                 Toast.show('不可邮寄玩具已删除，请重新确认玩具列表!');
             },
@@ -227,9 +224,8 @@ var _default = (function(){
             },
             //  修改租期
             setDate : function(item){
-
-                this.defaultLease = item;
                 
+                this.defaultLease = item;
                 preSubmit(this, {
                         seqId : this.passSeqId,
                         orderType : 1,
