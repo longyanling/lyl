@@ -171,8 +171,8 @@ var _default = (function(){
                 this.$router.push('/index/screen');
             },
             goActivity :function(){
-                
-               this.$router.push('/index/activity');
+
+                this.$router.push('/index/activity');
             }
 		},
 		components: {

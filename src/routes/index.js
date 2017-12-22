@@ -6,6 +6,7 @@ import Location from "@/views/index/location/list.vue";
 import Search from "@/views/index/search/search.vue";
 import Screen from "@/views/index/screen/screen.vue";
 import Confirm from "@/views/index/order/confirm.vue";
+import ConfirmResult from "@/views/index/order/result/result.vue";
 import ConfirmCoupon from "@/views/index/order/coupon/pop_list.vue";
 import ConfirmAddress from "@/views/index/order/address/pop_list.vue";
 import ConfirmAddressEdit from "@/views/index/order/address/pop_edit.vue";
@@ -47,6 +48,7 @@ export default {
                 { path: '/index/confirm/lease', component: ConfirmLease }
             ]
         },
+        { path: '/index/result' , name: 'Result', component: ConfirmResult }
     ]
 }
 
