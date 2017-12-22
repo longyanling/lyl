@@ -14,9 +14,10 @@ var _default = (function(){
 			
 			API.Mine.profile(function(data){
 
-				vm.userInfo = data.data.user || {};
-				vm.babyInfo = (data.data.babys && data.data.babys.length ? data.data.babys[0] : {} ) ;
-				vm.babyInfo.birthDateText = Utils.Date.toString(Utils.Date.fromTicks(vm.babyInfo.birthDate), 'yyyy年MM月dd日');
+				data = data.data || {};
+				vm.userInfo = data.user || {};
+				vm.babyInfo = (data.babys && data.babys.length ? data.babys[0] : { birthDate: 1472313600000, babySex: 0 } ) ;
+				vm.babyInfo.birthDateText = Utils.Date.toString(Utils.Date.fromTicks(vm.babyInfo.birthDate || 1472313600000), 'yyyy年MM月dd日');
 			});
         },
         data: function(){
