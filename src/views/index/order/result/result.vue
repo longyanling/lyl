@@ -1,6 +1,22 @@
 <template>
 	<div id="result" class="tm-result">
-	    支付成功
+	    <div class="header">
+            <div class="title">
+                <var :class="orderState == 0 ? 'complete' : 'complete fail'"></var>
+                <em>{{showTitle}}</em>
+            </div>
+            <span class="hint">{{showContent}}</span>
+            <div class="buttons">
+                <div class="left">
+                	<span class="button" v-touch:tap="{event: goDetails, params:[ ]}">查看订单</span>
+                </div>
+                <div class="right">
+                	<span class="button" v-touch:tap="{event: goIndex, params:[ ]}">返回首页</span>
+                </div>
+            </div>
+        </div>
+        <div class="resultimg"><img class="follow" src="https://ts.zlimg.com/jd/2/paySuccess_scan_follow.png"/></div>
+        
 	</div>
 </template>
 

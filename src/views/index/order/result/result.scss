@@ -1,12 +1,78 @@
-
-    .tm-result {
-        display : block;
-        height:100%;
-        
-       .success {
+.tm-result {
+    display : block;
+    height: calc(100vh);
+    
+   .header {
+        display: block;
+        background-color: #ffffff;
+        .title {
+            display: block;
             text-align: center;
-            font-size: 16px;
-            color: #fed030;
-            margin: 200px auto;
-       }
+            color: #575757;
+            padding-top: 50px;
+            .complete {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                background-image: url('https://ts.zlimg.com/v2/h5/jd/base_selected.png');
+                background-repeat: no-repeat;
+                background-size: 15px;
+                background-position: center;
+                &.fail {
+                    background-image: url('https://ts.zlimg.com/v2/h5/jd/result_fail.png');
+                }
+            }
+            em {
+                font-size: 16px;
+            }
+        }
+        .hint {
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            color: #b3b3b3;
+        }
+        .buttons {
+            height: 80px;
+            overflow: hidden;
+            .left {
+                width: 50%;
+                float: left;
+                .button {
+                    display: block;
+                    padding: 11.5px 0;
+                    margin: 20px 15px 0px 20px;
+                    text-align: center;
+                    color: #575757;
+                    font-size: 15px;
+                    border-radius: 8px;
+                    border: 1px solid #dfdfdf;
+                }
+            }
+            .right {
+                width: 50%;
+                float: left;
+                .button {
+                    display: block;
+                    padding: 11.5px 0;
+                    font-size: 15px;
+                    margin: 20px 20px 0px 15px;
+                    text-align: center;
+                    color: #575757;
+                    border-radius: 8px;
+                    border: 1px solid #dfdfdf;
+                }
+            }
+        }
+        
+   }
+   .resultimg {
+        display: block;
+        margin-top: 10px;
+        .follow{
+            width: 100%;
+        }
     }
+}

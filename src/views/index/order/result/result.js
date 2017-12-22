@@ -10,14 +10,37 @@ var _default = (function(){
         mounted: function(){
             
             var vm = this;
-
+            vm.orderNumber = vm.$route.query.orderId;
+            vm.orderState = vm.$route.query.state;
+    
+            if (vm.orderState == '0' || vm.orderState == 0){
+                vm.showTitle = '租借成功';
+                vm.showContent = '按时寄回玩具，有助于您的信用提升哦~';
+            } else {
+                vm.showTitle = '租借失败';
+                vm.showContent = '该订单支付失败请您尽快付款哦~';
+            }
+            
+            
         },
         data: function(){
             
             return {
+                orderNumber: null,
+                orderState: null,
+                showTitle : null,
+                showContent : null
             };
         },
         methods: {
+            goDetails: function (){
+                
+                this.$router.push('/mine/order/details?order_id=' + this.orderNumber);
+            },
+            goIndex: function(){
+                
+                this.$router.push('/index');
+            }
         }
     }
 })();
