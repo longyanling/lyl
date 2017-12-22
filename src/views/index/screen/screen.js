@@ -3,7 +3,8 @@
 import Toast from '@/directives/toast';
 import Store from "@/directives/store";
 import Sortor from "@/directives/sortor";
-import Shortcut from '@/components/shortcut.vue'
+import Shortcut from '@/components/shortcut.vue';
+import Modal from '@/components/modal.vue';
 import API from "@/services/api";
 
 var _default = (function() {
@@ -174,6 +175,14 @@ var _default = (function() {
                     this.typeIsShow = false;
                     this.screenIsShow = false;  
                 }
+            },
+            showToyExists: function (){
+                
+                this.$refs.modal.show('您购物车中已经有该玩具了，快去下单吧!', '看看别的', '去下单');
+            },
+            goToCart: function(){
+                
+                this.$router.push('/index/screen/cart');
             },
             //添加到购物车
             addCart : function(e, toyId) {
@@ -421,7 +430,8 @@ var _default = (function() {
             },
         },
         components: {
-            'tm-shortcut': Shortcut
+            'tm-shortcut': Shortcut,
+            'tm-modal': Modal
         }
     }
 })();

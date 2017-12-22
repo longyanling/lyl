@@ -72,6 +72,21 @@
                 padding: 0px 2px;
                 border-radius: 3px;
                 
+                &.recommend {
+                    color: #ffffff;
+                    border: 1px solid #49acff;
+                    background: #49acff;
+                }
+                &.latest {
+                    color: #ffffff;
+                    border: 1px solid #ffc149;
+                    background: #ffc149;
+                }
+                &.special {
+                    color: #ffffff;
+                    border: 1px solid #ff4965;
+                    background: #ff4965;
+                }
                 &.size {
                     color: #aaaaaa;
                     border: 1px solid #dfdfdf;

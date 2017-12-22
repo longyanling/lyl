@@ -2,8 +2,8 @@
 
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
-import Affirm from '@/directives/affirm';
 import Slide from '@/components/slide.vue'
+import Modal from '@/components/modal.vue';
 import Shortcut from '@/components/shortcut.vue'
 import API from "@/services/api";
 
@@ -126,13 +126,15 @@ var _default = (function(){
 			};
 		},
 		methods: {
-			
+			showToyExists: function (){
+			    
+			    this.$refs.modal.show('您购物车中已经有该玩具了，快去下单吧!', '看看别的', '去下单');
+			},
 		    //添加到购物车
 		    addCart : function(e, toyId) {
 
 		    	this.$refs.carts.addToy(toyId);
 		    },
-		    
 		    loadMore: function(e){
 		    	
 		    	!this.toyLoading && toyLoad(this);
@@ -167,11 +169,16 @@ var _default = (function(){
             goScreen : function() {
             	
                 this.$router.push('/index/screen');
+            },
+            goActivity :function(){
+                
+                this.$router.push('/index/activity');
             }
 		},
 		components: {
 			'tm-slide': Slide,
-			'tm-shortcut': Shortcut
+			'tm-shortcut': Shortcut,
+			'tm-modal': Modal
 		}
 	}
 })();

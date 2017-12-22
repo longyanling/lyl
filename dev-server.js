@@ -32,6 +32,7 @@ var apiProxy = {
 			'/api/order/detail': '/order/detail',
 			'/api/order/express/companies': '/order/express/companies',
 			'/api/order/express/list': '/order/express/list',
+			'/api/order/express/save': '/order/express/save',
 			'/api/coupon/list': '/coupon/list',
 			'/api/address/list': '/address/list',
 			'/api/address/gd/insert': '/address/gd/insert',

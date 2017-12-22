@@ -13,6 +13,11 @@
     import Store from '@/directives/store';
     import API from '@/services/api';
     
+    var scrollOffsetTop = function(){
+    	
+    	return document.documentElement.scrollTop || document.body.scrollTop || 0;
+    };
+    
     var getToyItem = function(vm, toyId, isDetail){
     	
     	var items;
@@ -47,12 +52,13 @@
 	    	toyIcon.style.transition = "top 0.5s ease-in,left 0.5s ease-out,opacity 0.5s linear";
     		if (isDetail){
 				toyImage = toyItem;
-		    	toyIcon.style.top = ( ( document.body.scrollTop ? document.body.scrollTop : (document.documentElement.scrollTop || 0)) + screen.height - 38 ) + 'px';
+		    	toyIcon.style.top = ( scrollOffsetTop() + screen.height - 38 ) + 'px';
 		    	toyIcon.style.left = ( toyImage.offsetLeft + 10 ) + 'px';
 			} else {
-				toyImage = toyItem.getElementsByTagName('A')[0];	
+				toyImage = toyItem.getElementsByTagName('A')[0];
 		    	toyIcon.style.top = (toyImage.offsetTop + 10) + 'px';
 		    	toyIcon.style.left = (toyImage.offsetLeft + 10) + 'px';
+	
 			}
 	    	document.body.appendChild(toyIcon);
 		}
@@ -63,8 +69,7 @@
 
     	var toyItem = getToyItem(vm, toyId, isDetail);
     	var toyIcon = getToyIcon(vm, toyItem, isDetail);
-    	
-		toyIcon.style.top = ( ( document.body.scrollTop ? document.body.scrollTop : (document.documentElement.scrollTop || 0)) + screen.height - 46) + 'px';
+		toyIcon.style.top = ( scrollOffsetTop() + screen.height - 46) + 'px';
 		toyIcon.style.left = ( screen.width - 46) + 'px';
 		toyIcon.style.opacity = 0;
 		
@@ -131,7 +136,12 @@
             		var vm = this;
 	            		
 	                API.Index.cartAdd( { tid : toyId }, function (data) {
-	                    	
+	                    
+	                    if(data.code == 138){
+	                        
+	                        vm.$emit('toyExists');
+	                        return;
+	                    }
                         if (data.code == 0) {
         					getToyStart(vm, toyId, isDetail);
                         } else {

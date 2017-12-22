@@ -3,6 +3,7 @@
 import Utils from '@/directives/utils';
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
+import Modal from '@/components/modal.vue';
 import API from "@/services/api";
 
 var _default = (function(){
@@ -13,7 +14,15 @@ var _default = (function(){
         API.Index.presubmit(data, function (data) {
             
             if(data.code == 174){
-                Toast.show(data.msg);
+                vm.toyNotMailingItems = data.data.newToys;
+                vm.canOnsiteState = data.data.canOnsite;
+                if(vm.canOnsiteState){
+                    vm.$refs.modal.show(data.msg , '修改地址', '删除玩具');
+                    vm.loadingShow = false;
+                }else {
+                    vm.$refs.modal.show(data.msg, '返回购物车', '删除玩具');
+                    vm.loadingShow = false;
+                }
                 return;
             }
             if (data.code == 0) {
@@ -21,17 +30,19 @@ var _default = (function(){
                 vm.couponName = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.displayName : '');
                 vm.defaultCoupon = (data.data.couponList.length>0 && data.data.coupon ? data.data.coupon.couponId : '-1');
                 vm.defaultLease = data.data.rentPeriod; 
+                var deliveryMethods = data.data.deliveryMethods;
                 var couponList = data.data.couponList;
                 var coupon = data.data.coupon;
                 vm.coupons = [coupon, couponList];
                 vm.leases = data.data.rentPeriodInfo;
-                var deliveryDays = data.data.deliveryDays;
-                var deliveryMethods = data.data.deliveryMethods;
+                var deliveryDays = deliveryMethods.default == 1 ? data.data.deliveryDays : data.data.postalDays;
                 vm.defaultTime = deliveryDays.default.string;
+                vm.distributionTime = deliveryMethods.default == 1 ? deliveryDays.default.timestamp : data.data.postalDays.default.timestamp;
                 vm.distributionNum = deliveryMethods.default;
                 vm.defauitName = (deliveryMethods.default == 1 ? '育儿师上门取送':'快递邮寄');
                 vm.distributions = [deliveryDays, deliveryMethods, {'canOnsite': data.data.canOnsite, 'canPostal': data.data.canPostal} ];
                 vm.deliverTime = data.data.deliveryDays.default.timestamp;
+                vm.loadingShow = false;
             } else {
                 Toast.show(data.msg);
             }
@@ -43,6 +54,7 @@ var _default = (function(){
         mounted: function(){
             
             var vm = this;
+            vm.loadingShow = true;
             var toys = [];
             var price = 0;
             
@@ -61,7 +73,9 @@ var _default = (function(){
                     function (data) {
                         
                         if (data.code == 0) {
+                            
                             vm.addressData = data.data.address || {};
+                            vm.distributionTime = data.data.defaultDeliveryDay.timestamp;
                             vm.addressName = vm.addressData.addressConsignee || '';
                             vm.addressDetail = vm.addressData.addressTotal || '请您添加收货地址';
                             vm.addressSex = vm.addressData.consigneeSex ? (vm.addressData.consigneeSex == 0 ? '先生' : '女士') : '';
@@ -100,6 +114,7 @@ var _default = (function(){
         data: function(){
             
             return {
+                loadingShow : true,
                 addressData : [],
                 addressName : null,
                 addressDetail : null,
@@ -111,19 +126,65 @@ var _default = (function(){
                 coupons : [],
                 leases : [],
                 toyALLPrice : [],
+                toyNotMailingItems: [],
                 defaultTime : null,
                 defauitName : null,
                 distributions : [],
                 couponName : null,
                 passSeqId : null,
-                defaultLease : null,
-                defaultCoupon : null,
+                defaultLease : 20,
+                defaultCoupon : -1,
                 distributionNum : null,
                 distributionTime : null,
-                deliverTime : null 
+                deliverTime : null ,
+                canOnsiteState : null
             };
         },
         methods: {
+            
+            success: function(){
+                
+                var vm = this;
+                
+                preToys = [];
+                var price = 0;
+                
+                for( var j = 0; j < vm.toyNotMailingItems.length; j++){
+                    for (var i = 0; i < vm.toyItems.length; i++){
+                        if (vm.toyItems[i].toyId == vm.toyNotMailingItems[j]){
+                            vm.toyItems.splice( i, 1);
+                            break;
+                        }
+                    }
+                }
+                for (var l = 0; l < vm.toyItems.length; l++){
+                    price += vm.toyItems[l].specialMoney;
+                    preToys.push({
+                        'toyId': vm.toyItems[l].toyId, 
+                        'toyNum': 1, 
+                        'toyPrice': vm.toyItems[l].specialMoney
+                    });
+                }
+                vm.toyALLPrice = price/1000;
+
+                preSubmit(vm, {
+                    seqId : vm.passSeqId,
+                    orderType : 1,
+                    newToys : JSON.stringify(preToys),
+                    addressId : vm.addressData.addressId || 0,
+                    dm : -1
+                });
+                Toast.show('不可邮寄玩具已删除，请重新确认玩具列表!');
+            },
+            cancel: function(){
+
+                if(this.canOnsiteState) {
+                    this.$router.push( '/index/confirm/address' ); 
+                    
+                }else {
+                    this.$router.back( -1 );
+                }
+            },
             
             //  修改配送信息
             setDistribution : function(infoDeterData){
@@ -137,7 +198,8 @@ var _default = (function(){
                     addressId : this.addressData.addressId,
                     dm : this.distributionNum,
                     couponId : this.defaultCoupon,
-                    orderTime : this.distributionTime
+                    orderTime : this.distributionTime,
+                    rentPeriod : this.defaultLease
                 });
             },
             //  修改配送地址
@@ -155,14 +217,15 @@ var _default = (function(){
                     newToys : JSON.stringify(preToys),
                     addressId : this.addressData.addressId,
                     dm : this.distributionNum,
-                    couponId : this.defaultCoupon
+                    couponId : this.defaultCoupon,
+                    orderTime : this.distributionTime,
+                    rentPeriod : this.defaultLease
                 });
             },
             //  修改租期
             setDate : function(item){
-
-                this.defaultLease = item;
                 
+                this.defaultLease = item;
                 preSubmit(this, {
                         seqId : this.passSeqId,
                         orderType : 1,
@@ -170,6 +233,7 @@ var _default = (function(){
                         addressId : this.addressData.addressId,
                         dm : this.distributionNum,
                         couponId : this.defaultCoupon,
+                        orderTime : this.distributionTime,
                         rentPeriod : this.defaultLease
                 });
             },
@@ -185,6 +249,7 @@ var _default = (function(){
                     addressId : this.addressData.addressId,
                     dm : this.distributionNum,
                     couponId : this.defaultCoupon,
+                    orderTime : this.distributionTime,
                     rentPeriod : this.defaultLease
                 });
             },
@@ -246,6 +311,9 @@ var _default = (function(){
                 
                 return Utils.Date.toString(Utils.Date.fromTicks(value), 'yyyy/MM/dd');
             }
+        },
+        components: {
+            'tm-modal': Modal
         }
     }
 })();

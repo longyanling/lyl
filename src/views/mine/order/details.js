@@ -30,7 +30,27 @@ var _default = (function(){
             };
         },
         methods: {
-            payment : function(e, toys) {
+            payment : function(e, orderId) {
+                var payOrderId = orderId;
+                API.Index.payCheck(
+                    {
+                        orderId : payOrderId,
+                    },
+                    function(data) {
+                        if(data.code == 0){
+                            var fromPayment = document.getElementById('paymentJd');
+                            var seqId = document.getElementById('seqId');
+                            var orderId = document.getElementById('orderId');
+                            seqId.value = data.data.seqId;
+                            orderId.value = payOrderId;
+                            fromPayment.submit();
+                        }else {
+                            Toast.show(data.msg);
+                        }
+                    }
+                )
+            },
+            placeOrder : function(e, toys) {
 
                 Store.Index.orderToys = [];
                 Store.Index.orderToys = toys;

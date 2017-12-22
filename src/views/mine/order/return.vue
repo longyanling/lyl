@@ -7,20 +7,20 @@
     		</span>
     		<span class="cell">
     			<em>快递单号</em>
-    			<dfn><input class="text" placeholder="请输入寄出的快递单号" /></dfn>
+    			<dfn><input class="text" placeholder="请输入寄出的快递单号" v-model="oddNumber"/></dfn>
     		</span>
     	</div>
     	<div class="tips">
     		填写快递单号，有助于您的订单更快完成退押
     	</div>
         <div class="address">
-            <em><var>归还地址</var> 北京市   大兴区   黄村天河北路10号</em>
-            <em><var></var>百利威一分公司院内48号库西门</em>
+            <em><var>归还地址</var> 北京市  通州区   马驹桥镇   东田阳村临31号</em>
+            <em><var></var>朝聚鑫大院果麦书库对面</em>
             <em><var>收件人</var> 徐硕  139-1079-9325</em>
         </div>
         
         <div class="controls">
-        	<a class="button submit">确认提交</a>
+        	<a class="button submit" v-touch:tap="{ event: submit, params: []}">确认提交</a>
         </div>
     </div>
 </template>

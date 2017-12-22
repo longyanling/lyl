@@ -10,6 +10,7 @@ var _default = (function(){
         mounted: function(){
         	
             var vm = this;
+            this.orderNumber = this.$route.query.order_id;
             
             API.Mine.express(function(data){
             	
@@ -21,13 +22,13 @@ var _default = (function(){
             
             return {
                 hotItems: [],
-                listItems: []
+                listItems: [],
+                orderNumber: null
             };
         },
         methods: {
             select: function( e, express ){
-        
-                this.$router.push( '/mine/order/return?express=' + express);
+                this.$router.push( '/mine/order/return?express=' + express +  '&&order_id=' + this.orderNumber);
             }
         }
     }

@@ -133,10 +133,20 @@
             .text {
                 float: left;
                 display: block;
-                height: inherit;                
+                height: inherit;         
                 color: #575757;
                 font-size: 14px;
-                
+                .jdlogo {
+                    float: left;
+                    display: inline-block;
+                    width: 20px;
+                    height: 44px;
+                    background-image: url('https://ts.zlimg.com/v2/h5/jd/jd_little_white.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 17px 20px;
+                    margin-right: 5px;
+                }
                 small {
                     color: #b3b3b3;
                 }
@@ -148,6 +158,12 @@
                 margin-right: 5px;
                 
                 var {
+                    display:block;
+                    color: #575757;
+                    font-size: 14px;
+                    line-height: 44px;
+                }
+                .s {
                     display:block;
                     color: #575757;
                     font-size: 14px;
