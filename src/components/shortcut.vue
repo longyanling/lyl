@@ -58,8 +58,7 @@
 				toyImage = toyItem.getElementsByTagName('A')[0];
 		    	toyIcon.style.top = (toyImage.offsetTop + 10) + 'px';
 		    	toyIcon.style.left = (toyImage.offsetLeft + 10) + 'px';
-		    	console.log(toyIcon.style.top);
-		    	console.log(toyIcon.style.left);
+	
 			}
 	    	document.body.appendChild(toyIcon);
 		}

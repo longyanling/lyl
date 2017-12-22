@@ -3,6 +3,7 @@
 import API from "@/services/api";
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
+import Modal from '@/components/modal.vue';
 import Shortcut from '@/components/shortcut.vue'
 import Slide from '@/components/slide.vue';
 
@@ -69,6 +70,10 @@ var _default = (function(){
 			};
 		},
 		methods: {
+		    showToyExists: function (){
+                
+                this.$refs.modal.show('您购物车中已经有该玩具了，快去下单吧!', '看看别的', '去下单');
+            },
 		    addCart : function (e, toyId, isDetail) {
 		        
 		    	this.$refs.carts.addToy(toyId, isDetail);
@@ -76,6 +81,10 @@ var _default = (function(){
 		    goToToyDetail: function(e, toyId){
 		        
                 this.$router.push('/index/detail?toyid=' + toyId);
+            },
+            goToCart : function(){
+                
+                this.$router.push('/index/detail/cart');
             },
 		    goToConfirm : function ( ) {
 		    	
@@ -107,7 +116,8 @@ var _default = (function(){
 		},
 		components: {
 			'tm-slide': Slide,
-			'tm-shortcut': Shortcut
+			'tm-shortcut': Shortcut,
+			'tm-modal': Modal
 		}
 	}
 })();

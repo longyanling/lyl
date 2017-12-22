@@ -24,7 +24,7 @@ var _default = (function(){
             submit: function(){
                 
                 var vm = this;
-                console.log(vm.orderNumber)
+
                 if( vm.oddNumber == null ){ Toast.show('请填写您的快递单号!'); return };
                 
                 API.Mine.expressSave(

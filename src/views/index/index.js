@@ -135,7 +135,6 @@ var _default = (function(){
 
 		    	this.$refs.carts.addToy(toyId);
 		    },
-		    
 		    loadMore: function(e){
 		    	
 		    	!this.toyLoading && toyLoad(this);
@@ -171,7 +170,10 @@ var _default = (function(){
             	
                 this.$router.push('/index/screen');
             },
-
+            goActivity :function(){
+                
+               this.$router.push('/index/activity');
+            }
 		},
 		components: {
 			'tm-slide': Slide,

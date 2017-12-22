@@ -66,6 +66,7 @@
             overflow: hidden;
             width: 44px;
             height: 44px;
+            padding-right: 16px;
             
             &:before {
                 display: block;
@@ -91,7 +92,7 @@
         .category {
             display: block;
             height: 44px;
-            margin-right: 44px;
+            margin-right: 60px;
             
             .item {
                 float:left; 
@@ -161,8 +162,7 @@
                     display: block;
                     height: 33px;
                     color: #ff4956;
-                    font-size: 16px;
-                    font-weight: 700;
+                    font-size: 14px;
                     line-height: 33px;
                 }
             }
@@ -177,7 +177,7 @@
                     display: block;
                     overflow: hidden;
                     height: 36px;
-                    font-size: 14px;
+                    font-size: 12px;
                     line-height: 18px;
                     text-overflow:ellipsis;
                     padding-top: 10px;
@@ -224,7 +224,7 @@
                     display: block;
                     overflow: hidden;
                     height: 36px;
-                    font-size: 14px;
+                    font-size: 12px;
                     line-height: 18px;
                     text-overflow:ellipsis;
                     padding: 10px 0px 0px 10px;
@@ -297,7 +297,6 @@
                     
                     img {
                         width: 100%;
-                        height: 23.4vw;
                     }
                     em {
                         height: 28px;
@@ -327,7 +326,6 @@
                     
                     img {
                         width: 100%;
-                        height: 23.4vw;
                     }
                     em {
                         height: 28px;

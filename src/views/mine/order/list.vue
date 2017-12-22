@@ -47,7 +47,7 @@
         </div>
         <div class="loading" v-show="orderLoading"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <div class="bitmap" v-show="orderItems[statusIndex].length == 0"></div>
-        <form id="paymentJd" action="/api/order/pay/jd" method="post">
+        <form id="paymentJd" action="/order/pay/jd" method="post">
             <input type="hidden" id="seqId" name="seqId" />
             <input type="hidden" id="orderId" name="orderId" />
         </form>

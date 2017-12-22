@@ -13,16 +13,15 @@ $cdnImageUrl: 'https://ts.zlimg.com/v2/h5/jd/';
             display: block;
             width: 75px;
             height: 75px;
-            border-radius: 48px;
+            border-radius: 50%;
             background-color: #ffffff;
             background-image: url($cdnImageUrl + 'mine_personalcenter_info.png');
-            background-size: 64px;
+            background-size: 66px;
             background-repeat: no-repeat;
             background-position: center center; 
             
             .image {
                 width: 75px;
-                height: 75px;
                 border-radius: 50%;
             }
         }

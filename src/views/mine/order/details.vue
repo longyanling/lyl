@@ -74,13 +74,17 @@
     	<div class="toolbar">
     	    <a class="button" v-show="orderInfo.status == 0" v-touch:tap="{ event: orderCancel, params:[ orderInfo.orderId ]}">取消订单</a>
     	    <a class="button" v-show="orderInfo.status == 1 || orderInfo.status == 13" v-touch:tap="{ event: orderDelete, params:[ orderInfo.orderId ]}">删除订单</a>
-    		<a class="button submit" v-show="orderInfo.status == 0" v-touch:tap="{event : payment, params: [ orderInfo.toys ]}">立即付款</a>
-    		<a class="button circle" v-show="orderInfo.status == 1" v-touch:tap="{ event: payment, params: [ orderInfo.toys ]}">再次下单</a>
+    		<a class="button submit" v-show="orderInfo.status == 0" v-touch:tap="{event : payment, params: [ orderInfo.orderId ]}">立即付款</a>
+    		<a class="button circle" v-show="orderInfo.status == 1" v-touch:tap="{ event: placeOrder, params: [ orderInfo.toys ]}">再次下单</a>
     		<a class="button" v-show="orderInfo.status == 7 || orderInfo.status == 8 || orderInfo.status==9" v-touch:tap="{ event: goLogistics, params: [orderInfo.orderId]}">物流信息</a>
     		<a class="button" v-show="orderInfo.status == 7 || orderInfo.status == 11 || orderInfo.status==12 || orderInfo.status == 13 " v-touch:tap="{ event: goIndex, params: [ ]}">再租几件</a>
     		<a class="button" v-show="orderInfo.status == 2 || orderInfo.status == 3 || orderInfo.status == 4 || orderInfo.status == 5 || orderInfo.status == 6" v-touch:tap="{ event: goLogistics, params: [orderInfo.orderId]}">物流信息</a>
     	</div>
     	<div class="loading" v-show="loadingstate"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
+        <form id="paymentJd" action="/order/pay/jd" method="post">
+            <input type="hidden" id="seqId" name="seqId" />
+            <input type="hidden" id="orderId" name="orderId" />
+        </form>
     </div>
 </template>
 
