@@ -12,9 +12,13 @@ var _default = (function() {
     return {
         name: 'index-screen',
         mounted: function() {
-            var vm = this; 
-            vm.loadingState = true;
+            var vm = this;
             
+            vm.loadingState = true;
+            var dataBrandId = vm.$route.query.brandid && vm.$route.query.brandid == 35 ? "35" : "";
+            if(dataBrandId && dataBrandId==35){
+                vm.brandSelectedData.push(dataBrandId);
+            };
             API.Index.toyList(
                 {
                     name : "",
@@ -22,7 +26,7 @@ var _default = (function() {
                         "ageRange": "", 
                         "toySort" : 0,
                         "toyType": "",
-                        "brand": "",
+                        "brand": dataBrandId,
                         "ability": "",
                         "toySize": "",
                         "stockNum": 0,
@@ -156,7 +160,6 @@ var _default = (function() {
                 sizeSelectedData : [],
                 rentSelectedData : 2,
                 stockSelectedData : 0,
-//              screenSelected:  0,
                 stockState : false,
                 rentState : false,
                 screenJSON : null,

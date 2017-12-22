@@ -40,8 +40,8 @@ var _default = (function(){
         		for (var i = 0; i<vm.bannerItems.length;i++){
         			vm.bannerItems[i]['src'] = vm.bannerItems[i]['bannerImage'] ;
         		};
-        		vm.recommendItems = data.data[2].toyList;
-        		vm.hotItems = data.data[4].toyList;
+        		vm.recommendItems = data.data[2];
+        		vm.hotItems = data.data[4];
         		vm.loadingShow = false;
         	}else {
         		Toast.show(data.msg);
@@ -122,7 +122,8 @@ var _default = (function(){
 				toyItems: [],
 				toyLastId: -1,
 				toyIsEnd: false,
-				toyLoading: false
+				toyLoading: false,
+				brandid: ""
 			};
 		},
 		methods: {
@@ -139,12 +140,7 @@ var _default = (function(){
 		    	
 		    	!this.toyLoading && toyLoad(this);
 		    },
-		    
-		    goToLego :function(){
-		    	
-		    	this.$router.push('/screen/screen?brandid=35');
-		    },
-		    
+
             goToToyDetail: function(e, toyId){
             	
                 this.$router.push('/index/detail?toyid=' + toyId);
@@ -166,9 +162,9 @@ var _default = (function(){
             	
                 this.$router.push('/index/search');
             },
-            goScreen : function() {
+            goScreen : function(e , brandid) {
             	
-                this.$router.push('/index/screen');
+                this.$router.push('/index/screen?brandid=' + brandid);
             },
             goActivity :function(){
 

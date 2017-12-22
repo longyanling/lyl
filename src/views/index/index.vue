@@ -14,14 +14,14 @@
 		<div class="navigation" v-scroll:sticky="{ top:0 }">
             <a class="personal icon" v-touch:tap="{ event: goToMine, params: [] }"></a>
 			<span class="category">
-	            <a class="item" v-for="(item, index) in navigationItems" v-touch:tap="{ event: goScreen, params: [] }">
+	            <a class="item" v-for="(item, index) in navigationItems" v-touch:tap="{ event: goScreen, params: [ '' ] }">
 	            	<em>{{item.text}}</em>
 	            </a>
 			</span>
         </div>
         
         <div class="toylego summary">
-            <div class='caption' v-touch:tap="{ event: aaaa, params: [] }">
+            <div class="caption" v-touch:tap="{ event: goScreen, params: [ 35 ] }">
             	<em>乐高专区</em>
             	<dfn>尽享灵感和想象的乐趣</dfn>
             </div>
@@ -49,11 +49,11 @@
        
         <div class="recommend summary">
             <div class="caption">
-            	<em>猜宝宝喜欢</em>
-            	<dfn>匹配的玩具是宝宝的成长礼物</dfn>
+            	<em>{{recommendItems.title}}</em>
+            	<dfn>{{recommendItems.desc}}</dfn>
             </div>
             <div class="datalist">
-	            <span class="item" v-for="item in recommendItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+	            <span class="item" v-for="item in recommendItems.toyList" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
 	                <img :src="item.image"/>
 	                <em> {{item.toyName}} </em>
 	                <dfn> {{item.rentMoney / 1000}} <small>元/天</small></dfn>
@@ -63,11 +63,11 @@
         
         <div class="hot summary">
             <div class="caption">
-            	<em>本周热门</em>
-            	<dfn>看看小伙伴都在玩啥</dfn>
+            	<em>{{hotItems.title}}</em>
+            	<dfn>{{hotItems.desc}}</dfn>
             </div>
             <div class="datalist">
-	            <span class="item" v-for="item in hotItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+	            <span class="item" v-for="item in hotItems.toyList" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
 					<img :src="item.image"/>
 	                <em> {{item.toyName}} </em>
 	                <dfn> {{item.rentMoney / 1000}} <small>元/天</small></dfn>

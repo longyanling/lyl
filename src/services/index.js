@@ -5,6 +5,7 @@ import Store from '@/directives/store';
 
 //var prefix = '/api';
 var prefix = '';
+
 var index = {
     
     homeList : function(data, callback) {
