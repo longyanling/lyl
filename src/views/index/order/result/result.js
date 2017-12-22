@@ -12,11 +12,12 @@ var _default = (function(){
             var vm = this;
             vm.orderNumber = vm.$route.query.orderid;
             vm.orderState = vm.$route.query.state;
-    
-            if (vm.orderState == '0' || vm.orderState == 0){
+            if (vm.orderState && vm.orderState == 0){
+                vm.showImg = true;
                 vm.showTitle = '租借成功';
                 vm.showContent = '按时寄回玩具，有助于您的信用提升哦~';
             } else {
+                vm.showImg = false;
                 vm.showTitle = '租借失败';
                 vm.showContent = '该订单支付失败请您尽快付款哦~';
             }
@@ -26,6 +27,7 @@ var _default = (function(){
         data: function(){
             
             return {
+                showImg: null,
                 orderNumber: null,
                 orderState: null,
                 showTitle : null,
