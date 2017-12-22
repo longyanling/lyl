@@ -45,6 +45,7 @@
                 </div>
             </div>
         </div>
+        <a href="tel://4006351987" class="icon"></a>
         <div class="loading" v-show="orderLoading"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
         <div class="bitmap" v-show="orderItems[statusIndex].length == 0"></div>
         <form id="paymentJd" action="/order/pay/jd" method="post">
