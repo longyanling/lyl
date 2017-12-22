@@ -49,19 +49,23 @@ var _default = (function(){
                 		text: '常见问题',
                 		url: '/mine/faq',
                 		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_problem.png'
-                	},
-                	{
-                		text: '关于我们',
-                		url: '/mine/about',
-                		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_omine.png'
                 	}
+//              	{
+//              		text: '关于我们',
+//              		url: '/mine/about',
+//              		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_omine.png'
+//              	}
                 ]
             };
 		},
 		methods: {
 			go: function(e, url){
 				
-				this.$router.push(url);
+				if(url == '/mine/faq' ){
+				    window.location = 'https://www.toysuperman.com/faq.html';
+				}else {
+				    this.$router.push(url);
+				}
 			},
 			login: function(){
 				
