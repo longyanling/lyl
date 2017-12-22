@@ -10,7 +10,7 @@ var _default = (function(){
         mounted: function(){
             
             var vm = this;
-            vm.orderNumber = vm.$route.query.orderId;
+            vm.orderNumber = vm.$route.query.orderid;
             vm.orderState = vm.$route.query.state;
     
             if (vm.orderState == '0' || vm.orderState == 0){
