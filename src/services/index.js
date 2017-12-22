@@ -2,7 +2,7 @@
 
 import Utils from '@/directives/utils';
 import Store from '@/directives/store';
-//  var prefix = '/api';
+//var prefix = '/api';
 var prefix = '';
 var index = {
     

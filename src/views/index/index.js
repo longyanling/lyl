@@ -37,6 +37,7 @@ var _default = (function(){
         	
         	if(data.code == 0){
         		vm.bannerItems = data.data[0].banner;
+        		console.log(vm.bannerItems)
         		for (var i = 0; i<vm.bannerItems.length;i++){
         			vm.bannerItems[i]['src'] = vm.bannerItems[i]['bannerImage'] ;
         		};
@@ -135,7 +136,6 @@ var _default = (function(){
 
 		    	this.$refs.carts.addToy(toyId);
 		    },
-		    
 		    loadMore: function(e){
 		    	
 		    	!this.toyLoading && toyLoad(this);
