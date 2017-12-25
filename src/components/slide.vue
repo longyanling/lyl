@@ -2,7 +2,7 @@
 	<div id="componentSlide" class="tm-component-slide">
 		<table class="images" v-touch:drag="{ start: slideDragStart, move: slideDragMove, end: slideDragEnd }" :style="'width:'+(slideItems.length*100)+'%;margin-left:' + slideMarginLeft">
 			<tr>
-				<td v-for="(item, index) in slideItems" v-touch:tap="{event: goBannerUrl, params: [item.shareUrl]}"><img :src="item.src" /></td>
+				<td v-for="(item, index) in slideItems" v-touch:tap="{event: goBannerUrl, params: [item.bannerContent]}"><img :src="item.src" /></td>
 			</tr>
 		</table>
 		<span class="dots">
