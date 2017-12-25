@@ -2,7 +2,7 @@
 	<div id="result" class="tm-result">
 	    <div class="header">
             <div class="title">
-                <var :class="orderState == 0 ? 'complete' : 'complete fail'"></var>
+                <var :class="showImg ? 'complete' : 'complete fail'"></var>
                 <em>{{showTitle}}</em>
             </div>
             <span class="hint">{{showContent}}</span>
