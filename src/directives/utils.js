@@ -153,13 +153,34 @@ var utils = (function(){
 	        }, 1);
 		}
 	};
+    // cookie
+	var cookie = {
+	    //增加一個cookie
+	    setCookie: function(name,value,day){
+            var expdate=new Date();  
+            var outms=day*24*60*60*1000; 
+            expdate.setTime(expdate.getTime()+outms); 
+            document.cookie = name+"="+encodeURIComponent(value)+";path=/;domain=" + ";expires="+expdate.toGMTString();  
+        },
+        
+        delCookie: function (name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        },
+        
+        getCookie:function(name) {
+          var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+          if(arr != null) return unescape(arr[2]); return null;
+        }
+	};
+	
 	
 	return {
 		
 		Client: client,
         Date: date,
 		Array: _array,
-		Axios: axios
+		Axios: axios,
+		Cookie: cookie
 	};
 })();
 

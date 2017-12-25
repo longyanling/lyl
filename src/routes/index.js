@@ -48,7 +48,9 @@ export default {
                 { path: '/index/confirm/lease', component: ConfirmLease }
             ]
         },
-        { path: '/index/result' , name: 'Result', component: ConfirmResult }
+        { path: '/index/result' , name: 'Result', component: ConfirmResult },
+        { path: '/t/home', name: 'IndexHome', component: Index },
+        { path: '/result/:orderid', name: 'ResultHome', component: ConfirmResult }
     ]
 }
 

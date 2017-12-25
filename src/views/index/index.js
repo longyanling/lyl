@@ -1,5 +1,6 @@
 'use strict';
 
+import Utils from '@/directives/utils';
 import Toast from '@/directives/toast';
 import Store from '@/directives/store';
 import Slide from '@/components/slide.vue'
@@ -100,12 +101,19 @@ var _default = (function(){
 		name: 'home-index',
 		mounted: function(){
 
+            var visited = Utils.Cookie.getCookie("visited"); 
+            
             this.loadingShow = true;
             this.locationInfo = Store.Index.cityName ? Store.Index.cityName : '北京';
-
-			homeLoad (this);
-			legoLoad(this);
-			toyLoad (this);
+        
+            homeLoad (this);
+            legoLoad(this);
+            toyLoad (this);
+            
+            if (visited != "true"){                
+                this.$router.push('/index/activity');
+                Utils.Cookie.setCookie("visited", "true", 30);
+            }
 		},
 		data: function(){
             
