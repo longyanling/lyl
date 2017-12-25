@@ -41,13 +41,13 @@ var _default = (function(){
 	return {
 		name: 'Detail', 
 		mounted: function(){
+			
 		    this.loadingState = true;
 			getDetail(this, this.$route.query.toyid);
 		},
 		updated: function(){
 			
-			if (this.$route.query.toyid != this.toyId){
-				
+			if (this.$route.query.toyid && this.$route.query.toyid != this.toyId){
 				getDetail(this, this.$route.query.toyid);
 			}
 		},
