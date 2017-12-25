@@ -16,6 +16,7 @@
                 	<a class="button edit" v-touch:tap=" { event: itemEdit, params: [item, index] } ">编辑</a>
                 </span>
             </div>
+            <div class="bitmap" v-show="addressItems.length == 0"></div>
         </div>
         <div class="controls">
         	<a class="button submit" v-touch:tap="{event: itemEdit , params:[ ]}">添加新地址</a>
