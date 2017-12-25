@@ -79,9 +79,8 @@
 				},
 				goBannerUrl: function(e, url){
 				    
-				    if(url){
-				        window.location = url;
-				        return;
+				    if(url){ 
+				    	window.open(url,"",""); 
 				    }
 				    
 				}
