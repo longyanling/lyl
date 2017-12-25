@@ -10,8 +10,16 @@ var _default = (function(){
         mounted: function(){
             
             var vm = this;
-            vm.orderNumber = vm.$route.query.orderid;
-            vm.orderState = vm.$route.query.state;
+            var params = (vm.$route.params.orderid || "").split("_");
+            
+            if (vm.$route.query.orderid){
+            	vm.orderNumber = vm.$route.query.orderid;
+            	vm.orderState = vm.$route.query.state;
+            } else {
+            	vm.orderNumber = (params && params.length > 0 ? params[0] : "");
+            	vm.orderState = (params && params.length > 1 ? params[1] : "");
+            }
+            
             if (vm.orderState && vm.orderState == 0){
                 vm.showImg = true;
                 vm.showTitle = '租借成功';
