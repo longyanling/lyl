@@ -23,8 +23,8 @@ var _default = (function(){
                     vm.startClock(orders[i]);
                 }
                 vm.orderItems[0].push(orders[i]);
-                vm.orderLoading = false;
-            }
+            };
+            vm.orderLoading = false;
         })
     }
 	

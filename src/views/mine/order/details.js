@@ -51,7 +51,7 @@ var _default = (function(){
                 )
             },
             placeOrder : function(e, toys) {
-
+                
                 Store.Index.orderToys = [];
                 Store.Index.orderToys = toys;
                 this.$router.push('/index/confirm');
@@ -69,6 +69,7 @@ var _default = (function(){
                             }, function(data){
                                 
                                 vm.orderInfo = data.data;
+                                vm.$router.back(-1);
                             });
                         }else {
                             Toast.show(data.msg);
@@ -89,6 +90,7 @@ var _default = (function(){
                             }, function(data){
                                 
                                 vm.orderInfo = data.data;
+                                vm.$router.back(-1);
                             });
                         }else {
                             Toast.show(data.msg);
