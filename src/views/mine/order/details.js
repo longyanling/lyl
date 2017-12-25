@@ -1,6 +1,7 @@
 'use strict';
 
 import API from "@/services/api";
+import Store from '@/directives/store';
 
 var _default = (function(){
 
@@ -51,7 +52,7 @@ var _default = (function(){
                 )
             },
             placeOrder : function(e, toys) {
-                
+
                 Store.Index.orderToys = [];
                 Store.Index.orderToys = toys;
                 this.$router.push('/index/confirm');
@@ -59,6 +60,7 @@ var _default = (function(){
             orderCancel : function(e, orderId){
                 var vm = this;
                 vm.orderInfo = [];
+                vm.$router.back(-1);
                 API.Mine.cancel(
                     {
                         orderId : orderId
@@ -69,7 +71,6 @@ var _default = (function(){
                             }, function(data){
                                 
                                 vm.orderInfo = data.data;
-                                vm.$router.back(-1);
                             });
                         }else {
                             Toast.show(data.msg);
@@ -80,6 +81,7 @@ var _default = (function(){
             orderDelete: function(e, orderId){
                 var vm = this;
                 vm.orderInfo = [];
+                vm.$router.back(-1);
                 API.Mine.delete(
                     {
                         orderId : orderId
@@ -90,7 +92,6 @@ var _default = (function(){
                             }, function(data){
                                 
                                 vm.orderInfo = data.data;
-                                vm.$router.back(-1);
                             });
                         }else {
                             Toast.show(data.msg);
