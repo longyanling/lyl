@@ -321,11 +321,18 @@
                 }
             }
             .datalist {
+                display: block;
+                overflow: hidden;
+                
                 .item {
+                    float: left;
+                    display: block;
                     width: calc(50vw - 1px);
                     
                     img {
                         width: 100%;
+                        min-width: 100%;
+                        max-width: 100%;
                     }
                     em {
                         height: 28px;
@@ -340,9 +347,6 @@
                         text-align: left;
                         margin: 0px 10px;
                     }
-                }    
-                &:last-child {
-                    border-bottom: 0px;
                 }
             }
         }

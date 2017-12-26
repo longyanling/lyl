@@ -87,14 +87,18 @@ var _default = (function(){
                 this.$router.push('/index/detail/cart');
             },
 		    goToConfirm : function ( ) {
-		    	
-                var toys = new Array();
-                
-                toys.push(this.detailItem);
-                Store.Index.orderToys = [];
-		        Store.Index.orderToys = toys;
-		        
-		        this.$router.push('/index/confirm');
+
+                if(Store.Mine.logined){
+                    var toys = new Array();
+                    
+                    toys.push(this.detailItem);
+                    Store.Index.orderToys = [];
+                    Store.Index.orderToys = toys;
+                    
+                    this.$router.push('/index/confirm');
+                }else {
+                    this.$router.push('/mine/login');
+                }
 		    },
 			tabsScroll: function( e, docked ){
 				

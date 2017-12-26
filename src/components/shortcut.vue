@@ -90,9 +90,15 @@
     
     var getToyRefresh = function(vm){
     	
-        API.Index.cartList({}, function(data){
-        	
-        	vm.cartToyCount = (data.cart || []).length;
+        API.Index.profile({}, function(data){
+        	if(data.code == 0){
+        	    
+        	    vm.cartToyCount = (data.data.carts.cart || []).length;
+        	    Store.Mine.logined = true;
+        	}else if(data.code == 106){
+        	    
+        	    Store.Mine.logined = false;
+        	}
         });	
     };
     
@@ -151,8 +157,11 @@
             	},
             	
                 goCart: function( e ){
-                   
-                    this.$router.push(this.cartUrl || '/index/cart');
+                    if(Store.Mine.logined){
+                        this.$router.push(this.cartUrl || '/index/cart');
+                    }else {
+                        this.$router.push('/mine/login');
+                    }
                 }
             };
         })()

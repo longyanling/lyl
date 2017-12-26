@@ -3,8 +3,8 @@
 import Utils from '@/directives/utils';
 import Store from '@/directives/store';
 
-//var prefix = '/api';
-var prefix = '';
+var prefix = '/api';
+//var prefix = '';
 
 var index = {
     
@@ -31,6 +31,10 @@ var index = {
     screen: function(data, callback){
         
         Utils.Axios.deferGet( prefix +'/search/filter/list/v3', data, callback);
+    },
+    profile: function(data, callback){
+        
+        Utils.Axios.deferPost(prefix + '/user/profile/jdv2', data, callback);
     },
     cartList: function(data, callback){
         

@@ -1,8 +1,8 @@
 <template>
 	<div id="index" class="tm-index">
-		
+
 		<tm-slide :slideItems="bannerItems"></tm-slide>
-		
+
 		<div class="topbar">
 			<a class="location" v-touch:tap="{ event: goToLocation, params: [] }">
 				<var></var>
@@ -10,7 +10,7 @@
 			</a>
 			<a class="search" v-touch:tap="{ event: goToSearch, params: [] }"></a>
 		</div>
-		
+
 		<div class="navigation" v-scroll:sticky="{ top:0 }">
             <a class="personal icon" v-touch:tap="{ event: goToMine, params: [] }"></a>
 			<span class="category">
@@ -19,7 +19,7 @@
 	            </a>
 			</span>
         </div>
-        
+
         <div class="toylego summary">
             <div class="caption" v-touch:tap="{ event: goScreen, params: [ 35 ] }">
             	<em>乐高专区</em>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-       
+
         <div class="recommend summary">
             <div class="caption">
             	<em>{{recommendItems.title}}</em>
@@ -60,7 +60,7 @@
 	            </span>
             </div>
         </div>
-        
+
         <div class="hot summary">
             <div class="caption">
             	<em>{{hotItems.title}}</em>

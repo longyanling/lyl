@@ -52,7 +52,8 @@ var data = {
         profile: null,
         address: null,
         addressCurrent: null,
-        coupons: null
+        coupons: null,
+        logined: null
     }
 };
 
