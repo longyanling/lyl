@@ -261,45 +261,49 @@ var _default = (function(){
                 
                 var self = this;
 
-                API.Index.submit(
-                    {
-                        seqId : self.passSeqId,
-                        orderType : 1,
-                        dm : self.distributionNum,
-                        pm : 2,
-                        rentPeriod : self.defaultLease,
-                        rentPeriodType : 3,
-                        deliverTime : self.deliverTime,
-                        couponId : self.defaultCoupon,
-                        porderId : -1,
-                        addressId : self.addressData.addressId,
-                        newToys : JSON.stringify(preToys) 
-                    },
-                    function(data) {
-                        if(data.code == 0 && data.data.payMethod == 2){
-                            API.Index.payCheck(
-                                {
-                                    orderId : data.data.orderId,
-                                },
-                                function(data1) {
-                                    if(data.code == 0){
-                                        var from = document.getElementById('jdPayment');
-                                        var seqId = document.getElementById('seqId');
-                                        var orderId = document.getElementById('orderId');
-                                        seqId.value = data1.data.seqId;
-                                        orderId.value = data.data.orderId;
-                                        from.submit();
-                                    }else {
-                                        Toast.show(data.msg);
+                if(self.addressData.addressId == undefined){
+                    Toast.show('请添加您的收货地址！');
+                }else {
+                    API.Index.submit(
+                        {
+                            seqId : self.passSeqId,
+                            orderType : 1,
+                            dm : self.distributionNum,
+                            pm : 2,
+                            rentPeriod : self.defaultLease,
+                            rentPeriodType : 3,
+                            deliverTime : self.deliverTime,
+                            couponId : self.defaultCoupon,
+                            porderId : -1,
+                            addressId : self.addressData.addressId,
+                            newToys : JSON.stringify(preToys) 
+                        },
+                        function(data) {
+                            if(data.code == 0 && data.data.payMethod == 2){
+                                API.Index.payCheck(
+                                    {
+                                        orderId : data.data.orderId,
+                                    },
+                                    function(data1) {
+                                        if(data.code == 0){
+                                            var from = document.getElementById('jdPayment');
+                                            var seqId = document.getElementById('seqId');
+                                            var orderId = document.getElementById('orderId');
+                                            seqId.value = data1.data.seqId;
+                                            orderId.value = data.data.orderId;
+                                            from.submit();
+                                        }else {
+                                            Toast.show(data.msg);
+                                        }
                                     }
-                                }
-                            )
+                                )
+                            }
+                            if(data.code == 129){
+                                Toast.show(data.msg);
+                            }
                         }
-                        if(data.code == 129){
-                            Toast.show(data.msg);
-                        }
-                    }
-                )
+                    )
+                }
             }
         },
         filters: {

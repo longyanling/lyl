@@ -1,6 +1,16 @@
 .tm-mine-address-list {
     display:block;
     margin-bottom: 70px;
+    .addresslist {
+         .bitmap {
+            display: block;
+            height: 510px;
+            background-image: url('https://ts.zlimg.com/v2/h5/jd/bitmap_no_address.png');
+            background-size: 240px 200px;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
     .datalist{
          
     }
