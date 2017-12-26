@@ -33,7 +33,21 @@ var index = {
     },
     profile: function(data, callback){
         
-        Utils.Axios.deferPost(prefix + '/user/profile/jdv2', data, callback);
+        if (Store.Index.cartToys){
+            callback(Store.Index.cartToys);
+        } else {            
+            Utils.Axios.deferPost( prefix +'/user/profile/jdv2', data, function(data){
+                
+                if (data.code == 0 ){
+                    Store.Index.cartToys = data.data.carts || [];
+                    callback(Store.Index.cartToys);
+                    Store.Mine.logined = true;
+                } else if(data.code == 106){
+                
+                    Store.Mine.logined = false;
+                }
+            });
+        }
     },
     cartList: function(data, callback){
         

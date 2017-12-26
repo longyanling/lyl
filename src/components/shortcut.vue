@@ -91,14 +91,8 @@
     var getToyRefresh = function(vm){
     	
         API.Index.profile({}, function(data){
-        	if(data.code == 0){
-        	    
-        	    vm.cartToyCount = (data.data.carts.cart || []).length;
-        	    Store.Mine.logined = true;
-        	}else if(data.code == 106){
-        	    
-        	    Store.Mine.logined = false;
-        	}
+
+        	vm.cartToyCount = (data.cart || []).length;
         });	
     };
     
