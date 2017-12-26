@@ -1,6 +1,3 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-
 import Index from "@/routes/index.js";
 import Mine from "@/routes/mine.js";
 

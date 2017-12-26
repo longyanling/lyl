@@ -3,8 +3,7 @@
 import Store from '@/directives/store';
 import Utils from '@/directives/utils';
 
-var prefix = '/api';
-//var prefix = '';
+var prefix = '';
 
 var mine = {
 	

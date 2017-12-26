@@ -1,4 +1,3 @@
-import Vue from "vue";
 import Router from '@/routes/routes';
 import Touch from "@/directives/touch";
 import Scroll from '@/directives/scroll';

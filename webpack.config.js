@@ -5,6 +5,10 @@ module.exports = {
     entry:{
         app:[ './src/main.js' ]
     },
+    externals: {
+        Vue: 'Vue',
+        VueRouter: 'VueRouter'
+    },
     output:{
         path: __dirname,
         publicPath: '/',

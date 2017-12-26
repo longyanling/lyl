@@ -7,50 +7,88 @@ var WebpackDevServer = require('webpack-dev-server');
 
 config.entry.app.unshift("webpack-dev-server/client?http://localhost:8077/");
 
+var apis = {
+	'/home/list/v3' : '/home/list/v3',
+	'/home/cities': '/home/cities',
+	'/search/filter/list/v3': '/search/filter/list/v3',
+	'/cart/list': '/cart/list',
+	'/cart/checkAndAdd': '/cart/checkAndAdd',
+	'/cart/clear': '/cart/clear',
+	'/order/buy/check': '/order/buy/check',
+	'/order/presubmit': '/order/presubmit',
+	'/order/submit': '/order/submit',
+	'/order/pay/jd': '/order/pay/jd',
+	'/order/pay/check': '/order/pay/check',
+	'/order/list/v2': '/order/list/v2',
+	'/order/cancel': '/order/cancel',
+	'/order/delete': '/order/delete',
+	'/order/detail': '/order/detail',
+	'/order/express/companies': '/order/express/companies',
+	'/order/express/list': '/order/express/list',
+	'/order/express/save': '/order/express/save',
+	'/address/list': '/address/list',
+	'/address/gd/insert': '/address/gd/insert',
+	'/address/gd/update': '/address/gd/update',
+	'/address/delete': '/address/delete',
+	'/user/login': '/user/login',
+	'/user/profile/jdv2': '/user/profile/jdv2',
+	'/user/profile/update': '/user/profile/update',
+	'/user/update/cityCode': '/user/update/cityCode',
+	'/coupon/list': '/coupon/list',
+	'/on/start': '/on/start'
+}
 var apiProxy = {
-	'/api/*': {
+	'/home/*': {
 		target: 'http://dev.toysuperman.com/',
 		secure: false,
-        changeOrigin: true,
-        pathRewrite: {
-        	'/api/home/list/v3' : '/home/list/v3',
-			'/api/home/cities': '/home/cities',
-			'/api/toy/list': '/toy/list',
-			'/api/toy/info': '/toy/info',
-			'/api/search/filter/list/v3': '/search/filter/list/v3',
-			'/api/cart/list': '/cart/list',
-			'/api/cart/checkAndAdd': '/cart/checkAndAdd',
-			'/api/cart/clear': '/cart/clear',
-			'/api/order/buy/check': '/order/buy/check',
-			'/api/order/presubmit': '/order/presubmit',
-			'/api/order/submit': '/order/submit',
-			'/api/order/pay/jd': '/order/pay/jd',
-			'/api/order/pay/check': '/order/pay/check',
-			'/api/order/list/v2': '/order/list/v2',
-			'/api/order/cancel': '/order/cancel',
-			'/api/order/delete': '/order/delete',
-			'/api/order/detail': '/order/detail',
-			'/api/order/express/companies': '/order/express/companies',
-			'/api/order/express/list': '/order/express/list',
-			'/api/order/express/save': '/order/express/save',
-			'/api/coupon/list': '/coupon/list',
-			'/api/address/list': '/address/list',
-			'/api/address/gd/insert': '/address/gd/insert',
-			'/api/address/gd/update': '/address/gd/update',
-			'/api/address/delete': '/address/delete',
-			'/api/on/start': '/on/start',
-			'/api/user/login': '/user/login',
-			'/api/user/profile/jdv2': '/user/profile/jdv2',
-			'/api/user/profile/update': '/user/profile/update',
-			'/api/user/update/cityCode': '/user/update/cityCode'
-        }
+        changeOrigin: true
+	},
+	'/toy/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/search/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/cart/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/order/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/coupon/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/address/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/user/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/on/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
 	}
 };
 var compiler = webpack(config);
 var server = new WebpackDevServer(compiler, {
     publicPath: config.output.publicPath,
-    hot: true,
-    stats: { colors: true }, 
+    stats: { colors: true },
+    hot: true, 
     proxy: apiProxy
 });
 server.listen(8077);
