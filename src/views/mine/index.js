@@ -49,12 +49,17 @@ var _default = (function(){
                 		text: '常见问题',
                 		url: '/mine/faq',
                 		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_problem.png'
-                	}
+                	},
 //              	{
 //              		text: '关于我们',
 //              		url: '/mine/about',
 //              		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_omine.png'
 //              	}
+//                  {
+//                      text: '设置',
+//                      url: '/mine/setup',
+//                      icon: 'https://ts.zlimg.com/v2/h5/jd/mine_setting.png'
+//                  }
                 ]
             };
 		},

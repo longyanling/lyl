@@ -10,6 +10,7 @@ import Coupon from "@/views/mine/coupon/list.vue";
 import Address from "@/views/mine/address/list.vue";
 import AddressEdit from "@/views/mine/address/edit.vue";
 import AddressLocation from '@/views/mine/address/location.vue';
+import Setup from "@/views/mine/setup/setup.vue";
 import Login from "@/views/mine/login.vue";
 
 export default {
@@ -29,6 +30,7 @@ export default {
         { path: '/mine/address', name: 'Address', component: Address },
 		{ path: '/mine/address/edit', name: 'AddressEdit', component: AddressEdit },
 		{ path: '/mine/address/location', name: 'AddressLocation', component: AddressLocation },
+		{ path: '/mine/setup', name: 'Setup', component: Setup },
 		{ path: '/mine/login', name: 'Login', component: Login }
     ]
 }
