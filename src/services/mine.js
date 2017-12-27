@@ -17,6 +17,11 @@ var mine = {
 		Utils.Axios.deferPost(prefix + '/user/profile/jdv2', { }, callback);
 	},
 	
+	unbound: function(data, callback){
+        
+        Utils.Axios.deferPost(prefix + '/jdapi/unbind', data, callback);
+    },
+	
 	update: function(data, callback){
 		
 		Utils.Axios.deferPost(prefix + '/user/profile/update', data, callback);

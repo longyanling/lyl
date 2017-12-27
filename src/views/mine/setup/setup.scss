@@ -1,0 +1,51 @@
+.tm-mine-setup {
+    .iconjd {
+        width: 60%;
+        padding: 48px 20% 25px 20%;
+        background-color: #ffffff;
+        overflow: hidden;
+        .lion {
+            float: left;
+            width: 36.8%;
+            height: 36.8%;
+        }
+        .conversion {
+            width: 14%;
+            height: 14%;
+            padding: 12% 6% 0px 6%;
+        }
+        .jdlogo {
+            float: right;
+            width: 36.8%;
+            height: 36.8%;
+        }
+    }
+    .content {
+        margin-top: 10px;
+        background-color: #ffffff;
+        .title {
+            display: block;
+            color: #333333;
+            font-size: 15px;
+            padding: 25px 23px;
+        }
+        .detail {
+            display: block;
+            color: #575757;
+            font-size: 14px;
+            line-height: 24px;
+            padding: 0px 25px;
+        }
+        .relieve {
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            color: #d1b374;
+            background-color: #52493f;
+            margin: 96px 15px 0px 15px;
+        }
+    }
+    
+}

@@ -55,11 +55,11 @@ var _default = (function(){
 //              		url: '/mine/about',
 //              		icon: 'https://ts.zlimg.com/v2/h5/jd/mine_omine.png'
 //              	}
-//                  {
-//                      text: '设置',
-//                      url: '/mine/setup',
-//                      icon: 'https://ts.zlimg.com/v2/h5/jd/mine_setting.png'
-//                  }
+                    {
+                        text: '设置',
+                        url: '/mine/setup',
+                        icon: 'https://ts.zlimg.com/v2/h5/jd/mine_setting.png'
+                    }
                 ]
             };
 		},

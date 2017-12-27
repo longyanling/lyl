@@ -113,7 +113,8 @@ var _default = (function(){
             if (visited != "true"){                
                 this.$router.push('/index/activity');
                 Utils.Cookie.setCookie("visited", "true", 30);
-            }
+            };
+            
 		},
 		data: function(){
             

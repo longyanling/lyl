@@ -35,7 +35,8 @@ var apis = {
 	'/user/profile/update': '/user/profile/update',
 	'/user/update/cityCode': '/user/update/cityCode',
 	'/coupon/list': '/coupon/list',
-	'/on/start': '/on/start'
+	'/on/start': '/on/start',
+	'/jdapi/unbind': '/jdapi/unbind'
 }
 var apiProxy = {
 	'/home/*': {
@@ -82,7 +83,12 @@ var apiProxy = {
 		target: 'http://dev.toysuperman.com/',
 		secure: false,
         changeOrigin: true
-	}
+	},
+	'/jdapi/*': {
+        target: 'http://dev.toysuperman.com/',
+        secure: false,
+        changeOrigin: true
+    }
 };
 var compiler = webpack(config);
 var server = new WebpackDevServer(compiler, {
