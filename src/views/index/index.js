@@ -144,6 +144,7 @@ var _default = (function(){
 		    addCart : function(e, toyId) {
 
 		    	this.$refs.carts.addToy(toyId);
+		    	_hmt.push(["_trackEvent", "link", "click", "加入购物车"]);
 		    },
 		    loadMore: function(e){
 		    	
@@ -158,6 +159,7 @@ var _default = (function(){
             goToMine : function(){
             	
                 this.$router.push('/mine');
+                _hmt.push(["_trackEvent", "link", "click", "进入个人中心"]);
             },
             goToCart : function(){
             	
@@ -170,10 +172,12 @@ var _default = (function(){
             goToSearch : function() {
             	
                 this.$router.push('/index/search');
+                _hmt.push(["_trackEvent", "link", "click", "进入搜索页"]);
             },
             goScreen : function(e , brandid) {
             	
                 this.$router.push('/index/screen?brandid=' + brandid);
+                _hmt.push(["_trackEvent", "link", "click", "进入筛选页"]);
             },
             goActivity :function(){
 
