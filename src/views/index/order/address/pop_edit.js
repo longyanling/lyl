@@ -53,10 +53,12 @@ var _default = (function(){
         	sexCheck: function(e, sex){
         		
         		this.consigneeSex = sex;
+        		_hmt.push(["_trackEvent", "link", "click", "下单-修改地址-选择性别"]);
         	},
         	defaultCheck: function(e){
         		
         		this.isDefault = this.isDefault ? 0 : 1;
+        		_hmt.push(["_trackEvent", "link", "click", "下单-修改地址-选择默认地址"]);
         	},
         	getLocation: function(){
         		
@@ -65,6 +67,7 @@ var _default = (function(){
 			 	Store.Mine.addressCurrent.consigneeSex = this.consigneeSex;
 				Store.Mine.addressCurrent.consigneePhone = this.consigneePhone;
         		this.$router.push('/index/confirm/address/location?address=' + this.addressPrefix);
+        		_hmt.push(["_trackEvent", "link", "click", "下单-修改地址-进入定位"]);
         	},
             submit: function( e, url ){
             	
@@ -130,6 +133,7 @@ var _default = (function(){
                 }else {
                     Toast.show('请完善您的个人信息！');
                 };
+                _hmt.push(["_trackEvent", "link", "click", "下单-修改地址-保存地址"]);
             }
         }
     }

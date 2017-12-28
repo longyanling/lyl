@@ -37,6 +37,7 @@ var _default = (function(){
                 if(!item.available) return;
                 this.$emit('resetCoupon', couponId);
                 this.$router.back( -1 );
+                _hmt.push(["_trackEvent", "link", "click", "下单-选择优惠券"]);
             }
         },
         filters: {

@@ -29,6 +29,7 @@ var _default = (function(){
         	go: function(e, url){
         		
         		this.$router.push(url);
+        		_hmt.push(["_trackEvent", "link", "click", "我的-优惠券-返回首页"]);
         	}
         },
         filters: {

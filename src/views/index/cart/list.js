@@ -94,7 +94,8 @@ var _default = (function() {
                     
                 if (e.target.id == 'index-cart') {
                     this.$router.back( -1 );
-                }
+                };
+                _hmt.push(["_trackEvent", "link", "click", "购物车点击空白返回上一页"]);
             },
             selectAll: function() {
                 
@@ -104,6 +105,7 @@ var _default = (function() {
                     vm.toyItems[i].selected = vm.toySelectedAll;
                 };
                 toyRecount(vm);
+                _hmt.push(["_trackEvent", "link", "click", "首页-购物车-全选"]);
             },
             selectItem: function(e, item) {
 
@@ -113,16 +115,19 @@ var _default = (function() {
                     }
                 };
                 toyRecount(this);
+                _hmt.push(["_trackEvent", "link", "click", "首页-购物车-单选"]);
             },
             goToyDetail: function(e, toyId) {
 
                 this.$router.push('/index/detail?toyid=' + toyId);
+                _hmt.push(["_trackEvent", "link", "click", "首页-购物车-进入详情页"]);
             },
             deleteItem: function(e, toyId) {
 
                 var vm = this;
                 vm.data = [];
                 toyClear(this, String(toyId));
+                _hmt.push(["_trackEvent", "link", "click", "首页-购物车-删除单个玩具"]);
             },
             clear: function() {
 
@@ -133,6 +138,7 @@ var _default = (function() {
                     tid.push(vm.toyItems[i].toyId);
                 };
                 toyClear(this, tid.join(';'));
+                _hmt.push(["_trackEvent", "link", "click", "首页-购物车-删除全部玩具"]);
             },
             submit: function() {
 
@@ -144,7 +150,8 @@ var _default = (function() {
                     this.$router.push('/index/confirm');
                 } else {
                     Toast.show('您尚未选择玩具');
-                }
+                };
+                _hmt.push(["_trackEvent", "link", "click", "首页-购物车-结算"]);
             }
         }
     }

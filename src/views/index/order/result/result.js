@@ -46,10 +46,12 @@ var _default = (function(){
             goDetails: function (){
                 
                 this.$router.push('/mine/order/details?order_id=' + this.orderNumber);
+                _hmt.push(["_trackEvent", "link", "click", "支付完成-去订单页"]);
             },
             goIndex: function(){
                 
                 this.$router.push('/index');
+                _hmt.push(["_trackEvent", "link", "click", "支付完成-去首页"]);
             }
         }
     }

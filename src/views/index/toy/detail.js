@@ -77,14 +77,17 @@ var _default = (function(){
 		    addCart : function (e, toyId, isDetail) {
 		        
 		    	this.$refs.carts.addToy(toyId, isDetail);
+		    	_hmt.push(["_trackEvent", "link", "click", "详情页-加入购物车"]);
 		    },
 		    goToToyDetail: function(e, toyId){
 		        
                 this.$router.push('/index/detail?toyid=' + toyId);
+                _hmt.push(["_trackEvent", "link", "click", "详情页-猜你喜欢-进入详情"]);
             },
             goToCart : function(){
                 
                 this.$router.push('/index/detail/cart');
+                _hmt.push(["_trackEvent", "link", "click", "详情页-进入购物车"]);
             },
 		    goToConfirm : function ( ) {
 
@@ -98,7 +101,8 @@ var _default = (function(){
                     this.$router.push('/index/confirm');
                 }else {
                     this.$router.push('/mine/login');
-                }
+                };
+                _hmt.push(["_trackEvent", "link", "click", "详情页-立即租下"]);
 		    },
 			tabsScroll: function( e, docked ){
 				

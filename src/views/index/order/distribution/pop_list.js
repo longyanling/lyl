@@ -59,17 +59,20 @@ var _default = (function(){
                 this.methodHint = '';
                 this.methodHint = item.tips;
                 this.methodIndex = index;
+                _hmt.push(["_trackEvent", "link", "click", "下单-配送方式-配送方式选择"]);
             },
             selectDay : function (e, index, item) {
                 
                 this.infoDeterItem.splice(1, 1, item);
                 this.dayIndex = index;
+                _hmt.push(["_trackEvent", "link", "click", "下单-配送方式-配送时间选择"]);
             },
             InfoDetermine : function () {
                 
                 var infoDeterData = this.infoDeterItem;
                 this.$emit('resetDistribution', infoDeterData);
                 this.$router.back( -1 );
+                _hmt.push(["_trackEvent", "link", "click", "下单-配送方式-确认"]);
             }
         }
     }

@@ -144,7 +144,7 @@ var _default = (function(){
 		    addCart : function(e, toyId) {
 
 		    	this.$refs.carts.addToy(toyId);
-		    	_hmt.push(["_trackEvent", "link", "click", "加入购物车"]);
+		    	_hmt.push(["_trackEvent", "link", "click", "首页-加入购物车"]);
 		    },
 		    loadMore: function(e){
 		    	
@@ -154,30 +154,33 @@ var _default = (function(){
             goToToyDetail: function(e, toyId){
             	
                 this.$router.push('/index/detail?toyid=' + toyId);
+                _hmt.push(["_trackEvent", "link", "click", "首页-进入详情页"]);
             },
 
             goToMine : function(){
             	
                 this.$router.push('/mine');
-                _hmt.push(["_trackEvent", "link", "click", "进入个人中心"]);
+                _hmt.push(["_trackEvent", "link", "click", "首页-进入个人中心"]);
             },
             goToCart : function(){
             	
                 this.$router.push('/index/cart');
+                _hmt.push(["_trackEvent", "link", "click", "首页-进入购物车"]);
             },
             goToLocation : function() {
             	
                 this.$router.push('/index/location');
+                _hmt.push(["_trackEvent", "link", "click", "首页-进入城市定位"]);
             },
             goToSearch : function() {
             	
                 this.$router.push('/index/search');
-                _hmt.push(["_trackEvent", "link", "click", "进入搜索页"]);
+                _hmt.push(["_trackEvent", "link", "click", "首页-进入搜索页"]);
             },
             goScreen : function(e , brandid) {
             	
                 this.$router.push('/index/screen?brandid=' + brandid);
-                _hmt.push(["_trackEvent", "link", "click", "进入筛选页"]);
+                _hmt.push(["_trackEvent", "link", "click", "首页-进入筛选页"]);
             },
             goActivity :function(){
 

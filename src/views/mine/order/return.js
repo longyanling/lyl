@@ -40,10 +40,12 @@ var _default = (function(){
                             Toast.show(data.msg);
                         }
                     }
-                )
+                );
+                _hmt.push(["_trackEvent", "link", "click", "我的-回寄信息-确认提交"]);
             },
             goExpress: function(e){
                 this.$router.push( '/mine/order/express?order_id=' + this.orderNumber);
+                _hmt.push(["_trackEvent", "link", "click", "我的-回寄信息-进入快递列表"]);
             }
         }
     }

@@ -41,6 +41,7 @@
                         }
                     
                 });
+                _hmt.push(["_trackEvent", "link", "click", "我的-登录"]);
 			}
 		}
 	}

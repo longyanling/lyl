@@ -50,6 +50,7 @@ var _default = (function(){
         	},
             goReturn: function(e){
                 
+                _hmt.push(["_trackEvent", "link", "click", "我的-物流-添加回寄信息"]);
                 if(this.orderStatus < 5) return ;
                 this.$router.push( '/mine/order/return?order_id=' + this.orderId);
             }

@@ -38,6 +38,7 @@ var _default = (function(){
             	Store.Mine.addressCurrent = address || {};
             	Store.Mine.addressCurrent.isDefault = (index == 0 ? 1 : 0);
                 this.$router.push( '/mine/address/edit' );
+                _hmt.push(["_trackEvent", "link", "click", "我的-地址列表-编辑"]);
             },
             itemDelete: function(e, address){
             	
@@ -55,6 +56,7 @@ var _default = (function(){
                         Toast.show(data.msg);
                     }
                 });
+                _hmt.push(["_trackEvent", "link", "click", "我的-地址列表-删除"]);
             }
         }
     }

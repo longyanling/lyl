@@ -23,6 +23,7 @@ var _default = (function(){
             unbound: function(){
                 var vm = this;
                 vm.$refs.modal.show("您确认要解除绑定？不再考虑一下？" , '再想想~', '不了，谢谢');
+                _hmt.push(["_trackEvent", "link", "click", "我的-设置-解除绑定"]);
             },
             success :function(){
                 var vm = this;
@@ -36,6 +37,7 @@ var _default = (function(){
                     }
                     
                 });
+                _hmt.push(["_trackEvent", "link", "click", "我的-设置-确认解除绑定"]);
             },
             go: function(e, url){
                 

@@ -186,19 +186,18 @@ var _default = (function() {
             goToCart: function(){
                 
                 this.$router.push('/index/screen/cart');
+                _hmt.push(["_trackEvent", "link", "click", "筛选-进入购物车"]);
             },
             //添加到购物车
             addCart : function(e, toyId) {
 			    
 		    	this.$refs.carts.addToy(toyId);
-            },
-            goMine: function(){
-            	
-                this.$router.push('/mine');
+		    	_hmt.push(["_trackEvent", "link", "click", "筛选-加入购物车"]);
             },
             goToToyDetail: function(e, toyId){
             	
                 this.$router.push('/index/detail?toyid=' + toyId);
+                _hmt.push(["_trackEvent", "link", "click", "筛选-进入详情页"]);
             },
              //年龄选中
             ageSelected : function( e, ageRangeId) {
@@ -210,6 +209,7 @@ var _default = (function() {
                     }
                 }
                 this.ageSelectedData.push(ageRangeId);
+                _hmt.push(["_trackEvent", "link", "click", "筛选-年龄选择"]);
             },
             ageIsSelected: function( ageRangeId ){
             	
@@ -230,6 +230,7 @@ var _default = (function() {
                     }
                 }
                 this.brandSelectedData.push(brandId);
+                _hmt.push(["_trackEvent", "link", "click", "筛选-品牌选择"]);
             },
             brandIsSelected : function(brandId) {
             	
@@ -250,6 +251,7 @@ var _default = (function() {
                     }
                 }
                 this.abilitySelectedData.push(abilityId);
+                _hmt.push(["_trackEvent", "link", "click", "筛选-能力选择"]);
             },
             abilityIsSelected : function(abilityId) {
             	
@@ -270,6 +272,7 @@ var _default = (function() {
                     }
                 }
                 this.typeSelectedData.push(toyTypeId);
+                _hmt.push(["_trackEvent", "link", "click", "筛选-类型选择"]);
             },
             typeIsSelected : function(toyTypeId) {
             	
@@ -284,6 +287,7 @@ var _default = (function() {
              sortSelected : function(e, toySortTypeId){
              	
                 this.sortSelectedData = toySortTypeId;
+                _hmt.push(["_trackEvent", "link", "click", "筛选-排序选择"]);
             },
             //玩具大小选中
             sizeSelected : function(e, toySizeTypeId) {
@@ -294,6 +298,7 @@ var _default = (function() {
                     }
                 }
                 this.sizeSelectedData.push(toySizeTypeId);
+                _hmt.push(["_trackEvent", "link", "click", "筛选-大小选择"]);
             },
             sizeIsSelected : function(toySizeTypeId) {
             	
@@ -312,7 +317,8 @@ var _default = (function() {
                     this.rentSelectedData = this.toyOtherRentType.rentTypeId; 
                 }else {
                     this.rentSelectedData = 2;
-                }
+                };
+                _hmt.push(["_trackEvent", "link", "click", "筛选-邮寄选择"]);
             },
                 
             //有货选中
@@ -323,7 +329,8 @@ var _default = (function() {
                     this.stockSelectedData = this.toyOtherStockNum.stockNum;
                 }else {
                     this.stockSelectedData = 0;
-                }
+                };
+                _hmt.push(["_trackEvent", "link", "click", "筛选-有货选择"]);
             },
             //  筛选的切换
             ageShow: function (){
@@ -417,6 +424,7 @@ var _default = (function() {
                         
                     }
                 );
+                _hmt.push(["_trackEvent", "link", "click", "筛选-确认"]);
             },
             screenReset : function() {
             	
@@ -430,6 +438,7 @@ var _default = (function() {
                 this.stockSelectedData = 0;
                 this.stockState = false;
                 this.rentState = false;
+                _hmt.push(["_trackEvent", "link", "click", "筛选-重置"]);
             },
         },
         components: {

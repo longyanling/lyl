@@ -33,6 +33,7 @@ var _default = (function(){
                 
                 this.$emit('resetDate', item);
                 this.$router.back( -1 );
+                _hmt.push(["_trackEvent", "link", "click", "下单-租期-租期选择"]);
             },
            deactive: function(e){
                 

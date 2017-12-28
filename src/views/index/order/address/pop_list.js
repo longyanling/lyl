@@ -42,11 +42,13 @@ var _default = (function(){
                 
                 this.$emit('resetAddressId', address);
                 this.$router.back( -1 );
+                _hmt.push(["_trackEvent", "link", "click", "下单-地址列表-选中"]);
             },
             itemEdit: function( e, item ){
                 
                 Store.Mine.addressCurrent = item; 
                 this.$router.push( '/index/confirm/address/edit' );
+                _hmt.push(["_trackEvent", "link", "click", "下单-地址列表-编辑"]);
             },
             itemDelete : function (e, addressId) {
                 
@@ -65,6 +67,7 @@ var _default = (function(){
                         Toast.show(data.msg);
                     }
                 });
+                _hmt.push(["_trackEvent", "link", "click", "下单-地址列表-删除"]);
             }
         }
     }

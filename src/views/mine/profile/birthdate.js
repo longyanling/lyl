@@ -26,6 +26,7 @@ var _default = (function(){
         
         		this.$emit('resetBirthDate', this.birthDate.getTime());
                 this.$router.back( -1 );
+                _hmt.push(["_trackEvent", "link", "click", "我的-宝宝年龄-确认"]);
             },
             deactive: function(e){
             	

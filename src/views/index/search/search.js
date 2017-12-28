@@ -84,6 +84,7 @@ var _default = (function(){
             goToCart: function(){
                 
                 this.$router.push('/index/search/cart');
+                _hmt.push(["_trackEvent", "link", "click", "搜索-进入购物车"]);
             },
 			tagDisplay: function(){
 				
@@ -92,10 +93,12 @@ var _default = (function(){
 			goToToyDetail: function(e, toyId){
 			    
                 this.$router.push('/index/detail?toyid=' + toyId);
+                _hmt.push(["_trackEvent", "link", "click", "搜索-进入详情页"]);
             },
 			addCart : function(e, toyId) {
 			    
 		    	this.$refs.carts.addToy(toyId);
+		    	_hmt.push(["_trackEvent", "link", "click", "搜索-加入购物车"]);
             },
             tagChange: function( e, tag ){
                 
@@ -138,6 +141,7 @@ var _default = (function(){
 			    vm.toyLastId = -1;
 			    
 			    document.getElementById('keyword').blur();
+			    _hmt.push(["_trackEvent", "link", "click", "搜索-搜索玩具"]);
 			    
 			    loadToyList(vm);
 			    return false;

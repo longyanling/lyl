@@ -106,6 +106,7 @@ var _default = (function(){
         				Toast.show('地址搜索失败:' + status);
 		            }
 		        });
+		        _hmt.push(["_trackEvent", "link", "click", "我的-地址定位-选择地址"]);
         	}
         }
     }

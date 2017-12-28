@@ -31,10 +31,12 @@ var _default = (function(){
             sexChange: function( e, sex ){
                 
             	this.babyInfo.babySex = sex;
+            	_hmt.push(["_trackEvent", "link", "click", "我的-宝宝信息-修改性别"]);
             },
             birthPicker: function(){
             	
         		this.$router.push( '/mine/profile/birthdate?date=' + this.babyInfo.birthDate );
+        		_hmt.push(["_trackEvent", "link", "click", "我的-宝宝信息-进入修改年龄"]);
             },
             birthReset: function( date ){
             	
@@ -58,6 +60,7 @@ var _default = (function(){
            			    Toast.show("更新失败");
            			}
            		});
+           		_hmt.push(["_trackEvent", "link", "click", "我的-宝宝信息-保存"]);
             },
             login: function(){
 

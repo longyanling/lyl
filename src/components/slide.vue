@@ -78,9 +78,12 @@
 					e.source.style.transition = 'margin-left 240ms ease-out';
 				},
 				goBannerUrl: function(e, url){
-				    
+
 				    if(url){ 
 				    	window.open(url,"",""); 
+				    	_hmt.push(["_trackEvent", "link", "click", "首页-点击banner"]);
+				    }else {
+				        _hmt.push(["_trackEvent", "link", "click", "详情页-点击banner"]);
 				    }
 				    
 				}

@@ -82,13 +82,15 @@ var _default = (function(){
                             Toast.show(data.msg);
                         }
                     }
-                )
+                );
+                _hmt.push(["_trackEvent", "link", "click", "我的-订单列表-立即付款"]);
             },
             placeOrder : function(e, toys) {
 
                 Store.Index.orderToys = [];
                 Store.Index.orderToys = toys;
                 this.$router.push('/index/confirm');
+                _hmt.push(["_trackEvent", "link", "click", "我的-订单列表-再次下单"]);
             },
             orderCancel : function(e, orderId){
                 var vm = this;
@@ -103,7 +105,8 @@ var _default = (function(){
                             Toast.show(data.msg);
                         }
                     }
-                )
+                );
+                _hmt.push(["_trackEvent", "link", "click", "我的-订单列表-取消订单"]);
             },
             orderDelete: function(e, orderId){
                 var vm = this;
@@ -118,19 +121,23 @@ var _default = (function(){
                             Toast.show(data.msg);
                         }
                     }
-                )
+                );
+                _hmt.push(["_trackEvent", "link", "click", "我的-订单列表-删除订单"]);
             },
             goIndex : function () {
             	
                 this.$router.push('/index');
+                _hmt.push(["_trackEvent", "link", "click", "我的-订单列表-再租几件"]);
             },
             goDetails: function (e, orderId){
             	
                 this.$router.push('/mine/order/details?order_id=' + orderId);
+                _hmt.push(["_trackEvent", "link", "click", "我的-订单列表-进入详情"]);
             },
             goLogistics : function (e, orderId){
             	
                 this.$router.push('/mine/order/logistics?order_id=' + orderId);
+                _hmt.push(["_trackEvent", "link", "click", "我的-订单列表-进入物流"]);
             }
         },
         filters: {

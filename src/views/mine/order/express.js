@@ -29,6 +29,7 @@ var _default = (function(){
         methods: {
             select: function( e, express ){
                 this.$router.push( '/mine/order/return?express=' + express +  '&&order_id=' + this.orderNumber);
+                _hmt.push(["_trackEvent", "link", "click", "我的-快递公司-选择"]);
             }
         }
     }

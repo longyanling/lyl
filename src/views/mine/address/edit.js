@@ -45,10 +45,12 @@ var _default = (function(){
         	sexCheck: function(e, sex){
         		
         		this.consigneeSex = sex;
+        		_hmt.push(["_trackEvent", "link", "click", "我的-地址修改-性别"]);
         	},
         	defaultCheck: function(e){
         		
         		this.isDefault = this.isDefault ? 0 : 1;
+        		_hmt.push(["_trackEvent", "link", "click", "我的-地址选择-默认"]);
         	},
         	getLocation: function(){
         		
@@ -57,9 +59,11 @@ var _default = (function(){
 			 	Store.Mine.addressCurrent.consigneeSex = this.consigneeSex;
 				Store.Mine.addressCurrent.consigneePhone = this.consigneePhone;
         		this.$router.push('/mine/address/location?address=' + this.addressPrefix);
+        		_hmt.push(["_trackEvent", "link", "click", "我的-地址修改-定位"]);
         	},
             submit: function( e, url ){
-            	
+                
+            	_hmt.push(["_trackEvent", "link", "click", "我的-地址修改-保存"]);
             	var vm = this;
             	
             	if(vm.addressConsignee != '' && vm.consigneePhone != '' && vm.addressPrefix != '' && vm.addressSub != ''){

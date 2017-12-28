@@ -80,6 +80,7 @@ var _default = (function(){
         		
         		this.cityLocation = '正在定位..';
         		amapLocation(this);
+        		_hmt.push(["_trackEvent", "link", "click", "首页-城市定位-自动定位"]);
         	},
         	selectLocation: function(){
         		
@@ -100,6 +101,7 @@ var _default = (function(){
                         Toast.show(data.msg);
                     }
                 });
+                _hmt.push(["_trackEvent", "link", "click", "首页-城市定位-选择城市"]);
             }
             
         }

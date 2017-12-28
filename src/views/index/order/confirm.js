@@ -201,6 +201,7 @@ var _default = (function(){
                     orderTime : this.distributionTime,
                     rentPeriod : this.defaultLease
                 });
+                _hmt.push(["_trackEvent", "link", "click", "下单-进入配送信息"]);
             },
             //  修改配送地址
             setAddressId :function(address){
@@ -221,6 +222,7 @@ var _default = (function(){
                     orderTime : this.distributionTime,
                     rentPeriod : this.defaultLease
                 });
+                _hmt.push(["_trackEvent", "link", "click", "下单-进入配送地址"]);
             },
             //  修改租期
             setDate : function(item){
@@ -236,6 +238,7 @@ var _default = (function(){
                         orderTime : this.distributionTime,
                         rentPeriod : this.defaultLease
                 });
+                _hmt.push(["_trackEvent", "link", "click", "下单-进入租期"]);
             },
             //  选择优惠券
             setCoupon : function(couponId){
@@ -252,6 +255,7 @@ var _default = (function(){
                     orderTime : this.distributionTime,
                     rentPeriod : this.defaultLease
                 });
+                _hmt.push(["_trackEvent", "link", "click", "下单-进入优惠券"]);
             },
             showPopup: function( e, url ){
 
@@ -303,7 +307,8 @@ var _default = (function(){
                             }
                         }
                     )
-                }
+                };
+                _hmt.push(["_trackEvent", "link", "click", "下单-去支付"]);
             }
         },
         filters: {
