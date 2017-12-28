@@ -151,11 +151,17 @@
             	},
             	
                 goCart: function( e ){
-                    if(Store.Mine.logined){
-                        this.$router.push(this.cartUrl || '/index/cart');
-                    }else {
-                        this.$router.push('/mine/login');
-                    }
+                    
+                    var vm = this;
+                    
+                    API.Index.profile({}, function(data, logined){
+                         
+                        if (logined == true){
+                            vm.$router.push(vm.cartUrl || '/index/cart');
+                        }else{
+                            vm.$router.push('/mine/login');
+                        }
+                    });
                 }
             };
         })()

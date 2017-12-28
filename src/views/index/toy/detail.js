@@ -90,18 +90,22 @@ var _default = (function(){
                 _hmt.push(["_trackEvent", "link", "click", "详情页-进入购物车"]);
             },
 		    goToConfirm : function ( ) {
+                var vm = this;
+                
+                API.Index.profile({}, function(data, logined){
 
-                if(Store.Mine.logined){
-                    var toys = new Array();
-                    
-                    toys.push(this.detailItem);
-                    Store.Index.orderToys = [];
-                    Store.Index.orderToys = toys;
-                    
-                    this.$router.push('/index/confirm');
-                }else {
-                    this.$router.push('/mine/login');
-                };
+                    if (logined == true){
+                        
+                        var toys = new Array();
+                        toys.push(vm.detailItem);
+                        Store.Index.orderToys = [];
+                        Store.Index.orderToys = toys;
+                        
+                        vm.$router.push('/index/confirm');
+                    }else{
+                        vm.$router.push('/mine/login');
+                    }
+                });
                 _hmt.push(["_trackEvent", "link", "click", "详情页-立即租下"]);
 		    },
 			tabsScroll: function( e, docked ){
