@@ -37,6 +37,8 @@
                     document.getElementById("guidearrow").style.position="absolute";
                     document.getElementById("guidearrow").style.right= 51 + 'px';
                     document.getElementById("guidearrow").style.top= (headTop + 40) + 'px';
+                    var arrowWidth = document.getElementById("guidearrow").style.width="72%";
+                    document.getElementById("guidearrow").style.height= arrowWidth * 0.47 + "px";
                 },
                 guideNone: function(){
                     this.guideState = false;
@@ -59,10 +61,6 @@
     .head {
         width: 50px;
         height: 50px;
-    }
-    .arrow {
-        width: 207px;
-        height: 87px;
     }
     .try {
         width: 110px;
