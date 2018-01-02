@@ -107,7 +107,8 @@ var _default = (function(){
 		    var bannerWidth = banner.getBoundingClientRect().width;
 		    var bannerHeight = banner.style.height = (160/375) * bannerWidth;
 		    Store.Index.noviceGuideCoordinatee = {x : personal, y : bannerHeight};
-            var visited = Utils.Cookie.getCookie("visited"); 
+		    
+            var visited = Utils.Cookie.getCookie("visited");
             
             this.loadingShow = true;
             this.locationInfo = Store.Index.cityName ? Store.Index.cityName : '北京';
@@ -116,17 +117,16 @@ var _default = (function(){
             legoLoad(this);
             toyLoad (this);
             
-            if (visited != "true"){                
+            if (visited != "true" && visited != "false"){                
                 this.$router.push('/index/activity');
                 Utils.Cookie.setCookie("visited", "true", 30);
-            }else {
-                var guildState = Utils.Cookie.getCookie("guildState"); 
-                if(guildState != "true"){
-                    console.log(guildState)
-                    this.$refs.guide.show(true);
-                    Utils.Cookie.setCookie("guildState", "true", 30);
-                }
-            };
+            }
+                
+            if(visited == "true"){
+                this.$refs.guide.show(true);
+                Utils.Cookie.setCookie("visited", "false", 30);
+            }
+        
 
 		},
 		data: function(){

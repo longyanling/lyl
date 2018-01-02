@@ -44,7 +44,12 @@ var apiProxy = {
 		secure: false,
         changeOrigin: true
 	},
-	'/toy/*': {
+	'/toy/list': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/toy/info': {
 		target: 'http://dev.toysuperman.com/',
 		secure: false,
         changeOrigin: true
