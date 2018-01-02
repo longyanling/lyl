@@ -198,6 +198,7 @@
                 background: #ff0000;
             }
             &.service {
+                margin-bottom: 9px;
                 background-image:url('https://ts.zlimg.com/v2/h5/jd/home_service.png');
             }
             &.cart {

@@ -44,7 +44,8 @@ var data = {
 
         },
         searchHot: null,
-        orderToys: []
+        orderToys: [],
+        noviceGuideCoordinatee: null
     },
     Mine: {
         profile: null,

@@ -5,6 +5,7 @@ import Toast from '@/directives/toast';
 import Store from '@/directives/store';
 import Slide from '@/components/slide.vue'
 import Modal from '@/components/modal.vue';
+import Guide from '@/components/guide.vue';
 import Shortcut from '@/components/shortcut.vue'
 import API from "@/services/api";
 
@@ -44,6 +45,7 @@ var _default = (function(){
         		vm.recommendItems = data.data[2];
         		vm.hotItems = data.data[4];
         		vm.loadingShow = false;
+        		
         	}else {
         		Toast.show(data.msg);
             }
@@ -100,7 +102,11 @@ var _default = (function(){
 	return {
 		name: 'home-index',
 		mounted: function(){
-
+		    var personal = document.getElementById("personal").getBoundingClientRect().left;
+		    var banner = document.getElementById("componentSlide");
+		    var bannerWidth = banner.getBoundingClientRect().width;
+		    var bannerHeight = banner.style.height = (160/375) * bannerWidth;
+		    Store.Index.noviceGuideCoordinatee = {x : personal, y : bannerHeight};
             var visited = Utils.Cookie.getCookie("visited"); 
             
             this.loadingShow = true;
@@ -113,8 +119,15 @@ var _default = (function(){
             if (visited != "true"){                
                 this.$router.push('/index/activity');
                 Utils.Cookie.setCookie("visited", "true", 30);
+            }else {
+                var guildState = Utils.Cookie.getCookie("guildState"); 
+                if(guildState != "true"){
+                    console.log(guildState)
+                    this.$refs.guide.show(true);
+                    Utils.Cookie.setCookie("guildState", "true", 30);
+                }
             };
-            
+
 		},
 		data: function(){
             
@@ -190,7 +203,8 @@ var _default = (function(){
 		components: {
 			'tm-slide': Slide,
 			'tm-shortcut': Shortcut,
-			'tm-modal': Modal
+			'tm-modal': Modal,
+			'tm-guide': Guide
 		}
 	}
 })();

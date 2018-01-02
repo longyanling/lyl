@@ -12,7 +12,7 @@
 		</div>
 
 		<div class="navigation" v-scroll:sticky="{ top:0 }">
-            <a class="personal icon" v-touch:tap="{ event: goToMine, params: [] }"></a>
+            <a class="personal icon" id="personal" v-touch:tap="{ event: goToMine, params: [] }"></a>
 			<span class="category">
 	            <a class="item" v-for="(item, index) in navigationItems" v-touch:tap="{ event: goScreen, params: [ '' ] }">
 	            	<em>{{item.text}}</em>
@@ -107,6 +107,7 @@
         </div>
         <router-view></router-view>
         <tm-shortcut ref="carts" @toyExists = "showToyExists"></tm-shortcut>
+        <tm-guide ref="guide"></tm-guide>
         <tm-modal ref="modal" :success="goToCart"></tm-modal>
         <div class="loading" v-show="loadingShow"><img src="https://ts.zlimg.com/v2/h5/jd/base_loading.gif"/></div>
 	</div>
