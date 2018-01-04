@@ -278,6 +278,10 @@
             line-height: 44px;
             border-radius: 0px;
             background-color: #fed030;
+            &.atqing {
+                background-color: #b3b3b3;
+                border: 1px solid #b3b3b3;
+            }
         }
     }
 }

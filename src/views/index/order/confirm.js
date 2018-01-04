@@ -137,7 +137,9 @@ var _default = (function(){
                 distributionNum : null,
                 distributionTime : null,
                 deliverTime : null ,
-                canOnsiteState : null
+                canOnsiteState : null,
+                jdPay: '京东支付',
+                jdPayState: true
             };
         },
         methods: {
@@ -268,6 +270,8 @@ var _default = (function(){
                 if(self.addressData.addressId == undefined){
                     Toast.show('请添加您的收货地址！');
                 }else {
+                    self.jdPay = '正在请求...';
+                    self.jdPayState = false;
                     API.Index.submit(
                         {
                             seqId : self.passSeqId,
@@ -304,6 +308,8 @@ var _default = (function(){
                             }
                             if(data.code == 129){
                                 Toast.show(data.msg);
+                                self.jdPay = '京东支付';
+                                self.jdPayState = true;
                             }
                         }
                     )
