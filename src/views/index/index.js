@@ -117,14 +117,9 @@ var _default = (function(){
             legoLoad(this);
             toyLoad (this);
             
-            if (visited != "true" && visited != "false"){                
-                this.$router.push('/index/activity');
-                Utils.Cookie.setCookie("visited", "true", 30);
-            }
-                
-            if(visited == "true"){
+            if(visited != "true"){
                 this.$refs.guide.show(true);
-                Utils.Cookie.setCookie("visited", "false", 30);
+                Utils.Cookie.setCookie("visited", "true", 30);
             }
         
 
