@@ -26,7 +26,7 @@
                         <dfn class="price">{{item.rentMoney / 1000}} <small>元/天</small></dfn>    
                     </span>
                 </div>
-                <div class="empty" v-show="toyItems.length == 0"></div>
+                <div class="empty" v-show="toyItems.length == 0 && stockItems.length == 0"></div>
                 <div class="loading" v-show="cartLoading">
                     <div class="head">
                         <div class="face"></div>
