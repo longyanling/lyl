@@ -64,9 +64,7 @@ var _default = (function(){
             }, function (data) {
             	
                 if (data.code == 0) {
-                    vm.legoBest = makeToy(data, 0);
-                    vm.legoNext = makeToy(data, 1);
-                    vm.legoThird = [makeToy(data, 2) , makeToy(data, 3)];
+                    vm.legoItems = [makeToy(data, 0), makeToy(data, 1), makeToy(data, 2) , makeToy(data, 3),makeToy(data, 4),makeToy(data, 5)];
                     vm.legoLoadsing = true;
                 } else {
                     Toast.show(data.msg);
@@ -109,6 +107,7 @@ var _default = (function(){
 		    Store.Index.noviceGuideCoordinatee = {x : personal, y : bannerHeight};
 		    
             var visited = Utils.Cookie.getCookie("visited");
+            var activityed = Utils.Cookie.getCookie("activityed");
             
             this.loadingShow = true;
             this.locationInfo = Store.Index.cityName ? Store.Index.cityName : '北京';
@@ -117,12 +116,17 @@ var _default = (function(){
             legoLoad(this);
             toyLoad (this);
             
-            if(visited != "true"){
-                this.$refs.guide.show(true);
-                Utils.Cookie.setCookie("visited", "true", 30);
+            if (activityed != 'true'){
+            	this.$router.push('/index/activity');
+                Utils.Cookie.setCookie("activityed", "true", 30);
+            } else {
+	            if (visited != 'true'){
+	            	this.$refs.guide.show(true);
+                	Utils.Cookie.setCookie("visited", "true", 30);
+	            } else {
+//          		console.log('都看过了');
+	            }
             }
-        
-
 		},
 		data: function(){
             
@@ -131,9 +135,7 @@ var _default = (function(){
                 locationInfo: null,
 				bannerItems: [],
 				navigationItems : [{'text': '年龄'},{'text': '品牌'},{'text': '能力'},{'text': '类型'},{'text': '筛选'}],
-				legoBest: {},
-				legoNext: {}, 
-				legoThird: [],
+				legoItems: [],
 				recommendItems : [],
 				hotItems : [],
 				toyItems: [],

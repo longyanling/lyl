@@ -23,34 +23,20 @@
         <div class="toylego summary">
             <div class="caption" v-touch:tap="{ event: goScreen, params: [ 35 ] }">
             	<em>乐高专区</em>
-            	<dfn>尽享灵感和想象的乐趣</dfn>
+            	<!--<dfn>尽享灵感和想象的乐趣</dfn>-->
             </div>
             <div class="datalist">
-                <div class="best" v-touch:tap="{ event: goToToyDetail, params: [ legoBest.toyId ] }">
-                    <em> {{legoBest.toyName}} </em>
-                    <dfn> {{legoBest.rentMoney / 1000}} <small>元/天</small></dfn>
-                    <img :src="legoBest.image"/>
-                    <var></var>
-                </div>
-                <div class="next" v-touch:tap="{ event: goToToyDetail, params: [ legoNext.toyId ] }" >
-                	<img :src="legoNext.image"/>
-                	<em> {{legoNext.toyName}} </em>
-                	<dfn> {{legoNext.rentMoney / 1000}} <small>元/天</small></dfn>
-                </div>
-                <div class="third">
-                    <div class="subitem" v-for="item in legoThird" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
-                        <em> {{item.toyName}} </em>
-                        <dfn> {{item.rentMoney / 1000}} <small>元/天</small></dfn>
-                        <img :src="item.image"/>
-                    </div>
+                <div class="item" v-for="item in legoItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
+                    <img :src="item.image"/>
+                    <em> {{item.toyName}} </em>
+                    <dfn> {{item.rentMoney / 1000}} <small>元/天</small></dfn>
                 </div>
             </div>
         </div>
 
         <div class="recommend summary">
-            <div class="caption">
+            <div class="caption" v-touch:tap="{ event: goScreen, params: [ '' ] }">
             	<em>{{recommendItems.title}}</em>
-            	<dfn>{{recommendItems.desc}}</dfn>
             </div>
             <div class="datalist">
 	            <span class="item" v-for="item in recommendItems.toyList" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
@@ -62,9 +48,8 @@
         </div>
 
         <div class="hot summary">
-            <div class="caption">
+            <div class="caption" v-touch:tap="{ event: goScreen, params: [ '' ] }">
             	<em>{{hotItems.title}}</em>
-            	<dfn>{{hotItems.desc}}</dfn>
             </div>
             <div class="datalist">
 	            <span class="item" v-for="item in hotItems.toyList" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }">
@@ -78,7 +63,6 @@
 		<div class="toygrid">
             <div class="caption">
             	<em>更多推荐</em>
-            	<dfn>宝宝的笑容值得你来精细挑选</dfn>
             </div>
             <div class="toyinner">
                 <span class="toyitem" v-for="(item, index) in toyItems" v-touch:tap="{ event: goToToyDetail, params: [ item.toyId ] }" :data-id="item.toyId">

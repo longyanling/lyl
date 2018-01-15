@@ -11,6 +11,10 @@ var index = {
     
         Utils.Axios.deferGet(prefix + '/home/list/v3', data, callback );
     },
+    takeCoupon: function(data, callback){
+    
+        Utils.Axios.deferPost(prefix + '/activity/takeCoupon', data, callback );
+    },
     location: function( data, callback){
     	
     	Utils.Axios.deferGet( prefix + '/home/cities', data, callback);

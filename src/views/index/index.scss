@@ -117,8 +117,9 @@
         
         .caption {
             display: block;
-            height: 70px;
+            height: 45px;
             text-align: center;
+            line-height: 45px;
             margin: 0px 12px;
             background: url('https://ts.zlimg.com/v2/h5/jd/home_button_entry.png') right center / 7px 12px no-repeat;
             
@@ -127,14 +128,7 @@
                 color: #ff4956;
                 font-size: 16px;
                 padding-left: 20px;
-                margin-top: 22px;
                 background: url('https://ts.zlimg.com/v2/h5/jd/home_lego.png') left center / 16px 16px no-repeat;
-            }
-            dfn {
-                display: block;
-                color: #b3b3b3;
-                font-size: 12px;
-                margin-top: 10px;
             }
         }
         
@@ -143,20 +137,25 @@
             overflow: hidden;
             
             .item {
+                width: calc(33.3vw - 1px);
                 float: left;
                 border-right: 1px solid #f0f0f0;
                 border-bottom: 1px solid #f0f0f0;
                 
                 img {
+                    width: 100%;
                     margin-top: 10px;
                 }
                 em {
                     display: block;
-                    overflow: hidden;
+                    height: 28px;
                     color: #333333;
                     font-size: 12px;
                     line-height: 14px;
-                    text-overflow:ellipsis;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    margin: 10px 10px 0px 10px;
                 }
                 dfn {
                     display: block;
@@ -164,189 +163,26 @@
                     color: #ff4956;
                     font-size: 14px;
                     line-height: 33px;
-                }
-            }
-            
-            .best {
-                float: left;
-                display: block;
-                width: calc(40% - 1px);
-                border-right: 1px solid #f0f0f0;
-                
-                em {
-                    display: block;
-                    overflow: hidden;
-                    height: 36px;
-                    font-size: 12px;
-                    line-height: 18px;
-                    text-overflow:ellipsis;
-                    padding-top: 10px;
-                    margin: 0px 10px;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                }
-                dfn {
-                    display: block;
-                    height: 33px;
-                    color: #ff4956;
-                    font-size: 16px;
-                    font-weight: 700;
-                    line-height: 33px;
-                    text-align: left;
-                    margin: 0px 10px;
-                }
-                img {
-                    width: 100%;
-                    margin: 20px 0px;
-                }
-                var {
-                    display: block;
-                    position: absolute;
-                    width: 32px;
-                    height: 32px;
-                    margin-top: -40vw;
                     margin-left: 10px;
-                    background: url('https://ts.zlimg.com/v2/h5/jd/home_hot.png') center center / 32px 32px no-repeat;
-                }
-            }
-            .next {
-                float: left;
-                display: block;
-                overflow: hidden;
-                width: 60%;
-                border-bottom: 1px solid #f0f0f0;
-                
-                img {
-                    float: right;
-                    width: 50%;
-                }
-                em {
-                    display: block;
-                    overflow: hidden;
-                    height: 36px;
-                    font-size: 12px;
-                    line-height: 18px;
-                    text-overflow:ellipsis;
-                    padding: 10px 0px 0px 10px;
-                    margin-right: 50%;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                }
-                dfn {
-                    display: block;
-                    overflow: hidden;
-                    height: 33px;
-                    color: #ff4956;
-                    font-size: 14px;
-                    line-height: 33px;
-                    text-align: left;
-                    margin: 0px 50% 0px 10px;
-                }
-            }
-            .third {
-                float: left;
-                display: block;
-                overflow: hidden;
-                width: 60%;
-                
-                .subitem {
-                    float: left;
-                    width: 50%;
-                    overflow: hidden;
-                    
-                    em {
-                        display: block;
-                        overflow: hidden;
-                        height: 36px;
-                        font-size: 12px;
-                        line-height: 18px;
-                        text-overflow:ellipsis;
-                        margin: 0px 10px;
-                        padding-top: 10px;
-                        -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 2;
-                    }
-                    dfn {
-                        display: block;
-                        height: 16px;
-                        color: #ff4956;
-                        font-size: 12px;
-                        line-height: 16px;
-                        text-align: left;
-                        margin: 0px 10px;
-                    }
-                    img {
-                        width: 100%;
-                    }
                 }
             }
         }
-        
         &.recommend {
             .caption {
-                background: none;
-            
+                background: block;
+                
                 em {
                     color: #4d9df7;
                     background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_recommend.png');
                 }
             }
-            .datalist {
-                .item {
-                    width: calc(33.3vw - 1px);
-                    
-                    img {
-                        width: 100%;
-                    }
-                    em {
-                        height: 28px;
-                        line-height: 14px;
-                        margin: 10px 10px 0px 10px;
-                        -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 2;
-                    }
-                    dfn {
-                        text-align: center;
-                    }
-                }
-            }
         }   
         &.hot {
             .caption {
-                background: none;
-                
+                background: block;
                 em {
                     color: #985ddb;
                     background-image: url('https://ts.zlimg.com/v2/h5/jd/home_icon_hot.png');
-                }
-            }
-            .datalist {
-                display: block;
-                overflow: hidden;
-                
-                .item {
-                    float: left;
-                    display: block;
-                    width: calc(50vw - 1px);
-                    
-                    img {
-                        width: 100%;
-                        min-width: 100%;
-                        max-width: 100%;
-                    }
-                    em {
-                        height: 28px;
-                        color: #333333;
-                        font-size: 12px;
-                        line-height: 14px;
-                        white-space: nowrap;
-                        text-overflow:ellipsis;
-                        margin: 10px;
-                    }
-                    dfn {
-                        text-align: left;
-                        margin: 0px 10px;
-                    }
                 }
             }
         }
@@ -358,15 +194,16 @@
         
         .caption {
             display: block;
-            height: 70px;
+            height: 45px;
             text-align: center;
             
             em {
                 display: inline-block;
+                height: 45px;
+                line-height: 45px;
                 color: #ff8942;
                 font-size: 16px;
                 padding-left: 20px;
-                margin-top: 22px;
                 background: url('https://ts.zlimg.com/v2/h5/jd/home_icon_more.png') left center / 16px 16px no-repeat;
             }
             dfn {

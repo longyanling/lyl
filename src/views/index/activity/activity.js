@@ -8,13 +8,21 @@ var _default = (function(){
     return {
         name: 'index-activity',
         mounted: function(){
-            
-             
+        	var vm = this;
+        	
+        	API.Index.takeCoupon({
+        		cid: 9031
+        	}, function(data){
+        		
+        		console.log(data);
+        		vm.couponItems = data;
+        	});
         },
         data: function(){
             
             return {
-               
+                couponItems : [],
+                
             };
         },
         methods: {

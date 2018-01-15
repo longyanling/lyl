@@ -10,6 +10,7 @@ config.entry.app.unshift("webpack-dev-server/client?http://localhost:8077/");
 var apis = {
 	'/home/list/v3' : '/home/list/v3',
 	'/home/cities': '/home/cities',
+	'/activity/takeCoupon': '/activity/takeCoupon',
 	'/search/filter/list/v3': '/search/filter/list/v3',
 	'/cart/list': '/cart/list',
 	'/cart/checkAndAdd': '/cart/checkAndAdd',
@@ -40,6 +41,11 @@ var apis = {
 }
 var apiProxy = {
 	'/home/*': {
+		target: 'http://dev.toysuperman.com/',
+		secure: false,
+        changeOrigin: true
+	},
+	'/activity/takeCoupon': {
 		target: 'http://dev.toysuperman.com/',
 		secure: false,
         changeOrigin: true
